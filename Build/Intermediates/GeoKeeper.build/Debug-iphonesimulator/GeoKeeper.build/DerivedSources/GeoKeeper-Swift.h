@@ -116,6 +116,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
+@import CoreLocation;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -135,13 +136,26 @@ SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class CLLocationManager;
+@class CLLocation;
+@class UILabel;
+@class UIButton;
 @class NSBundle;
 @class NSCoder;
 
-SWIFT_CLASS("_TtC9GeoKeeper19FirstViewController")
-@interface FirstViewController : UIViewController
+SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
+@interface CurrentLocationViewController : UIViewController <CLLocationManagerDelegate>
+@property (nonatomic, readonly, strong) CLLocationManager * _Nonnull locationManager;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified messageLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified latitudeLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified longitudeLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified tagButton;
+- (IBAction)getLocation;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (void)locationManagerWithManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+- (void)locationManagerWithManager:(CLLocationManager * _Nonnull)manager didUpdataLocations:(NSArray<CLLocation *> * _Nonnull)locations;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
