@@ -154,8 +154,26 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (IBAction)getLocation;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
-- (void)locationManagerWithManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
 - (void)locationManagerWithManager:(CLLocationManager * _Nonnull)manager didUpdataLocations:(NSArray<CLLocation *> * _Nonnull)locations;
+- (void)showLocationServicesDeniedAlert;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UITextView;
+
+SWIFT_CLASS("_TtC9GeoKeeper29LocationDetailsViewController")
+@interface LocationDetailsViewController : UITableViewController
+@property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified descriptionTextView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified categoryLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified latitudeLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified longitudeLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified dateLabel;
+- (IBAction)done;
+- (IBAction)cancel;
+- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
