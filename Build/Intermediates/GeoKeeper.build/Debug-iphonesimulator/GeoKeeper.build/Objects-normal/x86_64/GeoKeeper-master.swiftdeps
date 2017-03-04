@@ -1,8 +1,8 @@
 version: "Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)"
 options: "71fc344e413b701f8089716d58772d98"
-build_time: [541752431, 401705000]
+build_time: [541929705, 929715000]
 inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailsViewController.swift": [541734417, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/SecondViewController.swift": [541729119, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/AppDelegate.swift": [541729119, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CurrentLocationViewController.swift": [541752431, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CurrentLocationViewController.swift": [541929705, 0]
