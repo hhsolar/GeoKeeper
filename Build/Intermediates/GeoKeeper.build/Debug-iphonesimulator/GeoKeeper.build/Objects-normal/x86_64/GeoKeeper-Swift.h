@@ -146,6 +146,9 @@ SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @interface CurrentLocationViewController : UIViewController <CLLocationManagerDelegate>
 @property (nonatomic, readonly, strong) CLLocationManager * _Nonnull locationManager;
+@property (nonatomic, strong) CLLocation * _Nullable location;
+@property (nonatomic) BOOL updatingLocation;
+@property (nonatomic) NSError * _Nullable lastLocationError;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified messageLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified latitudeLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified longitudeLabel;
@@ -155,7 +158,10 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
-- (void)locationManagerWithManager:(CLLocationManager * _Nonnull)manager didUpdataLocations:(NSArray<CLLocation *> * _Nonnull)locations;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
+- (void)startLocationManager;
+- (void)stopLocationManager;
+- (void)updateLabels;
 - (void)showLocationServicesDeniedAlert;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;

@@ -6,22 +6,22 @@ provides-nominal:
 provides-member:
 - ["C9GeoKeeper11AppDelegate", ""]
 provides-dynamic-lookup:
-- "applicationWillResignActive"
 - "applicationWillTerminate"
 - "applicationDidEnterBackground"
+- "applicationWillResignActive"
 - "applicationWillEnterForeground"
+- "application"
 - "window"
 - "applicationDidBecomeActive"
-- "application"
 depends-top-level:
-- "UIApplication"
-- "AppDelegate"
 - "UIApplicationLaunchOptionsKey"
-- "UIApplicationDelegate"
-- "UIWindow"
-- !private "BooleanLiteralType"
+- "UIApplication"
 - "UIResponder"
+- "AppDelegate"
+- "UIWindow"
 - "Bool"
+- !private "BooleanLiteralType"
+- "UIApplicationDelegate"
 depends-member:
 - ["Ps9AnyObject", "application"]
 - ["Ps9AnyObject", "applicationDidBecomeActive"]
