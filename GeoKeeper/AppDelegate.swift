@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -40,7 +41,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    lazy var managedObjectContext: NSManagedObjectContext = {
+        guard let modelURL = Bundle.main.url(forResource: "DataModel", withExtension: "momd") else {
+            fatalError("Could not find data model in app bundle")
+        }
+        
+        guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
+            fatalError("Error initializing model from: \(modelURL)")
+        }
+        
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = urls[0]
+        let storeURL = documentsDirectory.appendingPathComponent("DataStore.sqlite")
+        print(storeURL)
+        
+        do {
+            let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
+            
+            let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+            context.persistentStoreCoordinator = coordinator
+            return context
+        } catch {
+            fatalError("Error adding persistent store at \(storeURL): \(error)")
+        }
+    }()
 
 }
 
