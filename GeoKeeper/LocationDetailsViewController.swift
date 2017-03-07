@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 private let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -24,17 +25,22 @@ class LocationDetailsViewController:UITableViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    var managedObjectContext: NSManagedObjectContext!
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var placemark: CLPlacemark?
     var categoryName = "No Category"
+    var date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
         descriptionTextView.text = ""
         categoryLabel.text = ""
         latitudeLabel.text = String(format: ".8f", coordinate.latitude)
         longitudeLabel.text = String(format: ".8f", coordinate.longitude)
         categoryLabel.text = categoryName
+        dateLabel.text = formatDate(date: date)
         
         if let placemark = placemark {
             addressLabel.text = stringFromPlacemark(placemark: placemark)
@@ -88,6 +94,25 @@ class LocationDetailsViewController:UITableViewController {
     @IBAction func done() {
         let hudView = HudView.hudInView(view: navigationController!.view, animated: true)
         hudView.text = "Tagged"
+        
+        let location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
+        
+        location.locationDescription = descriptionTextView.text
+        location.category = categoryName
+        location.lattitude = coordinate.latitude
+        location.longitude = coordinate.longitude
+        location.date = date
+        location.placemark = placemark
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalError("Error: \(error)")
+        }
+        
+        afterDelay(seconds: 0.6, closure: {
+            self.dismiss(animated: true, completion: nil)
+        })
     }
     
     @IBAction func cancel() {
@@ -99,6 +124,8 @@ class LocationDetailsViewController:UITableViewController {
         categoryName = controller.selectedCategoryName
         categoryLabel.text = categoryName
     }
+    
+    
     
     //Mark - UITableViewDelegate
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
