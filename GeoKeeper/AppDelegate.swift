@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navigationController = tabBarViewControllers[1] as! UINavigationController
             let locationsViewController = navigationController.viewControllers[0] as! LocationsViewController
             locationsViewController.managedObjectContext = managedObjectContext
+            let _ = locationsViewController.view
         }
         listenForFatalCoreDataNotifications()
         print(applicationDocumentsDirectory)

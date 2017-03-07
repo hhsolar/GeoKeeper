@@ -31,10 +31,27 @@ class LocationDetailsViewController:UITableViewController {
     var categoryName = "No Category"
     var date = Date()
     
+    var locationToEdit: Location? {
+        didSet {
+            if let location = locationToEdit {
+                descriptionText = location.locationDescription
+                categoryName = location.category
+                date = location.date
+                coordinate = CLLocationCoordinate2DMake(location.lattitude, location.longitude)
+                placemark = location.placemark
+            }
+        }
+    }
+    var descriptionText = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        descriptionTextView.text = ""
+        if let location = locationToEdit {
+            title = "Edit Location"
+        }
+        
+        descriptionTextView.text = descriptionText
         categoryLabel.text = ""
         latitudeLabel.text = String(format: ".8f", coordinate.latitude)
         longitudeLabel.text = String(format: ".8f", coordinate.longitude)
@@ -52,6 +69,7 @@ class LocationDetailsViewController:UITableViewController {
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
     }
+
     
     func hideKeyboard(gestureRecognizer: UIGestureRecognizer) {
         let point = gestureRecognizer.location(in: tableView)
@@ -92,8 +110,15 @@ class LocationDetailsViewController:UITableViewController {
     
     @IBAction func done() {
         let hudView = HudView.hudInView(view: navigationController!.view, animated: true)
-        hudView.text = "Tagged"
-        let location = Location(context: managedObjectContext)
+        let location: Location
+        if let temp = locationToEdit {
+            hudView.text = "Updated"
+            location = temp
+        } else {
+            hudView.text = "Tagged"
+            location = Location(context: managedObjectContext)
+        }
+        
         
         location.locationDescription = descriptionTextView.text
         location.category = categoryName
@@ -159,4 +184,6 @@ class LocationDetailsViewController:UITableViewController {
             controller.selectedCategoryName = categoryName
         }
     }
+    
+    
 }
