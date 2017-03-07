@@ -17,16 +17,15 @@ class LocationsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let fetchRequest = NSFetchRequest<NSManagedObject>()
-        let entity = NSEntityDescription.entity(forEntityName: "Location", in: managedObjectContext)
+        let fetchRequest = NSFetchRequest<Location>()
+        let entity = Location.entity()
         fetchRequest.entity = entity
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         do {
-            let foundObjects = try managedObjectContext.execute(fetchRequest)
-            locations = foundObjects as! [Location]
+            locations = try managedObjectContext.fetch(fetchRequest)
         } catch {
-            fatalError()
+            fatalCoreDataError(error)
         }
     }
     //MARK: - UITableViewDataSource
@@ -36,29 +35,10 @@ class LocationsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
         let location = locations[indexPath.row]
-        
-        let descriptionLabel = cell.viewWithTag(100) as! UILabel
-        descriptionLabel.text = location.locationDescription
-        
-        let addressLabel = cell.viewWithTag(101) as! UILabel
-        if let placemark = location.placemark {
-            var text = ""
-            if let s = placemark.subThoroughfare {
-                text += s + " "
-            }
-            if let s = placemark.thoroughfare {
-                text += s + ","
-            }
-            if let s = placemark.locality {
-                text += s
-            }
-            addressLabel.text = text
-        } else {
-            addressLabel.text = ""
-        }
-        
+        cell.configure(for: location)
         return cell
     }
+    
 }

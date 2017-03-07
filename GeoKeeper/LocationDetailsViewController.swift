@@ -33,7 +33,6 @@ class LocationDetailsViewController:UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
         descriptionTextView.text = ""
         categoryLabel.text = ""
@@ -47,7 +46,7 @@ class LocationDetailsViewController:UITableViewController {
         } else {
             addressLabel.text = "No Adddress Found"
         }
-        dateLabel.text = formatDate(date: Date())
+        dateLabel.text = formatDate(date: date)
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(gestureRecognizer:)))
         gestureRecognizer.cancelsTouchesInView = false
@@ -94,8 +93,7 @@ class LocationDetailsViewController:UITableViewController {
     @IBAction func done() {
         let hudView = HudView.hudInView(view: navigationController!.view, animated: true)
         hudView.text = "Tagged"
-        
-        let location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
+        let location = Location(context: managedObjectContext)
         
         location.locationDescription = descriptionTextView.text
         location.category = categoryName
@@ -106,13 +104,12 @@ class LocationDetailsViewController:UITableViewController {
         
         do {
             try managedObjectContext.save()
+            afterDelay(seconds: 0.6) {
+                self.dismiss(animated: true, completion: nil)
+            }
         } catch {
-            fatalError("Error: \(error)")
+            fatalCoreDataError(error)
         }
-        
-        afterDelay(seconds: 0.6, closure: {
-            self.dismiss(animated: true, completion: nil)
-        })
     }
     
     @IBAction func cancel() {
