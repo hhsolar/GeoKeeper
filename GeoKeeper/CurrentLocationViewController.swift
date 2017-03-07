@@ -68,6 +68,17 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TagLocation" {
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.topViewController as! LocationDetailsViewController
+            
+            controller.coordinate = location!.coordinate
+            controller.placemark = placemark
+            controller.managedObjectContext = managedObjectContext
+        }
+    }
 
     // MARK: - CLLocationManagerDelegate
     
@@ -254,6 +265,5 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             tagButton.setTitle("Get My Location", for: .normal)
         }
     }
-    
 }
 

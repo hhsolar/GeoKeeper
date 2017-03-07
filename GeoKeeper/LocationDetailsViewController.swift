@@ -30,10 +30,9 @@ class LocationDetailsViewController:UITableViewController {
     var placemark: CLPlacemark?
     var categoryName = "No Category"
     var date = Date()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
         descriptionTextView.text = ""
         categoryLabel.text = ""

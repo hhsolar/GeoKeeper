@@ -119,22 +119,28 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import Foundation;
 @import CoreLocation;
 @import CoreGraphics;
+@import CoreData;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
 @class UIWindow;
+@class NSManagedObjectContext;
 @class UIApplication;
+@class NSPersistentContainer;
 
 SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (nonatomic, strong) UIWindow * _Nullable window;
+@property (nonatomic, strong) NSManagedObjectContext * _Nonnull managedObjectContext;
+@property (nonatomic, readonly, copy) NSURL * _Nonnull applicationDocumentsDirectory;
 - (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
 - (void)applicationWillResignActive:(UIApplication * _Nonnull)application;
 - (void)applicationDidEnterBackground:(UIApplication * _Nonnull)application;
 - (void)applicationWillEnterForeground:(UIApplication * _Nonnull)application;
 - (void)applicationDidBecomeActive:(UIApplication * _Nonnull)application;
 - (void)applicationWillTerminate:(UIApplication * _Nonnull)application;
+@property (nonatomic, strong) NSPersistentContainer * _Nonnull persistentContainer;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -169,6 +175,7 @@ SWIFT_CLASS("_TtC9GeoKeeper28CategoryPickerViewController")
 
 SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @interface CurrentLocationViewController : UIViewController <CLLocationManagerDelegate>
+@property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, readonly, strong) CLLocationManager * _Nonnull locationManager;
 @property (nonatomic, strong) CLLocation * _Nullable location;
 @property (nonatomic) BOOL updatingLocation;
@@ -186,6 +193,7 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (IBAction)getLocation;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
 - (void)startLocationManager;
@@ -205,7 +213,34 @@ SWIFT_CLASS("_TtC9GeoKeeper7HudView")
 @property (nonatomic, copy) NSString * _Nonnull text;
 + (HudView * _Nonnull)hudInViewWithView:(UIView * _Nonnull)view animated:(BOOL)animated;
 - (void)drawRect:(CGRect)rect;
+- (void)showAnimatedWithAnimated:(BOOL)animated;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSEntityDescription;
+
+SWIFT_CLASS("_TtC9GeoKeeper8Location")
+@interface Location : NSManagedObject
+- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface Location (SWIFT_EXTENSION(GeoKeeper))
+@property (nonatomic) double lattitude;
+@property (nonatomic) double longitude;
+@property (nonatomic, copy) NSDate * _Nonnull date;
+@property (nonatomic, copy) NSString * _Nonnull locationDescription;
+@property (nonatomic, copy) NSString * _Nonnull category;
+@property (nonatomic, strong) CLPlacemark * _Nullable placemark;
+@end
+
+
+SWIFT_CLASS("_TtC9GeoKeeper12LocationCell")
+@interface LocationCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified descriptionLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -220,9 +255,11 @@ SWIFT_CLASS("_TtC9GeoKeeper29LocationDetailsViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified longitudeLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified dateLabel;
+@property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, strong) CLPlacemark * _Nullable placemark;
 @property (nonatomic, copy) NSString * _Nonnull categoryName;
+@property (nonatomic, copy) NSDate * _Nonnull date;
 - (void)viewDidLoad;
 - (void)hideKeyboardWithGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
 - (NSString * _Nonnull)formatDateWithDate:(NSDate * _Nonnull)date;
@@ -240,10 +277,14 @@ SWIFT_CLASS("_TtC9GeoKeeper29LocationDetailsViewController")
 @end
 
 
-SWIFT_CLASS("_TtC9GeoKeeper20SecondViewController")
-@interface SecondViewController : UIViewController
+SWIFT_CLASS("_TtC9GeoKeeper23LocationsViewController")
+@interface LocationsViewController : UITableViewController
+@property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
+@property (nonatomic, copy) NSArray<Location *> * _Nonnull locations;
 - (void)viewDidLoad;
-- (void)didReceiveMemoryWarning;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
