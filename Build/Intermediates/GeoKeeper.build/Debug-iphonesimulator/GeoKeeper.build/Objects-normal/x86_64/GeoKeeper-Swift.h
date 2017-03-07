@@ -116,7 +116,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
+@import Foundation;
 @import CoreLocation;
+@import CoreGraphics;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -136,12 +138,34 @@ SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class CLLocationManager;
-@class CLLocation;
-@class UILabel;
-@class UIButton;
+@class UITableView;
+@class UIStoryboardSegue;
+@class UITableViewCell;
 @class NSBundle;
 @class NSCoder;
+
+SWIFT_CLASS("_TtC9GeoKeeper28CategoryPickerViewController")
+@interface CategoryPickerViewController : UITableViewController
+@property (nonatomic, copy) NSString * _Nonnull selectedCategoryName;
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull categories;
+@property (nonatomic, copy) NSIndexPath * _Nonnull selectedIndexPath;
+- (void)viewDidLoad;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class CLLocationManager;
+@class CLLocation;
+@class CLGeocoder;
+@class CLPlacemark;
+@class NSTimer;
+@class UILabel;
+@class UIButton;
 
 SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @interface CurrentLocationViewController : UIViewController <CLLocationManagerDelegate>
@@ -149,6 +173,11 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @property (nonatomic, strong) CLLocation * _Nullable location;
 @property (nonatomic) BOOL updatingLocation;
 @property (nonatomic) NSError * _Nullable lastLocationError;
+@property (nonatomic, readonly, strong) CLGeocoder * _Nonnull geocoder;
+@property (nonatomic, strong) CLPlacemark * _Nullable placemark;
+@property (nonatomic) BOOL performingReverseGeocoding;
+@property (nonatomic) NSError * _Nullable lastGeocodingError;
+@property (nonatomic, strong) NSTimer * _Nullable timer;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified messageLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified latitudeLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified longitudeLabel;
@@ -160,13 +189,27 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
 - (void)startLocationManager;
+- (void)didTimeOut;
 - (void)stopLocationManager;
 - (void)updateLabels;
+- (NSString * _Nonnull)stringFrom:(CLPlacemark * _Nonnull)placemark;
 - (void)showLocationServicesDeniedAlert;
+- (void)configureGetButton;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC9GeoKeeper7HudView")
+@interface HudView : UIView
+@property (nonatomic, copy) NSString * _Nonnull text;
++ (HudView * _Nonnull)hudInViewWithView:(UIView * _Nonnull)view animated:(BOOL)animated;
+- (void)drawRect:(CGRect)rect;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIGestureRecognizer;
 @class UITextView;
 
 SWIFT_CLASS("_TtC9GeoKeeper29LocationDetailsViewController")
@@ -177,8 +220,20 @@ SWIFT_CLASS("_TtC9GeoKeeper29LocationDetailsViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified longitudeLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified dateLabel;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic, strong) CLPlacemark * _Nullable placemark;
+@property (nonatomic, copy) NSString * _Nonnull categoryName;
+- (void)viewDidLoad;
+- (void)hideKeyboardWithGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
+- (NSString * _Nonnull)formatDateWithDate:(NSDate * _Nonnull)date;
+- (NSString * _Nonnull)stringFromPlacemarkWithPlacemark:(CLPlacemark * _Nonnull)placemark;
 - (IBAction)done;
 - (IBAction)cancel;
+- (IBAction)categoryPickerDidPickCategoryWithSegue:(UIStoryboardSegue * _Nonnull)segue;
+- (NSIndexPath * _Nullable)tableView:(UITableView * _Nonnull)tableView willSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
