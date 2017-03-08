@@ -432,7 +432,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kh0-aP-LRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1279" y="-357"/>
+            <point key="canvasLocation" x="2137" y="-76"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="9Tb-mx-sUe">
@@ -453,7 +453,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBT-20-iVT">
                                             <rect key="frame" x="17" y="0.0" width="350" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -469,6 +469,7 @@
                                 <connections>
                                     <outlet property="addressLabel" destination="mQS-Xe-c9P" id="uJk-SK-dbC"/>
                                     <outlet property="descriptionLabel" destination="rBT-20-iVT" id="N6n-ai-biQ"/>
+                                    <segue destination="Og8-4W-mCu" kind="presentation" identifier="EditLocation" trigger="accessoryAction" id="Nbs-9c-4F8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -477,7 +478,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evq-3m-QG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1671" y="457"/>
+            <point key="canvasLocation" x="1044" y="322"/>
         </scene>
         <!--Locations-->
         <scene sceneID="IdB-Gf-wvc">
@@ -491,7 +492,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWO-BK-9pR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33" y="458"/>
+            <point key="canvasLocation" x="199" y="322"/>
         </scene>
         <!--Map-->
         <scene sceneID="NU8-vJ-6ld">
@@ -533,4 +534,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Qis-hZ-zgh"/>
+    </inferredMetricsTieBreakers>
 </document>

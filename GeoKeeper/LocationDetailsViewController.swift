@@ -30,11 +30,28 @@ class LocationDetailsViewController:UITableViewController {
     var placemark: CLPlacemark?
     var categoryName = "No Category"
     var date = Date()
-        
+    
+    var locationToEdit: Location? {
+        didSet {
+            if let location = locationToEdit {
+                descriptionText = location.locationDescription
+                categoryName = location.category
+                date = location.date
+                coordinate = CLLocationCoordinate2DMake(location.lattitude, location.longitude)
+                placemark = location.placemark
+            }
+        }
+    }
+    var descriptionText = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        descriptionTextView.text = ""
+        if let location = locationToEdit {
+            title = "Edit Location"
+        }
+        
+        descriptionTextView.text = descriptionText
         categoryLabel.text = ""
         latitudeLabel.text = String(format: ".8f", coordinate.latitude)
         longitudeLabel.text = String(format: ".8f", coordinate.longitude)
@@ -46,12 +63,13 @@ class LocationDetailsViewController:UITableViewController {
         } else {
             addressLabel.text = "No Adddress Found"
         }
-        dateLabel.text = formatDate(date: Date())
+        dateLabel.text = formatDate(date: date)
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(gestureRecognizer:)))
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
     }
+
     
     func hideKeyboard(gestureRecognizer: UIGestureRecognizer) {
         let point = gestureRecognizer.location(in: tableView)
@@ -92,9 +110,15 @@ class LocationDetailsViewController:UITableViewController {
     
     @IBAction func done() {
         let hudView = HudView.hudInView(view: navigationController!.view, animated: true)
-        hudView.text = "Tagged"
+        let location: Location
+        if let temp = locationToEdit {
+            hudView.text = "Updated"
+            location = temp
+        } else {
+            hudView.text = "Tagged"
+            location = Location(context: managedObjectContext)
+        }
         
-        let location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
         
         location.locationDescription = descriptionTextView.text
         location.category = categoryName
@@ -105,13 +129,12 @@ class LocationDetailsViewController:UITableViewController {
         
         do {
             try managedObjectContext.save()
+            afterDelay(seconds: 0.6) {
+                self.dismiss(animated: true, completion: nil)
+            }
         } catch {
-            fatalError("Error: \(error)")
+            fatalCoreDataError(error)
         }
-        
-        afterDelay(seconds: 0.6, closure: {
-            self.dismiss(animated: true, completion: nil)
-        })
     }
     
     @IBAction func cancel() {
@@ -161,4 +184,6 @@ class LocationDetailsViewController:UITableViewController {
             controller.selectedCategoryName = categoryName
         }
     }
+    
+    
 }
