@@ -53,8 +53,8 @@ class LocationDetailsViewController:UITableViewController {
         
         descriptionTextView.text = descriptionText
         categoryLabel.text = ""
-        latitudeLabel.text = String(format: ".8f", coordinate.latitude)
-        longitudeLabel.text = String(format: ".8f", coordinate.longitude)
+        latitudeLabel.text = String(format: "%.8f", coordinate.latitude)
+        longitudeLabel.text = String(format: "%.8f", coordinate.longitude)
         categoryLabel.text = categoryName
         dateLabel.text = formatDate(date: date)
         
@@ -118,7 +118,6 @@ class LocationDetailsViewController:UITableViewController {
             hudView.text = "Tagged"
             location = Location(context: managedObjectContext)
         }
-        
         
         location.locationDescription = descriptionTextView.text
         location.category = categoryName
