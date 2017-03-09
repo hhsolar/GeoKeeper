@@ -42,7 +42,7 @@ class LocationDetailsViewController:UITableViewController {
                 descriptionText = location.locationDescription
                 categoryName = location.category
                 date = location.date
-                coordinate = CLLocationCoordinate2DMake(location.lattitude, location.longitude)
+                coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
                 placemark = location.placemark
             }
         }
@@ -138,7 +138,7 @@ class LocationDetailsViewController:UITableViewController {
         
         location.locationDescription = descriptionTextView.text
         location.category = categoryName
-        location.lattitude = coordinate.latitude
+        location.latitude = coordinate.latitude
         location.longitude = coordinate.longitude
         location.date = date
         location.placemark = placemark
