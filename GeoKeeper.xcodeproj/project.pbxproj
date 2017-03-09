@@ -38,8 +38,8 @@
 		1FEAD4891E6A8B19007CC5F1 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		1FEAD4921E6CB5D2007CC5F1 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1FEAD49D1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataClass.swift"; path = "../Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1FEAD49D1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataProperties.swift"; path = "../Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1FEAD4A01E6CC380007CC5F1 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		1FEAD4A51E6E2B2A007CC5F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -61,8 +61,6 @@
 		185F5C2E1E679C5F004E73B7 = {
 			isa = PBXGroup;
 			children = (
-				1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */,
-				1FEAD49D1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift */,
 				185F5C391E679C5F004E73B7 /* GeoKeeper */,
 				185F5C381E679C5F004E73B7 /* Products */,
 				1FEAD4A41E6E2B2A007CC5F1 /* Frameworks */,
@@ -80,6 +78,8 @@
 		185F5C391E679C5F004E73B7 /* GeoKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */,
+				1FEAD49D1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift */,
 				185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */,
 				185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */,
 				1FF7F1681E67AC9500E8F809 /* LocationDetailsViewController.swift */,

@@ -120,6 +120,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import CoreLocation;
 @import CoreGraphics;
 @import CoreData;
+@import MapKit;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -128,6 +129,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @class NSManagedObjectContext;
 @class UIApplication;
 @class NSPersistentContainer;
+@class UIViewController;
 
 SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -141,6 +143,8 @@ SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 - (void)applicationDidBecomeActive:(UIApplication * _Nonnull)application;
 - (void)applicationWillTerminate:(UIApplication * _Nonnull)application;
 @property (nonatomic, strong) NSPersistentContainer * _Nonnull persistentContainer;
+- (void)listenForFatalCoreDataNotifications;
+- (UIViewController * _Nonnull)viewControllerForShowingAlert;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -221,13 +225,16 @@ SWIFT_CLASS("_TtC9GeoKeeper7HudView")
 @class NSEntityDescription;
 
 SWIFT_CLASS("_TtC9GeoKeeper8Location")
-@interface Location : NSManagedObject
+@interface Location : NSManagedObject <MKAnnotation>
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly, copy) NSString * _Nullable title;
+@property (nonatomic, readonly, copy) NSString * _Nullable subtitle;
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 @interface Location (SWIFT_EXTENSION(GeoKeeper))
-@property (nonatomic) double lattitude;
+@property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 @property (nonatomic, copy) NSDate * _Nonnull date;
 @property (nonatomic, copy) NSString * _Nonnull locationDescription;
@@ -240,6 +247,7 @@ SWIFT_CLASS("_TtC9GeoKeeper12LocationCell")
 @interface LocationCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified descriptionLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
+- (void)configureFor:(Location * _Nonnull)location;
 - (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -260,6 +268,8 @@ SWIFT_CLASS("_TtC9GeoKeeper29LocationDetailsViewController")
 @property (nonatomic, strong) CLPlacemark * _Nullable placemark;
 @property (nonatomic, copy) NSString * _Nonnull categoryName;
 @property (nonatomic, copy) NSDate * _Nonnull date;
+@property (nonatomic, strong) Location * _Nullable locationToEdit;
+@property (nonatomic, copy) NSString * _Nonnull descriptionText;
 - (void)viewDidLoad;
 - (void)hideKeyboardWithGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
 - (NSString * _Nonnull)formatDateWithDate:(NSDate * _Nonnull)date;
@@ -280,13 +290,56 @@ SWIFT_CLASS("_TtC9GeoKeeper29LocationDetailsViewController")
 SWIFT_CLASS("_TtC9GeoKeeper23LocationsViewController")
 @interface LocationsViewController : UITableViewController
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
-@property (nonatomic, copy) NSArray<Location *> * _Nonnull locations;
+@property (nonatomic, strong) NSFetchedResultsController<Location *> * _Nonnull fetchedResultsController;
 - (void)viewDidLoad;
+- (void)performFetch;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView;
+- (NSString * _Nullable)tableView:(UITableView * _Nonnull)tableView titleForHeaderInSection:(NSInteger)section;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)tableView:(UITableView * _Nonnull)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol NSFetchedResultsSectionInfo;
+
+@interface LocationsViewController (SWIFT_EXTENSION(GeoKeeper)) <NSFetchedResultsControllerDelegate>
+- (void)controllerWillChangeContent:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller;
+- (void)controller:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller didChangeObject:(id _Nonnull)anyObject atIndexPath:(NSIndexPath * _Nullable)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath * _Nullable)newIndexPath;
+- (void)controller:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller didChangeSection:(id <NSFetchedResultsSectionInfo> _Nonnull)sectionInfo atIndex:(NSInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type;
+- (void)controllerDidChangeContent:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller;
+@end
+
+@class MKMapView;
+
+SWIFT_CLASS("_TtC9GeoKeeper17MapViewController")
+@interface MapViewController : UIViewController
+@property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
+@property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
+@property (nonatomic, copy) NSArray<Location *> * _Nonnull locations;
+- (void)viewDidLoad;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
+- (IBAction)showUser;
+- (IBAction)showLocations;
+- (void)updateLocations;
+- (MKCoordinateRegion)regionFor:(NSArray<id <MKAnnotation>> * _Nonnull)annotations;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface MapViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
+- (UIBarPosition)positionFor:(UIBarPosition)bar;
+@end
+
+@class MKAnnotationView;
+
+@interface MapViewController (SWIFT_EXTENSION(GeoKeeper)) <MKMapViewDelegate>
+- (MKAnnotationView * _Nullable)mapView:(MKMapView * _Nonnull)mapView viewForAnnotation:(id <MKAnnotation> _Nonnull)annotation;
+- (void)showLocationDetails:(UIButton * _Nonnull)sender;
 @end
 
 #pragma clang diagnostic pop

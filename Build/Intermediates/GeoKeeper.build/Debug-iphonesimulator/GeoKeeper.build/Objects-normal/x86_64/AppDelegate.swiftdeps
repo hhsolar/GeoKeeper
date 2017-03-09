@@ -6,49 +6,49 @@ provides-nominal:
 provides-member:
 - ["C9GeoKeeper11AppDelegate", ""]
 provides-dynamic-lookup:
-- "applicationDidBecomeActive"
-- "viewControllerForShowingAlert"
-- "applicationWillEnterForeground"
-- "application"
-- "window"
-- "applicationWillTerminate"
-- "applicationDocumentsDirectory"
-- "listenForFatalCoreDataNotifications"
 - "persistentContainer"
-- "applicationWillResignActive"
-- "managedObjectContext"
+- "application"
+- "applicationWillEnterForeground"
+- "listenForFatalCoreDataNotifications"
 - "applicationDidEnterBackground"
+- "viewControllerForShowingAlert"
+- "managedObjectContext"
+- "applicationWillResignActive"
+- "window"
+- "applicationDocumentsDirectory"
+- "applicationWillTerminate"
+- "applicationDidBecomeActive"
 depends-top-level:
-- !private "fatalError"
-- !private "+"
-- "AssignmentPrecedence"
-- "NSPersistentContainer"
-- "CastingPrecedence"
-- "UIViewController"
-- "UIWindow"
-- !private "LocationsViewController"
 - !private "NotificationCenter"
+- !private "LocationsViewController"
+- !private "NSExceptionName"
+- !private "fatalError"
+- !private "MapViewController"
+- "AppDelegate"
+- !private "MyManagedObjectContextSaveDidFailNotification"
+- "AssignmentPrecedence"
+- "CastingPrecedence"
+- "FileManager"
 - !private "UITabBarController"
+- !private "UINavigationController"
+- !private "UIAlertController"
+- "UIWindow"
+- !private "+"
+- !private "CurrentLocationViewController"
+- "NSManagedObjectContext"
 - !private "NSException"
 - "URL"
-- "UIApplication"
-- "Bool"
-- "UIApplicationDelegate"
 - "UIResponder"
-- "UIApplicationLaunchOptionsKey"
-- !private "NSExceptionName"
-- "AppDelegate"
-- !private "BooleanLiteralType"
-- !private "MapViewController"
-- !private "OperationQueue"
+- "UIApplication"
+- "NSPersistentContainer"
 - !private "print"
-- !private "UINavigationController"
+- "UIApplicationLaunchOptionsKey"
+- !private "OperationQueue"
+- "UIApplicationDelegate"
 - !private "UIAlertAction"
-- "NSManagedObjectContext"
-- "FileManager"
-- !private "MyManagedObjectContextSaveDidFailNotification"
-- !private "CurrentLocationViewController"
-- !private "UIAlertController"
+- "UIViewController"
+- "Bool"
+- !private "BooleanLiteralType"
 depends-member:
 - ["Ps9AnyObject", "FileManager"]
 - !private ["Ps9AnyObject", "MyManagedObjectContextSaveDidFailNotification"]
@@ -795,6 +795,7 @@ depends-member:
 - !private ["PSo21UIApplicationDelegate", "viewControllerForShowingAlert"]
 - ["PSo21UIApplicationDelegate", "window"]
 - ["PSo21UIApplicationDelegate", ""]
+- !private ["PSo24UIBarPositioningDelegate", "managedObjectContext"]
 - !private ["PSo18UIContentContainer", "addAction"]
 - !private ["PSo18UIContentContainer", "init"]
 - !private ["PSo18UIContentContainer", "managedObjectContext"]
@@ -813,6 +814,7 @@ depends-member:
 - !private ["PSo18UIFocusEnvironment", "view"]
 - !private ["PSo18UIFocusEnvironment", "viewControllers"]
 - !private ["PSo11UIFocusItem", "rootViewController"]
+- !private ["PSo23UINavigationBarDelegate", "managedObjectContext"]
 - ["CSo22UINavigationController", "deinit"]
 - !private ["CSo22UINavigationController", "viewControllers"]
 - ["CSo11UIResponder", "Bool"]
@@ -1141,11 +1143,13 @@ depends-nominal:
 - !private "PSo12UIAppearance"
 - !private "PSo21UIAppearanceContainer"
 - "PSo21UIApplicationDelegate"
+- !private "PSo24UIBarPositioningDelegate"
 - !private "PSo18UIContentContainer"
 - !private "PSo17UICoordinateSpace"
 - !private "PSo13UIDynamicItem"
 - !private "PSo18UIFocusEnvironment"
 - !private "PSo11UIFocusItem"
+- !private "PSo23UINavigationBarDelegate"
 - "CSo22UINavigationController"
 - "CSo11UIResponder"
 - "PSo30UIResponderStandardEditActions"

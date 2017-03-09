@@ -31,7 +31,7 @@ class LocationCell: UITableViewCell {
             }
             addressLabel.text = text
         } else {
-            addressLabel.text = String(format: "Lat: %.8f, Long: %.8f", location.lattitude, location.longitude)
+            addressLabel.text = String(format: "Lat: %.8f, Long: %.8f", location.latitude, location.longitude)
         }
         
     }
