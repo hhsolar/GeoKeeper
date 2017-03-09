@@ -59,6 +59,7 @@ class CategoryPickerViewController: UITableViewController {
         return cell
     }
     
+    
     //Mark: - UITableViewDelegate 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row != selectedIndexPath.row {
@@ -72,7 +73,4 @@ class CategoryPickerViewController: UITableViewController {
             selectedIndexPath = indexPath
         }
     }
-    
-
-
 }

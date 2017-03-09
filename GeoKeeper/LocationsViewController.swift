@@ -50,6 +50,8 @@ class LocationsViewController: UITableViewController {
         if segue.identifier == "EditLocation" {
             let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.topViewController as! LocationDetailsViewController
+            controller.managedObjectContext = managedObjectContext
+            
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 let location = fetchedResultsController.object(at: indexPath)
                 controller.locationToEdit = location

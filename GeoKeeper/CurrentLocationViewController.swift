@@ -80,8 +80,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
     }
 
-    // MARK: - CLLocationManagerDelegate
     
+    // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("didFailWithError\(error)")
         

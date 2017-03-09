@@ -21,6 +21,8 @@
 		1FEAD4A11E6CC380007CC5F1 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4A01E6CC380007CC5F1 /* LocationsViewController.swift */; };
 		1FEAD4A31E6E2146007CC5F1 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */; };
 		1FEAD4A61E6E2B2A007CC5F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEAD4A51E6E2B2A007CC5F1 /* MapKit.framework */; };
+		1FEAD4A81E6FBB9E007CC5F1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4A71E6FBB9E007CC5F1 /* MapViewController.swift */; };
+		1FEAD4AC1E70E41C007CC5F1 /* MyImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */; };
 		1FF7F1691E67AC9500E8F809 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7F1681E67AC9500E8F809 /* LocationDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		1FEAD4A01E6CC380007CC5F1 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		1FEAD4A51E6E2B2A007CC5F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1FEAD4A71E6FBB9E007CC5F1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
 		1FF7F1681E67AC9500E8F809 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +95,8 @@
 				1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */,
 				1FEAD4911E6CB5D2007CC5F1 /* DataModel.xcdatamodeld */,
 				1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */,
+				1FEAD4A71E6FBB9E007CC5F1 /* MapViewController.swift */,
+				1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */,
 			);
 			path = GeoKeeper;
 			sourceTree = "<group>";
@@ -183,6 +189,8 @@
 				1FEAD49F1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift in Sources */,
 				1FEAD4901E6CAAEF007CC5F1 /* Functions.swift in Sources */,
 				1FEAD4A31E6E2146007CC5F1 /* LocationCell.swift in Sources */,
+				1FEAD4A81E6FBB9E007CC5F1 /* MapViewController.swift in Sources */,
+				1FEAD4AC1E70E41C007CC5F1 /* MyImagePickerController.swift in Sources */,
 				185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */,
 				1FEAD49E1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift in Sources */,
 				1FEAD4881E6A62E6007CC5F1 /* CategoryPickerViewController.swift in Sources */,
@@ -309,6 +317,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BR33AQS69G;
 				INFOPLIST_FILE = GeoKeeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.204.GeoKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -322,6 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BR33AQS69G;
 				INFOPLIST_FILE = GeoKeeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.204.GeoKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
