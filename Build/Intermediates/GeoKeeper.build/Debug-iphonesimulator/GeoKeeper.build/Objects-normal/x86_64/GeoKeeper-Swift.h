@@ -326,20 +326,20 @@ SWIFT_CLASS("_TtC9GeoKeeper17MapViewController")
 - (IBAction)showLocations;
 - (void)updateLocations;
 - (MKCoordinateRegion)regionFor:(NSArray<id <MKAnnotation>> * _Nonnull)annotations;
+- (void)showLocationDetails:(UIButton * _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@interface MapViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
-- (UIBarPosition)positionFor:(UIBarPosition)bar;
 @end
 
 @class MKAnnotationView;
 
 @interface MapViewController (SWIFT_EXTENSION(GeoKeeper)) <MKMapViewDelegate>
 - (MKAnnotationView * _Nullable)mapView:(MKMapView * _Nonnull)mapView viewForAnnotation:(id <MKAnnotation> _Nonnull)annotation;
-- (void)showLocationDetails:(UIButton * _Nonnull)sender;
+@end
+
+
+@interface MapViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
+- (UIBarPosition)positionFor:(UIBarPosition)bar;
 @end
 
 #pragma clang diagnostic pop

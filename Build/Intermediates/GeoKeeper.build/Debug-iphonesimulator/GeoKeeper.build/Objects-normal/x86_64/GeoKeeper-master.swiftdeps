@@ -1,6 +1,6 @@
 version: "Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)"
 options: "71fc344e413b701f8089716d58772d98"
-build_time: [542353780, 721695000]
+build_time: [542355143, 424136000]
 inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailsViewController.swift": [542353780, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationsViewController.swift": [542253239, 0]
@@ -8,7 +8,7 @@ inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/Location+CoreDataProperties.swift": [542353726, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/Functions.swift": [542253239, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationCell.swift": [542353780, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MapViewController.swift": [542353380, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MapViewController.swift": [542355142, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/AppDelegate.swift": [542336988, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Location+CoreDataClass.swift": [542353491, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerViewController.swift": [542253239, 0]

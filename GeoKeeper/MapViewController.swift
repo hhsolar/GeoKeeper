@@ -97,6 +97,10 @@ class MapViewController: UIViewController {
         return mapView.regionThatFits(region)
     }
     
+    func showLocationDetails(_ sender: UIButton) {
+        performSegue(withIdentifier: "EditLocation", sender: sender)
+    }
+    
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -129,10 +133,6 @@ extension MapViewController: MKMapViewDelegate {
             }
         }
         return annotationView
-    }
-    
-    func showLocationDetails(_ sender: UIButton) {
-        performSegue(withIdentifier: "EditLocation", sender: sender)
     }
 }
 
