@@ -80,11 +80,11 @@
 		185F5C391E679C5F004E73B7 /* GeoKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */,
+				1FEAD49D1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift */,
 				1FA4ED541E72331D002A6818 /* Main.storyboard */,
 				1FA4ED521E722E3F002A6818 /* MapViewController.swift */,
 				185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */,
-				1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */,
-				1FEAD49D1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift */,
 				185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */,
 				1FF7F1681E67AC9500E8F809 /* LocationDetailsViewController.swift */,
 				1FEAD4871E6A62E6007CC5F1 /* CategoryPickerViewController.swift */,
