@@ -97,6 +97,7 @@ class LocationDetailsViewController:UITableViewController {
         descriptionTextView.resignFirstResponder()
     }
     
+    
     func formatDate(date:Date) -> String {
         return dateFormatter.string(from: date)
     }
@@ -263,8 +264,6 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
-
     
     func showPhotoMenu() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)

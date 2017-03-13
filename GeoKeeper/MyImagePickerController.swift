@@ -12,4 +12,5 @@ class MyImagePickerController: UIImagePickerController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
+
 }
