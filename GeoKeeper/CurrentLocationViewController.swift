@@ -267,3 +267,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     }
 }
 
+extension CurrentLocationViewController: UINavigationBarDelegate {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
+}
+

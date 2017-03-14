@@ -211,6 +211,12 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@protocol UIBarPositioning;
+
+@interface CurrentLocationViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
+- (UIBarPosition)positionForBar:(id <UIBarPositioning> _Nonnull)bar;
+@end
+
 
 SWIFT_CLASS("_TtC9GeoKeeper7HudView")
 @interface HudView : UIView
@@ -252,8 +258,10 @@ SWIFT_CLASS("_TtC9GeoKeeper12LocationCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIImage;
 @class UIGestureRecognizer;
 @class UITextView;
+@class UIImageView;
 
 SWIFT_CLASS("_TtC9GeoKeeper29LocationDetailsViewController")
 @interface LocationDetailsViewController : UITableViewController
@@ -263,13 +271,18 @@ SWIFT_CLASS("_TtC9GeoKeeper29LocationDetailsViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified longitudeLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified dateLabel;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified imageView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addPhotoLabel;
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, strong) CLPlacemark * _Nullable placemark;
 @property (nonatomic, copy) NSString * _Nonnull categoryName;
 @property (nonatomic, copy) NSDate * _Nonnull date;
+@property (nonatomic, strong) UIImage * _Nullable image;
+@property (nonatomic, strong) id _Null_unspecified observer;
 @property (nonatomic, strong) Location * _Nullable locationToEdit;
 @property (nonatomic, copy) NSString * _Nonnull descriptionText;
+- (void)showWithImage:(UIImage * _Nonnull)image;
 - (void)viewDidLoad;
 - (void)hideKeyboardWithGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
 - (NSString * _Nonnull)formatDateWithDate:(NSDate * _Nonnull)date;
@@ -284,6 +297,18 @@ SWIFT_CLASS("_TtC9GeoKeeper29LocationDetailsViewController")
 - (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIImagePickerController;
+
+@interface LocationDetailsViewController (SWIFT_EXTENSION(GeoKeeper)) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+- (void)pickPhoto;
+- (void)takePhotoWithCamera;
+- (void)choosePhotoFromLibray;
+- (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> * _Nonnull)info;
+- (void)imagePickerControllerDidCancel:(UIImagePickerController * _Nonnull)picker;
+- (void)showPhotoMenu;
+- (void)listenForBackgroundNotification;
 @end
 
 
@@ -340,6 +365,42 @@ SWIFT_CLASS("_TtC9GeoKeeper17MapViewController")
 
 @interface MapViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
 - (UIBarPosition)positionFor:(UIBarPosition)bar;
+@end
+
+
+SWIFT_CLASS("_TtC9GeoKeeper23MyImagePickerController")
+@interface MyImagePickerController : UIImagePickerController
+@property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
+- (nonnull instancetype)initWithNavigationBarClass:(Class _Nullable)navigationBarClass toolbarClass:(Class _Nullable)toolbarClass OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIColor;
+
+SWIFT_CLASS("_TtC9GeoKeeper22MyNavigationController")
+@interface MyNavigationController : UINavigationController
+@property (nonatomic, readonly, strong) UIColor * _Nonnull navigationBarColor;
+- (void)viewWillAppear:(BOOL)animated;
+@property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
+- (nonnull instancetype)initWithNavigationBarClass:(Class _Nullable)navigationBarClass toolbarClass:(Class _Nullable)toolbarClass OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9GeoKeeper18MyTabBarController")
+@interface MyTabBarController : UITabBarController
+@property (nonatomic, readonly, strong) UIColor * _Nonnull unselectedColor;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull selectedColor;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull tabBarColor;
+- (void)viewWillAppear:(BOOL)animated;
+@property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
+@property (nonatomic, readonly, strong) UIViewController * _Nullable childViewControllerForStatusBarStyle;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 #pragma clang diagnostic pop
