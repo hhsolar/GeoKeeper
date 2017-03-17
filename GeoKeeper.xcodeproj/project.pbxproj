@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1801FB751E77B8AD00705F92 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801FB741E77B8AD00705F92 /* MyTabBarController.swift */; };
 		1801FB771E77BAAC00705F92 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801FB761E77BAAC00705F92 /* MyNavigationController.swift */; };
 		1801FB7B1E7BA05600705F92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1801FB7A1E7BA05600705F92 /* Assets.xcassets */; };
 		185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */; };
@@ -17,6 +16,7 @@
 		1F1CE3281E7A1D2F00A1FA77 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */; };
 		1F1CE3291E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */; };
 		1F5876C81E7B7540006FB269 /* CategoryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5876C71E7B7540006FB269 /* CategoryAddViewController.swift */; };
+		1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5876C91E7BA0CE006FB269 /* Assets.xcassets */; };
 		1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4ED521E722E3F002A6818 /* MapViewController.swift */; };
 		1FA4ED561E72331D002A6818 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA4ED541E72331D002A6818 /* Main.storyboard */; };
 		1FEAD4881E6A62E6007CC5F1 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4871E6A62E6007CC5F1 /* CategoryPickerViewController.swift */; };
@@ -45,6 +45,7 @@
 		1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1F5876C71E7B7540006FB269 /* CategoryAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryAddViewController.swift; sourceTree = "<group>"; };
+		1F5876C91E7BA0CE006FB269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FA4ED521E722E3F002A6818 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1FA4ED551E72331D002A6818 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FEAD4871E6A62E6007CC5F1 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 		185F5C391E679C5F004E73B7 /* GeoKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				1F5876C91E7BA0CE006FB269 /* Assets.xcassets */,
 				185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */,
 				1F1CE2F01E7738E400A1FA77 /* AllCategoryViewController.swift */,
 				1FEAD4A01E6CC380007CC5F1 /* LocationsViewController.swift */,
@@ -105,7 +107,6 @@
 				185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */,
 				1FEAD4871E6A62E6007CC5F1 /* CategoryPickerViewController.swift */,
 				1F5876C71E7B7540006FB269 /* CategoryAddViewController.swift */,
-				185F5C431E679C5F004E73B7 /* Assets.xcassets */,
 				185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */,
 				185F5C481E679C5F004E73B7 /* Info.plist */,
 				1FEAD4891E6A8B19007CC5F1 /* HudView.swift */,
@@ -159,7 +160,7 @@
 				TargetAttributes = {
 					185F5C361E679C5F004E73B7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W2MFT9HK9F;
+						DevelopmentTeam = BR33AQS69G;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -189,6 +190,7 @@
 			files = (
 				1FA4ED561E72331D002A6818 /* Main.storyboard in Resources */,
 				1801FB7B1E7BA05600705F92 /* Assets.xcassets in Resources */,
+				1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */,
 				185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,7 +340,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W2MFT9HK9F;
+				DEVELOPMENT_TEAM = BR33AQS69G;
 				INFOPLIST_FILE = GeoKeeper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -352,7 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W2MFT9HK9F;
+				DEVELOPMENT_TEAM = BR33AQS69G;
 				INFOPLIST_FILE = GeoKeeper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

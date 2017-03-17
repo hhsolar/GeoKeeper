@@ -27,6 +27,7 @@ class CategoryAddViewController: UITableViewController {
     }
     
     @IBAction func getBack() {
+        print("Getback is called")
         dismiss(animated: true, completion: nil)
     }
     
