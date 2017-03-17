@@ -12,7 +12,7 @@ class MyTabBarController: UITabBarController {
     
     let unselectedColor = UIColor.lightGray
     let selectedColor = UIColor.white
-    let tabBarColor = UIColor(red: 71/225.0, green: 117/255.0, blue: 179/225.0, alpha: 1.0)
+    let tabBarColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,7 +23,7 @@ class MyTabBarController: UITabBarController {
         // selectedColor state colors
         self.tabBar.tintColor = selectedColor
         
-        self.tabBar.backgroundColor = tabBarColor
+        self.tabBar.barTintColor = tabBarColor
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

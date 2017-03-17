@@ -174,8 +174,11 @@ SWIFT_CLASS("_TtC9GeoKeeper28CategoryPickerViewController")
 @class CLGeocoder;
 @class CLPlacemark;
 @class NSTimer;
+@class UIColor;
 @class UILabel;
 @class UIButton;
+@class UINavigationBar;
+@class MKMapView;
 
 SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @interface CurrentLocationViewController : UIViewController <CLLocationManagerDelegate>
@@ -189,11 +192,16 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @property (nonatomic) BOOL performingReverseGeocoding;
 @property (nonatomic) NSError * _Nullable lastGeocodingError;
 @property (nonatomic, strong) NSTimer * _Nullable timer;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull secondColor;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified messageLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified latitudeLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified longitudeLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified tagButton;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified cityName;
+@property (nonatomic, weak) IBOutlet UINavigationBar * _Null_unspecified nBar;
+@property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
 - (IBAction)getLocation;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
@@ -206,7 +214,6 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (void)updateLabels;
 - (NSString * _Nonnull)stringFrom:(CLPlacemark * _Nonnull)placemark;
 - (void)showLocationServicesDeniedAlert;
-- (void)configureGetButton;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -338,7 +345,6 @@ SWIFT_CLASS("_TtC9GeoKeeper23LocationsViewController")
 - (void)controllerDidChangeContent:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller;
 @end
 
-@class MKMapView;
 
 SWIFT_CLASS("_TtC9GeoKeeper17MapViewController")
 @interface MapViewController : UIViewController
@@ -364,7 +370,7 @@ SWIFT_CLASS("_TtC9GeoKeeper17MapViewController")
 
 
 @interface MapViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
-- (UIBarPosition)positionFor:(UIBarPosition)bar;
+- (UIBarPosition)positionForBar:(id <UIBarPositioning> _Nonnull)bar;
 @end
 
 
@@ -377,11 +383,10 @@ SWIFT_CLASS("_TtC9GeoKeeper23MyImagePickerController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIColor;
 
 SWIFT_CLASS("_TtC9GeoKeeper22MyNavigationController")
 @interface MyNavigationController : UINavigationController
-@property (nonatomic, readonly, strong) UIColor * _Nonnull navigationBarColor;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
 - (void)viewWillAppear:(BOOL)animated;
 @property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
 - (nonnull instancetype)initWithNavigationBarClass:(Class _Nullable)navigationBarClass toolbarClass:(Class _Nullable)toolbarClass OBJC_DESIGNATED_INITIALIZER;

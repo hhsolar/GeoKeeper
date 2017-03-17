@@ -10,13 +10,14 @@ import UIKit
 
 class MyNavigationController: UINavigationController {
     
-    let navigationBarColor = UIColor(red: 71/225.0, green: 117/255.0, blue: 179/225.0, alpha: 1.0)
+    let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationBar.backgroundColor = navigationBarColor
+        self.navigationBar.barTintColor = baseColor
     }
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent

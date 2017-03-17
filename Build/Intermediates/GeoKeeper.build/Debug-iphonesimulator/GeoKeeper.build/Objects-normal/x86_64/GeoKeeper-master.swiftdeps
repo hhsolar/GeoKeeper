@@ -1,18 +1,18 @@
 version: "Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)"
 options: "71fc344e413b701f8089716d58772d98"
-build_time: [542830925, 785192000]
+build_time: [543028229, 95748000]
 inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailsViewController.swift": [542425455, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationsViewController.swift": [542425455, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyNavigationController.swift": [542830819, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyNavigationController.swift": [542965882, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/HudView.swift": [542425455, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Location+CoreDataProperties.swift": [542425455, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/Functions.swift": [542425455, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MapViewController.swift": [542764844, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MapViewController.swift": [542866429, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationCell.swift": [542425455, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyImagePickerController.swift": [542785774, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/AppDelegate.swift": [542425455, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Location+CoreDataClass.swift": [542425455, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerViewController.swift": [542425455, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CurrentLocationViewController.swift": [542784194, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyTabBarController.swift": [542830925, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CurrentLocationViewController.swift": [543028228, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyTabBarController.swift": [542965449, 0]
