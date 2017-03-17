@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1801FB731E776F7300705F92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1801FB721E776F7300705F92 /* Assets.xcassets */; };
 		1801FB751E77B8AD00705F92 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801FB741E77B8AD00705F92 /* MyTabBarController.swift */; };
 		1801FB771E77BAAC00705F92 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801FB761E77BAAC00705F92 /* MyNavigationController.swift */; };
+		1801FB7B1E7BA05600705F92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1801FB7A1E7BA05600705F92 /* Assets.xcassets */; };
 		185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */; };
 		185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */; };
 		185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */; };
@@ -33,9 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1801FB721E776F7300705F92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1801FB741E77B8AD00705F92 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		1801FB761E77BAAC00705F92 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		1801FB7A1E7BA05600705F92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		185F5C371E679C5F004E73B7 /* GeoKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA4ED561E72331D002A6818 /* Main.storyboard in Resources */,
-				1801FB731E776F7300705F92 /* Assets.xcassets in Resources */,
+				1801FB7B1E7BA05600705F92 /* Assets.xcassets in Resources */,
 				185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
