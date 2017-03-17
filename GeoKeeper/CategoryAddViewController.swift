@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryPickerViewController: UITableViewController {
+class CategoryAddViewController: UITableViewController {
     var selectedCategoryName = ""
     
     let categories = [
@@ -24,12 +24,6 @@ class CategoryPickerViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for i in 0 ..< categories.count {
-            if categories[i] == selectedCategoryName {
-                selectedIndexPath = IndexPath(row: i, section: 0)
-                break
-            }
-        }
     }
     
     @IBAction func getBack() {
@@ -63,18 +57,4 @@ class CategoryPickerViewController: UITableViewController {
         return cell
     }
     
-    
-    //Mark: - UITableViewDelegate 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row != selectedIndexPath.row {
-            if let newCell = tableView.cellForRow(at: indexPath) {
-                newCell.accessoryType = .checkmark
-                
-            }
-            if let oldCell = tableView.cellForRow(at: selectedIndexPath) {
-                oldCell.accessoryType = .none
-            }
-            selectedIndexPath = indexPath
-        }
-    }
 }

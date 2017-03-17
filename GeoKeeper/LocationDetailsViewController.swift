@@ -126,6 +126,14 @@ class LocationDetailsViewController:UITableViewController {
         return text
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PickCategoryinDetailView" {
+            let controller = segue.destination as! CategoryPickerViewController
+            controller.selectedCategoryName = "No Category"
+        }
+    }
+    
     @IBAction func done() {
         let hudView = HudView.hudInView(view: navigationController!.view, animated: true)
         let location: Location
@@ -174,13 +182,6 @@ class LocationDetailsViewController:UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func categoryPickerDidPickCategory(segue: UIStoryboardSegue) {
-        let controller = segue.source as! CategoryPickerViewController
-        categoryName = controller.selectedCategoryName
-        categoryLabel.text = categoryName
-    }
-    
-    
     
     //Mark - UITableViewDelegate
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -216,15 +217,6 @@ class LocationDetailsViewController:UITableViewController {
             return 44
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PickCategory" {
-            let controller = segue.destination as! CategoryPickerViewController
-            controller.selectedCategoryName = categoryName
-        }
-    }
-    
-    
 }
 
 extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -291,4 +283,12 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
         
         }
     }
+    
+    @IBAction func categoryPickerDidPickCategory(_ segue: UIStoryboardSegue)
+    {
+        let controller = segue.source as! CategoryPickerViewController
+        categoryName = controller.selectedCategoryName
+        categoryLabel.text = categoryName
+    }
+
 }
