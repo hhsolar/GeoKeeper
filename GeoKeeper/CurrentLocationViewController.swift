@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import CoreData
+import MapKit
 
 class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -25,11 +26,18 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     var timer: Timer?
     
+    let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
+    let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
+    
+    
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var tagButton: UIButton!
+    @IBOutlet weak var cityName: UILabel!
+    @IBOutlet weak var nBar: UINavigationBar!
+    @IBOutlet weak var mapView: MKMapView!
     
     @IBAction func getLocation() {
         let authStatus = CLLocationManager.authorizationStatus()
@@ -54,14 +62,21 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             lastGeocodingError = nil
             startLocationManager()
         }
+        
+        let region = MKCoordinateRegionMakeWithDistance(mapView.userLocation.coordinate, 500, 500)
+        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+
         updateLabels()
-        configureGetButton()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.tintColor = baseColor
+        nBar.barTintColor = baseColor
+        cityName.textColor = baseColor
+        mapView?.showsUserLocation = true
+        
         updateLabels()
-        configureGetButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,7 +106,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         lastLocationError = error
         stopLocationManager()
         updateLabels()
-        configureGetButton()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -118,7 +132,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             
             if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
                 stopLocationManager()
-                configureGetButton()
                 
                 if distance > 0 {
                     performingReverseGeocoding = false
@@ -146,7 +159,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             if  timeInterval > 10 {
                 stopLocationManager()
                 updateLabels()
-                configureGetButton()
             }
         }
     }
@@ -167,7 +179,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             stopLocationManager()
             lastLocationError = NSError(domain: "MyLocationsErrorDomain", code: 1, userInfo: nil)
             updateLabels()
-            configureGetButton()
         }
     }
     
@@ -187,10 +198,12 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         if let location = location {
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
-            tagButton.isHidden = false
-            messageLabel.text = ""
+            tagButton.isEnabled = true
+            tagButton.setTitleColor(baseColor, for: .normal)
+            messageLabel.text = "Tap 'Tag' to save location"
             
             if let placemark = placemark {
+                cityName.text = placemark.locality
                 addressLabel.text = string(from: placemark)
             } else if performingReverseGeocoding {
                 addressLabel.text = "Searching for Address..."
@@ -200,10 +213,11 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 addressLabel.text = "No Address Found"
             }
         } else {
-            latitudeLabel.text = ""
-            longitudeLabel.text = ""
+            latitudeLabel.text = "Not available"
+            longitudeLabel.text = "Not available"
             addressLabel.text = ""
-            tagButton.isHidden = true
+            tagButton.isEnabled = false
+            tagButton.setTitleColor(UIColor.gray, for: .normal)
             messageLabel.text = "Tap 'Get My Location' to Start"
             
             let statusMessage: String
@@ -258,12 +272,11 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         present(alert, animated: true, completion: nil)
     }
     
-    func configureGetButton() {
-        if updatingLocation {
-            tagButton.setTitle("Stop", for: .normal)
-        } else {
-            tagButton.setTitle("Get My Location", for: .normal)
-        }
+}
+
+extension CurrentLocationViewController: UINavigationBarDelegate {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
     }
 }
 

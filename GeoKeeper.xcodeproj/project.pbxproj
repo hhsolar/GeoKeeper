@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1801FB731E776F7300705F92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1801FB721E776F7300705F92 /* Assets.xcassets */; };
+		1801FB751E77B8AD00705F92 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801FB741E77B8AD00705F92 /* MyTabBarController.swift */; };
+		1801FB771E77BAAC00705F92 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801FB761E77BAAC00705F92 /* MyNavigationController.swift */; };
 		185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */; };
 		185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */; };
-		185F5C441E679C5F004E73B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185F5C431E679C5F004E73B7 /* Assets.xcassets */; };
 		185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */; };
 		1F1CE2F11E7738E400A1FA77 /* AllCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE2F01E7738E400A1FA77 /* AllCategoryViewController.swift */; };
 		1F1CE3281E7A1D2F00A1FA77 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */; };
@@ -31,10 +33,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1801FB721E776F7300705F92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1801FB741E77B8AD00705F92 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		1801FB761E77BAAC00705F92 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		185F5C371E679C5F004E73B7 /* GeoKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
-		185F5C431E679C5F004E73B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		185F5C461E679C5F004E73B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185F5C481E679C5F004E73B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F1CE2F01E7738E400A1FA77 /* AllCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCategoryViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				1FEAD4911E6CB5D2007CC5F1 /* DataModel.xcdatamodeld */,
 				1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */,
 				1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */,
+				1801FB741E77B8AD00705F92 /* MyTabBarController.swift */,
+				1801FB761E77BAAC00705F92 /* MyNavigationController.swift */,
 			);
 			path = GeoKeeper;
 			sourceTree = "<group>";
@@ -153,7 +159,7 @@
 				TargetAttributes = {
 					185F5C361E679C5F004E73B7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = BR33AQS69G;
+						DevelopmentTeam = W2MFT9HK9F;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -182,8 +188,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA4ED561E72331D002A6818 /* Main.storyboard in Resources */,
+				1801FB731E776F7300705F92 /* Assets.xcassets in Resources */,
 				185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */,
-				185F5C441E679C5F004E73B7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +204,7 @@
 				1FF7F1691E67AC9500E8F809 /* LocationDetailsViewController.swift in Sources */,
 				1FEAD4A11E6CC380007CC5F1 /* LocationsViewController.swift in Sources */,
 				1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */,
+				1801FB771E77BAAC00705F92 /* MyNavigationController.swift in Sources */,
 				1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */,
 				1FEAD49F1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift in Sources */,
 				1FEAD4901E6CAAEF007CC5F1 /* Functions.swift in Sources */,
@@ -331,7 +338,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BR33AQS69G;
+				DEVELOPMENT_TEAM = W2MFT9HK9F;
 				INFOPLIST_FILE = GeoKeeper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -345,7 +352,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BR33AQS69G;
+				DEVELOPMENT_TEAM = W2MFT9HK9F;
 				INFOPLIST_FILE = GeoKeeper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
