@@ -6,51 +6,51 @@ provides-nominal:
 provides-member:
 - ["C9GeoKeeper11AppDelegate", ""]
 provides-dynamic-lookup:
-- "applicationDocumentsDirectory"
-- "managedObjectContext"
-- "applicationWillEnterForeground"
-- "applicationDidEnterBackground"
-- "applicationWillTerminate"
-- "window"
-- "listenForFatalCoreDataNotifications"
 - "applicationDidBecomeActive"
+- "applicationWillEnterForeground"
+- "applicationWillTerminate"
+- "listenForFatalCoreDataNotifications"
+- "window"
+- "applicationDidEnterBackground"
+- "managedObjectContext"
 - "application"
 - "applicationWillResignActive"
-- "viewControllerForShowingAlert"
 - "persistentContainer"
+- "viewControllerForShowingAlert"
 depends-top-level:
-- !private "UIAlertAction"
+- !private "applicationDocumentsDirectory"
+- "UIApplication"
 - "CastingPrecedence"
 - "AssignmentPrecedence"
-- !private "print"
-- !private "NotificationCenter"
-- "UIResponder"
-- "UIApplication"
-- "UIApplicationDelegate"
-- !private "MyManagedObjectContextSaveDidFailNotification"
-- !private "NSExceptionName"
-- "NSPersistentContainer"
-- "UIViewController"
-- "NSManagedObjectContext"
 - !private "NSException"
-- "URL"
-- !private "+"
-- "UIApplicationLaunchOptionsKey"
-- "FileManager"
-- !private "UINavigationController"
-- !private "OperationQueue"
-- !private "LocationsViewController"
-- !private "BooleanLiteralType"
-- !private "MapViewController"
 - !private "UIAlertController"
-- "AppDelegate"
-- !private "CurrentLocationViewController"
-- !private "UITabBarController"
-- !private "fatalError"
-- "Bool"
 - "UIWindow"
+- !private "NotificationCenter"
+- !private "+"
+- "AppDelegate"
+- "UIApplicationLaunchOptionsKey"
+- "UIViewController"
+- !private "UINavigationController"
+- "NSManagedObjectContext"
+- !private "UITabBarController"
+- !private "UIAlertAction"
+- !private "MapViewController"
+- !private "fatalError"
+- "UIApplicationDelegate"
+- "NSPersistentContainer"
+- !private "NSExceptionName"
+- !private "BooleanLiteralType"
+- "UIResponder"
+- !private "AllCategoryViewController"
+- !private "OperationQueue"
+- !private "CurrentLocationViewController"
+- !private "print"
+- !private "MyManagedObjectContextSaveDidFailNotification"
+- "Bool"
 depends-member:
-- ["Ps9AnyObject", "FileManager"]
+- ["C9GeoKeeper25AllCategoryViewController", "deinit"]
+- !private ["C9GeoKeeper25AllCategoryViewController", "managedObjectContext"]
+- !private ["C9GeoKeeper25AllCategoryViewController", "view"]
 - !private ["Ps9AnyObject", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["Ps9AnyObject", "NSException"]
 - !private ["Ps9AnyObject", "NSExceptionName"]
@@ -66,7 +66,7 @@ depends-member:
 - ["Ps9AnyObject", "applicationDidEnterBackground"]
 - ["Ps9AnyObject", "applicationDidFinishLaunching"]
 - ["Ps9AnyObject", "applicationDidReceiveMemoryWarning"]
-- ["Ps9AnyObject", "applicationDocumentsDirectory"]
+- !private ["Ps9AnyObject", "applicationDocumentsDirectory"]
 - ["Ps9AnyObject", "applicationProtectedDataDidBecomeAvailable"]
 - ["Ps9AnyObject", "applicationProtectedDataWillBecomeUnavailable"]
 - ["Ps9AnyObject", "applicationShouldRequestHealthAuthorization"]
@@ -74,7 +74,7 @@ depends-member:
 - ["Ps9AnyObject", "applicationWillEnterForeground"]
 - ["Ps9AnyObject", "applicationWillResignActive"]
 - ["Ps9AnyObject", "applicationWillTerminate"]
-- ["Ps9AnyObject", "default"]
+- !private ["Ps9AnyObject", "default"]
 - !private ["Ps9AnyObject", "fatalError"]
 - !private ["Ps9AnyObject", "init"]
 - ["Ps9AnyObject", "listenForFatalCoreDataNotifications"]
@@ -89,17 +89,15 @@ depends-member:
 - !private ["Ps9AnyObject", "print"]
 - !private ["Ps9AnyObject", "raise"]
 - !private ["Ps9AnyObject", "rootViewController"]
-- ["Ps9AnyObject", "urls"]
 - !private ["Ps9AnyObject", "view"]
 - !private ["Ps9AnyObject", "viewContext"]
 - ["Ps9AnyObject", "viewControllerForShowingAlert"]
 - !private ["Ps9AnyObject", "viewControllers"]
 - ["Ps9AnyObject", "window"]
 - ["Ps9AnyObject", ""]
+- !private ["C9GeoKeeper11AppDelegate", "AllCategoryViewController"]
 - ["C9GeoKeeper11AppDelegate", "Bool"]
 - !private ["C9GeoKeeper11AppDelegate", "CurrentLocationViewController"]
-- ["C9GeoKeeper11AppDelegate", "FileManager"]
-- !private ["C9GeoKeeper11AppDelegate", "LocationsViewController"]
 - !private ["C9GeoKeeper11AppDelegate", "MapViewController"]
 - !private ["C9GeoKeeper11AppDelegate", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["C9GeoKeeper11AppDelegate", "NSException"]
@@ -116,13 +114,12 @@ depends-member:
 - !private ["C9GeoKeeper11AppDelegate", "UITabBarController"]
 - ["C9GeoKeeper11AppDelegate", "UIViewController"]
 - ["C9GeoKeeper11AppDelegate", "UIWindow"]
-- ["C9GeoKeeper11AppDelegate", "URL"]
 - ["C9GeoKeeper11AppDelegate", "application"]
 - ["C9GeoKeeper11AppDelegate", "applicationDidBecomeActive"]
 - ["C9GeoKeeper11AppDelegate", "applicationDidEnterBackground"]
 - ["C9GeoKeeper11AppDelegate", "applicationDidFinishLaunching"]
 - ["C9GeoKeeper11AppDelegate", "applicationDidReceiveMemoryWarning"]
-- ["C9GeoKeeper11AppDelegate", "applicationDocumentsDirectory"]
+- !private ["C9GeoKeeper11AppDelegate", "applicationDocumentsDirectory"]
 - ["C9GeoKeeper11AppDelegate", "applicationProtectedDataDidBecomeAvailable"]
 - ["C9GeoKeeper11AppDelegate", "applicationProtectedDataWillBecomeUnavailable"]
 - ["C9GeoKeeper11AppDelegate", "applicationShouldRequestHealthAuthorization"]
@@ -141,51 +138,50 @@ depends-member:
 - !private ["C9GeoKeeper11AppDelegate", "print"]
 - ["C9GeoKeeper11AppDelegate", "viewControllerForShowingAlert"]
 - ["C9GeoKeeper11AppDelegate", "window"]
-- ["Sa", "Index"]
-- ["Sa", "SubSequence"]
+- !private ["Sa", "Index"]
+- !private ["Sa", "SubSequence"]
 - ["Sa", "deinit"]
-- ["Sa", "subscript"]
-- ["Ps23BidirectionalCollection", "Index"]
-- ["Ps23BidirectionalCollection", "IndexDistance"]
-- ["Ps23BidirectionalCollection", "Indices"]
-- ["Ps23BidirectionalCollection", "Iterator"]
-- ["Ps23BidirectionalCollection", "SubSequence"]
-- ["Ps23BidirectionalCollection", "_Element"]
-- ["Ps23BidirectionalCollection", "subscript"]
-- ["Ps22BidirectionalIndexable", "Index"]
-- ["Ps22BidirectionalIndexable", "IndexDistance"]
-- ["Ps22BidirectionalIndexable", "Indices"]
-- ["Ps22BidirectionalIndexable", "Iterator"]
-- ["Ps22BidirectionalIndexable", "SubSequence"]
-- ["Ps22BidirectionalIndexable", "_Element"]
-- ["Ps22BidirectionalIndexable", "subscript"]
-- ["Vs18BidirectionalSlice", "Index"]
-- ["Vs18BidirectionalSlice", "IndexDistance"]
-- ["Vs18BidirectionalSlice", "Indices"]
-- ["Vs18BidirectionalSlice", "Iterator"]
-- ["Vs18BidirectionalSlice", "SubSequence"]
-- ["Vs18BidirectionalSlice", "_Element"]
-- ["Ps17BitwiseOperations", "IntegerLiteralType"]
-- ["Ps17BitwiseOperations", "Stride"]
-- ["Ps17BitwiseOperations", "_DisabledRangeIndex"]
+- !private ["Sa", "subscript"]
+- !private ["Ps23BidirectionalCollection", "Index"]
+- !private ["Ps23BidirectionalCollection", "IndexDistance"]
+- !private ["Ps23BidirectionalCollection", "Indices"]
+- !private ["Ps23BidirectionalCollection", "Iterator"]
+- !private ["Ps23BidirectionalCollection", "SubSequence"]
+- !private ["Ps23BidirectionalCollection", "_Element"]
+- !private ["Ps23BidirectionalCollection", "subscript"]
+- !private ["Ps22BidirectionalIndexable", "Index"]
+- !private ["Ps22BidirectionalIndexable", "IndexDistance"]
+- !private ["Ps22BidirectionalIndexable", "Indices"]
+- !private ["Ps22BidirectionalIndexable", "Iterator"]
+- !private ["Ps22BidirectionalIndexable", "SubSequence"]
+- !private ["Ps22BidirectionalIndexable", "_Element"]
+- !private ["Ps22BidirectionalIndexable", "subscript"]
+- !private ["Vs18BidirectionalSlice", "Index"]
+- !private ["Vs18BidirectionalSlice", "IndexDistance"]
+- !private ["Vs18BidirectionalSlice", "Indices"]
+- !private ["Vs18BidirectionalSlice", "Iterator"]
+- !private ["Vs18BidirectionalSlice", "SubSequence"]
+- !private ["Vs18BidirectionalSlice", "_Element"]
+- !private ["Ps17BitwiseOperations", "IntegerLiteralType"]
+- !private ["Ps17BitwiseOperations", "Stride"]
+- !private ["Ps17BitwiseOperations", "_DisabledRangeIndex"]
 - !private ["Sb", "_getBuiltinLogicValue"]
 - ["Sb", "deinit"]
 - !private ["PSo15CALayerDelegate", "rootViewController"]
 - !private ["PSo25CLLocationManagerDelegate", "managedObjectContext"]
-- ["Ps7CVarArg", "FileManager"]
-- ["Ps7CVarArg", "Index"]
-- ["Ps7CVarArg", "IntegerLiteralType"]
+- !private ["Ps7CVarArg", "Index"]
+- !private ["Ps7CVarArg", "IntegerLiteralType"]
 - !private ["Ps7CVarArg", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["Ps7CVarArg", "NSException"]
 - !private ["Ps7CVarArg", "NSExceptionName"]
 - !private ["Ps7CVarArg", "NSPersistentContainer"]
 - !private ["Ps7CVarArg", "NotificationCenter"]
 - !private ["Ps7CVarArg", "OperationQueue"]
-- ["Ps7CVarArg", "Stride"]
-- ["Ps7CVarArg", "SubSequence"]
+- !private ["Ps7CVarArg", "Stride"]
+- !private ["Ps7CVarArg", "SubSequence"]
 - !private ["Ps7CVarArg", "UIAlertAction"]
 - !private ["Ps7CVarArg", "UIAlertController"]
-- ["Ps7CVarArg", "_DisabledRangeIndex"]
+- !private ["Ps7CVarArg", "_DisabledRangeIndex"]
 - !private ["Ps7CVarArg", "addAction"]
 - !private ["Ps7CVarArg", "addObserver"]
 - ["Ps7CVarArg", "application"]
@@ -193,7 +189,7 @@ depends-member:
 - ["Ps7CVarArg", "applicationDidEnterBackground"]
 - ["Ps7CVarArg", "applicationDidFinishLaunching"]
 - ["Ps7CVarArg", "applicationDidReceiveMemoryWarning"]
-- ["Ps7CVarArg", "applicationDocumentsDirectory"]
+- !private ["Ps7CVarArg", "applicationDocumentsDirectory"]
 - ["Ps7CVarArg", "applicationProtectedDataDidBecomeAvailable"]
 - ["Ps7CVarArg", "applicationProtectedDataWillBecomeUnavailable"]
 - ["Ps7CVarArg", "applicationShouldRequestHealthAuthorization"]
@@ -201,7 +197,7 @@ depends-member:
 - ["Ps7CVarArg", "applicationWillEnterForeground"]
 - ["Ps7CVarArg", "applicationWillResignActive"]
 - ["Ps7CVarArg", "applicationWillTerminate"]
-- ["Ps7CVarArg", "default"]
+- !private ["Ps7CVarArg", "default"]
 - !private ["Ps7CVarArg", "fatalError"]
 - !private ["Ps7CVarArg", "init"]
 - ["Ps7CVarArg", "listenForFatalCoreDataNotifications"]
@@ -216,8 +212,7 @@ depends-member:
 - !private ["Ps7CVarArg", "print"]
 - !private ["Ps7CVarArg", "raise"]
 - !private ["Ps7CVarArg", "rootViewController"]
-- ["Ps7CVarArg", "subscript"]
-- ["Ps7CVarArg", "urls"]
+- !private ["Ps7CVarArg", "subscript"]
 - !private ["Ps7CVarArg", "view"]
 - !private ["Ps7CVarArg", "viewContext"]
 - ["Ps7CVarArg", "viewControllerForShowingAlert"]
@@ -225,29 +220,28 @@ depends-member:
 - ["Ps7CVarArg", "window"]
 - ["Ps7CVarArg", ""]
 - !private ["Vs9Character", "deinit"]
-- ["Ps10Collection", "Index"]
-- ["Ps10Collection", "IndexDistance"]
-- ["Ps10Collection", "Indices"]
-- ["Ps10Collection", "Iterator"]
-- ["Ps10Collection", "SubSequence"]
-- ["Ps10Collection", "_Element"]
-- ["Ps10Collection", "subscript"]
-- ["Ps10Comparable", "IntegerLiteralType"]
-- ["Ps10Comparable", "Stride"]
-- ["Ps10Comparable", "_DisabledRangeIndex"]
+- !private ["Ps10Collection", "Index"]
+- !private ["Ps10Collection", "IndexDistance"]
+- !private ["Ps10Collection", "Indices"]
+- !private ["Ps10Collection", "Iterator"]
+- !private ["Ps10Collection", "SubSequence"]
+- !private ["Ps10Collection", "_Element"]
+- !private ["Ps10Collection", "subscript"]
+- !private ["Ps10Comparable", "IntegerLiteralType"]
+- !private ["Ps10Comparable", "Stride"]
+- !private ["Ps10Comparable", "_DisabledRangeIndex"]
 - !private ["Ps10Comparable", "init"]
 - !private ["Ps10Comparable", "internalInconsistencyException"]
 - ["C9GeoKeeper29CurrentLocationViewController", "deinit"]
 - !private ["C9GeoKeeper29CurrentLocationViewController", "managedObjectContext"]
-- ["Ps28CustomDebugStringConvertible", "FileManager"]
-- ["Ps28CustomDebugStringConvertible", "Index"]
+- !private ["Ps28CustomDebugStringConvertible", "Index"]
 - !private ["Ps28CustomDebugStringConvertible", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["Ps28CustomDebugStringConvertible", "NSException"]
 - !private ["Ps28CustomDebugStringConvertible", "NSExceptionName"]
 - !private ["Ps28CustomDebugStringConvertible", "NSPersistentContainer"]
 - !private ["Ps28CustomDebugStringConvertible", "NotificationCenter"]
 - !private ["Ps28CustomDebugStringConvertible", "OperationQueue"]
-- ["Ps28CustomDebugStringConvertible", "SubSequence"]
+- !private ["Ps28CustomDebugStringConvertible", "SubSequence"]
 - !private ["Ps28CustomDebugStringConvertible", "UIAlertAction"]
 - !private ["Ps28CustomDebugStringConvertible", "UIAlertController"]
 - !private ["Ps28CustomDebugStringConvertible", "addAction"]
@@ -257,7 +251,7 @@ depends-member:
 - ["Ps28CustomDebugStringConvertible", "applicationDidEnterBackground"]
 - ["Ps28CustomDebugStringConvertible", "applicationDidFinishLaunching"]
 - ["Ps28CustomDebugStringConvertible", "applicationDidReceiveMemoryWarning"]
-- ["Ps28CustomDebugStringConvertible", "applicationDocumentsDirectory"]
+- !private ["Ps28CustomDebugStringConvertible", "applicationDocumentsDirectory"]
 - ["Ps28CustomDebugStringConvertible", "applicationProtectedDataDidBecomeAvailable"]
 - ["Ps28CustomDebugStringConvertible", "applicationProtectedDataWillBecomeUnavailable"]
 - ["Ps28CustomDebugStringConvertible", "applicationShouldRequestHealthAuthorization"]
@@ -265,7 +259,7 @@ depends-member:
 - ["Ps28CustomDebugStringConvertible", "applicationWillEnterForeground"]
 - ["Ps28CustomDebugStringConvertible", "applicationWillResignActive"]
 - ["Ps28CustomDebugStringConvertible", "applicationWillTerminate"]
-- ["Ps28CustomDebugStringConvertible", "default"]
+- !private ["Ps28CustomDebugStringConvertible", "default"]
 - !private ["Ps28CustomDebugStringConvertible", "fatalError"]
 - !private ["Ps28CustomDebugStringConvertible", "init"]
 - ["Ps28CustomDebugStringConvertible", "listenForFatalCoreDataNotifications"]
@@ -280,41 +274,39 @@ depends-member:
 - !private ["Ps28CustomDebugStringConvertible", "print"]
 - !private ["Ps28CustomDebugStringConvertible", "raise"]
 - !private ["Ps28CustomDebugStringConvertible", "rootViewController"]
-- ["Ps28CustomDebugStringConvertible", "subscript"]
-- ["Ps28CustomDebugStringConvertible", "urls"]
+- !private ["Ps28CustomDebugStringConvertible", "subscript"]
 - !private ["Ps28CustomDebugStringConvertible", "view"]
 - !private ["Ps28CustomDebugStringConvertible", "viewContext"]
 - ["Ps28CustomDebugStringConvertible", "viewControllerForShowingAlert"]
 - !private ["Ps28CustomDebugStringConvertible", "viewControllers"]
 - ["Ps28CustomDebugStringConvertible", "window"]
 - ["Ps28CustomDebugStringConvertible", ""]
-- ["Ps29CustomPlaygroundQuickLookable", "IntegerLiteralType"]
-- ["Ps29CustomPlaygroundQuickLookable", "Stride"]
-- ["Ps29CustomPlaygroundQuickLookable", "_DisabledRangeIndex"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "IntegerLiteralType"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "Stride"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "_DisabledRangeIndex"]
 - !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
 - !private ["Ps29CustomPlaygroundQuickLookable", "init"]
-- ["Ps17CustomReflectable", "Index"]
-- ["Ps17CustomReflectable", "IntegerLiteralType"]
-- ["Ps17CustomReflectable", "Stride"]
-- ["Ps17CustomReflectable", "SubSequence"]
-- ["Ps17CustomReflectable", "_DisabledRangeIndex"]
+- !private ["Ps17CustomReflectable", "Index"]
+- !private ["Ps17CustomReflectable", "IntegerLiteralType"]
+- !private ["Ps17CustomReflectable", "Stride"]
+- !private ["Ps17CustomReflectable", "SubSequence"]
+- !private ["Ps17CustomReflectable", "_DisabledRangeIndex"]
 - !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
 - !private ["Ps17CustomReflectable", "init"]
-- ["Ps17CustomReflectable", "subscript"]
-- ["Ps23CustomStringConvertible", "FileManager"]
-- ["Ps23CustomStringConvertible", "Index"]
-- ["Ps23CustomStringConvertible", "IntegerLiteralType"]
+- !private ["Ps17CustomReflectable", "subscript"]
+- !private ["Ps23CustomStringConvertible", "Index"]
+- !private ["Ps23CustomStringConvertible", "IntegerLiteralType"]
 - !private ["Ps23CustomStringConvertible", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["Ps23CustomStringConvertible", "NSException"]
 - !private ["Ps23CustomStringConvertible", "NSExceptionName"]
 - !private ["Ps23CustomStringConvertible", "NSPersistentContainer"]
 - !private ["Ps23CustomStringConvertible", "NotificationCenter"]
 - !private ["Ps23CustomStringConvertible", "OperationQueue"]
-- ["Ps23CustomStringConvertible", "Stride"]
-- ["Ps23CustomStringConvertible", "SubSequence"]
+- !private ["Ps23CustomStringConvertible", "Stride"]
+- !private ["Ps23CustomStringConvertible", "SubSequence"]
 - !private ["Ps23CustomStringConvertible", "UIAlertAction"]
 - !private ["Ps23CustomStringConvertible", "UIAlertController"]
-- ["Ps23CustomStringConvertible", "_DisabledRangeIndex"]
+- !private ["Ps23CustomStringConvertible", "_DisabledRangeIndex"]
 - !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps23CustomStringConvertible", "addAction"]
 - !private ["Ps23CustomStringConvertible", "addObserver"]
@@ -323,7 +315,7 @@ depends-member:
 - ["Ps23CustomStringConvertible", "applicationDidEnterBackground"]
 - ["Ps23CustomStringConvertible", "applicationDidFinishLaunching"]
 - ["Ps23CustomStringConvertible", "applicationDidReceiveMemoryWarning"]
-- ["Ps23CustomStringConvertible", "applicationDocumentsDirectory"]
+- !private ["Ps23CustomStringConvertible", "applicationDocumentsDirectory"]
 - ["Ps23CustomStringConvertible", "applicationProtectedDataDidBecomeAvailable"]
 - ["Ps23CustomStringConvertible", "applicationProtectedDataWillBecomeUnavailable"]
 - ["Ps23CustomStringConvertible", "applicationShouldRequestHealthAuthorization"]
@@ -331,7 +323,7 @@ depends-member:
 - ["Ps23CustomStringConvertible", "applicationWillEnterForeground"]
 - ["Ps23CustomStringConvertible", "applicationWillResignActive"]
 - ["Ps23CustomStringConvertible", "applicationWillTerminate"]
-- ["Ps23CustomStringConvertible", "default"]
+- !private ["Ps23CustomStringConvertible", "default"]
 - !private ["Ps23CustomStringConvertible", "fatalError"]
 - !private ["Ps23CustomStringConvertible", "init"]
 - ["Ps23CustomStringConvertible", "listenForFatalCoreDataNotifications"]
@@ -346,37 +338,35 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "print"]
 - !private ["Ps23CustomStringConvertible", "raise"]
 - !private ["Ps23CustomStringConvertible", "rootViewController"]
-- ["Ps23CustomStringConvertible", "subscript"]
-- ["Ps23CustomStringConvertible", "urls"]
+- !private ["Ps23CustomStringConvertible", "subscript"]
 - !private ["Ps23CustomStringConvertible", "view"]
 - !private ["Ps23CustomStringConvertible", "viewContext"]
 - ["Ps23CustomStringConvertible", "viewControllerForShowingAlert"]
 - !private ["Ps23CustomStringConvertible", "viewControllers"]
 - ["Ps23CustomStringConvertible", "window"]
 - ["Ps23CustomStringConvertible", ""]
-- ["Vs27DefaultBidirectionalIndices", "Index"]
-- ["Vs27DefaultBidirectionalIndices", "Iterator"]
-- ["Vs27DefaultBidirectionalIndices", "SubSequence"]
-- ["Vs27DefaultBidirectionalIndices", "_Element"]
-- ["Vs26DefaultRandomAccessIndices", "Index"]
-- ["Vs26DefaultRandomAccessIndices", "IndexDistance"]
-- ["Vs26DefaultRandomAccessIndices", "Indices"]
-- ["Vs26DefaultRandomAccessIndices", "Iterator"]
-- ["Vs26DefaultRandomAccessIndices", "SubSequence"]
-- ["Vs26DefaultRandomAccessIndices", "_Element"]
+- !private ["Vs27DefaultBidirectionalIndices", "Index"]
+- !private ["Vs27DefaultBidirectionalIndices", "Iterator"]
+- !private ["Vs27DefaultBidirectionalIndices", "SubSequence"]
+- !private ["Vs27DefaultBidirectionalIndices", "_Element"]
+- !private ["Vs26DefaultRandomAccessIndices", "Index"]
+- !private ["Vs26DefaultRandomAccessIndices", "IndexDistance"]
+- !private ["Vs26DefaultRandomAccessIndices", "Indices"]
+- !private ["Vs26DefaultRandomAccessIndices", "Iterator"]
+- !private ["Vs26DefaultRandomAccessIndices", "SubSequence"]
+- !private ["Vs26DefaultRandomAccessIndices", "_Element"]
 - !private ["Sd", "deinit"]
-- ["Ps9Equatable", "FileManager"]
-- ["Ps9Equatable", "IntegerLiteralType"]
+- !private ["Ps9Equatable", "IntegerLiteralType"]
 - !private ["Ps9Equatable", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["Ps9Equatable", "NSException"]
 - !private ["Ps9Equatable", "NSExceptionName"]
 - !private ["Ps9Equatable", "NSPersistentContainer"]
 - !private ["Ps9Equatable", "NotificationCenter"]
 - !private ["Ps9Equatable", "OperationQueue"]
-- ["Ps9Equatable", "Stride"]
+- !private ["Ps9Equatable", "Stride"]
 - !private ["Ps9Equatable", "UIAlertAction"]
 - !private ["Ps9Equatable", "UIAlertController"]
-- ["Ps9Equatable", "_DisabledRangeIndex"]
+- !private ["Ps9Equatable", "_DisabledRangeIndex"]
 - !private ["Ps9Equatable", "_getBuiltinLogicValue"]
 - !private ["Ps9Equatable", "addAction"]
 - !private ["Ps9Equatable", "addObserver"]
@@ -386,7 +376,7 @@ depends-member:
 - ["Ps9Equatable", "applicationDidEnterBackground"]
 - ["Ps9Equatable", "applicationDidFinishLaunching"]
 - ["Ps9Equatable", "applicationDidReceiveMemoryWarning"]
-- ["Ps9Equatable", "applicationDocumentsDirectory"]
+- !private ["Ps9Equatable", "applicationDocumentsDirectory"]
 - ["Ps9Equatable", "applicationProtectedDataDidBecomeAvailable"]
 - ["Ps9Equatable", "applicationProtectedDataWillBecomeUnavailable"]
 - ["Ps9Equatable", "applicationShouldRequestHealthAuthorization"]
@@ -394,8 +384,7 @@ depends-member:
 - ["Ps9Equatable", "applicationWillEnterForeground"]
 - ["Ps9Equatable", "applicationWillResignActive"]
 - ["Ps9Equatable", "applicationWillTerminate"]
-- ["Ps9Equatable", "default"]
-- ["Ps9Equatable", "documentDirectory"]
+- !private ["Ps9Equatable", "default"]
 - !private ["Ps9Equatable", "fatalError"]
 - !private ["Ps9Equatable", "init"]
 - !private ["Ps9Equatable", "internalInconsistencyException"]
@@ -411,8 +400,6 @@ depends-member:
 - !private ["Ps9Equatable", "print"]
 - !private ["Ps9Equatable", "raise"]
 - !private ["Ps9Equatable", "rootViewController"]
-- ["Ps9Equatable", "urls"]
-- ["Ps9Equatable", "userDomainMask"]
 - !private ["Ps9Equatable", "view"]
 - !private ["Ps9Equatable", "viewContext"]
 - ["Ps9Equatable", "viewControllerForShowingAlert"]
@@ -420,34 +407,29 @@ depends-member:
 - ["Ps9Equatable", "window"]
 - ["Ps9Equatable", ""]
 - !private ["Ps5Error", "deinit"]
-- ["Ps25ExpressibleByArrayLiteral", "Index"]
-- ["Ps25ExpressibleByArrayLiteral", "SubSequence"]
-- ["Ps25ExpressibleByArrayLiteral", "subscript"]
-- ["Ps25ExpressibleByArrayLiteral", "userDomainMask"]
+- !private ["Ps25ExpressibleByArrayLiteral", "Index"]
+- !private ["Ps25ExpressibleByArrayLiteral", "SubSequence"]
+- !private ["Ps25ExpressibleByArrayLiteral", "subscript"]
 - !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
 - !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
-- ["Ps27ExpressibleByIntegerLiteral", "IntegerLiteralType"]
-- ["Ps27ExpressibleByIntegerLiteral", "Stride"]
-- ["Ps27ExpressibleByIntegerLiteral", "_DisabledRangeIndex"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "IntegerLiteralType"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "Stride"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "_DisabledRangeIndex"]
 - !private ["Ps32ExpressibleByStringInterpolation", "init"]
 - !private ["Ps26ExpressibleByStringLiteral", "init"]
 - !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
-- ["CSo11FileManager", "default"]
-- ["CSo11FileManager", "deinit"]
-- ["CSo11FileManager", "urls"]
 - !private ["Sf", "deinit"]
-- ["Ps8Hashable", "FileManager"]
-- ["Ps8Hashable", "IntegerLiteralType"]
+- !private ["Ps8Hashable", "IntegerLiteralType"]
 - !private ["Ps8Hashable", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["Ps8Hashable", "NSException"]
 - !private ["Ps8Hashable", "NSExceptionName"]
 - !private ["Ps8Hashable", "NSPersistentContainer"]
 - !private ["Ps8Hashable", "NotificationCenter"]
 - !private ["Ps8Hashable", "OperationQueue"]
-- ["Ps8Hashable", "Stride"]
+- !private ["Ps8Hashable", "Stride"]
 - !private ["Ps8Hashable", "UIAlertAction"]
 - !private ["Ps8Hashable", "UIAlertController"]
-- ["Ps8Hashable", "_DisabledRangeIndex"]
+- !private ["Ps8Hashable", "_DisabledRangeIndex"]
 - !private ["Ps8Hashable", "_getBuiltinLogicValue"]
 - !private ["Ps8Hashable", "addAction"]
 - !private ["Ps8Hashable", "addObserver"]
@@ -457,7 +439,7 @@ depends-member:
 - ["Ps8Hashable", "applicationDidEnterBackground"]
 - ["Ps8Hashable", "applicationDidFinishLaunching"]
 - ["Ps8Hashable", "applicationDidReceiveMemoryWarning"]
-- ["Ps8Hashable", "applicationDocumentsDirectory"]
+- !private ["Ps8Hashable", "applicationDocumentsDirectory"]
 - ["Ps8Hashable", "applicationProtectedDataDidBecomeAvailable"]
 - ["Ps8Hashable", "applicationProtectedDataWillBecomeUnavailable"]
 - ["Ps8Hashable", "applicationShouldRequestHealthAuthorization"]
@@ -465,8 +447,7 @@ depends-member:
 - ["Ps8Hashable", "applicationWillEnterForeground"]
 - ["Ps8Hashable", "applicationWillResignActive"]
 - ["Ps8Hashable", "applicationWillTerminate"]
-- ["Ps8Hashable", "default"]
-- ["Ps8Hashable", "documentDirectory"]
+- !private ["Ps8Hashable", "default"]
 - !private ["Ps8Hashable", "fatalError"]
 - !private ["Ps8Hashable", "init"]
 - !private ["Ps8Hashable", "internalInconsistencyException"]
@@ -482,61 +463,57 @@ depends-member:
 - !private ["Ps8Hashable", "print"]
 - !private ["Ps8Hashable", "raise"]
 - !private ["Ps8Hashable", "rootViewController"]
-- ["Ps8Hashable", "urls"]
 - !private ["Ps8Hashable", "view"]
 - !private ["Ps8Hashable", "viewContext"]
 - ["Ps8Hashable", "viewControllerForShowingAlert"]
 - !private ["Ps8Hashable", "viewControllers"]
 - ["Ps8Hashable", "window"]
 - ["Ps8Hashable", ""]
-- ["Ps9Indexable", "Index"]
-- ["Ps9Indexable", "IndexDistance"]
-- ["Ps9Indexable", "Indices"]
-- ["Ps9Indexable", "Iterator"]
-- ["Ps9Indexable", "SubSequence"]
-- ["Ps9Indexable", "_Element"]
-- ["Ps9Indexable", "subscript"]
-- ["Ps13IndexableBase", "Index"]
-- ["Ps13IndexableBase", "IndexDistance"]
-- ["Ps13IndexableBase", "Indices"]
-- ["Ps13IndexableBase", "Iterator"]
-- ["Ps13IndexableBase", "SubSequence"]
-- ["Ps13IndexableBase", "_Element"]
-- ["Ps13IndexableBase", "subscript"]
-- ["Vs16IndexingIterator", "Element"]
-- ["Si", "IntegerLiteralType"]
-- ["Si", "Stride"]
-- ["Si", "_DisabledRangeIndex"]
+- !private ["Ps9Indexable", "Index"]
+- !private ["Ps9Indexable", "IndexDistance"]
+- !private ["Ps9Indexable", "Indices"]
+- !private ["Ps9Indexable", "Iterator"]
+- !private ["Ps9Indexable", "SubSequence"]
+- !private ["Ps9Indexable", "_Element"]
+- !private ["Ps9Indexable", "subscript"]
+- !private ["Ps13IndexableBase", "Index"]
+- !private ["Ps13IndexableBase", "IndexDistance"]
+- !private ["Ps13IndexableBase", "Indices"]
+- !private ["Ps13IndexableBase", "Iterator"]
+- !private ["Ps13IndexableBase", "SubSequence"]
+- !private ["Ps13IndexableBase", "_Element"]
+- !private ["Ps13IndexableBase", "subscript"]
+- !private ["Vs16IndexingIterator", "Element"]
+- !private ["Si", "IntegerLiteralType"]
+- !private ["Si", "Stride"]
+- !private ["Si", "_DisabledRangeIndex"]
 - ["Si", "deinit"]
 - !private ["Vs5Int16", "deinit"]
 - !private ["Vs5Int32", "deinit"]
 - !private ["Vs5Int64", "deinit"]
 - !private ["Vs4Int8", "deinit"]
-- ["Ps7Integer", "IntegerLiteralType"]
-- ["Ps7Integer", "Stride"]
-- ["Ps7Integer", "_DisabledRangeIndex"]
-- ["Ps17IntegerArithmetic", "IntegerLiteralType"]
-- ["Ps17IntegerArithmetic", "Stride"]
-- ["Ps17IntegerArithmetic", "_DisabledRangeIndex"]
-- ["Ps16IteratorProtocol", "Element"]
-- ["C9GeoKeeper23LocationsViewController", "deinit"]
-- !private ["C9GeoKeeper23LocationsViewController", "managedObjectContext"]
-- !private ["C9GeoKeeper23LocationsViewController", "view"]
+- !private ["Ps7Integer", "IntegerLiteralType"]
+- !private ["Ps7Integer", "Stride"]
+- !private ["Ps7Integer", "_DisabledRangeIndex"]
+- !private ["Ps17IntegerArithmetic", "IntegerLiteralType"]
+- !private ["Ps17IntegerArithmetic", "Stride"]
+- !private ["Ps17IntegerArithmetic", "_DisabledRangeIndex"]
+- !private ["Ps16IteratorProtocol", "Element"]
 - !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps25LosslessStringConvertible", "init"]
 - !private ["PSo17MKMapViewDelegate", "managedObjectContext"]
 - ["C9GeoKeeper17MapViewController", "deinit"]
 - !private ["C9GeoKeeper17MapViewController", "managedObjectContext"]
-- ["Ps10MirrorPath", "IntegerLiteralType"]
-- ["Ps10MirrorPath", "Stride"]
-- ["Ps10MirrorPath", "_DisabledRangeIndex"]
+- !private ["Ps10MirrorPath", "IntegerLiteralType"]
+- !private ["Ps10MirrorPath", "Stride"]
+- !private ["Ps10MirrorPath", "_DisabledRangeIndex"]
 - !private ["Ps10MirrorPath", "init"]
-- ["Ps17MutableCollection", "Index"]
-- ["Ps17MutableCollection", "SubSequence"]
-- ["Ps17MutableCollection", "subscript"]
-- ["Ps16MutableIndexable", "Index"]
-- ["Ps16MutableIndexable", "SubSequence"]
-- ["Ps16MutableIndexable", "subscript"]
+- !private ["Ps17MutableCollection", "Index"]
+- !private ["Ps17MutableCollection", "SubSequence"]
+- !private ["Ps17MutableCollection", "subscript"]
+- !private ["Ps16MutableIndexable", "Index"]
+- !private ["Ps16MutableIndexable", "SubSequence"]
+- !private ["Ps16MutableIndexable", "subscript"]
 - !private ["PSo8NSCoding", "addAction"]
 - !private ["PSo8NSCoding", "init"]
 - !private ["PSo8NSCoding", "managedObjectContext"]
@@ -560,14 +537,11 @@ depends-member:
 - !private ["PSo26NSExtensionRequestHandling", "presentedViewController"]
 - !private ["PSo26NSExtensionRequestHandling", "view"]
 - !private ["PSo26NSExtensionRequestHandling", "viewControllers"]
-- !private ["PSo34NSFetchedResultsControllerDelegate", "managedObjectContext"]
-- !private ["PSo34NSFetchedResultsControllerDelegate", "view"]
 - ["CSo22NSManagedObjectContext", "deinit"]
 - !private ["PSo16NSMutableCopying", "init"]
+- !private ["CSo8NSObject", "AllCategoryViewController"]
 - ["CSo8NSObject", "Bool"]
 - !private ["CSo8NSObject", "CurrentLocationViewController"]
-- ["CSo8NSObject", "FileManager"]
-- !private ["CSo8NSObject", "LocationsViewController"]
 - !private ["CSo8NSObject", "MapViewController"]
 - !private ["CSo8NSObject", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["CSo8NSObject", "NSException"]
@@ -584,7 +558,6 @@ depends-member:
 - !private ["CSo8NSObject", "UITabBarController"]
 - ["CSo8NSObject", "UIViewController"]
 - ["CSo8NSObject", "UIWindow"]
-- ["CSo8NSObject", "URL"]
 - !private ["CSo8NSObject", "addAction"]
 - !private ["CSo8NSObject", "addObserver"]
 - ["CSo8NSObject", "application"]
@@ -592,7 +565,7 @@ depends-member:
 - ["CSo8NSObject", "applicationDidEnterBackground"]
 - ["CSo8NSObject", "applicationDidFinishLaunching"]
 - ["CSo8NSObject", "applicationDidReceiveMemoryWarning"]
-- ["CSo8NSObject", "applicationDocumentsDirectory"]
+- !private ["CSo8NSObject", "applicationDocumentsDirectory"]
 - ["CSo8NSObject", "applicationProtectedDataDidBecomeAvailable"]
 - ["CSo8NSObject", "applicationProtectedDataWillBecomeUnavailable"]
 - ["CSo8NSObject", "applicationShouldRequestHealthAuthorization"]
@@ -600,7 +573,7 @@ depends-member:
 - ["CSo8NSObject", "applicationWillEnterForeground"]
 - ["CSo8NSObject", "applicationWillResignActive"]
 - ["CSo8NSObject", "applicationWillTerminate"]
-- ["CSo8NSObject", "default"]
+- !private ["CSo8NSObject", "default"]
 - !private ["CSo8NSObject", "fatalError"]
 - ["CSo8NSObject", "init"]
 - ["CSo8NSObject", "listenForFatalCoreDataNotifications"]
@@ -615,13 +588,11 @@ depends-member:
 - !private ["CSo8NSObject", "print"]
 - !private ["CSo8NSObject", "raise"]
 - !private ["CSo8NSObject", "rootViewController"]
-- ["CSo8NSObject", "urls"]
 - !private ["CSo8NSObject", "view"]
 - !private ["CSo8NSObject", "viewContext"]
 - ["CSo8NSObject", "viewControllerForShowingAlert"]
 - !private ["CSo8NSObject", "viewControllers"]
 - ["CSo8NSObject", "window"]
-- ["PSo16NSObjectProtocol", "FileManager"]
 - !private ["PSo16NSObjectProtocol", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["PSo16NSObjectProtocol", "NSException"]
 - !private ["PSo16NSObjectProtocol", "NSExceptionName"]
@@ -637,7 +608,7 @@ depends-member:
 - ["PSo16NSObjectProtocol", "applicationDidEnterBackground"]
 - ["PSo16NSObjectProtocol", "applicationDidFinishLaunching"]
 - ["PSo16NSObjectProtocol", "applicationDidReceiveMemoryWarning"]
-- ["PSo16NSObjectProtocol", "applicationDocumentsDirectory"]
+- !private ["PSo16NSObjectProtocol", "applicationDocumentsDirectory"]
 - ["PSo16NSObjectProtocol", "applicationProtectedDataDidBecomeAvailable"]
 - ["PSo16NSObjectProtocol", "applicationProtectedDataWillBecomeUnavailable"]
 - ["PSo16NSObjectProtocol", "applicationShouldRequestHealthAuthorization"]
@@ -645,7 +616,7 @@ depends-member:
 - ["PSo16NSObjectProtocol", "applicationWillEnterForeground"]
 - ["PSo16NSObjectProtocol", "applicationWillResignActive"]
 - ["PSo16NSObjectProtocol", "applicationWillTerminate"]
-- ["PSo16NSObjectProtocol", "default"]
+- !private ["PSo16NSObjectProtocol", "default"]
 - ["PSo16NSObjectProtocol", "deinit"]
 - !private ["PSo16NSObjectProtocol", "fatalError"]
 - !private ["PSo16NSObjectProtocol", "init"]
@@ -661,7 +632,6 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "print"]
 - !private ["PSo16NSObjectProtocol", "raise"]
 - !private ["PSo16NSObjectProtocol", "rootViewController"]
-- ["PSo16NSObjectProtocol", "urls"]
 - !private ["PSo16NSObjectProtocol", "view"]
 - !private ["PSo16NSObjectProtocol", "viewContext"]
 - ["PSo16NSObjectProtocol", "viewControllerForShowingAlert"]
@@ -681,67 +651,59 @@ depends-member:
 - ["CSo18NotificationCenter", "deinit"]
 - ["CSo14OperationQueue", "deinit"]
 - !private ["CSo14OperationQueue", "main"]
-- ["Ps9OptionSet", "userDomainMask"]
 - ["Sq", "deinit"]
-- ["Ps22RandomAccessCollection", "Index"]
-- ["Ps22RandomAccessCollection", "IndexDistance"]
-- ["Ps22RandomAccessCollection", "Indices"]
-- ["Ps22RandomAccessCollection", "Iterator"]
-- ["Ps22RandomAccessCollection", "SubSequence"]
-- ["Ps22RandomAccessCollection", "_Element"]
-- ["Ps22RandomAccessCollection", "subscript"]
-- ["Ps21RandomAccessIndexable", "Index"]
-- ["Ps21RandomAccessIndexable", "IndexDistance"]
-- ["Ps21RandomAccessIndexable", "Indices"]
-- ["Ps21RandomAccessIndexable", "Iterator"]
-- ["Ps21RandomAccessIndexable", "SubSequence"]
-- ["Ps21RandomAccessIndexable", "_Element"]
-- ["Ps21RandomAccessIndexable", "subscript"]
-- ["Vs17RandomAccessSlice", "Index"]
-- ["Vs17RandomAccessSlice", "IndexDistance"]
-- ["Vs17RandomAccessSlice", "Indices"]
-- ["Vs17RandomAccessSlice", "Iterator"]
-- ["Vs17RandomAccessSlice", "SubSequence"]
-- ["Vs17RandomAccessSlice", "_Element"]
-- ["Ps26RangeReplaceableCollection", "Index"]
-- ["Ps26RangeReplaceableCollection", "SubSequence"]
-- ["Ps26RangeReplaceableCollection", "subscript"]
-- ["Ps25RangeReplaceableIndexable", "Index"]
-- ["Ps25RangeReplaceableIndexable", "SubSequence"]
-- ["Ps25RangeReplaceableIndexable", "subscript"]
+- !private ["Ps22RandomAccessCollection", "Index"]
+- !private ["Ps22RandomAccessCollection", "IndexDistance"]
+- !private ["Ps22RandomAccessCollection", "Indices"]
+- !private ["Ps22RandomAccessCollection", "Iterator"]
+- !private ["Ps22RandomAccessCollection", "SubSequence"]
+- !private ["Ps22RandomAccessCollection", "_Element"]
+- !private ["Ps22RandomAccessCollection", "subscript"]
+- !private ["Ps21RandomAccessIndexable", "Index"]
+- !private ["Ps21RandomAccessIndexable", "IndexDistance"]
+- !private ["Ps21RandomAccessIndexable", "Indices"]
+- !private ["Ps21RandomAccessIndexable", "Iterator"]
+- !private ["Ps21RandomAccessIndexable", "SubSequence"]
+- !private ["Ps21RandomAccessIndexable", "_Element"]
+- !private ["Ps21RandomAccessIndexable", "subscript"]
+- !private ["Vs17RandomAccessSlice", "Index"]
+- !private ["Vs17RandomAccessSlice", "IndexDistance"]
+- !private ["Vs17RandomAccessSlice", "Indices"]
+- !private ["Vs17RandomAccessSlice", "Iterator"]
+- !private ["Vs17RandomAccessSlice", "SubSequence"]
+- !private ["Vs17RandomAccessSlice", "_Element"]
+- !private ["Ps26RangeReplaceableCollection", "Index"]
+- !private ["Ps26RangeReplaceableCollection", "SubSequence"]
+- !private ["Ps26RangeReplaceableCollection", "subscript"]
+- !private ["Ps25RangeReplaceableIndexable", "Index"]
+- !private ["Ps25RangeReplaceableIndexable", "SubSequence"]
+- !private ["Ps25RangeReplaceableIndexable", "subscript"]
 - !private ["Ps16RawRepresentable", "alert"]
 - !private ["Ps16RawRepresentable", "default"]
-- ["Ps16RawRepresentable", "documentDirectory"]
 - !private ["Ps16RawRepresentable", "internalInconsistencyException"]
-- ["Ps16RawRepresentable", "userDomainMask"]
-- ["OCSo11FileManager19SearchPathDirectory", "deinit"]
-- ["OCSo11FileManager19SearchPathDirectory", "documentDirectory"]
-- ["VCSo11FileManager20SearchPathDomainMask", "deinit"]
-- ["VCSo11FileManager20SearchPathDomainMask", "userDomainMask"]
-- ["Ps8Sequence", "Element"]
-- ["Ps8Sequence", "Index"]
-- ["Ps8Sequence", "IndexDistance"]
-- ["Ps8Sequence", "Indices"]
-- ["Ps8Sequence", "Iterator"]
-- ["Ps8Sequence", "SubSequence"]
-- ["Ps8Sequence", "_Element"]
-- ["Ps8Sequence", "subscript"]
-- ["Ps10SetAlgebra", "userDomainMask"]
-- ["Ps13SignedInteger", "IntegerLiteralType"]
-- ["Ps13SignedInteger", "Stride"]
-- ["Ps13SignedInteger", "_DisabledRangeIndex"]
-- ["Ps12SignedNumber", "IntegerLiteralType"]
-- ["Ps12SignedNumber", "Stride"]
-- ["Ps12SignedNumber", "_DisabledRangeIndex"]
-- ["Vs5Slice", "Index"]
-- ["Vs5Slice", "Iterator"]
-- ["Vs5Slice", "SubSequence"]
-- ["Vs5Slice", "_Element"]
+- !private ["Ps8Sequence", "Element"]
+- !private ["Ps8Sequence", "Index"]
+- !private ["Ps8Sequence", "IndexDistance"]
+- !private ["Ps8Sequence", "Indices"]
+- !private ["Ps8Sequence", "Iterator"]
+- !private ["Ps8Sequence", "SubSequence"]
+- !private ["Ps8Sequence", "_Element"]
+- !private ["Ps8Sequence", "subscript"]
+- !private ["Ps13SignedInteger", "IntegerLiteralType"]
+- !private ["Ps13SignedInteger", "Stride"]
+- !private ["Ps13SignedInteger", "_DisabledRangeIndex"]
+- !private ["Ps12SignedNumber", "IntegerLiteralType"]
+- !private ["Ps12SignedNumber", "Stride"]
+- !private ["Ps12SignedNumber", "_DisabledRangeIndex"]
+- !private ["Vs5Slice", "Index"]
+- !private ["Vs5Slice", "Iterator"]
+- !private ["Vs5Slice", "SubSequence"]
+- !private ["Vs5Slice", "_Element"]
 - !private ["Vs12StaticString", "deinit"]
 - !private ["Vs12StaticString", "init"]
-- ["Ps10Strideable", "IntegerLiteralType"]
-- ["Ps10Strideable", "Stride"]
-- ["Ps10Strideable", "_DisabledRangeIndex"]
+- !private ["Ps10Strideable", "IntegerLiteralType"]
+- !private ["Ps10Strideable", "Stride"]
+- !private ["Ps10Strideable", "_DisabledRangeIndex"]
 - !private ["SS", "deinit"]
 - !private ["SS", "init"]
 - !private ["Ps16TextOutputStream", "init"]
@@ -765,7 +727,6 @@ depends-member:
 - !private ["PSo21UIAppearanceContainer", "rootViewController"]
 - !private ["PSo21UIAppearanceContainer", "view"]
 - !private ["PSo21UIAppearanceContainer", "viewControllers"]
-- ["PSo21UIApplicationDelegate", "FileManager"]
 - !private ["PSo21UIApplicationDelegate", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["PSo21UIApplicationDelegate", "NSException"]
 - !private ["PSo21UIApplicationDelegate", "NSExceptionName"]
@@ -814,13 +775,15 @@ depends-member:
 - !private ["PSo18UIFocusEnvironment", "view"]
 - !private ["PSo18UIFocusEnvironment", "viewControllers"]
 - !private ["PSo11UIFocusItem", "rootViewController"]
+- !private ["PSo31UIImagePickerControllerDelegate", "managedObjectContext"]
 - !private ["PSo23UINavigationBarDelegate", "managedObjectContext"]
 - ["CSo22UINavigationController", "deinit"]
 - !private ["CSo22UINavigationController", "viewControllers"]
+- !private ["PSo30UINavigationControllerDelegate", "managedObjectContext"]
+- !private ["PSo30UINavigationControllerDelegate", "view"]
+- !private ["CSo11UIResponder", "AllCategoryViewController"]
 - ["CSo11UIResponder", "Bool"]
 - !private ["CSo11UIResponder", "CurrentLocationViewController"]
-- ["CSo11UIResponder", "FileManager"]
-- !private ["CSo11UIResponder", "LocationsViewController"]
 - !private ["CSo11UIResponder", "MapViewController"]
 - !private ["CSo11UIResponder", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["CSo11UIResponder", "NSException"]
@@ -837,14 +800,13 @@ depends-member:
 - !private ["CSo11UIResponder", "UITabBarController"]
 - ["CSo11UIResponder", "UIViewController"]
 - ["CSo11UIResponder", "UIWindow"]
-- ["CSo11UIResponder", "URL"]
 - !private ["CSo11UIResponder", "addAction"]
 - ["CSo11UIResponder", "application"]
 - ["CSo11UIResponder", "applicationDidBecomeActive"]
 - ["CSo11UIResponder", "applicationDidEnterBackground"]
 - ["CSo11UIResponder", "applicationDidFinishLaunching"]
 - ["CSo11UIResponder", "applicationDidReceiveMemoryWarning"]
-- ["CSo11UIResponder", "applicationDocumentsDirectory"]
+- !private ["CSo11UIResponder", "applicationDocumentsDirectory"]
 - ["CSo11UIResponder", "applicationProtectedDataDidBecomeAvailable"]
 - ["CSo11UIResponder", "applicationProtectedDataWillBecomeUnavailable"]
 - ["CSo11UIResponder", "applicationShouldRequestHealthAuthorization"]
@@ -869,7 +831,6 @@ depends-member:
 - !private ["CSo11UIResponder", "viewControllers"]
 - ["CSo11UIResponder", "window"]
 - ["CSo11UIResponder", ""]
-- ["PSo30UIResponderStandardEditActions", "FileManager"]
 - !private ["PSo30UIResponderStandardEditActions", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["PSo30UIResponderStandardEditActions", "NSException"]
 - !private ["PSo30UIResponderStandardEditActions", "NSExceptionName"]
@@ -884,7 +845,7 @@ depends-member:
 - ["PSo30UIResponderStandardEditActions", "applicationDidEnterBackground"]
 - ["PSo30UIResponderStandardEditActions", "applicationDidFinishLaunching"]
 - ["PSo30UIResponderStandardEditActions", "applicationDidReceiveMemoryWarning"]
-- ["PSo30UIResponderStandardEditActions", "applicationDocumentsDirectory"]
+- !private ["PSo30UIResponderStandardEditActions", "applicationDocumentsDirectory"]
 - ["PSo30UIResponderStandardEditActions", "applicationProtectedDataDidBecomeAvailable"]
 - ["PSo30UIResponderStandardEditActions", "applicationProtectedDataWillBecomeUnavailable"]
 - ["PSo30UIResponderStandardEditActions", "applicationShouldRequestHealthAuthorization"]
@@ -951,34 +912,33 @@ depends-member:
 - !private ["Vs5UInt8", "deinit"]
 - ["V10Foundation3URL", "deinit"]
 - !private ["Sc", "deinit"]
-- ["Ps14_ArrayProtocol", "Index"]
-- ["Ps14_ArrayProtocol", "SubSequence"]
-- ["Ps14_ArrayProtocol", "subscript"]
+- !private ["Ps14_ArrayProtocol", "Index"]
+- !private ["Ps14_ArrayProtocol", "SubSequence"]
+- !private ["Ps14_ArrayProtocol", "subscript"]
 - !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "rootViewController"]
-- ["Ps24_DestructorSafeContainer", "Index"]
-- ["Ps24_DestructorSafeContainer", "SubSequence"]
-- ["Ps24_DestructorSafeContainer", "subscript"]
+- !private ["Ps24_DestructorSafeContainer", "Index"]
+- !private ["Ps24_DestructorSafeContainer", "SubSequence"]
+- !private ["Ps24_DestructorSafeContainer", "subscript"]
 - !private ["Ps35_ExpressibleByBuiltinBooleanLiteral", "_getBuiltinLogicValue"]
 - !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
-- ["Ps35_ExpressibleByBuiltinIntegerLiteral", "IntegerLiteralType"]
-- ["Ps35_ExpressibleByBuiltinIntegerLiteral", "Stride"]
-- ["Ps35_ExpressibleByBuiltinIntegerLiteral", "_DisabledRangeIndex"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "IntegerLiteralType"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "Stride"]
+- !private ["Ps35_ExpressibleByBuiltinIntegerLiteral", "_DisabledRangeIndex"]
 - !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
 - !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
 - !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
 - !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
-- ["Ps9_Hashable", "FileManager"]
-- ["Ps9_Hashable", "IntegerLiteralType"]
+- !private ["Ps9_Hashable", "IntegerLiteralType"]
 - !private ["Ps9_Hashable", "MyManagedObjectContextSaveDidFailNotification"]
 - !private ["Ps9_Hashable", "NSException"]
 - !private ["Ps9_Hashable", "NSExceptionName"]
 - !private ["Ps9_Hashable", "NSPersistentContainer"]
 - !private ["Ps9_Hashable", "NotificationCenter"]
 - !private ["Ps9_Hashable", "OperationQueue"]
-- ["Ps9_Hashable", "Stride"]
+- !private ["Ps9_Hashable", "Stride"]
 - !private ["Ps9_Hashable", "UIAlertAction"]
 - !private ["Ps9_Hashable", "UIAlertController"]
-- ["Ps9_Hashable", "_DisabledRangeIndex"]
+- !private ["Ps9_Hashable", "_DisabledRangeIndex"]
 - !private ["Ps9_Hashable", "_getBuiltinLogicValue"]
 - !private ["Ps9_Hashable", "addAction"]
 - !private ["Ps9_Hashable", "addObserver"]
@@ -988,7 +948,7 @@ depends-member:
 - ["Ps9_Hashable", "applicationDidEnterBackground"]
 - ["Ps9_Hashable", "applicationDidFinishLaunching"]
 - ["Ps9_Hashable", "applicationDidReceiveMemoryWarning"]
-- ["Ps9_Hashable", "applicationDocumentsDirectory"]
+- !private ["Ps9_Hashable", "applicationDocumentsDirectory"]
 - ["Ps9_Hashable", "applicationProtectedDataDidBecomeAvailable"]
 - ["Ps9_Hashable", "applicationProtectedDataWillBecomeUnavailable"]
 - ["Ps9_Hashable", "applicationShouldRequestHealthAuthorization"]
@@ -996,8 +956,7 @@ depends-member:
 - ["Ps9_Hashable", "applicationWillEnterForeground"]
 - ["Ps9_Hashable", "applicationWillResignActive"]
 - ["Ps9_Hashable", "applicationWillTerminate"]
-- ["Ps9_Hashable", "default"]
-- ["Ps9_Hashable", "documentDirectory"]
+- !private ["Ps9_Hashable", "default"]
 - !private ["Ps9_Hashable", "fatalError"]
 - !private ["Ps9_Hashable", "init"]
 - !private ["Ps9_Hashable", "internalInconsistencyException"]
@@ -1013,97 +972,94 @@ depends-member:
 - !private ["Ps9_Hashable", "print"]
 - !private ["Ps9_Hashable", "raise"]
 - !private ["Ps9_Hashable", "rootViewController"]
-- ["Ps9_Hashable", "urls"]
 - !private ["Ps9_Hashable", "view"]
 - !private ["Ps9_Hashable", "viewContext"]
 - ["Ps9_Hashable", "viewControllerForShowingAlert"]
 - !private ["Ps9_Hashable", "viewControllers"]
 - ["Ps9_Hashable", "window"]
 - ["Ps9_Hashable", ""]
-- ["Ps14_Incrementable", "IntegerLiteralType"]
-- ["Ps14_Incrementable", "Stride"]
-- ["Ps14_Incrementable", "_DisabledRangeIndex"]
-- ["Ps8_Integer", "IntegerLiteralType"]
-- ["Ps8_Integer", "Stride"]
-- ["Ps8_Integer", "_DisabledRangeIndex"]
-- ["Ps18_IntegerArithmetic", "IntegerLiteralType"]
-- ["Ps18_IntegerArithmetic", "Stride"]
-- ["Ps18_IntegerArithmetic", "_DisabledRangeIndex"]
-- ["Ps21_ObjectiveCBridgeable", "Index"]
-- ["Ps21_ObjectiveCBridgeable", "IntegerLiteralType"]
-- ["Ps21_ObjectiveCBridgeable", "Stride"]
-- ["Ps21_ObjectiveCBridgeable", "SubSequence"]
-- ["Ps21_ObjectiveCBridgeable", "_DisabledRangeIndex"]
+- !private ["Ps14_Incrementable", "IntegerLiteralType"]
+- !private ["Ps14_Incrementable", "Stride"]
+- !private ["Ps14_Incrementable", "_DisabledRangeIndex"]
+- !private ["Ps8_Integer", "IntegerLiteralType"]
+- !private ["Ps8_Integer", "Stride"]
+- !private ["Ps8_Integer", "_DisabledRangeIndex"]
+- !private ["Ps18_IntegerArithmetic", "IntegerLiteralType"]
+- !private ["Ps18_IntegerArithmetic", "Stride"]
+- !private ["Ps18_IntegerArithmetic", "_DisabledRangeIndex"]
+- !private ["Ps21_ObjectiveCBridgeable", "Index"]
+- !private ["Ps21_ObjectiveCBridgeable", "IntegerLiteralType"]
+- !private ["Ps21_ObjectiveCBridgeable", "Stride"]
+- !private ["Ps21_ObjectiveCBridgeable", "SubSequence"]
+- !private ["Ps21_ObjectiveCBridgeable", "_DisabledRangeIndex"]
 - !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
 - !private ["Ps21_ObjectiveCBridgeable", "init"]
 - !private ["Ps21_ObjectiveCBridgeable", "internalInconsistencyException"]
-- ["Ps21_ObjectiveCBridgeable", "subscript"]
-- ["Ps14_SignedInteger", "IntegerLiteralType"]
-- ["Ps14_SignedInteger", "Stride"]
-- ["Ps14_SignedInteger", "_DisabledRangeIndex"]
-- ["Ps11_Strideable", "IntegerLiteralType"]
-- ["Ps11_Strideable", "Stride"]
-- ["Ps11_Strideable", "_DisabledRangeIndex"]
+- !private ["Ps21_ObjectiveCBridgeable", "subscript"]
+- !private ["Ps14_SignedInteger", "IntegerLiteralType"]
+- !private ["Ps14_SignedInteger", "Stride"]
+- !private ["Ps14_SignedInteger", "_DisabledRangeIndex"]
+- !private ["Ps11_Strideable", "IntegerLiteralType"]
+- !private ["Ps11_Strideable", "Stride"]
+- !private ["Ps11_Strideable", "_DisabledRangeIndex"]
 - !private ["Ps20_SwiftNewtypeWrapper", "internalInconsistencyException"]
 depends-nominal:
+- "C9GeoKeeper25AllCategoryViewController"
 - "Ps9AnyObject"
 - "C9GeoKeeper11AppDelegate"
 - "Sa"
-- "Ps23BidirectionalCollection"
-- "Ps22BidirectionalIndexable"
-- "Vs18BidirectionalSlice"
-- "Ps17BitwiseOperations"
+- !private "Ps23BidirectionalCollection"
+- !private "Ps22BidirectionalIndexable"
+- !private "Vs18BidirectionalSlice"
+- !private "Ps17BitwiseOperations"
 - "Sb"
 - !private "PSo15CALayerDelegate"
 - !private "PSo25CLLocationManagerDelegate"
 - "Ps7CVarArg"
 - !private "Vs9Character"
-- "Ps10Collection"
-- "Ps10Comparable"
+- !private "Ps10Collection"
+- !private "Ps10Comparable"
 - "C9GeoKeeper29CurrentLocationViewController"
 - "Ps28CustomDebugStringConvertible"
-- "Ps29CustomPlaygroundQuickLookable"
-- "Ps17CustomReflectable"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- !private "Ps17CustomReflectable"
 - "Ps23CustomStringConvertible"
-- "Vs27DefaultBidirectionalIndices"
-- "Vs26DefaultRandomAccessIndices"
+- !private "Vs27DefaultBidirectionalIndices"
+- !private "Vs26DefaultRandomAccessIndices"
 - !private "Sd"
 - "Ps9Equatable"
 - !private "Ps5Error"
-- "Ps25ExpressibleByArrayLiteral"
+- !private "Ps25ExpressibleByArrayLiteral"
 - !private "Ps27ExpressibleByBooleanLiteral"
 - !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
-- "Ps27ExpressibleByIntegerLiteral"
+- !private "Ps27ExpressibleByIntegerLiteral"
 - !private "Ps32ExpressibleByStringInterpolation"
 - !private "Ps26ExpressibleByStringLiteral"
 - !private "Ps33ExpressibleByUnicodeScalarLiteral"
-- "CSo11FileManager"
 - !private "Sf"
 - "Ps8Hashable"
-- "Ps9Indexable"
-- "Ps13IndexableBase"
-- "Vs16IndexingIterator"
+- !private "Ps9Indexable"
+- !private "Ps13IndexableBase"
+- !private "Vs16IndexingIterator"
 - "Si"
 - !private "Vs5Int16"
 - !private "Vs5Int32"
 - !private "Vs5Int64"
 - !private "Vs4Int8"
-- "Ps7Integer"
-- "Ps17IntegerArithmetic"
-- "Ps16IteratorProtocol"
-- "C9GeoKeeper23LocationsViewController"
+- !private "Ps7Integer"
+- !private "Ps17IntegerArithmetic"
+- !private "Ps16IteratorProtocol"
 - !private "Ps25LosslessStringConvertible"
 - !private "PSo17MKMapViewDelegate"
 - "C9GeoKeeper17MapViewController"
-- "Ps10MirrorPath"
-- "Ps17MutableCollection"
-- "Ps16MutableIndexable"
+- !private "Ps10MirrorPath"
+- !private "Ps17MutableCollection"
+- !private "Ps16MutableIndexable"
 - !private "PSo8NSCoding"
 - !private "PSo9NSCopying"
 - !private "CSo11NSException"
 - !private "VSC15NSExceptionName"
 - !private "PSo26NSExtensionRequestHandling"
-- !private "PSo34NSFetchedResultsControllerDelegate"
 - "CSo22NSManagedObjectContext"
 - !private "PSo16NSMutableCopying"
 - "CSo8NSObject"
@@ -1115,23 +1071,19 @@ depends-nominal:
 - !private "Os5Never"
 - "CSo18NotificationCenter"
 - "CSo14OperationQueue"
-- "Ps9OptionSet"
 - "Sq"
-- "Ps22RandomAccessCollection"
-- "Ps21RandomAccessIndexable"
-- "Vs17RandomAccessSlice"
-- "Ps26RangeReplaceableCollection"
-- "Ps25RangeReplaceableIndexable"
-- "Ps16RawRepresentable"
-- "OCSo11FileManager19SearchPathDirectory"
-- "VCSo11FileManager20SearchPathDomainMask"
-- "Ps8Sequence"
-- "Ps10SetAlgebra"
-- "Ps13SignedInteger"
-- "Ps12SignedNumber"
-- "Vs5Slice"
+- !private "Ps22RandomAccessCollection"
+- !private "Ps21RandomAccessIndexable"
+- !private "Vs17RandomAccessSlice"
+- !private "Ps26RangeReplaceableCollection"
+- !private "Ps25RangeReplaceableIndexable"
+- !private "Ps16RawRepresentable"
+- !private "Ps8Sequence"
+- !private "Ps13SignedInteger"
+- !private "Ps12SignedNumber"
+- !private "Vs5Slice"
 - !private "Vs12StaticString"
-- "Ps10Strideable"
+- !private "Ps10Strideable"
 - !private "SS"
 - !private "Ps16TextOutputStream"
 - !private "Ps20TextOutputStreamable"
@@ -1149,8 +1101,10 @@ depends-nominal:
 - !private "PSo13UIDynamicItem"
 - !private "PSo18UIFocusEnvironment"
 - !private "PSo11UIFocusItem"
+- !private "PSo31UIImagePickerControllerDelegate"
 - !private "PSo23UINavigationBarDelegate"
 - "CSo22UINavigationController"
+- !private "PSo30UINavigationControllerDelegate"
 - "CSo11UIResponder"
 - "PSo30UIResponderStandardEditActions"
 - !private "PSo20UIScrollViewDelegate"
@@ -1171,23 +1125,23 @@ depends-nominal:
 - !private "Vs5UInt8"
 - "V10Foundation3URL"
 - !private "Sc"
-- "Ps14_ArrayProtocol"
+- !private "Ps14_ArrayProtocol"
 - !private "Ps37_DefaultCustomPlaygroundQuickLookable"
-- "Ps24_DestructorSafeContainer"
+- !private "Ps24_DestructorSafeContainer"
 - !private "Ps35_ExpressibleByBuiltinBooleanLiteral"
 - !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
-- "Ps35_ExpressibleByBuiltinIntegerLiteral"
+- !private "Ps35_ExpressibleByBuiltinIntegerLiteral"
 - !private "Ps34_ExpressibleByBuiltinStringLiteral"
 - !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
 - !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
 - !private "Ps35_HasCustomAnyHashableRepresentation"
 - "Ps9_Hashable"
-- "Ps14_Incrementable"
-- "Ps8_Integer"
-- "Ps18_IntegerArithmetic"
-- "Ps21_ObjectiveCBridgeable"
-- "Ps14_SignedInteger"
-- "Ps11_Strideable"
+- !private "Ps14_Incrementable"
+- !private "Ps8_Integer"
+- !private "Ps18_IntegerArithmetic"
+- !private "Ps21_ObjectiveCBridgeable"
+- !private "Ps14_SignedInteger"
+- !private "Ps11_Strideable"
 - !private "Ps20_SwiftNewtypeWrapper"
 depends-dynamic-lookup:
 depends-external:
@@ -1204,4 +1158,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
-interface-hash: "e3223dffaef675e1382085180f7de97a"
+interface-hash: "5f6d94566e3588d98e48c64ba1fc26d9"
