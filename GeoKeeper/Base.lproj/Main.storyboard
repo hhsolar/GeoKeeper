@@ -333,6 +333,7 @@
                                     <action selector="cancel" destination="zi4-Se-ogY" eventType="touchUpInside" id="dWv-mP-6PP"/>
                                 </connections>
                             </button>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancel" destination="zi4-Se-ogY" id="sqM-QW-qdK"/>
                             </connections>
@@ -346,6 +347,7 @@
                                     <action selector="done" destination="zi4-Se-ogY" eventType="touchUpInside" id="oyU-eJ-J5w"/>
                                 </connections>
                             </button>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="done" destination="zi4-Se-ogY" id="Y0N-FK-vkY"/>
                             </connections>
@@ -404,6 +406,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="wdU-Ou-LcP">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="UUl-R6-AgB">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="getBack" destination="U3M-7t-epV" id="urk-Xb-ogw"/>
                             </connections>
@@ -443,9 +446,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Og8-4W-mCu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eQC-ih-5Lm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eQC-ih-5Lm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.2784313725" green="0.45882352939999999" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -553,7 +560,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evq-3m-QG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3045" y="319.01408450704224"/>
+            <point key="canvasLocation" x="3121" y="308"/>
         </scene>
         <!--Map-->
         <scene sceneID="NU8-vJ-6ld">
@@ -714,6 +721,6 @@
         <image name="tag_icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qis-hZ-zgh"/>
+        <segue reference="Ygx-Eu-SuV"/>
     </inferredMetricsTieBreakers>
 </document>
