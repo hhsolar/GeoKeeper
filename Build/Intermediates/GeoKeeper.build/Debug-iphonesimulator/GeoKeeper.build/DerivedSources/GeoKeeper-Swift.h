@@ -188,8 +188,9 @@ SWIFT_CLASS("_TtC9GeoKeeper8Category")
 
 
 SWIFT_CLASS("_TtC9GeoKeeper25CategoryAddViewController")
-@interface CategoryAddViewController : UITableViewController
+@interface CategoryAddViewController : UIViewController <UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, copy) NSString * _Nonnull selectedCategoryName;
+@property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified addCategory;
 @property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull categories;
 @property (nonatomic, copy) NSIndexPath * _Nonnull selectedIndexPath;
 - (void)viewDidLoad;
@@ -197,9 +198,14 @@ SWIFT_CLASS("_TtC9GeoKeeper25CategoryAddViewController")
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol UIBarPositioning;
+
+@interface CategoryAddViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
+- (UIBarPosition)positionForBar:(id <UIBarPositioning> _Nonnull)bar;
 @end
 
 
@@ -274,7 +280,6 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@protocol UIBarPositioning;
 
 @interface CurrentLocationViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
 - (UIBarPosition)positionForBar:(id <UIBarPositioning> _Nonnull)bar;
@@ -407,17 +412,22 @@ SWIFT_CLASS("_TtC9GeoKeeper23LocationsViewController")
 
 
 SWIFT_CLASS("_TtC9GeoKeeper17MapViewController")
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <CLLocationManagerDelegate>
 @property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
+@property (nonatomic, readonly, strong) CLLocationManager * _Nonnull locationManager;
+@property (nonatomic) double locationLat;
+@property (nonatomic) double locationLong;
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, copy) NSArray<Location *> * _Nonnull locations;
 - (void)viewDidLoad;
+- (void)configureMap;
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (IBAction)showUser;
 - (IBAction)showLocations;
 - (void)updateLocations;
 - (MKCoordinateRegion)regionFor:(NSArray<id <MKAnnotation>> * _Nonnull)annotations;
 - (void)showLocationDetails:(UIButton * _Nonnull)sender;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -451,6 +461,19 @@ SWIFT_CLASS("_TtC9GeoKeeper22MyNavigationController")
 @property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
 - (nonnull instancetype)initWithNavigationBarClass:(Class _Nullable)navigationBarClass toolbarClass:(Class _Nullable)toolbarClass OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9GeoKeeper18MyTabBarController")
+@interface MyTabBarController : UITabBarController
+@property (nonatomic, readonly, strong) UIColor * _Nonnull unselectedColor;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull selectedColor;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull tabBarColor;
+- (void)viewWillAppear:(BOOL)animated;
+@property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
+@property (nonatomic, readonly, strong) UIViewController * _Nullable childViewControllerForStatusBarStyle;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
