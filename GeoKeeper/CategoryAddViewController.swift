@@ -8,8 +8,9 @@
 
 import UIKit
 
-class CategoryAddViewController: UITableViewController {
+class CategoryAddViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var selectedCategoryName = ""
+    @IBOutlet weak var addCategory: UITableView!
     
     let categories = [
         "No Category",
@@ -24,28 +25,29 @@ class CategoryAddViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addCategory.delegate = self
+        addCategory.dataSource = self
     }
     
     @IBAction func getBack() {
-        print("Getback is called")
         dismiss(animated: true, completion: nil)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PickedCategory" {
             let cell = sender as! UITableViewCell
-            if let IndexPath = tableView.indexPath(for: cell) {
+            if let IndexPath = addCategory.indexPath(for: cell) {
                 selectedCategoryName = categories[IndexPath.row]
             }
         }
     }
     
     //Mark: - UITableViewDateSource
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         let categoryName = categories[indexPath.row]
@@ -58,4 +60,10 @@ class CategoryAddViewController: UITableViewController {
         return cell
     }
     
+}
+
+extension CategoryAddViewController: UINavigationBarDelegate {
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
 }
