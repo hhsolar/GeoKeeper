@@ -79,11 +79,21 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         view.tintColor = baseColor
-        nBar.barTintColor = baseColor
-        nBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
-        cityName.textColor = baseColor
+        
         mapView?.showsUserLocation = true
-                
+        
+        // set navigationBar
+        nBar.barTintColor = baseColor
+        nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
+        
+        // set messageLabel
+        messageLabel.font = UIFont(name: "TrebuchetMS-Italic", size: 16)
+        messageLabel.textColor = secondColor
+       
+        // set cityName
+        cityName.textColor = baseColor
+        cityName.font = UIFont(name: "TrebuchetMS-Bold", size: 20)
+        
         portrait.layer.cornerRadius = portrait.frame.size.width / 2;
         portrait.layer.masksToBounds = true;
         
@@ -229,7 +239,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } else {
             latitudeLabel.text = "Not available"
             longitudeLabel.text = "Not available"
-            addressLabel.text = ""
+            addressLabel.text = "My address"
             tagButton.isEnabled = false
             tagButton.setTitleColor(UIColor.gray, for: .normal)
             messageLabel.text = "Tap 'Get My Location' to Start"
