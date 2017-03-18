@@ -16,11 +16,11 @@ class MyNavigationController: UINavigationController {
         super.viewWillAppear(animated)
         
         self.navigationBar.barTintColor = baseColor
+        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
     }
-    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
 }

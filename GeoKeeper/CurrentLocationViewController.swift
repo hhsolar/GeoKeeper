@@ -80,6 +80,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         super.viewDidLoad()
         view.tintColor = baseColor
         nBar.barTintColor = baseColor
+        nBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         cityName.textColor = baseColor
         mapView?.showsUserLocation = true
                 
