@@ -1,6 +1,6 @@
 version: "Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)"
 options: "71fc344e413b701f8089716d58772d98"
-build_time: [543143253, 181989000]
+build_time: [543143675, 113881000]
 inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryAddViewController.swift": [543116181, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyTabBarController.swift": [542965449, 0]
@@ -18,5 +18,5 @@ inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/Location+CoreDataClass.swift": [543041163, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerViewController.swift": [543041163, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Category+CoreDataClass.swift": [543041163, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CurrentLocationViewController.swift": [543143252, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CurrentLocationViewController.swift": [543143674, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Category+CoreDataProperties.swift": [543041163, 0]

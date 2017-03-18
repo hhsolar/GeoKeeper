@@ -94,12 +94,15 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         cityName.textColor = baseColor
         cityName.font = UIFont(name: "TrebuchetMS-Bold", size: 20)
         
-        portrait.layer.cornerRadius = portrait.frame.size.width / 2;
-        portrait.layer.masksToBounds = true;
+        // set portrait button
+        portrait.layer.cornerRadius = portrait.frame.size.width / 2
+        portrait.layer.masksToBounds = true
         
-        portraitImage.layer.cornerRadius = portrait.frame.size.width / 2;
-        portraitImage.layer.masksToBounds = true;
+        // set portraitImage
+        portraitImage.layer.cornerRadius = portrait.frame.size.width / 2
+        portraitImage.layer.masksToBounds = true
         portraitImage.layer.borderWidth = 1.5
+        portraitImage.layer.borderColor = baseColor.cgColor
         
         updateLabels()
     }
