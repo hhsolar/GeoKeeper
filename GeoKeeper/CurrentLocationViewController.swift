@@ -25,6 +25,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var lastGeocodingError: Error?
     
     var timer: Timer?
+    var image: UIImage?
     
     let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
@@ -38,6 +39,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var nBar: UINavigationBar!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var portrait: UIButton!
+    @IBOutlet weak var portraitImage: UIImageView!
     
     @IBAction func getLocation() {
         let authStatus = CLLocationManager.authorizationStatus()
@@ -69,12 +72,23 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         updateLabels()
     }
     
+    @IBAction func choosePortrait() {
+        pickPhoto()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.tintColor = baseColor
         nBar.barTintColor = baseColor
         cityName.textColor = baseColor
         mapView?.showsUserLocation = true
+                
+        portrait.layer.cornerRadius = portrait.frame.size.width / 2;
+        portrait.layer.masksToBounds = true;
+        
+        portraitImage.layer.cornerRadius = portrait.frame.size.width / 2;
+        portraitImage.layer.masksToBounds = true;
+        portraitImage.layer.borderWidth = 1.5
         
         updateLabels()
     }
@@ -272,11 +286,66 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         present(alert, animated: true, completion: nil)
     }
     
+    func show(image: UIImage) {
+        portraitImage.image = image
+        portraitImage.isHidden = false
+    }
+    
 }
 
 extension CurrentLocationViewController: UINavigationBarDelegate {
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
+    }
+}
+
+extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func pickPhoto() {
+        if MyImagePickerController.isSourceTypeAvailable(.camera) {
+            showPhotoMenu()
+        } else {
+            choosePhotoFromLibrary()
+        }
+    }
+    
+    func showPhotoMenu() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        let takePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in self.takePhotoWithCamera() })
+        alertController.addAction(takePhotoAction)
+        let chooseFormLibraryAction = UIAlertAction(title: "Choose From Library", style: .default, handler: { _ in self.choosePhotoFromLibrary() })
+        alertController.addAction(chooseFormLibraryAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func takePhotoWithCamera() {
+        let imagePicker = MyImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        image = info[UIImagePickerControllerEditedImage] as? UIImage
+        
+        if let theImage = image {
+            show(image: theImage)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    func choosePhotoFromLibrary() {
+        let imagePicker = MyImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
     }
 }
 
