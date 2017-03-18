@@ -120,7 +120,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
         lastLocationError = error
         stopLocationManager()
-        updateLabels()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

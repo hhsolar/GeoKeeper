@@ -9,9 +9,15 @@
 import UIKit
 import MapKit
 import CoreData
+import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
+    
     @IBOutlet weak var mapView: MKMapView!
+    let locationManager = CLLocationManager()
+    var locationLat: Double = 0
+    var locationLong: Double = 0
+    
     
     var managedObjectContext: NSManagedObjectContext! {
         didSet {
@@ -22,14 +28,28 @@ class MapViewController: UIViewController {
         }
     }
     var locations = [Location]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLocations()
+        configureMap()
         
-        if !locations.isEmpty {
-            showLocations()
-        }
+        locationLat = (locationManager.location?.coordinate.latitude)!
+        locationLong = (locationManager.location?.coordinate.longitude)!
+        
+        
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let center = CLLocationCoordinate2DMake(locationLat, locationLong)
+        let region = MKCoordinateRegionMake(center, span)
+        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+    }
+    
+    func configureMap() {
+        mapView.mapType = .standard
+        mapView.isZoomEnabled = true
+        mapView?.showsUserLocation = true
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,16 +87,18 @@ class MapViewController: UIViewController {
         mapView.addAnnotations(locations)
     }
     
+    
     func region(for annotations: [MKAnnotation]) -> MKCoordinateRegion {
         let region: MKCoordinateRegion
         
         switch annotations.count {
         case 0:
-            region = MKCoordinateRegionMakeWithDistance(mapView.userLocation.coordinate, 1000, 1000 )
+            region = MKCoordinateRegionMakeWithDistance(mapView.userLocation.coordinate, 5000, 5000)
         case 1:
             let annotation = annotations[annotations.count - 1]
             region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 1000, 1000)
         default:
+            
             var topLeftCoord = CLLocationCoordinate2D(latitude: -90, longitude: 180)
             var bottomRightCoord = CLLocationCoordinate2D(latitude: 90, longitude: -180)
             
@@ -101,6 +123,13 @@ class MapViewController: UIViewController {
         performSegue(withIdentifier: "EditLocation", sender: sender)
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        locationLat = locValue.latitude
+        locationLong = locValue.longitude
+    }
+
+
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -136,9 +165,13 @@ extension MapViewController: MKMapViewDelegate {
     }
 }
 
+
 extension MapViewController: UINavigationBarDelegate {
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
 }
+
+
+
 
