@@ -122,9 +122,9 @@ class LocationsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            let location = fetchedResultsController.object(at: indexPath)
             let location = locations[indexPath.row]
             managedObjectContext.delete(location)
+            locations.remove(at: indexPath.row)
             
             do {
                 try managedObjectContext.save()
@@ -132,6 +132,7 @@ class LocationsViewController: UITableViewController {
                 fatalCoreDataError(error)
             }
         }
+        tableView.reloadData()
     }
     
 }
