@@ -14,10 +14,13 @@ import CoreLocation
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var nBar: UINavigationBar!
+    
     let locationManager = CLLocationManager()
     var locationLat: Double = 0
     var locationLong: Double = 0
     
+    let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     
     var managedObjectContext: NSManagedObjectContext! {
         didSet {
@@ -35,9 +38,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         updateLocations()
         configureMap()
         
+        nBar.barTintColor = baseColor
+        nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
+        nBar.topItem?.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
+        nBar.topItem?.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
+        
         locationLat = (locationManager.location?.coordinate.latitude)!
         locationLong = (locationManager.location?.coordinate.longitude)!
-        
         
         let span = MKCoordinateSpanMake(0.01, 0.01)
         let center = CLLocationCoordinate2DMake(locationLat, locationLong)

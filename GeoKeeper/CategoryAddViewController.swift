@@ -27,6 +27,8 @@ class CategoryAddViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         addCategory.delegate = self
         addCategory.dataSource = self
+        
+        
     }
     
     @IBAction func getBack() {

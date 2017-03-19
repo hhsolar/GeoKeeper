@@ -622,6 +622,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map_icon" id="mM2-na-QvF"/>
                     <connections>
                         <outlet property="mapView" destination="T5P-bq-VrY" id="9Mm-O3-AD2"/>
+                        <outlet property="nBar" destination="Nso-b8-Q4h" id="pxs-jy-dMb"/>
                         <segue destination="Og8-4W-mCu" kind="presentation" identifier="EditLocation" id="Qwk-lS-FwD"/>
                     </connections>
                 </viewController>
@@ -729,6 +730,6 @@
         <image name="tag_icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qis-hZ-zgh"/>
+        <segue reference="Qwk-lS-FwD"/>
     </inferredMetricsTieBreakers>
 </document>

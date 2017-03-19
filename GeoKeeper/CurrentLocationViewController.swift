@@ -84,7 +84,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         
         // set navigationBar
         nBar.barTintColor = baseColor
-        nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
+        nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
         
         // set messageLabel
         messageLabel.font = UIFont(name: "TrebuchetMS-Italic", size: 16)
@@ -103,7 +103,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         portraitImage.layer.masksToBounds = true
         portraitImage.layer.borderWidth = 1.5
         portraitImage.layer.borderColor = baseColor.cgColor
-        
+                
         updateLabels()
     }
 

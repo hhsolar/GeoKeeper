@@ -414,9 +414,11 @@ SWIFT_CLASS("_TtC9GeoKeeper23LocationsViewController")
 SWIFT_CLASS("_TtC9GeoKeeper17MapViewController")
 @interface MapViewController : UIViewController <CLLocationManagerDelegate>
 @property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
+@property (nonatomic, weak) IBOutlet UINavigationBar * _Null_unspecified nBar;
 @property (nonatomic, readonly, strong) CLLocationManager * _Nonnull locationManager;
 @property (nonatomic) double locationLat;
 @property (nonatomic) double locationLong;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, copy) NSArray<Location *> * _Nonnull locations;
 - (void)viewDidLoad;

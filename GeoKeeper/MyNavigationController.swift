@@ -16,7 +16,7 @@ class MyNavigationController: UINavigationController {
         super.viewWillAppear(animated)
         
         self.navigationBar.barTintColor = baseColor
-        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
         
     }
     
