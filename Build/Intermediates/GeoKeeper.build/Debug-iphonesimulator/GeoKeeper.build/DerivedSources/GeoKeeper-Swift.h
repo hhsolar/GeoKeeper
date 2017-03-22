@@ -344,8 +344,47 @@ SWIFT_CLASS("_TtC9GeoKeeper12LocationCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIGestureRecognizer;
+@class UIScrollView;
 @class UITextView;
+
+SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
+@interface LocationDetailViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified locationNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified categoryLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
+@property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapKit;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified mapAppButton;
+@property (nonatomic, weak) IBOutlet UIScrollView * _Null_unspecified scrollView;
+@property (nonatomic, weak) IBOutlet UITextView * _Null_unspecified remarkTextView;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull secondColor;
+@property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
+@property (nonatomic, copy) NSString * _Nonnull categoryName;
+@property (nonatomic, strong) CLPlacemark * _Nullable placemark;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly) CGFloat kScreenWidth;
+@property (nonatomic, readonly) CGFloat kScreenHeight;
+@property (nonatomic, readonly) CGFloat edgeW;
+@property (nonatomic, readonly) CGFloat edgeH;
+@property (nonatomic, readonly) CGFloat scrollViewHeight;
+@property (nonatomic, strong) Location * _Nullable locationToEdit;
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull param;
+- (IBAction)openMapsApp;
+- (IBAction)edit;
+- (IBAction)getBack;
+- (void)viewDidLoad;
+- (void)weatherSearch;
+- (NSURL * _Nonnull)weatherURLWithLocation:(Location * _Nonnull)location;
+- (NSString * _Nonnull)stringFromPlacemarkWithPlacemark:(CLPlacemark * _Nonnull)placemark;
+- (void)setLocationWithLocation:(Location * _Nonnull)location;
+- (void)scrollViewSetup;
+- (void)addImageViewsToScrollView;
+- (void)setDefaultInfo;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIGestureRecognizer;
 
 SWIFT_CLASS("_TtC9GeoKeeper29LocationDetailsViewController")
 @interface LocationDetailsViewController : UITableViewController

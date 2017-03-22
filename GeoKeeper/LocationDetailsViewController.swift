@@ -78,7 +78,7 @@ class LocationDetailsViewController:UITableViewController {
         if let placemark = placemark {
             addressLabel.text = stringFromPlacemark(placemark: placemark)
         } else {
-            addressLabel.text = "No Adddress Found"
+            addressLabel.text = "No Address Found"
         }
         dateLabel.text = formatDate(date: date)
         

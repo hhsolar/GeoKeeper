@@ -58,7 +58,6 @@ class LocationsViewController: UITableViewController {
         } catch {
             fatalCoreDataError(error)
         }
-        
     }
     
 //    func performFetch() {
@@ -70,11 +69,11 @@ class LocationsViewController: UITableViewController {
 //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditLocation" {
-            let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.topViewController as! LocationDetailsViewController
+        if segue.identifier == "LocationDetail" {
+            let myNavigationController = segue.destination as! MyNavigationController
+            let controller = myNavigationController.topViewController as! LocationDetailViewController
             controller.managedObjectContext = managedObjectContext
-            
+
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 let location = locations[indexPath.row]
                 controller.locationToEdit = location

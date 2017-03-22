@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1801FB771E77BAAC00705F92 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801FB761E77BAAC00705F92 /* MyNavigationController.swift */; };
 		1801FB7B1E7BA05600705F92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1801FB7A1E7BA05600705F92 /* Assets.xcassets */; };
+		1801FB8C1E7F100C00705F92 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1801FB8B1E7F100C00705F92 /* LocationDetailViewController.swift */; };
 		185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */; };
 		185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */; };
 		185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		1801FB761E77BAAC00705F92 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		1801FB7A1E7BA05600705F92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1801FB8B1E7F100C00705F92 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
 		185F5C371E679C5F004E73B7 /* GeoKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				1F5876CB1E7CBDFD006FB269 /* MyTabBarController.swift */,
 				1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */,
 				1801FB761E77BAAC00705F92 /* MyNavigationController.swift */,
+				1801FB8B1E7F100C00705F92 /* LocationDetailViewController.swift */,
 			);
 			path = GeoKeeper;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				1F5876CC1E7CBDFD006FB269 /* MyTabBarController.swift in Sources */,
 				1FF7F1691E67AC9500E8F809 /* LocationDetailsViewController.swift in Sources */,
 				1FEAD4A11E6CC380007CC5F1 /* LocationsViewController.swift in Sources */,
+				1801FB8C1E7F100C00705F92 /* LocationDetailViewController.swift in Sources */,
 				1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */,
 				1801FB771E77BAAC00705F92 /* MyNavigationController.swift in Sources */,
 				1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */,

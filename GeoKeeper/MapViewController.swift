@@ -135,8 +135,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         locationLat = locValue.latitude
         locationLong = locValue.longitude
     }
-
-
 }
 
 extension MapViewController: MKMapViewDelegate {
