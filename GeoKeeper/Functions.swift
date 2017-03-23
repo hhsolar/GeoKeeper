@@ -27,4 +27,8 @@ let applicationDocumentsDirectory: URL = {
     return paths[0]
 }()
 
+func chooseColor(indexPathRow: Int) {
+    
+}
+
 
