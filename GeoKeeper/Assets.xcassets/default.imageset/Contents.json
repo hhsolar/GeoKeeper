@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "portrait_cat.jpeg",
+      "filename" : "default.png",
       "scale" : "1x"
     },
     {

@@ -13,21 +13,25 @@
 		185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */; };
 		185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */; };
 		185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */; };
-		1F1CE2F11E7738E400A1FA77 /* AllCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE2F01E7738E400A1FA77 /* AllCategoryViewController.swift */; };
 		1F1CE3281E7A1D2F00A1FA77 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */; };
 		1F1CE3291E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */; };
-		1F5876C81E7B7540006FB269 /* CategoryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5876C71E7B7540006FB269 /* CategoryAddViewController.swift */; };
 		1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5876C91E7BA0CE006FB269 /* Assets.xcassets */; };
 		1F5876CC1E7CBDFD006FB269 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5876CB1E7CBDFD006FB269 /* MyTabBarController.swift */; };
+		1F8D4F811E83963100A5D73E /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F801E83963100A5D73E /* CategoriesViewController.swift */; };
+		1F8D4F881E8398C700A5D73E /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */; };
+		1F8D4F8A1E83990700A5D73E /* CategoryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F891E83990700A5D73E /* CategoryAddViewController.swift */; };
+		1F8D4F8C1E83993F00A5D73E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F8B1E83993F00A5D73E /* CategoryCell.swift */; };
+		1F8D4F8E1E83994F00A5D73E /* MyColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F8D1E83994F00A5D73E /* MyColorCollectionViewCell.swift */; };
+		1F8D4F901E83995500A5D73E /* MyIconCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F8F1E83995500A5D73E /* MyIconCollectionCell.swift */; };
+		1F8D4F921E83995C00A5D73E /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */; };
+		1F8D4F961E839D4100A5D73E /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */; };
 		1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4ED521E722E3F002A6818 /* MapViewController.swift */; };
 		1FA4ED561E72331D002A6818 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA4ED541E72331D002A6818 /* Main.storyboard */; };
-		1FEAD4881E6A62E6007CC5F1 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4871E6A62E6007CC5F1 /* CategoryPickerViewController.swift */; };
 		1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4891E6A8B19007CC5F1 /* HudView.swift */; };
 		1FEAD4901E6CAAEF007CC5F1 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */; };
 		1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4911E6CB5D2007CC5F1 /* DataModel.xcdatamodeld */; };
 		1FEAD49E1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */; };
 		1FEAD49F1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD49D1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift */; };
-		1FEAD4A11E6CC380007CC5F1 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4A01E6CC380007CC5F1 /* LocationsViewController.swift */; };
 		1FEAD4A31E6E2146007CC5F1 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */; };
 		1FEAD4A61E6E2B2A007CC5F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEAD4A51E6E2B2A007CC5F1 /* MapKit.framework */; };
 		1FEAD4AC1E70E41C007CC5F1 /* MyImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */; };
@@ -43,21 +47,25 @@
 		185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		185F5C461E679C5F004E73B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185F5C481E679C5F004E73B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F1CE2F01E7738E400A1FA77 /* AllCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCategoryViewController.swift; sourceTree = "<group>"; };
 		1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		1F5876C71E7B7540006FB269 /* CategoryAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryAddViewController.swift; sourceTree = "<group>"; };
 		1F5876C91E7BA0CE006FB269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F5876CB1E7CBDFD006FB269 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		1F8D4F801E83963100A5D73E /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		1F8D4F891E83990700A5D73E /* CategoryAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryAddViewController.swift; sourceTree = "<group>"; };
+		1F8D4F8B1E83993F00A5D73E /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		1F8D4F8D1E83994F00A5D73E /* MyColorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		1F8D4F8F1E83995500A5D73E /* MyIconCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyIconCollectionCell.swift; sourceTree = "<group>"; };
+		1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
+		1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		1FA4ED521E722E3F002A6818 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1FA4ED551E72331D002A6818 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1FEAD4871E6A62E6007CC5F1 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		1FEAD4891E6A8B19007CC5F1 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		1FEAD4921E6CB5D2007CC5F1 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FEAD49D1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		1FEAD4A01E6CC380007CC5F1 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		1FEAD4A51E6E2B2A007CC5F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
@@ -100,28 +108,72 @@
 		185F5C391E679C5F004E73B7 /* GeoKeeper */ = {
 			isa = PBXGroup;
 			children = (
-				1F5876C91E7BA0CE006FB269 /* Assets.xcassets */,
-				185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */,
-				1F1CE2F01E7738E400A1FA77 /* AllCategoryViewController.swift */,
-				1FEAD4A01E6CC380007CC5F1 /* LocationsViewController.swift */,
-				1FF7F1681E67AC9500E8F809 /* LocationDetailsViewController.swift */,
 				1FA4ED541E72331D002A6818 /* Main.storyboard */,
-				1FA4ED521E722E3F002A6818 /* MapViewController.swift */,
-				185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */,
-				1FEAD4871E6A62E6007CC5F1 /* CategoryPickerViewController.swift */,
-				1F5876C71E7B7540006FB269 /* CategoryAddViewController.swift */,
 				185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */,
-				185F5C481E679C5F004E73B7 /* Info.plist */,
-				1FEAD4891E6A8B19007CC5F1 /* HudView.swift */,
-				1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */,
-				1FEAD4911E6CB5D2007CC5F1 /* DataModel.xcdatamodeld */,
-				1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */,
-				1F5876CB1E7CBDFD006FB269 /* MyTabBarController.swift */,
-				1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */,
-				1801FB761E77BAAC00705F92 /* MyNavigationController.swift */,
-				1801FB8B1E7F100C00705F92 /* LocationDetailViewController.swift */,
+				1F8D4F861E8397C700A5D73E /* Generals */,
+				1F8D4F821E8396C900A5D73E /* Controllers */,
+				1F8D4F841E83977300A5D73E /* Models */,
+				1F8D4F851E83979100A5D73E /* Views */,
 			);
 			path = GeoKeeper;
+			sourceTree = "<group>";
+		};
+		1F8D4F821E8396C900A5D73E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1F8D4F831E83972B00A5D73E /* TabbarViewControllers */,
+				1FF7F1681E67AC9500E8F809 /* LocationDetailsViewController.swift */,
+				1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */,
+				1801FB8B1E7F100C00705F92 /* LocationDetailViewController.swift */,
+				1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */,
+				1F8D4F891E83990700A5D73E /* CategoryAddViewController.swift */,
+				1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		1F8D4F831E83972B00A5D73E /* TabbarViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */,
+				1F8D4F801E83963100A5D73E /* CategoriesViewController.swift */,
+				1FA4ED521E722E3F002A6818 /* MapViewController.swift */,
+			);
+			name = TabbarViewControllers;
+			sourceTree = "<group>";
+		};
+		1F8D4F841E83977300A5D73E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1FEAD4911E6CB5D2007CC5F1 /* DataModel.xcdatamodeld */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		1F8D4F851E83979100A5D73E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1FEAD4891E6A8B19007CC5F1 /* HudView.swift */,
+				1F5876CB1E7CBDFD006FB269 /* MyTabBarController.swift */,
+				1801FB761E77BAAC00705F92 /* MyNavigationController.swift */,
+				1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */,
+				1F8D4F8B1E83993F00A5D73E /* CategoryCell.swift */,
+				1F8D4F8D1E83994F00A5D73E /* MyColorCollectionViewCell.swift */,
+				1F8D4F8F1E83995500A5D73E /* MyIconCollectionCell.swift */,
+				1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		1F8D4F861E8397C700A5D73E /* Generals */ = {
+			isa = PBXGroup;
+			children = (
+				185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */,
+				1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */,
+				185F5C481E679C5F004E73B7 /* Info.plist */,
+				1F5876C91E7BA0CE006FB269 /* Assets.xcassets */,
+			);
+			name = Generals;
 			sourceTree = "<group>";
 		};
 		1FEAD4A41E6E2B2A007CC5F1 /* Frameworks */ = {
@@ -206,23 +258,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F5876C81E7B7540006FB269 /* CategoryAddViewController.swift in Sources */,
+				1F8D4F961E839D4100A5D73E /* CategoryPickerViewController.swift in Sources */,
+				1F8D4F8A1E83990700A5D73E /* CategoryAddViewController.swift in Sources */,
 				1F5876CC1E7CBDFD006FB269 /* MyTabBarController.swift in Sources */,
 				1FF7F1691E67AC9500E8F809 /* LocationDetailsViewController.swift in Sources */,
-				1FEAD4A11E6CC380007CC5F1 /* LocationsViewController.swift in Sources */,
 				1801FB8C1E7F100C00705F92 /* LocationDetailViewController.swift in Sources */,
+				1F8D4F811E83963100A5D73E /* CategoriesViewController.swift in Sources */,
 				1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */,
+				1F8D4F8E1E83994F00A5D73E /* MyColorCollectionViewCell.swift in Sources */,
 				1801FB771E77BAAC00705F92 /* MyNavigationController.swift in Sources */,
 				1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */,
 				1FEAD49F1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift in Sources */,
 				1FEAD4901E6CAAEF007CC5F1 /* Functions.swift in Sources */,
-				1F1CE2F11E7738E400A1FA77 /* AllCategoryViewController.swift in Sources */,
+				1F8D4F921E83995C00A5D73E /* RoundedCornersView.swift in Sources */,
 				1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */,
+				1F8D4F881E8398C700A5D73E /* LocationsViewController.swift in Sources */,
 				1FEAD4A31E6E2146007CC5F1 /* LocationCell.swift in Sources */,
+				1F8D4F901E83995500A5D73E /* MyIconCollectionCell.swift in Sources */,
 				1FEAD4AC1E70E41C007CC5F1 /* MyImagePickerController.swift in Sources */,
 				185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */,
 				1FEAD49E1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift in Sources */,
-				1FEAD4881E6A62E6007CC5F1 /* CategoryPickerViewController.swift in Sources */,
+				1F8D4F8C1E83993F00A5D73E /* CategoryCell.swift in Sources */,
 				1F1CE3281E7A1D2F00A1FA77 /* Category+CoreDataClass.swift in Sources */,
 				185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */,
 				1F1CE3291E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift in Sources */,

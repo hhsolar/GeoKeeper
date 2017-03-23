@@ -23,18 +23,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             currentLocationViewController.managedObjectContext = managedObjectContext
             
             let navigationController = tabBarViewControllers[1] as! UINavigationController
-            let allCategoryViewController = navigationController.viewControllers[0] as! AllCategoryViewController
-            allCategoryViewController.managedObjectContext = managedObjectContext
+            let categoriesViewController = navigationController.viewControllers[0] as! CategoriesViewController
+            categoriesViewController.managedObjectContext = managedObjectContext
             
     
             let mapViewController = tabBarViewControllers[2] as! MapViewController
             mapViewController.managedObjectContext = managedObjectContext
             
-            let _ = allCategoryViewController.view
+            let _ = categoriesViewController.view
         }
         listenForFatalCoreDataNotifications()
         print(applicationDocumentsDirectory)
+        
+        checkFirstLaunch()
         return true
+    }
+    
+    
+    func checkFirstLaunch() {
+        let launchBefore = UserDefaults.standard.bool(forKey: "launchBefore")
+        if launchBefore {
+            print("launch before")
+        } else {
+            UserDefaults.standard.set("Default", forKey: "Portrait")
+            UserDefaults.standard.set(true, forKey: "launchBefore")
+            
+            let defaultCategories = ["No Category", "Restaurant", "LandMark", "Friends'"]
+            let defaultColors = ["red", "blue", "purple", "orange"]
+            let defaultIconNames = ["No Icon", "Drinks", "Appointments", "Folder"]
+            let entity = NSEntityDescription.entity(forEntityName: "Category", in: managedObjectContext)!
+            for i in 0..<4 {
+                let categoryObject = NSManagedObject(entity: entity, insertInto: managedObjectContext)
+                categoryObject.setValue(defaultCategories[i], forKey: "category")
+                categoryObject.setValue(defaultColors[i], forKey: "color")
+                categoryObject.setValue(defaultIconNames[i], forKey: "iconName")
+            }
+            
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalError("Failure to save context: \(error)")
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

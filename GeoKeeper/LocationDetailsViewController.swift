@@ -131,6 +131,7 @@ class LocationDetailsViewController:UITableViewController {
         if segue.identifier == "PickCategoryinDetailView" {
             let controller = segue.destination as! CategoryPickerViewController
             controller.selectedCategoryName = "No Category"
+            controller.managedObjectContext = managedObjectContext
         }
     }
     
