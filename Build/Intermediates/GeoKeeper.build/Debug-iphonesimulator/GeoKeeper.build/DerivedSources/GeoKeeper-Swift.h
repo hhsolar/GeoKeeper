@@ -116,44 +116,17 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
-@import Foundation;
 @import CoreData;
-@import CoreLocation;
+@import Foundation;
 @import CoreGraphics;
+@import CoreLocation;
 @import MapKit;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
-@class NSManagedObjectContext;
-@class NSMutableOrderedSet;
-@class UITableView;
-@class UITableViewCell;
-@class UIStoryboardSegue;
-@class UILabel;
-@class NSBundle;
-@class NSCoder;
-
-SWIFT_CLASS("_TtC9GeoKeeper25AllCategoryViewController")
-@interface AllCategoryViewController : UITableViewController <UINavigationControllerDelegate>
-@property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
-@property (nonatomic, strong) NSMutableOrderedSet * _Nonnull categorySet;
-@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified categoryLabel;
-- (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
-- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;
-- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (void)tableView:(UITableView * _Nonnull)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
-- (IBAction)categoryPickerDidPickCategory:(UIStoryboardSegue * _Nonnull)segue;
-- (void)saveWithName:(NSString * _Nonnull)name;
-- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
 @class UIWindow;
+@class NSManagedObjectContext;
 @class UIApplication;
 @class NSPersistentContainer;
 @class UIViewController;
@@ -163,6 +136,7 @@ SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 @property (nonatomic, strong) UIWindow * _Nullable window;
 @property (nonatomic, strong) NSManagedObjectContext * _Nonnull managedObjectContext;
 - (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions;
+- (void)checkFirstLaunch;
 - (void)applicationWillResignActive:(UIApplication * _Nonnull)application;
 - (void)applicationDidEnterBackground:(UIApplication * _Nonnull)application;
 - (void)applicationWillEnterForeground:(UIApplication * _Nonnull)application;
@@ -172,6 +146,59 @@ SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 - (void)listenForFatalCoreDataNotifications;
 - (UIViewController * _Nonnull)viewControllerForShowingAlert;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSBlockOperation;
+@class UIColor;
+@class UIStoryboardSegue;
+@protocol NSFetchedResultsSectionInfo;
+@class UICollectionViewCell;
+@class UICollectionView;
+@class NSBundle;
+@class NSCoder;
+
+SWIFT_CLASS("_TtC9GeoKeeper24CategoriesViewController")
+@interface CategoriesViewController : UIViewController <UIScrollViewDelegate, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UICollectionViewDataSource>
+@property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
+@property (nonatomic, copy) NSArray<NSBlockOperation *> * _Nonnull blockOperations;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor1;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor2;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor3;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor4;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor5;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull red;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull blue;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull purple;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull gray;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull yellow;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull orange;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull black;
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull icons;
+@property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified collectionView;
+// 'fetchedResultsController' below
+- (void)viewDidLoad;
+- (void)performFetch;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
+- (void)controller:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller didChangeObject:(id _Nonnull)anObject atIndexPath:(NSIndexPath * _Nullable)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath * _Nullable)newIndexPath;
+- (void)controller:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller didChangeSection:(id <NSFetchedResultsSectionInfo> _Nonnull)sectionInfo atIndex:(NSInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type;
+- (void)controllerDidChangeContent:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller;
+- (void)collectionColor:(NSIndexPath * _Nonnull)indexPath :(UICollectionViewCell * _Nonnull)cell;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface CategoriesViewController (SWIFT_EXTENSION(GeoKeeper))
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+@class UICollectionViewLayout;
+
+@interface CategoriesViewController (SWIFT_EXTENSION(GeoKeeper)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (UIEdgeInsets)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
+- (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section;
 @end
 
 @class NSEntityDescription;
@@ -184,40 +211,79 @@ SWIFT_CLASS("_TtC9GeoKeeper8Category")
 
 @interface Category (SWIFT_EXTENSION(GeoKeeper))
 @property (nonatomic, copy) NSString * _Nullable category;
+@property (nonatomic, copy) NSString * _Nullable color;
+@property (nonatomic, copy) NSString * _Nullable iconName;
 @end
 
+@class UITextField;
+@class UIBarButtonItem;
 
 SWIFT_CLASS("_TtC9GeoKeeper25CategoryAddViewController")
-@interface CategoryAddViewController : UIViewController <UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface CategoryAddViewController : UIViewController <UITextFieldDelegate>
 @property (nonatomic, copy) NSString * _Nonnull selectedCategoryName;
-@property (nonatomic, weak) IBOutlet UITableView * _Null_unspecified addCategory;
-@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull categories;
-@property (nonatomic, copy) NSIndexPath * _Nonnull selectedIndexPath;
+@property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
+@property (nonatomic, copy) NSString * _Nonnull color;
+@property (nonatomic, copy) NSString * _Nonnull icon;
+@property (nonatomic) NSInteger temp;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem * _Null_unspecified doneBarButton;
+@property (nonatomic, strong) IBOutlet UICollectionView * _Nullable colorCollection;
+@property (nonatomic, strong) IBOutlet UITextField * _Null_unspecified textField;
 - (void)viewDidLoad;
-- (IBAction)getBack;
-- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;
-- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
-- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull icons;
+- (IBAction)cancel;
+- (IBAction)done;
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string;
+- (void)saveCategoryWithName:(NSString * _Nonnull)name;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@protocol UIBarPositioning;
 
-@interface CategoryAddViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
-- (UIBarPosition)positionForBar:(id <UIBarPositioning> _Nonnull)bar;
+@interface CategoryAddViewController (SWIFT_EXTENSION(GeoKeeper)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (UIEdgeInsets)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
+- (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section;
 @end
 
+
+@interface CategoryAddViewController (SWIFT_EXTENSION(GeoKeeper)) <UICollectionViewDelegate, UIScrollViewDelegate, UICollectionViewDataSource>
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView;
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+@class UIImageView;
+@class UILabel;
+
+SWIFT_CLASS("_TtC9GeoKeeper12CategoryCell")
+@interface CategoryCell : UICollectionViewCell
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified categoryImageView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified categoryLabel;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UITableView;
+@class UITableViewCell;
 
 SWIFT_CLASS("_TtC9GeoKeeper28CategoryPickerViewController")
 @interface CategoryPickerViewController : UITableViewController
 @property (nonatomic, copy) NSString * _Nonnull selectedCategoryName;
-@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull categories;
+@property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, copy) NSIndexPath * _Nonnull selectedIndexPath;
+@property (nonatomic, copy) NSArray<Category *> * _Nonnull categories;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull red;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull blue;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull purple;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull gray;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull yellow;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull orange;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull black;
 - (void)viewDidLoad;
 - (IBAction)getBack;
-- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
@@ -231,11 +297,9 @@ SWIFT_CLASS("_TtC9GeoKeeper28CategoryPickerViewController")
 @class CLPlacemark;
 @class NSTimer;
 @class UIImage;
-@class UIColor;
 @class UIButton;
 @class UINavigationBar;
 @class MKMapView;
-@class UIImageView;
 
 SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @interface CurrentLocationViewController : UIViewController <CLLocationManagerDelegate>
@@ -280,6 +344,7 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@protocol UIBarPositioning;
 
 @interface CurrentLocationViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
 - (UIBarPosition)positionForBar:(id <UIBarPositioning> _Nonnull)bar;
@@ -367,12 +432,13 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @property (nonatomic, readonly) CGFloat edgeW;
 @property (nonatomic, readonly) CGFloat edgeH;
 @property (nonatomic, readonly) CGFloat scrollViewHeight;
+@property (nonatomic, readonly, copy) NSString * _Nonnull apiKey;
 @property (nonatomic, strong) Location * _Nullable locationToEdit;
-@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull param;
 - (IBAction)openMapsApp;
 - (IBAction)edit;
 - (IBAction)getBack;
 - (void)viewDidLoad;
+- (NSString * _Nullable)performWeatherRequestWith:(NSURL * _Nonnull)url;
 - (void)weatherSearch;
 - (NSURL * _Nonnull)weatherURLWithLocation:(Location * _Nonnull)location;
 - (NSString * _Nonnull)stringFromPlacemarkWithPlacemark:(CLPlacemark * _Nonnull)placemark;
@@ -485,6 +551,22 @@ SWIFT_CLASS("_TtC9GeoKeeper17MapViewController")
 @end
 
 
+SWIFT_CLASS("_TtC9GeoKeeper25MyColorCollectionViewCell")
+@interface MyColorCollectionViewCell : UICollectionViewCell
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified colorLabel;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9GeoKeeper20MyIconCollectionCell")
+@interface MyIconCollectionCell : UICollectionViewCell
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified iconImage;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC9GeoKeeper23MyImagePickerController")
 @interface MyImagePickerController : UIImagePickerController
 @property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
@@ -517,6 +599,18 @@ SWIFT_CLASS("_TtC9GeoKeeper18MyTabBarController")
 @property (nonatomic, readonly, strong) UIViewController * _Nullable childViewControllerForStatusBarStyle;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9GeoKeeper18RoundedCornersView")
+@interface RoundedCornersView : UIView
+@property (nonatomic) CGFloat cornerRadius;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@interface CategoriesViewController (SWIFT_EXTENSION(GeoKeeper))
+@property (nonatomic, strong) NSFetchedResultsController<Category *> * _Nonnull fetchedResultsController;
 @end
 
 #pragma clang diagnostic pop

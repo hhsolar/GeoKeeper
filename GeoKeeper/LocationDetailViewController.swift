@@ -36,6 +36,7 @@ class LocationDetailViewController: UIViewController {
     let edgeW = CGFloat(3)
     let edgeH = CGFloat(6)
     let scrollViewHeight = UIScreen.main.bounds.size.height / 13 * 3
+    let apiKey = "64061cb2cff1e380d2011f5ad50d3bf8"
     
     var locationToEdit: Location? {
         didSet {
@@ -46,8 +47,6 @@ class LocationDetailViewController: UIViewController {
             }
         }
     }
-    
-    var param: [String: String] = [:]
     
   //  required init?(coder aDecoder: NSCoder) {
   //      super.init(coder: aDecoder)
@@ -108,17 +107,27 @@ class LocationDetailViewController: UIViewController {
         
         scrollViewSetup()
         
-        param = ["lat": String(locationToEdit!.latitude), "lon": String(locationToEdit!.longitude)]
         weatherSearch()
+    }
+    
+    func performWeatherRequest(with url: URL) -> String? {
+        do {
+            return try String(contentsOf: url, encoding: .utf8)
+        } catch {
+            print("Download Error: \(error)")
+            return nil
+        }
     }
     
     func weatherSearch() {
         let url = weatherURL(location: locationToEdit!)
-        print("URL: '\(url)'")
+        if let jsonSting = performWeatherRequest(with: url) {
+            print("URL: '\(jsonSting)'")
+        }
     }
     
     func weatherURL(location: Location) -> URL{
-        let urlString = String(format: "http://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@", location.latitude, location.longitude)
+        let urlString = String(format: "http://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&APPID=%@", String(location.latitude), String( location.longitude), apiKey)
         let url = URL(string: urlString)
         return url!
     }
