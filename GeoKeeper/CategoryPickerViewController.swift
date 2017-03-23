@@ -7,25 +7,39 @@
 //
 
 import UIKit
+import CoreData
 
 class CategoryPickerViewController: UITableViewController {
     var selectedCategoryName = ""
-    
-    let categories = [
-        "No Category",
-        "Friend's Home",
-        "Ski Resort",
-        "Restaurant",
-        "Club",
-        "Store",
-        "Landmark",
-        "Park"]
+    var managedObjectContext: NSManagedObjectContext!
     var selectedIndexPath = IndexPath()
+    var categories = [Category]()
+    
+    let red = UIColor.red
+    let blue = UIColor.blue
+    let purple = UIColor.purple
+    let gray = UIColor.gray
+    let yellow = UIColor.yellow
+    let orange = UIColor.orange
+    let black = UIColor.black
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for i in 0 ..< categories.count {
-            if categories[i] == selectedCategoryName {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "category")
+        fetchRequest.entity = Category.entity()
+        let sortDescriptor = NSSortDescriptor(key: "category", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        do {
+            let fetchedResults = try managedObjectContext.fetch(fetchRequest)
+            for category in fetchedResults {
+                categories.append(category as! Category)
+            }
+        } catch {
+            fatalCoreDataError(error)
+        }
+        
+        for i in 0..<categories.count {
+            if categories[i].category == selectedCategoryName {
                 selectedIndexPath = IndexPath(row: i, section: 0)
                 break
             }
@@ -36,25 +50,47 @@ class CategoryPickerViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PickedCategory" {
             let cell = sender as! UITableViewCell
             if let IndexPath = tableView.indexPath(for: cell) {
-                selectedCategoryName = categories[IndexPath.row]
+                selectedCategoryName = categories[IndexPath.row].category!
             }
         }
     }
     
     //Mark: - UITableViewDateSource
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categories.count
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let categoryName = categories[indexPath.row]
+        let categoryName = categories[indexPath.row].category
+        let categoryColor = categories[indexPath.row].color!
         cell.textLabel!.text = categoryName
+        
+        switch categoryColor {
+        case "red":
+            cell.textLabel?.textColor = red
+        case "blue":
+            cell.textLabel?.textColor = blue
+        case "purple":
+            cell.textLabel?.textColor = purple
+        case "gray":
+            cell.textLabel?.textColor = gray
+        case "black":
+            cell.textLabel?.textColor = black
+        case "yellow":
+            cell.textLabel?.textColor = yellow
+        case "orange":
+            cell.textLabel?.textColor = orange
+        default:
+            cell.textLabel?.textColor = black
+        }
+
         if categoryName == selectedCategoryName {
             cell.accessoryType = .checkmark
         } else {

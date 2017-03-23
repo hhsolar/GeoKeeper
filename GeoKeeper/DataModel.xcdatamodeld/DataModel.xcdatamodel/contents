@@ -2,6 +2,8 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16B2657" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName=".Category" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iconName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Location" representedClassName=".Location" syncable="YES">
         <attribute name="category" attributeType="String" syncable="YES"/>
@@ -13,7 +15,7 @@
         <attribute name="placemark" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Category" positionX="-63" positionY="36" width="128" height="90"/>
         <element name="Location" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="Category" positionX="-63" positionY="36" width="128" height="60"/>
     </elements>
 </model>
