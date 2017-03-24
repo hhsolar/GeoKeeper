@@ -678,9 +678,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DtN-Ei-B4f">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DtN-Ei-B4f">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="giq-HQ-BtN">
                                     <size key="itemSize" width="200" height="200"/>
@@ -729,6 +728,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DtN-Ei-B4f" firstAttribute="top" secondItem="wme-Kg-Y2J" secondAttribute="bottom" id="D95-CM-Kf3"/>
+                            <constraint firstAttribute="trailing" secondItem="DtN-Ei-B4f" secondAttribute="trailing" id="Do9-7v-gYF"/>
+                            <constraint firstItem="DtN-Ei-B4f" firstAttribute="leading" secondItem="NgF-BW-9Tn" secondAttribute="leading" id="M0W-Gc-q1P"/>
+                            <constraint firstItem="cha-Y0-hdN" firstAttribute="top" secondItem="DtN-Ei-B4f" secondAttribute="bottom" id="urB-Ds-6W3"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Categories" id="BWa-Ou-L7X">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ISg-Pp-hMq">
@@ -898,7 +903,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="colorCollection" destination="DiP-uZ-MXO" id="WqG-9W-Cxg"/>
-                        <outlet property="doneBarButton" destination="hin-jW-bD0" id="loH-Yf-KGa"/>
+                        <outlet property="doneBarButton" destination="hin-jW-bD0" id="v3u-2b-HWd"/>
                         <outlet property="textField" destination="E3r-Ru-Oc8" id="lg3-fZ-Tg7"/>
                     </connections>
                 </viewController>

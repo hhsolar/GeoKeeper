@@ -25,12 +25,6 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var colorCollection: UICollectionView?
     @IBOutlet var textField: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        textField.delegate = self
-        doneBarButton.isEnabled = false
-    }
-
     let icons = [
         "Appointments",
         "Birthdays",
@@ -41,6 +35,20 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         "Inbox",
         "Photos",
         "Trips" ]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textField.delegate = self
+        doneBarButton.isEnabled = false
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        gestureRecognizer.cancelsTouchesInView = false
+        colorCollection?.addGestureRecognizer(gestureRecognizer)
+    }
+
+    func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
+        textField.resignFirstResponder()
+    }
     
     @IBAction func cancel() {
         dismiss(animated: true, completion: nil)
@@ -64,11 +72,6 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     }
     
     func saveCategory(name: String) {
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//            return
-//        }
-//        
-//        let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Category", in: managedObjectContext)!
         let category = NSManagedObject(entity: entity, insertInto: managedObjectContext)
         category.setValue(name, forKey: "category")
@@ -83,7 +86,6 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
 }
 
 
-
 extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -95,7 +97,6 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
         } else {
             return icons.count
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

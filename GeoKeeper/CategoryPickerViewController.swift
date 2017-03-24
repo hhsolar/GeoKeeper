@@ -43,6 +43,12 @@ class CategoryPickerViewController: UITableViewController {
                 selectedIndexPath = IndexPath(row: i, section: 0)
                 break
             }
+            
+            //If no selectedCategoryName, let selectedIndexPath equals to an impossible value,
+            // Otherwise, the error occur.
+            if i == categories.count - 1 {
+                selectedIndexPath = IndexPath(row: 10000, section: 100)
+            }
         }
     }
     

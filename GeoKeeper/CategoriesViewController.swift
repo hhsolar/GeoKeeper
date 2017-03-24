@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class CategoriesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate {
+class CategoriesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate {
     fileprivate let reuseIdentifier = "CategoryCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
     fileprivate let itemsPerRow: CGFloat = 3
@@ -17,7 +17,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     
 //    var categories = [String]()
     
-    let baseColor1 = UIColor(red: 251/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
+    let baseColor1 = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
     let baseColor2 = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
     let baseColor3 = UIColor(red: 251/255.0, green: 240/255.0, blue: 244/255.0, alpha: 1.0)
     let baseColor4 = UIColor(red: 230/255.0, green: 221/255.0, blue: 244/255.0, alpha: 1.0)
@@ -69,7 +69,9 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
          super.viewDidLoad()
          performFetch()
         
-        
+        //Remove the top margin, which is related with the collectionView's content margin
+         self.automaticallyAdjustsScrollViewInsets = false
+
     }
     
     func performFetch() {
@@ -203,6 +205,22 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             cell.backgroundColor = baseColor1
         }
     }
+    
+    func handleLongPress(recognizer: UILongPressGestureRecognizer) {
+        if recognizer.state == UIGestureRecognizerState.began {
+            print("start")
+            if let indexPathRow = recognizer.view?.tag {
+                let indexPath = IndexPath(row: indexPathRow, section: 0)
+                let category = fetchedResultsController.object(at: indexPath)
+                managedObjectContext.delete(category)
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    fatalCoreDataError(error)
+                }
+            }
+        }
+    }
 
 }
 
@@ -214,6 +232,12 @@ extension CategoriesViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        cell.addGestureRecognizer(longPressRecognizer)
+        longPressRecognizer.minimumPressDuration = 1.0
+        longPressRecognizer.delegate = self
+        longPressRecognizer.view?.tag = indexPath.row
+        
         let category = fetchedResultsController.object(at: indexPath)
         
         let width = cell.frame.width
@@ -270,6 +294,12 @@ extension CategoriesViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
+    }
+    
+    
+    // Top blank is include the content margin and header
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.view.bounds.width, height: 15)
     }
 }
 
