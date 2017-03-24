@@ -440,7 +440,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cloud_icon" translatesAutoresizingMaskIntoConstraints="NO" id="r6l-QX-lrI">
-                                <rect key="frame" x="295" y="69" width="60" height="60"/>
+                                <rect key="frame" x="295" y="67" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remark for this location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqs-6k-L2q">
@@ -458,6 +458,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzc-qf-YXF">
+                                <rect key="frame" x="288" y="109" width="64" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
+                                <color key="textColor" red="0.27843137254901962" green="0.45882352941176469" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -481,11 +488,13 @@
                         <outlet property="mapKit" destination="dNJ-gM-3of" id="4c9-hT-yXW"/>
                         <outlet property="remarkTextView" destination="J39-Gt-wIs" id="EIx-pJ-OTh"/>
                         <outlet property="scrollView" destination="ruS-Kd-qmy" id="adl-OB-e0E"/>
+                        <outlet property="temperatureLabel" destination="xzc-qf-YXF" id="0zW-FZ-kLl"/>
+                        <outlet property="weatherImageView" destination="r6l-QX-lrI" id="hT0-MI-nwR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgd-MD-f4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3802" y="274"/>
+            <point key="canvasLocation" x="3800.8000000000002" y="273.91304347826087"/>
         </scene>
         <!--Category Picker View Controller-->
         <scene sceneID="2A8-2V-YNg">

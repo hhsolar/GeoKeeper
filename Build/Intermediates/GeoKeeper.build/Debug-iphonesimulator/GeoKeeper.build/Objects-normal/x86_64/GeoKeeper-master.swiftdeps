@@ -1,12 +1,12 @@
 version: "Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)"
 options: "71fc344e413b701f8089716d58772d98"
-build_time: [543608428, 777592000]
+build_time: [543653043, 695494000]
 inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerViewController.swift": [543608203, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryAddViewController.swift": [543608203, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyTabBarController.swift": [542965449, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailsViewController.swift": [543608203, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailViewController.swift": [543563459, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailViewController.swift": [543653043, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoriesViewController.swift": [543608203, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyColorCollectionViewCell.swift": [543608203, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyNavigationController.swift": [543303227, 0]

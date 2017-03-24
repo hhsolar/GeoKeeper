@@ -21,6 +21,8 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var mapAppButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var remarkTextView: UITextView!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var weatherImageView: UIImageView!
 
     let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
@@ -48,11 +50,9 @@ class LocationDetailViewController: UIViewController {
         }
     }
     
-  //  required init?(coder aDecoder: NSCoder) {
-  //      super.init(coder: aDecoder)
-  //      param = ["lat": String(locationToEdit?.latitude), "lon": String(locationToEdit?.longitude)]
-
-  //  }
+    var temp = ""
+    var weather = ""
+    var w_icon = ""
     
     @IBAction func openMapsApp() {
         return
@@ -80,6 +80,7 @@ class LocationDetailViewController: UIViewController {
         }
         
         setLocation(location: locationToEdit!)
+        weatherSearch()
         
         // set locationNameLabel
         locationNameLabel.textColor = baseColor
@@ -104,10 +105,31 @@ class LocationDetailViewController: UIViewController {
         remarkTextView.layer.cornerRadius = 5
         remarkTextView.layer.borderWidth = 1
         remarkTextView.layer.borderColor = UIColor.lightGray.cgColor
+
+        // set weatherImageView
+        weatherImageView.image = UIImage(named: w_icon)
+        
+        // set temperatureLabel
+        temperatureLabel.textColor = baseColor
+        temperatureLabel.font = UIFont(name: "TrebuchetMS", size: 16)
+        temperatureLabel.text = "\(temp)C"
+        
         
         scrollViewSetup()
         
-        weatherSearch()
+    }
+    
+    // download data from openwWeatherAPI
+    func weatherSearch() {
+        let url = weatherURL(location: locationToEdit!)
+        if let jsonString = performWeatherRequest(with: url) {
+            if let jsonDictionary = parse(json: jsonString) {
+                print("Dictionay \(jsonDictionary)")
+                parse(dictionary: jsonDictionary)
+            }
+        } else {
+            showNetworkError()
+        }
     }
     
     func performWeatherRequest(with url: URL) -> String? {
@@ -119,17 +141,58 @@ class LocationDetailViewController: UIViewController {
         }
     }
     
-    func weatherSearch() {
-        let url = weatherURL(location: locationToEdit!)
-        if let jsonSting = performWeatherRequest(with: url) {
-            print("URL: '\(jsonSting)'")
-        }
-    }
-    
     func weatherURL(location: Location) -> URL{
         let urlString = String(format: "http://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&APPID=%@", String(location.latitude), String( location.longitude), apiKey)
         let url = URL(string: urlString)
         return url!
+    }
+    
+    // parsing JSON
+    func parse(json: String) -> [String: Any]? {
+        guard let data = json.data(using: .utf8)
+            else { return nil }
+    
+        do {
+            return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        } catch {
+            print("JSON Error: \(error)")
+            return nil
+        }
+    }
+    
+    func parse(dictionary: [String: Any]) {
+        guard let array = dictionary["main"] else {
+            print("Excepted 'results' array")
+            return
+        }
+        let main = array as! NSDictionary
+        let a = "\(main["temp"]!)"
+        let b = Int(Float(a)!) - 273
+        temp = "\(b)°"
+        
+        guard let array1 = dictionary["weather"] as? [Any] else {
+            print("Excepted 'results' array")
+            return
+        }
+        for resultDict in array1 {
+            if let resultDict = resultDict as? [String: Any] {
+                if let description = resultDict["description"] as? String {
+                    weather = description
+                }
+                if let weather_icon = resultDict["icon"] as? String {
+                    let index = weather_icon.index(weather_icon.startIndex, offsetBy: 2)
+                    w_icon = weather_icon.substring(to: index)
+                }
+            }
+        }
+    }
+    
+    // alert for error
+    func showNetworkError() {
+        let alert = UIAlertController(title: "Whoops...", message: "There was an error reading from the openweathermap. Please try again.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
     func stringFromPlacemark(placemark: CLPlacemark) -> String {
