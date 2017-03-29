@@ -13,6 +13,10 @@
 		185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */; };
 		185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */; };
 		185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */; };
+		18F629F31E8626F200062EF8 /* LocationDetailEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */; };
+		18F62A001E89CC2E00062EF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F629FE1E89CC2E00062EF8 /* Main.storyboard */; };
+		18F62A021E89D1D700062EF8 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */; };
+		18F62A331E8B74C300062EF8 /* FadeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62A321E8B74C300062EF8 /* FadeAnimation.swift */; };
 		1F1CE3281E7A1D2F00A1FA77 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */; };
 		1F1CE3291E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */; };
 		1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5876C91E7BA0CE006FB269 /* Assets.xcassets */; };
@@ -26,7 +30,6 @@
 		1F8D4F921E83995C00A5D73E /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */; };
 		1F8D4F961E839D4100A5D73E /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */; };
 		1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4ED521E722E3F002A6818 /* MapViewController.swift */; };
-		1FA4ED561E72331D002A6818 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA4ED541E72331D002A6818 /* Main.storyboard */; };
 		1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4891E6A8B19007CC5F1 /* HudView.swift */; };
 		1FEAD4901E6CAAEF007CC5F1 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */; };
 		1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4911E6CB5D2007CC5F1 /* DataModel.xcdatamodeld */; };
@@ -47,6 +50,10 @@
 		185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		185F5C461E679C5F004E73B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185F5C481E679C5F004E73B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailEditViewController.swift; sourceTree = "<group>"; };
+		18F629FF1E89CC2E00062EF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
+		18F62A321E8B74C300062EF8 /* FadeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeAnimation.swift; sourceTree = "<group>"; };
 		1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1F5876C91E7BA0CE006FB269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +67,6 @@
 		1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
 		1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		1FA4ED521E722E3F002A6818 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		1FA4ED551E72331D002A6818 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FEAD4891E6A8B19007CC5F1 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		1FEAD4921E6CB5D2007CC5F1 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -108,7 +114,7 @@
 		185F5C391E679C5F004E73B7 /* GeoKeeper */ = {
 			isa = PBXGroup;
 			children = (
-				1FA4ED541E72331D002A6818 /* Main.storyboard */,
+				18F629FE1E89CC2E00062EF8 /* Main.storyboard */,
 				185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */,
 				1F8D4F861E8397C700A5D73E /* Generals */,
 				1F8D4F821E8396C900A5D73E /* Controllers */,
@@ -125,9 +131,12 @@
 				1FF7F1681E67AC9500E8F809 /* LocationDetailsViewController.swift */,
 				1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */,
 				1801FB8B1E7F100C00705F92 /* LocationDetailViewController.swift */,
+				18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */,
 				1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */,
 				1F8D4F891E83990700A5D73E /* CategoryAddViewController.swift */,
 				1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */,
+				18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */,
+				18F62A321E8B74C300062EF8 /* FadeAnimation.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -244,10 +253,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA4ED561E72331D002A6818 /* Main.storyboard in Resources */,
 				1801FB7B1E7BA05600705F92 /* Assets.xcassets in Resources */,
 				1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */,
 				185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */,
+				18F62A001E89CC2E00062EF8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F629F31E8626F200062EF8 /* LocationDetailEditViewController.swift in Sources */,
 				1F8D4F961E839D4100A5D73E /* CategoryPickerViewController.swift in Sources */,
 				1F8D4F8A1E83990700A5D73E /* CategoryAddViewController.swift in Sources */,
 				1F5876CC1E7CBDFD006FB269 /* MyTabBarController.swift in Sources */,
@@ -267,6 +277,7 @@
 				1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */,
 				1F8D4F8E1E83994F00A5D73E /* MyColorCollectionViewCell.swift in Sources */,
 				1801FB771E77BAAC00705F92 /* MyNavigationController.swift in Sources */,
+				18F62A331E8B74C300062EF8 /* FadeAnimation.swift in Sources */,
 				1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */,
 				1FEAD49F1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift in Sources */,
 				1FEAD4901E6CAAEF007CC5F1 /* Functions.swift in Sources */,
@@ -276,6 +287,7 @@
 				1FEAD4A31E6E2146007CC5F1 /* LocationCell.swift in Sources */,
 				1F8D4F901E83995500A5D73E /* MyIconCollectionCell.swift in Sources */,
 				1FEAD4AC1E70E41C007CC5F1 /* MyImagePickerController.swift in Sources */,
+				18F62A021E89D1D700062EF8 /* DimmingPresentationController.swift in Sources */,
 				185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */,
 				1FEAD49E1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift in Sources */,
 				1F8D4F8C1E83993F00A5D73E /* CategoryCell.swift in Sources */,
@@ -296,10 +308,10 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		1FA4ED541E72331D002A6818 /* Main.storyboard */ = {
+		18F629FE1E89CC2E00062EF8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1FA4ED551E72331D002A6818 /* Base */,
+				18F629FF1E89CC2E00062EF8 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

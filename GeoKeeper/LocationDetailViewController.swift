@@ -23,6 +23,7 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var remarkTextView: UITextView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var portraitImage: UIImageView!
 
     let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
@@ -58,8 +59,15 @@ class LocationDetailViewController: UIViewController {
         return
     }
     
-    @IBAction func edit() {
-        return
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditDetail" {
+            let controller = segue.destination as! LocationDetailEditViewController
+            controller.managedObjectContext = managedObjectContext
+            controller.nameText = locationNameLabel.text!
+            controller.categoryName = categoryLabel.text!
+            controller.remarkText = remarkTextView.text!
+            controller.portraitImage = portraitImage.image!
+        }
     }
     
     @IBAction func getBack() {
@@ -114,9 +122,7 @@ class LocationDetailViewController: UIViewController {
         temperatureLabel.font = UIFont(name: "TrebuchetMS", size: 16)
         temperatureLabel.text = "\(temp)C"
         
-        
         scrollViewSetup()
-        
     }
     
     // download data from openwWeatherAPI
