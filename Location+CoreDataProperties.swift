@@ -2,13 +2,12 @@
 //  Location+CoreDataProperties.swift
 //  GeoKeeper
 //
-//  Created by Jingfu Ju on 3/5/17.
+//  Created by Jingfu Ju on 3/28/17.
 //  Copyright © 2017 204. All rights reserved.
 //
 
 import Foundation
 import CoreData
-import CoreLocation
 
 
 extension Location {
@@ -17,12 +16,14 @@ extension Location {
         return NSFetchRequest<Location>(entityName: "Location");
     }
 
+    @NSManaged public var category: String?
+    @NSManaged public var date: NSDate?
     @NSManaged public var latitude: Double
+    @NSManaged public var locationDescription: String?
     @NSManaged public var longitude: Double
-    @NSManaged public var date: Date
-    @NSManaged public var locationDescription: String
-    @NSManaged public var category: String
-    @NSManaged public var placemark: CLPlacemark?
-    @NSManaged var photoID: NSNumber?
+    @NSManaged public var photoID: Int32
+    @NSManaged public var placemark: NSObject?
+    @NSManaged public var punch: Int32
+    @NSManaged public var name: String?
 
 }
