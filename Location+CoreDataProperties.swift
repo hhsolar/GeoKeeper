@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CoreLocation
 
 
 extension Location {
@@ -16,14 +17,15 @@ extension Location {
         return NSFetchRequest<Location>(entityName: "Location");
     }
 
-    @NSManaged public var category: String?
-    @NSManaged public var date: NSDate?
+    @NSManaged public var category: String
+    @NSManaged public var date: Date
     @NSManaged public var latitude: Double
-    @NSManaged public var locationDescription: String?
+    @NSManaged public var locationDescription: String
     @NSManaged public var longitude: Double
-    @NSManaged public var photoID: Int32
-    @NSManaged public var placemark: NSObject?
-    @NSManaged public var punch: Int32
+    @NSManaged public var photoID: NSNumber?
+    @NSManaged public var placemark: CLPlacemark?
+    
+    @NSManaged public var punch: NSNumber?
     @NSManaged public var name: String?
 
 }
