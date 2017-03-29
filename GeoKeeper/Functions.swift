@@ -8,6 +8,7 @@
 
 import Foundation
 import Dispatch
+import UIKit
 
 let MyManagedObjectContextSaveDidFailNotification = Notification.Name(rawValue: "MyManagedObjectContextSaveDidFailNotification")
 
@@ -31,4 +32,13 @@ func chooseColor(indexPathRow: Int) {
     
 }
 
+var portraitPhotoURL: URL {
+    let filename = "MyPortrait.jpg"
+    return applicationDocumentsDirectory.appendingPathComponent(filename)
+}
+
+
+var portraitPhotoImage: UIImage? {
+    return UIImage(contentsOfFile: portraitPhotoURL.path)
+}
 

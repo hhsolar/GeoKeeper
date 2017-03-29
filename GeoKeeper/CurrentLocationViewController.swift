@@ -18,6 +18,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var location: CLLocation?
     var updatingLocation = false
     var lastLocationError: Error?
+    var locations = [Location]()
+    
     
     let geocoder = CLGeocoder()
     var placemark: CLPlacemark?
@@ -41,6 +43,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var portrait: UIButton!
     @IBOutlet weak var portraitImage: UIImageView!
+    @IBOutlet weak var tagLabel: UILabel!
     
     @IBAction func getLocation() {
         let authStatus = CLLocationManager.authorizationStatus()
@@ -78,6 +81,15 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
+        fetchedRequest.entity = Location.entity()
+        do {
+            locations = try managedObjectContext.fetch(fetchedRequest)
+        } catch {
+            fatalCoreDataError(error)
+        }
+        
+        
         view.tintColor = baseColor
         
         mapView?.showsUserLocation = true
@@ -103,8 +115,22 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         portraitImage.layer.masksToBounds = true
         portraitImage.layer.borderWidth = 1.5
         portraitImage.layer.borderColor = baseColor.cgColor
-                
+        
+        tagLabel.text = "Tag"
         updateLabels()
+        
+        let userDefaults = UserDefaults.standard
+        let currentPortrait = userDefaults.string(forKey: "Portrait")
+        if currentPortrait == "Default" {
+            if let theImage = UIImage(named: "default") {
+                show(image: theImage)
+            }
+        } else if currentPortrait == "MyPortrait" {
+            if let theImage = portraitPhotoImage {
+                show(image: theImage)
+            }
+        }
+        userDefaults.synchronize()
     }
 
     override func didReceiveMemoryWarning() {
@@ -232,6 +258,14 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             if let placemark = placemark {
                 cityName.text = placemark.locality
                 addressLabel.text = string(from: placemark)
+                tagLabel.text = "Tag"
+                for location in locations {
+                    if let record = location.placemark {
+                        if addressLabel.text == string(from:record) {
+                            tagLabel.text = "Punch"
+                        }
+                    }
+                }
             } else if performingReverseGeocoding {
                 addressLabel.text = "Searching for Address..."
             } else if lastGeocodingError != nil {
@@ -304,6 +338,18 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         portraitImage.isHidden = false
     }
     
+    func saveImage(image: UIImage) {
+        if let data = UIImageJPEGRepresentation(image, 0.5) {
+            do {
+                try data.write(to: portraitPhotoURL, options: .atomic)
+            } catch {
+                print("Error writing file: \(error)")
+            }
+        }
+        let userDefaults = UserDefaults.standard
+        userDefaults.set("MyPortrait", forKey: "Portrait")
+    }
+    
 }
 
 extension CurrentLocationViewController: UINavigationBarDelegate {
@@ -345,6 +391,7 @@ extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavi
         
         if let theImage = image {
             show(image: theImage)
+            saveImage(image: theImage)
         }
         dismiss(animated: true, completion: nil)
     }
