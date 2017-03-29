@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var managedObjectContext: NSManagedObjectContext = self.persistentContainer.viewContext
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        checkFirstLaunch()
         let tabBarController = window!.rootViewController as! UITabBarController
         if let tabBarViewControllers = tabBarController.viewControllers {
             let currentLocationViewController = tabBarViewControllers[0] as! CurrentLocationViewController
@@ -35,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         listenForFatalCoreDataNotifications()
         print(applicationDocumentsDirectory)
         
-        checkFirstLaunch()
+        
         return true
     }
     

@@ -20,6 +20,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var lastLocationError: Error?
     var locations = [Location]()
     
+    
     let geocoder = CLGeocoder()
     var placemark: CLPlacemark?
     var performingReverseGeocoding = false
@@ -117,6 +118,19 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         
         tagLabel.text = "Tag"
         updateLabels()
+        
+        let userDefaults = UserDefaults.standard
+        let currentPortrait = userDefaults.string(forKey: "Portrait")
+        if currentPortrait == "Default" {
+            if let theImage = UIImage(named: "default") {
+                show(image: theImage)
+            }
+        } else if currentPortrait == "MyPortrait" {
+            if let theImage = portraitPhotoImage {
+                show(image: theImage)
+            }
+        }
+        userDefaults.synchronize()
     }
 
     override func didReceiveMemoryWarning() {
@@ -324,6 +338,18 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         portraitImage.isHidden = false
     }
     
+    func saveImage(image: UIImage) {
+        if let data = UIImageJPEGRepresentation(image, 0.5) {
+            do {
+                try data.write(to: portraitPhotoURL, options: .atomic)
+            } catch {
+                print("Error writing file: \(error)")
+            }
+        }
+        let userDefaults = UserDefaults.standard
+        userDefaults.set("MyPortrait", forKey: "Portrait")
+    }
+    
 }
 
 extension CurrentLocationViewController: UINavigationBarDelegate {
@@ -365,6 +391,7 @@ extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavi
         
         if let theImage = image {
             show(image: theImage)
+            saveImage(image: theImage)
         }
         dismiss(animated: true, completion: nil)
     }
