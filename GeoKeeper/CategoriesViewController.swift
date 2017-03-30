@@ -238,6 +238,8 @@ extension CategoriesViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
+        
+        cell.layer.cornerRadius = 10.0 //cornerRadius
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         cell.addGestureRecognizer(longPressRecognizer)
         longPressRecognizer.minimumPressDuration = 1.0
