@@ -227,6 +227,7 @@ class LocationDetailViewController: UIViewController {
     }
     
     func setLocation(location: Location) {
+        print(location)
         let latDelta = 0.05
         let longDelta = 0.05
         let currentLocationSpan: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)

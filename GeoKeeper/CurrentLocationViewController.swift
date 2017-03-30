@@ -39,7 +39,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var tagButton: UIButton!
-    @IBOutlet weak var punchButton: UIButton!
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var nBar: UINavigationBar!
     @IBOutlet weak var mapView: MKMapView!
@@ -152,25 +151,30 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TagLocation" {
             let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.topViewController as! LocationDetailsViewController
-            
-            controller.coordinate = location!.coordinate
-            controller.placemark = placemark
-            controller.managedObjectContext = managedObjectContext
-        } else if segue.identifier == "PunchLocation" {
-            let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.topViewController as! LocationDetailViewController
-            if let punchNumber = forPassLocation.punch {
-                forPassLocation.punch = (Int(punchNumber) + 1) as NSNumber
+            controller.managedObjectContext = managedObjectContext
+
+            if tagLabel.text == "Tag" {
+//                forPassLocation.category = "No Category"
+//                forPassLocation.name = cityName.text
+//                forPassLocation.punch = 1
+                forPassLocation?.placemark = placemark
+                forPassLocation?.latitude = location!.coordinate.latitude
+                forPassLocation?.longitude = location!.coordinate.longitude
+                
+            } else if tagLabel.text == "Punch" {
+                if let punchNumber = forPassLocation.punch {
+                    forPassLocation.punch = (Int(punchNumber) + 1) as NSNumber
+                }
             }
+            
             do {
                 try managedObjectContext.save()
             } catch {
                 fatalCoreDataError(error)
             }
-            
             controller.locationToEdit = forPassLocation
-            controller.managedObjectContext = managedObjectContext
+            print("!!!!!!!!!!!  \(forPassLocation)")
         }
     }
     
@@ -288,8 +292,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                     if let record = location.placemark {
                         if addressLabel.text == string(from:record) {
                             tagLabel.text = "Punch"
-                            punchButton.isEnabled = true
-                            tagButton.isEnabled = false
                             forPassLocation = location
                         }
                     }
@@ -307,7 +309,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             addressLabel.text = "My address"
             
             tagButton.isEnabled = false
-            punchButton.isEnabled = false
 
             tagButton.setTitleColor(UIColor.gray, for: .normal)
             messageLabel.text = "Tap 'Get My Location' to Start"

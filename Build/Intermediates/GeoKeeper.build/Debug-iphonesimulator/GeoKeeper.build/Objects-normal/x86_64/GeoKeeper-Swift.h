@@ -330,7 +330,6 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified longitudeLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified tagButton;
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified punchButton;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified cityName;
 @property (nonatomic, weak) IBOutlet UINavigationBar * _Null_unspecified nBar;
 @property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
