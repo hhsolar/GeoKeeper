@@ -28,9 +28,9 @@ let applicationDocumentsDirectory: URL = {
     return paths[0]
 }()
 
-func chooseColor(indexPathRow: Int) {
-    
-}
+//func chooseColor(indexPathRow: Int) {
+//    
+//}
 
 var portraitPhotoURL: URL {
     let filename = "MyPortrait.jpg"

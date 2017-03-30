@@ -123,6 +123,9 @@ class LocationDetailViewController: UIViewController {
         temperatureLabel.font = UIFont(name: "TrebuchetMS", size: 16)
         temperatureLabel.text = "\(temp)C"
         
+        // set punchNumber
+        punchNumber.text = locationToEdit?.punch?.stringValue
+        
         scrollViewSetup()
     }
     

@@ -75,6 +75,14 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         let region = MKCoordinateRegionMakeWithDistance(mapView.userLocation.coordinate, 500, 500)
         mapView.setRegion(mapView.regionThatFits(region), animated: true)
 
+        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
+        fetchedRequest.entity = Location.entity()
+        do {
+            locations = try managedObjectContext.fetch(fetchedRequest)
+        } catch {
+            fatalCoreDataError(error)
+        }
+        
         updateLabels()
     }
     
@@ -152,6 +160,15 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } else if segue.identifier == "PunchLocation" {
             let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.topViewController as! LocationDetailViewController
+            if let punchNumber = forPassLocation.punch {
+                forPassLocation.punch = (Int(punchNumber) + 1) as NSNumber
+            }
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalCoreDataError(error)
+            }
+            
             controller.locationToEdit = forPassLocation
             controller.managedObjectContext = managedObjectContext
         }
