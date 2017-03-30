@@ -22,6 +22,10 @@ class LocationDetailEditViewController: UIViewController {
     var categoryName = ""
     var remarkText = ""
     var portraitImage = UIImage(named: "location_icon")
+        
+    let edgeW = CGFloat(3)
+    let edgeH = CGFloat(6)
+    let scrollViewHeight = UIScreen.main.bounds.size.height / 13 * 3
     
     func  setPara() {
         
@@ -49,6 +53,7 @@ class LocationDetailEditViewController: UIViewController {
         nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
         nBar.topItem?.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
         nBar.topItem?.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
+        
     }
     
     var managedObjectContext: NSManagedObjectContext!

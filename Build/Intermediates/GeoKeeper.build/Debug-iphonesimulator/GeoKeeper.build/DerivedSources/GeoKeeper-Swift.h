@@ -463,6 +463,9 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 @property (nonatomic, copy) NSString * _Nonnull categoryName;
 @property (nonatomic, copy) NSString * _Nonnull remarkText;
 @property (nonatomic, strong) UIImage * _Nullable portraitImage;
+@property (nonatomic, readonly) CGFloat edgeW;
+@property (nonatomic, readonly) CGFloat edgeH;
+@property (nonatomic, readonly) CGFloat scrollViewHeight;
 - (void)setPara;
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
@@ -523,6 +526,7 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (IBAction)getBack;
 - (void)viewDidLoad;
+- (void)setLocationWithCoordinate:(CLLocationCoordinate2D)coordinate;
 - (void)weatherSearchWithCoordinate:(CLLocationCoordinate2D)coordinate;
 - (NSString * _Nullable)performWeatherRequestWith:(NSURL * _Nonnull)url;
 - (NSURL * _Nonnull)weatherURLWithCoordinate:(CLLocationCoordinate2D)coordinate;
@@ -530,7 +534,6 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 - (void)parseWithDictionary:(NSDictionary<NSString *, id> * _Nonnull)dictionary;
 - (void)showNetworkError;
 - (NSString * _Nonnull)stringFromPlacemarkWithPlacemark:(CLPlacemark * _Nonnull)placemark;
-- (void)setLocationWithCoordinate:(CLLocationCoordinate2D)coordinate;
 - (void)scrollViewSetup;
 - (void)addImageViewsToScrollView;
 - (void)setDefaultInfo;

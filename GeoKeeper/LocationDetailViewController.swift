@@ -125,8 +125,25 @@ class LocationDetailViewController: UIViewController {
         
         // set punchNumber
         punchNumber.text = locationToEdit?.punch?.stringValue
+        punchNumber.textColor = secondColor
         
         scrollViewSetup()
+    }
+    
+    func setLocation(coordinate: CLLocationCoordinate2D) {
+        let latDelta = 0.05
+        let longDelta = 0.05
+        let currentLocationSpan: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
+        
+        let currentRegion: MKCoordinateRegion = MKCoordinateRegion(center: coordinate, span: currentLocationSpan)
+        
+        mapKit.setRegion(currentRegion, animated: true)
+        
+        let objectAnnotation = MKPointAnnotation()
+        objectAnnotation.coordinate = coordinate
+        mapKit.addAnnotation(objectAnnotation)
+        
+        mapKit.isZoomEnabled = true
     }
     
     // download data from openwWeatherAPI
@@ -224,21 +241,6 @@ class LocationDetailViewController: UIViewController {
         }
         
         return text
-    }
-    func setLocation(coordinate: CLLocationCoordinate2D) {
-        let latDelta = 0.05
-        let longDelta = 0.05
-        let currentLocationSpan: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
-        
-        let currentRegion: MKCoordinateRegion = MKCoordinateRegion(center: coordinate, span: currentLocationSpan)
-        
-        mapKit.setRegion(currentRegion, animated: true)
-        
-        let objectAnnotation = MKPointAnnotation()
-        objectAnnotation.coordinate = coordinate
-        mapKit.addAnnotation(objectAnnotation)
-        
-        mapKit.isZoomEnabled = true
     }
     
     // scrollView related
