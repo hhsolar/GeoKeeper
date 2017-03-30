@@ -211,17 +211,23 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             print("start")
             if let indexPathRow = recognizer.view?.tag {
                 let indexPath = IndexPath(row: indexPathRow, section: 0)
-                let category = fetchedResultsController.object(at: indexPath)
-                managedObjectContext.delete(category)
-                do {
-                    try managedObjectContext.save()
-                } catch {
-                    fatalCoreDataError(error)
-                }
+                let alert = UIAlertController(title: "Alert", message: "Delete?", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Cancel is pressed")}))
+                alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.deleteAtIndexPath(indexPath: indexPath)}))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
-
+    
+    func deleteAtIndexPath(indexPath: IndexPath) {
+        let category = fetchedResultsController.object(at: indexPath)
+        managedObjectContext.delete(category)
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalCoreDataError(error)
+        }
+    }
 }
 
 extension CategoriesViewController {
@@ -232,6 +238,8 @@ extension CategoriesViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
+        
+        cell.layer.cornerRadius = 10.0 //cornerRadius
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         cell.addGestureRecognizer(longPressRecognizer)
         longPressRecognizer.minimumPressDuration = 1.0
