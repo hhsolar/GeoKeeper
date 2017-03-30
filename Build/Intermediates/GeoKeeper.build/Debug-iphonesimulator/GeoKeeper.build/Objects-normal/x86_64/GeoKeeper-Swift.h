@@ -523,14 +523,14 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (IBAction)getBack;
 - (void)viewDidLoad;
-- (void)weatherSearch;
+- (void)weatherSearchWithCoordinate:(CLLocationCoordinate2D)coordinate;
 - (NSString * _Nullable)performWeatherRequestWith:(NSURL * _Nonnull)url;
-- (NSURL * _Nonnull)weatherURLWithLocation:(Location * _Nonnull)location;
+- (NSURL * _Nonnull)weatherURLWithCoordinate:(CLLocationCoordinate2D)coordinate;
 - (NSDictionary<NSString *, id> * _Nullable)parseWithJson:(NSString * _Nonnull)json;
 - (void)parseWithDictionary:(NSDictionary<NSString *, id> * _Nonnull)dictionary;
 - (void)showNetworkError;
 - (NSString * _Nonnull)stringFromPlacemarkWithPlacemark:(CLPlacemark * _Nonnull)placemark;
-- (void)setLocationWithLocation:(Location * _Nonnull)location;
+- (void)setLocationWithCoordinate:(CLLocationCoordinate2D)coordinate;
 - (void)scrollViewSetup;
 - (void)addImageViewsToScrollView;
 - (void)setDefaultInfo;

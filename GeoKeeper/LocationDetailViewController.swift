@@ -88,8 +88,8 @@ class LocationDetailViewController: UIViewController {
             addressLabel.text = "No Address Found"
         }
         
-        setLocation(location: locationToEdit!)
-        weatherSearch()
+        setLocation(coordinate: coordinate)
+        weatherSearch(coordinate: coordinate)
         
         // set locationNameLabel
         locationNameLabel.textColor = baseColor
@@ -130,8 +130,8 @@ class LocationDetailViewController: UIViewController {
     }
     
     // download data from openwWeatherAPI
-    func weatherSearch() {
-        let url = weatherURL(location: locationToEdit!)
+    func weatherSearch(coordinate: CLLocationCoordinate2D) {
+        let url = weatherURL(coordinate: coordinate)
         if let jsonString = performWeatherRequest(with: url) {
             if let jsonDictionary = parse(json: jsonString) {
                 print("Dictionay \(jsonDictionary)")
@@ -151,8 +151,8 @@ class LocationDetailViewController: UIViewController {
         }
     }
     
-    func weatherURL(location: Location) -> URL{
-        let urlString = String(format: "http://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&APPID=%@", String(location.latitude), String( location.longitude), apiKey)
+    func weatherURL(coordinate: CLLocationCoordinate2D) -> URL{
+        let urlString = String(format: "http://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&APPID=%@", String(coordinate.latitude), String(coordinate.longitude), apiKey)
         let url = URL(string: urlString)
         return url!
     }
@@ -225,19 +225,17 @@ class LocationDetailViewController: UIViewController {
         
         return text
     }
-    
-    func setLocation(location: Location) {
-        print(location)
+    func setLocation(coordinate: CLLocationCoordinate2D) {
         let latDelta = 0.05
         let longDelta = 0.05
         let currentLocationSpan: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
         
-        let currentRegion: MKCoordinateRegion = MKCoordinateRegion(center: location.coordinate, span: currentLocationSpan)
+        let currentRegion: MKCoordinateRegion = MKCoordinateRegion(center: coordinate, span: currentLocationSpan)
         
         mapKit.setRegion(currentRegion, animated: true)
         
         let objectAnnotation = MKPointAnnotation()
-        objectAnnotation.coordinate = location.coordinate
+        objectAnnotation.coordinate = coordinate
         mapKit.addAnnotation(objectAnnotation)
         
         mapKit.isZoomEnabled = true

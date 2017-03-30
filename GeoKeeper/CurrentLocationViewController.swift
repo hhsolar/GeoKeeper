@@ -155,26 +155,15 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             controller.managedObjectContext = managedObjectContext
 
             if tagLabel.text == "Tag" {
-//                forPassLocation.category = "No Category"
-//                forPassLocation.name = cityName.text
-//                forPassLocation.punch = 1
-                forPassLocation?.placemark = placemark
-                forPassLocation?.latitude = location!.coordinate.latitude
-                forPassLocation?.longitude = location!.coordinate.longitude
+                controller.placemark = placemark
+                controller.coordinate = location!.coordinate
                 
             } else if tagLabel.text == "Punch" {
                 if let punchNumber = forPassLocation.punch {
                     forPassLocation.punch = (Int(punchNumber) + 1) as NSNumber
                 }
+                controller.locationToEdit = forPassLocation
             }
-            
-            do {
-                try managedObjectContext.save()
-            } catch {
-                fatalCoreDataError(error)
-            }
-            controller.locationToEdit = forPassLocation
-            print("!!!!!!!!!!!  \(forPassLocation)")
         }
     }
     
