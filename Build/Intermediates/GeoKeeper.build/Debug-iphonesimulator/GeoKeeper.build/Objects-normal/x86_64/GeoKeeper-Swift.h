@@ -299,6 +299,7 @@ SWIFT_CLASS("_TtC9GeoKeeper28CategoryPickerViewController")
 
 @class CLLocationManager;
 @class CLLocation;
+@class Location;
 @class CLGeocoder;
 @class CLPlacemark;
 @class NSTimer;
@@ -314,6 +315,8 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @property (nonatomic, strong) CLLocation * _Nullable location;
 @property (nonatomic) BOOL updatingLocation;
 @property (nonatomic) NSError * _Nullable lastLocationError;
+@property (nonatomic, copy) NSArray<Location *> * _Nonnull locations;
+@property (nonatomic, strong) Location * _Null_unspecified forPassLocation;
 @property (nonatomic, readonly, strong) CLGeocoder * _Nonnull geocoder;
 @property (nonatomic, strong) CLPlacemark * _Nullable placemark;
 @property (nonatomic) BOOL performingReverseGeocoding;
@@ -327,11 +330,13 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified longitudeLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified tagButton;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified punchButton;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified cityName;
 @property (nonatomic, weak) IBOutlet UINavigationBar * _Null_unspecified nBar;
 @property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified portrait;
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified portraitImage;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified tagLabel;
 - (IBAction)getLocation;
 - (IBAction)choosePortrait;
 - (void)viewDidLoad;
@@ -346,6 +351,7 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (NSString * _Nonnull)stringFrom:(CLPlacemark * _Nonnull)placemark;
 - (void)showLocationServicesDeniedAlert;
 - (void)showWithImage:(UIImage * _Nonnull)image;
+- (void)saveImageWithImage:(UIImage * _Nonnull)image;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -422,13 +428,15 @@ SWIFT_CLASS("_TtC9GeoKeeper8Location")
 @class NSNumber;
 
 @interface Location (SWIFT_EXTENSION(GeoKeeper))
-@property (nonatomic) double latitude;
-@property (nonatomic) double longitude;
-@property (nonatomic, copy) NSDate * _Nonnull date;
-@property (nonatomic, copy) NSString * _Nonnull locationDescription;
 @property (nonatomic, copy) NSString * _Nonnull category;
-@property (nonatomic, strong) CLPlacemark * _Nullable placemark;
+@property (nonatomic, copy) NSDate * _Nonnull date;
+@property (nonatomic) double latitude;
+@property (nonatomic, copy) NSString * _Nonnull locationDescription;
+@property (nonatomic) double longitude;
 @property (nonatomic, strong) NSNumber * _Nullable photoID;
+@property (nonatomic, strong) CLPlacemark * _Nullable placemark;
+@property (nonatomic, strong) NSNumber * _Nullable punch;
+@property (nonatomic, copy) NSString * _Nullable name;
 @end
 
 
@@ -495,6 +503,7 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified temperatureLabel;
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified weatherImageView;
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified portraitImage;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified punchNumber;
 @property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
 @property (nonatomic, readonly, strong) UIColor * _Nonnull secondColor;
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;

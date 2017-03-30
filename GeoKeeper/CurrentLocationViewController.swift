@@ -19,6 +19,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var updatingLocation = false
     var lastLocationError: Error?
     var locations = [Location]()
+    var forPassLocation: Location!
     
     
     let geocoder = CLGeocoder()
@@ -38,12 +39,14 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var tagButton: UIButton!
+    @IBOutlet weak var punchButton: UIButton!
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var nBar: UINavigationBar!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var portrait: UIButton!
     @IBOutlet weak var portraitImage: UIImageView!
     @IBOutlet weak var tagLabel: UILabel!
+    
     
     @IBAction func getLocation() {
         let authStatus = CLLocationManager.authorizationStatus()
@@ -146,9 +149,13 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             controller.coordinate = location!.coordinate
             controller.placemark = placemark
             controller.managedObjectContext = managedObjectContext
+        } else if segue.identifier == "PunchLocation" {
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.topViewController as! LocationDetailViewController
+            controller.locationToEdit = forPassLocation
+            controller.managedObjectContext = managedObjectContext
         }
     }
-
     
     // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -251,18 +258,22 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         if let location = location {
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
-            tagButton.isEnabled = true
             tagButton.setTitleColor(baseColor, for: .normal)
             messageLabel.text = "Tap 'Tag' to save location"
+            
+            tagLabel.text = "Tag"
+            tagButton.isEnabled = true
             
             if let placemark = placemark {
                 cityName.text = placemark.locality
                 addressLabel.text = string(from: placemark)
-                tagLabel.text = "Tag"
                 for location in locations {
                     if let record = location.placemark {
                         if addressLabel.text == string(from:record) {
                             tagLabel.text = "Punch"
+                            punchButton.isEnabled = true
+                            tagButton.isEnabled = false
+                            forPassLocation = location
                         }
                     }
                 }
@@ -277,7 +288,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             latitudeLabel.text = "Not available"
             longitudeLabel.text = "Not available"
             addressLabel.text = "My address"
+            
             tagButton.isEnabled = false
+            punchButton.isEnabled = false
+
             tagButton.setTitleColor(UIColor.gray, for: .normal)
             messageLabel.text = "Tap 'Get My Location' to Start"
             

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -132,6 +132,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxX-qL-xWm">
+                                <rect key="frame" x="255" y="568" width="90" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                <state key="normal" backgroundImage="button_background"/>
+                                <connections>
+                                    <segue destination="EUO-Ug-UWF" kind="presentation" identifier="PunchLocation" id="uaG-sm-ivL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -146,6 +155,7 @@
                         <outlet property="nBar" destination="yx9-Ru-bWn" id="7lv-6o-Au9"/>
                         <outlet property="portrait" destination="5sC-M6-hLJ" id="48L-Ep-uwe"/>
                         <outlet property="portraitImage" destination="Tj0-52-qAn" id="xGm-cP-LYs"/>
+                        <outlet property="punchButton" destination="wxX-qL-xWm" id="9LS-2e-E32"/>
                         <outlet property="tagButton" destination="cPP-au-b2k" id="94i-lG-GlC"/>
                         <outlet property="tagLabel" destination="ECT-K8-qz0" id="wGO-a3-d9h"/>
                     </connections>
@@ -397,7 +407,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PwL-fQ-fuF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="n6o-NO-WAd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbM-3Z-eEl">
@@ -408,7 +418,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6I-ML-gN6">
-                                <rect key="frame" x="20" y="128" width="335" height="36.5"/>
+                                <rect key="frame" x="20" y="128" width="335" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -426,7 +436,7 @@
                                 </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49E-4m-aJZ">
-                                <rect key="frame" x="63" y="289" width="248" height="24"/>
+                                <rect key="frame" x="63" y="334" width="248" height="28"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <state key="normal" title="Open maps app" backgroundImage="button_background"/>
                                 <connections>
@@ -434,7 +444,7 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dNJ-gM-3of">
-                                <rect key="frame" x="0.0" y="176" width="375" height="135"/>
+                                <rect key="frame" x="0.0" y="176" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="JN4-Wz-kGr" id="fGp-dl-tKc"/>
@@ -473,6 +483,13 @@
                                 <color key="textColor" red="0.27843137254901962" green="0.45882352941176469" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EH2-yB-4Sd">
+                                <rect key="frame" x="299" y="144" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -495,6 +512,7 @@
                         <outlet property="mapAppButton" destination="49E-4m-aJZ" id="LGp-M3-hJ3"/>
                         <outlet property="mapKit" destination="dNJ-gM-3of" id="4c9-hT-yXW"/>
                         <outlet property="portraitImage" destination="Fby-DY-ncp" id="NIe-vD-JSE"/>
+                        <outlet property="punchNumber" destination="EH2-yB-4Sd" id="X0o-9T-gmw"/>
                         <outlet property="remarkTextView" destination="J39-Gt-wIs" id="EIx-pJ-OTh"/>
                         <outlet property="scrollView" destination="ruS-Kd-qmy" id="adl-OB-e0E"/>
                         <outlet property="temperatureLabel" destination="xzc-qf-YXF" id="0zW-FZ-kLl"/>
@@ -1073,5 +1091,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Qis-hZ-zgh"/>
+        <segue reference="uaG-sm-ivL"/>
     </inferredMetricsTieBreakers>
 </document>
