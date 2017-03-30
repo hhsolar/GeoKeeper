@@ -20,6 +20,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var lastLocationError: Error?
     var locations = [Location]()
     var forPassLocation: Location!
+    var isVisited: Bool = false
     
     
     let geocoder = CLGeocoder()
@@ -269,19 +270,18 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
             tagButton.setTitleColor(baseColor, for: .normal)
-            messageLabel.text = "Tap 'Tag' to save location"
-            
             tagLabel.text = "Tag"
             tagButton.isEnabled = true
             
             if let placemark = placemark {
                 cityName.text = placemark.locality
                 addressLabel.text = string(from: placemark)
-                for location in locations {
-                    if let record = location.placemark {
-                        if addressLabel.text == string(from:record) {
-                            tagLabel.text = "Punch"
-                            forPassLocation = location
+                for locationRecord in locations {
+                    if let placemarkRecord = locationRecord.placemark {
+                        if addressLabel.text == string(from:placemarkRecord) {
+                            forPassLocation = locationRecord
+                            isVisited = true
+                            print("Visited")
                         }
                     }
                 }
@@ -292,6 +292,15 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             } else {
                 addressLabel.text = "No Address Found"
             }
+            
+            if isVisited == true {
+                tagLabel.text = "Punch"
+                messageLabel.text = "Tap 'Punch' to Punch In"
+            } else {
+                messageLabel.text = "Tap 'Tag' to Save Location"
+            }
+            
+            
         } else {
             latitudeLabel.text = "Not available"
             longitudeLabel.text = "Not available"
