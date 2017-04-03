@@ -19,12 +19,12 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var mapKit: MKMapView!
     @IBOutlet weak var mapAppButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var remarkTextView: UITextView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var portraitImage: UIImageView!
     @IBOutlet weak var punchNumber: UILabel!
+    @IBOutlet weak var photoCollectionView: UICollectionView!
     
     let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
@@ -37,9 +37,6 @@ class LocationDetailViewController: UIViewController {
     let kScreenWidth = UIScreen.main.bounds.size.width
     let kScreenHeight = UIScreen.main.bounds.size.height
     
-    let edgeW = CGFloat(3)
-    let edgeH = CGFloat(6)
-    let scrollViewHeight = UIScreen.main.bounds.size.height / 13 * 3
     let apiKey = "64061cb2cff1e380d2011f5ad50d3bf8"
     
     var locationToEdit: Location? {
@@ -56,6 +53,9 @@ class LocationDetailViewController: UIViewController {
     var weather = ""
     var w_icon = ""
     
+    fileprivate let reuseIdentifier = "PhotoCell"
+
+    
     @IBAction func openMapsApp() {
         return
     }
@@ -68,6 +68,7 @@ class LocationDetailViewController: UIViewController {
             controller.categoryName = categoryLabel.text!
             controller.remarkText = remarkTextView.text!
             controller.portraitImage = portraitImage.image!
+            controller.collectionFrame = photoCollectionView.frame
         }
     }
     
@@ -127,7 +128,7 @@ class LocationDetailViewController: UIViewController {
         punchNumber.text = locationToEdit?.punch?.stringValue
         punchNumber.textColor = secondColor
         
-        scrollViewSetup()
+        initCollectionView()
     }
     
     func setLocation(coordinate: CLLocationCoordinate2D) {
@@ -243,55 +244,39 @@ class LocationDetailViewController: UIViewController {
         return text
     }
     
-    // scrollView related
-   
-    func scrollViewSetup() {
-        scrollView.contentSize = CGSize(width: scrollViewHeight * 5, height: scrollViewHeight)
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.backgroundColor = UIColor.lightGray
-        scrollView.frame = CGRect(x: 0, y: (mapAppButton.frame.origin.y + mapAppButton.frame.height + 8), width: kScreenWidth, height: scrollViewHeight)
+    func initCollectionView() {
+        let collectionViewHeight = UIScreen.main.bounds.size.height / 13 * 3
+        photoCollectionView.frame = CGRect(x: 0, y: (mapAppButton.frame.origin.y + mapAppButton.frame.height + 8), width: kScreenWidth, height: collectionViewHeight )
+        photoCollectionView.backgroundColor = UIColor.lightGray
+        photoCollectionView.register(PhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        addImageViewsToScrollView()
-        setDefaultInfo()
+        let layout = UICollectionViewFlowLayout()
+        photoCollectionView.collectionViewLayout = layout
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        
+        let itemHeight: CGFloat = photoCollectionView.frame.height - 8 * 2
+        layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
+        layout.minimumLineSpacing = 8
+        
+        layout.scrollDirection = .horizontal
+        photoCollectionView.showsHorizontalScrollIndicator = false
+    }
+}
+
+extension LocationDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
-    func addImageViewsToScrollView() {
-        
-        let w = scrollViewHeight - edgeW * 2
-        let h = scrollViewHeight - edgeH * 2
-        
-        var imageS1 = UIImageView(frame: CGRect(x: edgeW, y: edgeH, width: w, height: h))
-        imageS1.backgroundColor = UIColor.white
-        imageS1.layer.cornerRadius = 4
-        
-        var imageS2 = UIImageView(frame: CGRect(x: edgeW * 3 + w, y: edgeH, width: w, height: h))
-        imageS2.backgroundColor = UIColor.white
-        imageS2.layer.cornerRadius = 4
-
-        var imageS3 = UIImageView(frame: CGRect(x: edgeW * 5 + w * 2, y: edgeH, width:w, height: h))
-        imageS3.backgroundColor = UIColor.white
-        imageS3.layer.cornerRadius = 4
-
-        var imageS4 = UIImageView(frame: CGRect(x: edgeW * 7 + w * 3, y: edgeH, width: w, height: h))
-        imageS4.backgroundColor = UIColor.white
-        imageS4.layer.cornerRadius = 4
-
-        var imageS5 = UIImageView(frame: CGRect(x: edgeW * 9 + w * 4, y: edgeH, width: w, height: h))
-        imageS5.backgroundColor = UIColor.white
-        imageS5.layer.cornerRadius = 4
-        
-        scrollView.addSubview(imageS1)
-        scrollView.addSubview(imageS2)
-        scrollView.addSubview(imageS3)
-        scrollView.addSubview(imageS4)
-        scrollView.addSubview(imageS5)
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
     }
     
-    func setDefaultInfo() {
-        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
+        cell.awakeFromNib()
+        cell.photoImageView.image = UIImage(named: "portrait_cat")
+        cell.deleteButton.isHidden = true
+        return cell
     }
-    
-    // load weather info
-    
 }

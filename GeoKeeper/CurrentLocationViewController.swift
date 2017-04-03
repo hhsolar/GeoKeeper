@@ -92,14 +92,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
-        fetchedRequest.entity = Location.entity()
-        do {
-            locations = try managedObjectContext.fetch(fetchedRequest)
-        } catch {
-            fatalCoreDataError(error)
-        }
-        
         
         view.tintColor = baseColor
         

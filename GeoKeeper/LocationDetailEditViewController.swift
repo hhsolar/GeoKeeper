@@ -17,18 +17,20 @@ class LocationDetailEditViewController: UIViewController {
     @IBOutlet weak var portraitImageView: UIImageView!
     @IBOutlet weak var remarkTextView: UITextView!
     @IBOutlet weak var nBar: UINavigationBar!
+    @IBOutlet weak var photoCollection: UICollectionView!
+    
+    var managedObjectContext: NSManagedObjectContext!
+    let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     
     var nameText = ""
     var categoryName = ""
     var remarkText = ""
     var portraitImage = UIImage(named: "location_icon")
-        
-    let edgeW = CGFloat(3)
-    let edgeH = CGFloat(6)
-    let scrollViewHeight = UIScreen.main.bounds.size.height / 13 * 3
     
-    func  setPara() {
-        
+    var collectionFrame = CGRect.zero
+    fileprivate let reuseIdentifier = "PhotoCell"
+    
+    func setPara() {
         // set portraitImageView
         portraitImageView.image = portraitImage
         portraitImageView.layer.borderWidth = 5
@@ -53,12 +55,24 @@ class LocationDetailEditViewController: UIViewController {
         nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
         nBar.topItem?.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
         nBar.topItem?.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
-        
     }
     
-    var managedObjectContext: NSManagedObjectContext!
-    let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
-    
+    func initCollectionView() {
+        photoCollection.frame = collectionFrame
+        photoCollection.backgroundColor = UIColor.lightGray
+        photoCollection.register(PhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        let layout = UICollectionViewFlowLayout()
+        photoCollection.collectionViewLayout = layout
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        
+        let itemHeight: CGFloat = photoCollection.frame.height - 8 * 2
+        layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
+        layout.minimumLineSpacing = 8
+        
+        layout.scrollDirection = .horizontal
+        photoCollection.showsHorizontalScrollIndicator = false
+    }
+
     @IBAction func done() {
         
     }
@@ -90,7 +104,7 @@ class LocationDetailEditViewController: UIViewController {
         view.backgroundColor = UIColor.clear
         
         setPara()
-        
+        initCollectionView()
     }
     
 }
@@ -115,5 +129,30 @@ extension LocationDetailEditViewController: UIViewControllerTransitioningDelegat
 extension LocationDetailEditViewController: UINavigationBarDelegate {
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
+    }
+}
+
+extension LocationDetailEditViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
+        cell.awakeFromNib()
+        cell.delegate = self
+        cell.photoImageView.image = UIImage(named: "portrait_cat")
+        return cell
+    }
+}
+
+extension LocationDetailEditViewController: PhotoCellDelegate {
+    func changeColorOfButton(forCell: PhotoCell) {
+        let image = UIImage(named: "closeButton")
+        forCell.deleteButton.setImage(image, for: .highlighted)
     }
 }
