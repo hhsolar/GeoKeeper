@@ -15,6 +15,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     var color = "Black"
     var icon = ""
     var temp = 0
+    var selectedIconIndexPath: IndexPath!
     
     fileprivate let reuseIdentifier1 = "CategoryColorCell"
     fileprivate let reuseIdentifier2 = "IconCategoryCell"
@@ -44,6 +45,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
         colorCollection?.addGestureRecognizer(gestureRecognizer)
+        selectedIconIndexPath = IndexPath(row: 1, section: 1)
     }
 
     func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
@@ -108,6 +110,7 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! MyIconCollectionCell
+            collectionView.cellForItem(at: selectedIconIndexPath)?.backgroundColor = UIColor.lightGray
             let iconName = icons[indexPath.row]
             cell.iconImage.image = UIImage(named: iconName)
             cell.backgroundColor = UIColor.white
@@ -116,6 +119,7 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
@@ -136,6 +140,16 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
                 color = "white"
             }
         } else {
+            var indexPaths = [IndexPath]()
+            indexPaths.append(indexPath)
+            
+            if (selectedIconIndexPath != nil) {
+                if indexPath != selectedIconIndexPath {
+                    indexPaths.append(selectedIconIndexPath)
+                    selectedIconIndexPath = indexPath
+                }
+            }
+            
             switch indexPath.row {
             case 0:
                 icon = "Appointments"
@@ -157,8 +171,9 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
                 icon = "Trips"
             default:
                 icon = "Appointments"
-            }
-            
+           }
+            collectionView.reloadItems(at: indexPaths)
+            collectionView.cellForItem(at: selectedIconIndexPath)?.backgroundColor = UIColor.lightGray
         }
     }
 }
