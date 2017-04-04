@@ -16,6 +16,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     var icon = ""
     var temp = 0
     var selectedIconIndexPath: IndexPath!
+    var newItemId: NSNumber!
     
     fileprivate let reuseIdentifier1 = "CategoryColorCell"
     fileprivate let reuseIdentifier2 = "IconCategoryCell"
@@ -79,6 +80,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         category.setValue(name, forKey: "category")
         category.setValue(color, forKey: "color")
         category.setValue(icon, forKey: "iconName")
+        category.setValue(newItemId, forKey: "id")
         do {
             try managedObjectContext.save()
         } catch let error as NSError {
@@ -121,6 +123,7 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
+            
             switch indexPath.row {
             case 0:
                 color = "red"

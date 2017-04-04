@@ -104,11 +104,11 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             let navController = segue.destination as! UINavigationController
             let controller = navController.viewControllers[0] as! CategoryAddViewController
             controller.selectedCategoryName = "No Category"
+            controller.newItemId = fetchedResultsController.sections![0].numberOfObjects as NSNumber!
             controller.managedObjectContext = managedObjectContext
         }
         
         if segue.identifier == "CategoryDetails" {
-            print("categoryDetails controller ************************************")
             let controller = segue.destination as! LocationsViewController
             if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
                 print("CategoryDetails is called")
