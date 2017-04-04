@@ -469,6 +469,8 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 @property (nonatomic, copy) NSString * _Nonnull remarkText;
 @property (nonatomic, strong) UIImage * _Nullable portraitImage;
 @property (nonatomic) CGRect collectionFrame;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)viewDidLoad;
 - (void)setPara;
 - (void)initCollectionView SWIFT_METHOD_FAMILY(none);
 - (IBAction)done;
@@ -476,8 +478,7 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 - (IBAction)choosePortrait;
 - (IBAction)loadCategoryPicker;
 - (IBAction)editPhoto;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)viewDidLoad;
+- (IBAction)nameDone;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
 
@@ -611,6 +612,7 @@ SWIFT_CLASS("_TtC9GeoKeeper23LocationsViewController")
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, copy) NSString * _Nonnull categoryPassed;
 @property (nonatomic, copy) NSArray<Location *> * _Nonnull locations;
+- (IBAction)cancel;
 - (void)viewDidLoad;
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section;

@@ -125,7 +125,11 @@ class LocationDetailViewController: UIViewController {
         temperatureLabel.text = "\(temp)C"
         
         // set punchNumber
-        punchNumber.text = locationToEdit?.punch?.stringValue
+        if let punchNum = locationToEdit?.punch {
+            punchNumber.text = punchNum.stringValue
+        } else {
+            punchNumber.text = "0"
+        }
         punchNumber.textColor = secondColor
         
         initCollectionView()

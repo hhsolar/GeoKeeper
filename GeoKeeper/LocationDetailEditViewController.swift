@@ -20,6 +20,7 @@ class LocationDetailEditViewController: UIViewController {
     @IBOutlet weak var photoCollection: UICollectionView!
     
     var managedObjectContext: NSManagedObjectContext!
+    
     let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     
     var nameText = ""
@@ -29,6 +30,20 @@ class LocationDetailEditViewController: UIViewController {
     
     var collectionFrame = CGRect.zero
     fileprivate let reuseIdentifier = "PhotoCell"
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        modalPresentationStyle = .custom
+        transitioningDelegate = self
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.clear
+            
+        setPara()
+        initCollectionView()
+    }
     
     func setPara() {
         // set portraitImageView
@@ -93,18 +108,8 @@ class LocationDetailEditViewController: UIViewController {
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        modalPresentationStyle = .custom
-        transitioningDelegate = self
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor.clear
+    @IBAction func nameDone() {
         
-        setPara()
-        initCollectionView()
     }
     
 }
