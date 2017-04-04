@@ -16,6 +16,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     var icon = ""
     var temp = 0
     var selectedIconIndexPath: IndexPath!
+    var selectedColorIndexPath: IndexPath!
     var newItemId: NSNumber!
     
     fileprivate let reuseIdentifier1 = "CategoryColorCell"
@@ -46,7 +47,8 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
         colorCollection?.addGestureRecognizer(gestureRecognizer)
-        selectedIconIndexPath = IndexPath(row: 1, section: 1)
+        selectedIconIndexPath = IndexPath(row: 0, section: 1)
+        selectedColorIndexPath = IndexPath(row: 0, section: 0)
     }
 
     func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
@@ -105,10 +107,28 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! MyColorCollectionViewCell
-            cell.backgroundColor = UIColor.lightGray
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! ColorCell
+            cell.backgroundColor = UIColor.white
             temp += 1
-            cell.colorLabel.text = String(temp)
+            switch indexPath.row {
+            case 0:
+                cell.colorImageView.image = UIImage(named: "red_unchoose")
+            case 1:
+                cell.colorImageView.image = UIImage(named: "blue_unchoose")
+            case 2:
+                cell.colorImageView.image = UIImage(named: "purple_unchoose")
+            case 3:
+                cell.colorImageView.image = UIImage(named: "green_unchoose")
+            case 4:
+                cell.colorImageView.image = UIImage(named: "yellow_unchoose")
+            case 5:
+                cell.colorImageView.image = UIImage(named: "orange_unchoose")
+            case 6:
+                cell.colorImageView.image = UIImage(named: "cyan_unchoose")
+            default:
+                print("This should not be called")
+            }
+            
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! MyIconCollectionCell
@@ -121,31 +141,37 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        var indexPaths = [IndexPath]()
+        indexPaths.append(indexPath)
         if indexPath.section == 0 {
-            
+            if (selectedColorIndexPath != nil) {
+                if indexPath != selectedColorIndexPath {
+                    indexPaths.append(selectedColorIndexPath)
+                    selectedColorIndexPath = indexPath
+                }
+            }
             switch indexPath.row {
             case 0:
-                color = "red"
+                color = "red_choose"
             case 1:
-                color = "blue"
+                color = "blue_choose"
             case 2:
-                color = "purple"
+                color = "purple_choose"
             case 3:
-                color = "gray"
+                color = "green_choose"
             case 4:
-                color = "black"
+                color = "yellow_choose"
             case 5:
-                color = "yellow"
+                color = "orange_choose"
             case 6:
-                color = "orange"
+                color = "cyan_choose"
             default:
-                color = "white"
+                color = "black"
             }
+            collectionView.reloadItems(at: indexPaths)
+            let colorCell = collectionView.cellForItem(at: selectedColorIndexPath) as! ColorCell
+            colorCell.colorImageView.image = UIImage(named: color)
         } else {
-            var indexPaths = [IndexPath]()
-            indexPaths.append(indexPath)
-            
             if (selectedIconIndexPath != nil) {
                 if indexPath != selectedIconIndexPath {
                     indexPaths.append(selectedIconIndexPath)

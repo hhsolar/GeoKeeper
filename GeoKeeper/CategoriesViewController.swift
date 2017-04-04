@@ -28,10 +28,10 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     let red = UIColor.red
     let blue = UIColor.blue
     let purple = UIColor.purple
-    let gray = UIColor.gray
+    let green = UIColor.green
     let yellow = UIColor.yellow
     let orange = UIColor.orange
-    let black = UIColor.black
+    let cyan = UIColor.cyan
 
     let icons = [
         "No Icon",
@@ -354,16 +354,16 @@ extension CategoriesViewController {
                 cell.categoryLabel?.textColor = blue
             case "purple":
                 cell.categoryLabel?.textColor = purple
-            case "gray":
-                cell.categoryLabel?.textColor = gray
-            case "black":
-                cell.categoryLabel?.textColor = black
+            case "green":
+                cell.categoryLabel?.textColor = green
+            case "cyan":
+                cell.categoryLabel?.textColor = cyan
             case "yellow":
                 cell.categoryLabel?.textColor = yellow
             case "orange":
                 cell.categoryLabel?.textColor = orange
             default:
-                cell.categoryLabel?.textColor = black
+                cell.categoryLabel?.textColor = UIColor.black
             }
         }
 
