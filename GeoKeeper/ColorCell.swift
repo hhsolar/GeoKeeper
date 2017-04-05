@@ -8,6 +8,6 @@
 
 import UIKit
 
-class MyColorCollectionViewCell: UICollectionViewCell {
-       @IBOutlet weak var colorLabel: UILabel!
+class ColorCell: UICollectionViewCell {
+       @IBOutlet weak var colorImageView: UIImageView!
 }

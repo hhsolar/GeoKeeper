@@ -26,7 +26,7 @@
 		1F8D4F881E8398C700A5D73E /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */; };
 		1F8D4F8A1E83990700A5D73E /* CategoryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F891E83990700A5D73E /* CategoryAddViewController.swift */; };
 		1F8D4F8C1E83993F00A5D73E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F8B1E83993F00A5D73E /* CategoryCell.swift */; };
-		1F8D4F8E1E83994F00A5D73E /* MyColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F8D1E83994F00A5D73E /* MyColorCollectionViewCell.swift */; };
+		1F8D4F8E1E83994F00A5D73E /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F8D1E83994F00A5D73E /* ColorCell.swift */; };
 		1F8D4F901E83995500A5D73E /* MyIconCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F8F1E83995500A5D73E /* MyIconCollectionCell.swift */; };
 		1F8D4F921E83995C00A5D73E /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */; };
 		1F8D4F961E839D4100A5D73E /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */; };
@@ -64,7 +64,7 @@
 		1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		1F8D4F891E83990700A5D73E /* CategoryAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryAddViewController.swift; sourceTree = "<group>"; };
 		1F8D4F8B1E83993F00A5D73E /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		1F8D4F8D1E83994F00A5D73E /* MyColorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		1F8D4F8D1E83994F00A5D73E /* ColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		1F8D4F8F1E83995500A5D73E /* MyIconCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyIconCollectionCell.swift; sourceTree = "<group>"; };
 		1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
 		1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 				1801FB761E77BAAC00705F92 /* MyNavigationController.swift */,
 				1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */,
 				1F8D4F8B1E83993F00A5D73E /* CategoryCell.swift */,
-				1F8D4F8D1E83994F00A5D73E /* MyColorCollectionViewCell.swift */,
+				1F8D4F8D1E83994F00A5D73E /* ColorCell.swift */,
 				1F8D4F8F1E83995500A5D73E /* MyIconCollectionCell.swift */,
 				1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */,
 				18FB49601E8F63EC0075AFC8 /* PhotoCell.swift */,
@@ -279,7 +279,7 @@
 				1801FB8C1E7F100C00705F92 /* LocationDetailViewController.swift in Sources */,
 				1F8D4F811E83963100A5D73E /* CategoriesViewController.swift in Sources */,
 				1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */,
-				1F8D4F8E1E83994F00A5D73E /* MyColorCollectionViewCell.swift in Sources */,
+				1F8D4F8E1E83994F00A5D73E /* ColorCell.swift in Sources */,
 				1801FB771E77BAAC00705F92 /* MyNavigationController.swift in Sources */,
 				18F62A331E8B74C300062EF8 /* FadeAnimation.swift in Sources */,
 				1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */,

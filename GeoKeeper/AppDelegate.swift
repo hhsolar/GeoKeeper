@@ -51,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let defaultCategories = ["No Category", "Restaurant", "LandMark", "Friends'"]
             let defaultColors = ["red", "blue", "purple", "orange"]
+            let defaultId = [0, 1, 2, 3]
             let defaultIconNames = ["No Icon", "Drinks", "Appointments", "Folder"]
             let entity = NSEntityDescription.entity(forEntityName: "Category", in: managedObjectContext)!
             for i in 0..<4 {
@@ -58,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 categoryObject.setValue(defaultCategories[i], forKey: "category")
                 categoryObject.setValue(defaultColors[i], forKey: "color")
                 categoryObject.setValue(defaultIconNames[i], forKey: "iconName")
+                categoryObject.setValue(defaultId[i], forKey: "id")
             }
             
             do {
