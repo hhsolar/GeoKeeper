@@ -16,6 +16,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     var blockOperations: [BlockOperation] = []
     var longPressGesture : UILongPressGestureRecognizer!
     var category : Category!
+    var p :CGPoint!
     
 //    var categories = [String]()
     
@@ -74,21 +75,24 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 //        如果写在这里，collectionview里面的prepare for segue就会不能用
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
         collectionView.addGestureRecognizer(longPressGesture)
-        longPressGesture.minimumPressDuration = 0.01
+        longPressGesture.minimumPressDuration = 0.5
         
         //不让long press 消耗
         longPressGesture.cancelsTouchesInView = false
         
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
 //        tapGesture.numberOfTapsRequired = 1
 //        tapGesture.numberOfTouchesRequired = 1
-//        collectionView.addGestureRecognizer(tapGesture)
-//        tapGesture.delegate = self
+        collectionView.addGestureRecognizer(tapGesture)
+        tapGesture.delegate = self
         
         //Remove the top margin, which is related with the collectionView's content margin
          self.automaticallyAdjustsScrollViewInsets = false
+        UserDefaults.standard.set("No", forKey: "LongPressed")
+        UserDefaults.standard.set("No", forKey: "SingleTap")
+    
         
-
+        
     }
     
     func performFetch() {
@@ -108,6 +112,8 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             controller.managedObjectContext = managedObjectContext
         }
         
+        
+        
         if segue.identifier == "CategoryDetails" {
             let controller = segue.destination as! LocationsViewController
             if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
@@ -119,11 +125,15 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        
         switch(gesture.state) {
         case UIGestureRecognizerState.began:
             guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
                 break
             }
+            p = gesture.location(in: collectionView)
+            UserDefaults.standard.set("Yes", forKey: "LongPressed")
+            collectionView.reloadData()
             collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
         case UIGestureRecognizerState.changed:
             collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
@@ -134,12 +144,23 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    //多点碰触
-//    func handleTap(gesture: UITapGestureRecognizer) {
-//        print("Single Tap")
-//    }
-    
-    func collectionView(_ collectionView: UICollectionView,
+   
+    func handleTap(gesture: UITapGestureRecognizer) {
+        NSLog("Single Tap")
+        if gesture.state != UIGestureRecognizerState.ended {
+            return
+        }
+        p = gesture.location(in: collectionView)
+        let indexPath = collectionView.indexPathForItem(at: p)
+        if indexPath == nil {
+            UserDefaults.standard.set("No", forKey: "LongPressed")
+            UserDefaults.standard.set("Yes", forKey: "SingleTap")
+             collectionView.reloadData()
+        } else if UserDefaults.standard.value(forKey:"LongPressed") as! String == "No" {
+            performSegue(withIdentifier: "CategoryDetails", sender: collectionView.cellForItem(at: indexPath!))
+        }
+    }
+        func collectionView(_ collectionView: UICollectionView,
                                  moveItemAtIndexPath sourceIndexPath: NSIndexPath,
                                  toIndexPath destinationIndexPath: NSIndexPath) {
         print("This is called ******************")
@@ -315,7 +336,6 @@ extension CategoriesViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var i = 0;
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
         
         cell.layer.cornerRadius = 10.0 //cornerRadius
@@ -372,12 +392,84 @@ extension CategoriesViewController {
         }
         
         collectionColor(indexPath, cell)
+        
+        if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
+            
+            let anim = CABasicAnimation(keyPath: "transform.rotation")
+            
+            anim.toValue = 0.0
+            
+            anim.fromValue =  M_PI / 64
+            
+            anim.duration = 0.1
+            
+            anim.repeatCount = Float(UInt.max)
+            
+            anim.autoreverses = true
+            
+            cell.layer.shouldRasterize = true
+            
+            cell.layer.add(anim, forKey: "SpringboardShake")
+            
+            
+            //                let animation = CABasicAnimation(keyPath: "position")
+            
+            //                animation.duration = 0.07
+            
+            //                animation.repeatCount = 3
+            
+            //                animation.autoreverses = true
+            
+            //                print("testing ***********************")
+            
+            //
+            
+            //                animation.fromValue = NSValue(cgPoint: CGPoint(x:cell.center.x - 10, y:cell.center.y))
+            
+            //                animation.toValue = NSValue(cgPoint: CGPoint(x:cell.center.x + 10, y:cell.center.y))
+            
+            //                cell.layer.add(animation, forKey: "position")
+            
+            //
+            
+            let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 15, height: 15))
+            
+            let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
+            
+            deleteButton.addTarget(self, action: #selector(deleteCategory), for: .touchUpInside)
+            deleteButton.setImage(backgroundImage, for: .normal)
+            
+            //            deleteButton.addTarget(self, action: #selector(deletePhoto), for: .touchUpInside)
+            
+            cell.addSubview(deleteButton)
+            
+        }
+        
+        else if UserDefaults.standard.value(forKey: "SingleTap") as! String == "Yes" {
+            cell.layer.removeAllAnimations()
+            let subViews = cell.subviews
+            
+            for subView in subViews {
+                print(subView, " is kjfksjalfjlas;flasljfk")
+                if subView is UIButton {
+                    print("subView is", subView)
+                    subView.removeFromSuperview()
+                }
+            }
+        }
+        
         return cell
+    }
+    
+    func deleteCategory() {
+        let alert = UIAlertController(title: "Alert", message: "Delete?", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Cancel is pressed")}))
+//        alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.deleteAtIndexPath(indexPath: indexPath)}))
+        self.present(alert, animated: true, completion: nil)
     }
     
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        print("didSelectItemAt is called")
-//        self.performSegue(withIdentifier: "CategoryDetails", sender: self)
 //    }
 
 }
