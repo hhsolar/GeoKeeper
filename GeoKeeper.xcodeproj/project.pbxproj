@@ -131,7 +131,6 @@
 			children = (
 				1F8D4F831E83972B00A5D73E /* TabbarViewControllers */,
 				1FF7F1681E67AC9500E8F809 /* LocationDetailsViewController.swift */,
-				1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */,
 				1801FB8B1E7F100C00705F92 /* LocationDetailViewController.swift */,
 				18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */,
 				1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */,
@@ -139,6 +138,7 @@
 				1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */,
 				18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */,
 				18F62A321E8B74C300062EF8 /* FadeAnimation.swift */,
+				1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

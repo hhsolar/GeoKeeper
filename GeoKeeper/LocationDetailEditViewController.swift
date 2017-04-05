@@ -20,13 +20,9 @@ class LocationDetailEditViewController: UIViewController {
     @IBOutlet weak var photoCollection: UICollectionView!
     
     var managedObjectContext: NSManagedObjectContext!
+    var locationToEdit: Location?
     
     let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
-    
-    var nameText = ""
-    var categoryName = ""
-    var remarkText = ""
-    var portraitImage = UIImage(named: "location_icon")
     
     var collectionFrame = CGRect.zero
     fileprivate let reuseIdentifier = "PhotoCell"
@@ -40,30 +36,31 @@ class LocationDetailEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
-            
+  
         setPara()
         initCollectionView()
+                
     }
     
     func setPara() {
         // set portraitImageView
-        portraitImageView.image = portraitImage
+        print("!!!!!!!!! \(locationToEdit?.locationPhotoID)")
+        portraitImageView.image = UIImage(named: (locationToEdit?.locationPhotoID)!)
         portraitImageView.layer.borderWidth = 5
         portraitImageView.layer.borderColor = UIColor.white.cgColor
         
         // set nameTextField
-        nameTextField.text = nameText
+        nameTextField.text = locationToEdit?.name
         nameTextField.font = UIFont(name: "TrebuchetMS", size: 16)
         
         // set categoryPicker
-        categoryPicker.setTitle(categoryName, for: .normal)
+        categoryPicker.setTitle(locationToEdit?.category, for: .normal)
         categoryPicker.titleLabel!.font = UIFont(name: "TrebuchetMS", size: 14)
         categoryPicker.setTitleColor(UIColor.gray, for: .normal)
         categoryPicker.layer.cornerRadius = 4
 //        categoryPicker.addTarget(self, action: #selector(ViewController.noInteractPush), for: .touchUpInside)
         
-        
-        remarkTextView.text = remarkText
+        remarkTextView.text = locationToEdit?.locationDescription
         
         // set navigationBar
         nBar.barTintColor = baseColor
@@ -90,6 +87,13 @@ class LocationDetailEditViewController: UIViewController {
 
     @IBAction func done() {
         
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancel() {
