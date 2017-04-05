@@ -150,6 +150,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             if tagLabel.text == "Tag" {
                 controller.placemark = placemark
                 controller.coordinate = location!.coordinate
+                controller.date = (location?.timestamp)!
                 
             } else if tagLabel.text == "Punch" {
                 if let punchNumber = forPassLocation.punch {

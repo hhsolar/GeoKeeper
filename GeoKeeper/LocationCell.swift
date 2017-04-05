@@ -18,7 +18,7 @@ class LocationCell: UITableViewCell {
         if location.locationDescription.isEmpty {
             descriptionLabel.text = "(No Description)"
         } else {
-            descriptionLabel.text = location.locationDescription
+            descriptionLabel.text = location.name
         }
         if let placemark = location.placemark {
             var text = ""
@@ -37,14 +37,13 @@ class LocationCell: UITableViewCell {
         }
         
         photoImageView.image = thumbnail(for: location)
-        
     }
     
     func thumbnail(for location: Location) -> UIImage {
         if location.hasPhoto, let image = location.photoImage {
             return image
         }
-        return UIImage()
+        return UIImage(named: location.locationPhotoID)!
     }
 
 }

@@ -31,6 +31,7 @@ class LocationDetailViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext!
     var categoryName = "No Category"
+    var date = Date()
     var placemark: CLPlacemark?
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     
@@ -44,6 +45,7 @@ class LocationDetailViewController: UIViewController {
             if let location = locationToEdit {
                 categoryName = location.category
                 placemark = location.placemark
+                date = location.date
                 coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
             }
         }
@@ -54,26 +56,36 @@ class LocationDetailViewController: UIViewController {
     var w_icon = ""
     
     fileprivate let reuseIdentifier = "PhotoCell"
-
     
     @IBAction func openMapsApp() {
         return
     }
     
+    @IBAction func getBack() {
+        dismiss(animated: true, completion: nil);
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditDetail" {
             let controller = segue.destination as! LocationDetailEditViewController
-            controller.managedObjectContext = managedObjectContext
-            controller.nameText = locationNameLabel.text!
-            controller.categoryName = categoryLabel.text!
-            controller.remarkText = remarkTextView.text!
-            controller.portraitImage = portraitImage.image!
+            if let loc = locationToEdit {
+                controller.locationToEdit = loc
+            } else {
+                let location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
+                location.name = placemark?.locality
+                location.category = categoryName
+                location.date = date
+                location.latitude = coordinate.latitude
+                location.longitude = coordinate.longitude
+                location.locationPhotoID = "portrait_cat" // need to change later
+                location.placemark = placemark
+                location.locationDescription = "This guy is so lazy that he writes nothing here!"
+                location.punch = 0
+                controller.locationToEdit = location
+            }
             controller.collectionFrame = photoCollectionView.frame
+            controller.managedObjectContext = managedObjectContext
         }
-    }
-    
-    @IBAction func getBack() {
-        dismiss(animated: true, completion: nil);
     }
     
     override func viewDidLoad() {
@@ -92,6 +104,12 @@ class LocationDetailViewController: UIViewController {
         setLocation(coordinate: coordinate)
         weatherSearch(coordinate: coordinate)
         
+        setContainer()
+        initCollectionView()
+        
+    }
+    
+    func setContainer() {
         // set locationNameLabel
         locationNameLabel.textColor = baseColor
         locationNameLabel.font = UIFont(name: "TrebuchetMS-Bold", size: 22)
@@ -115,7 +133,7 @@ class LocationDetailViewController: UIViewController {
         remarkTextView.layer.cornerRadius = 5
         remarkTextView.layer.borderWidth = 1
         remarkTextView.layer.borderColor = UIColor.lightGray.cgColor
-
+        
         // set weatherImageView
         weatherImageView.image = UIImage(named: w_icon)
         
@@ -125,10 +143,12 @@ class LocationDetailViewController: UIViewController {
         temperatureLabel.text = "\(temp)C"
         
         // set punchNumber
-        punchNumber.text = locationToEdit?.punch?.stringValue
+        if let punchNum = locationToEdit?.punch {
+            punchNumber.text = punchNum.stringValue
+        } else {
+            punchNumber.text = "0"
+        }
         punchNumber.textColor = secondColor
-        
-        initCollectionView()
     }
     
     func setLocation(coordinate: CLLocationCoordinate2D) {
@@ -152,7 +172,7 @@ class LocationDetailViewController: UIViewController {
         let url = weatherURL(coordinate: coordinate)
         if let jsonString = performWeatherRequest(with: url) {
             if let jsonDictionary = parse(json: jsonString) {
-                print("Dictionay \(jsonDictionary)")
+//                print("Dictionay \(jsonDictionary)")
                 parse(dictionary: jsonDictionary)
             }
         } else {
