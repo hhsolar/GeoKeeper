@@ -112,8 +112,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             controller.managedObjectContext = managedObjectContext
         }
         
-        
-        
         if segue.identifier == "CategoryDetails" {
             let controller = segue.destination as! LocationsViewController
             if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
@@ -158,8 +156,11 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
              collectionView.reloadData()
         } else if UserDefaults.standard.value(forKey:"LongPressed") as! String == "No" {
             performSegue(withIdentifier: "CategoryDetails", sender: collectionView.cellForItem(at: indexPath!))
+        } else if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
+            performSegue(withIdentifier: "PickCategory", sender: collectionView.cellForItem(at: indexPath!))
         }
     }
+    
         func collectionView(_ collectionView: UICollectionView,
                                  moveItemAtIndexPath sourceIndexPath: NSIndexPath,
                                  toIndexPath destinationIndexPath: NSIndexPath) {
@@ -412,47 +413,19 @@ extension CategoriesViewController {
             cell.layer.add(anim, forKey: "SpringboardShake")
             
             
-            //                let animation = CABasicAnimation(keyPath: "position")
-            
-            //                animation.duration = 0.07
-            
-            //                animation.repeatCount = 3
-            
-            //                animation.autoreverses = true
-            
-            //                print("testing ***********************")
-            
-            //
-            
-            //                animation.fromValue = NSValue(cgPoint: CGPoint(x:cell.center.x - 10, y:cell.center.y))
-            
-            //                animation.toValue = NSValue(cgPoint: CGPoint(x:cell.center.x + 10, y:cell.center.y))
-            
-            //                cell.layer.add(animation, forKey: "position")
-            
-            //
             
             let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 15, height: 15))
-            
             let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
-            
             deleteButton.addTarget(self, action: #selector(deleteCategory), for: .touchUpInside)
             deleteButton.setImage(backgroundImage, for: .normal)
-            
-            //            deleteButton.addTarget(self, action: #selector(deletePhoto), for: .touchUpInside)
-            
             cell.addSubview(deleteButton)
-            
         }
         
         else if UserDefaults.standard.value(forKey: "SingleTap") as! String == "Yes" {
             cell.layer.removeAllAnimations()
             let subViews = cell.subviews
-            
             for subView in subViews {
-                print(subView, " is kjfksjalfjlas;flasljfk")
                 if subView is UIButton {
-                    print("subView is", subView)
                     subView.removeFromSuperview()
                 }
             }
@@ -467,11 +440,6 @@ extension CategoriesViewController {
 //        alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.deleteAtIndexPath(indexPath: indexPath)}))
         self.present(alert, animated: true, completion: nil)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("didSelectItemAt is called")
-//    }
-
 }
 
 extension CategoriesViewController : UICollectionViewDelegateFlowLayout {

@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+protocol ChangeDoneButtonColorDelegate {
+    func changeColorOfButton(Color: UIColor)
+}
+
 class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     var selectedCategoryName = ""
     var managedObjectContext: NSManagedObjectContext!
@@ -28,6 +32,8 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var colorCollection: UICollectionView?
     @IBOutlet var textField: UITextField!
     
+    var delegate: ChangeDoneButtonColorDelegate? = nil
+    
     let icons = [
         "Appointments",
         "Birthdays",
@@ -42,13 +48,16 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.delegate = self
+        textField.text = selectedCategoryName
         doneBarButton.isEnabled = false
+        delegate?.changeColorOfButton(Color: UIColor.lightGray)
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
         colorCollection?.addGestureRecognizer(gestureRecognizer)
         selectedIconIndexPath = IndexPath(row: 0, section: 1)
         selectedColorIndexPath = IndexPath(row: 0, section: 0)
+    
     }
 
     func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
@@ -70,8 +79,10 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         let newText = oldText.replacingCharacters(in:range, with: string) as NSString
         if newText.length > 0 {
             doneBarButton.isEnabled = true
+            delegate?.changeColorOfButton(Color: UIColor.white)
         } else {
             doneBarButton.isEnabled = false
+            delegate?.changeColorOfButton(Color: UIColor.lightGray)
         }
         return true
     }
@@ -132,7 +143,6 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! MyIconCollectionCell
-            collectionView.cellForItem(at: selectedIconIndexPath)?.backgroundColor = UIColor.lightGray
             let iconName = icons[indexPath.row]
             cell.iconImage.image = UIImage(named: iconName)
             cell.backgroundColor = UIColor.white
@@ -232,4 +242,6 @@ extension CategoryAddViewController : UICollectionViewDelegateFlowLayout {
         return sectionInsets.left
     }
 }
+
+
 
