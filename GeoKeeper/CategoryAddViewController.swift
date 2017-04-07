@@ -22,6 +22,9 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     var selectedIconIndexPath: IndexPath!
     var selectedColorIndexPath: IndexPath!
     var newItemId: NSNumber!
+    var selectedColor: String = ""
+    var selectedIcon: String = ""
+    var modeFlag = " "
     
     fileprivate let reuseIdentifier1 = "CategoryColorCell"
     fileprivate let reuseIdentifier2 = "IconCategoryCell"
@@ -45,6 +48,16 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         "Photos",
         "Trips" ]
     
+    let colors = [
+        "red",
+        "blue",
+        "purple",
+        "green",
+        "yellow",
+        "orange",
+        "cyan"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.delegate = self
@@ -55,9 +68,15 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
         colorCollection?.addGestureRecognizer(gestureRecognizer)
-        selectedIconIndexPath = IndexPath(row: 0, section: 1)
-        selectedColorIndexPath = IndexPath(row: 0, section: 0)
-    
+        print("!!!!!", selectedIcon)
+        print("selectedIcon in viewdidload is",selectedIcon)
+        if let iconIndex = icons.index(of: selectedIcon) {
+            selectedIconIndexPath = IndexPath(row: iconIndex, section: 1)
+        }
+        
+        if let colorIndex = colors.index(of: selectedColor) {
+            selectedColorIndexPath = IndexPath(row: colorIndex, section: 0)
+        }
     }
 
     func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
@@ -89,16 +108,43 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     
     func saveCategory(name: String) {
         let entity = NSEntityDescription.entity(forEntityName: "Category", in: managedObjectContext)!
-        let category = NSManagedObject(entity: entity, insertInto: managedObjectContext)
-        category.setValue(name, forKey: "category")
-        category.setValue(color, forKey: "color")
-        category.setValue(icon, forKey: "iconName")
-        category.setValue(newItemId, forKey: "id")
-        do {
-            try managedObjectContext.save()
-        } catch let error as NSError {
-            fatalCoreDataError(error)
+        if modeFlag == "Add" {
+            let category = NSManagedObject(entity: entity, insertInto: managedObjectContext)
+            category.setValue(name, forKey: "category")
+            category.setValue(color, forKey: "color")
+            category.setValue(icon, forKey: "iconName")
+            category.setValue(newItemId, forKey: "id")
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                fatalCoreDataError(error)
+            }
+        } else if modeFlag == "Edit" {
+            let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+            fetchRequest.entity = Category.entity()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", newItemId)
+            do {
+                let categoryToEdits = try managedObjectContext.fetch(fetchRequest)
+                for categoryToEdit in categoryToEdits {
+                    categoryToEdit.category = name
+                    categoryToEdit.color = color
+                    categoryToEdit.id = newItemId
+                    print("category name is going to save",icon)
+                    categoryToEdit.iconName = icon
+                }
+            } catch {
+                fatalCoreDataError(error)
+            }
+            
+            print("color going to save is ", color)
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalCoreDataError(error)
+            }
+
         }
+        
     }
 }
 
@@ -121,6 +167,7 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! ColorCell
             cell.backgroundColor = UIColor.white
             temp += 1
+            
             switch indexPath.row {
             case 0:
                 cell.colorImageView.image = UIImage(named: "red_unchoose")
@@ -140,12 +187,42 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
                 print("This should not be called")
             }
             
+            if selectedColorIndexPath != nil {
+                if selectedColorIndexPath == indexPath {
+                    switch indexPath.row {
+                    case 0:
+                        cell.colorImageView.image = UIImage(named: "red_choose")
+                    case 1:
+                        cell.colorImageView.image = UIImage(named: "blue_choose")
+                    case 2:
+                        cell.colorImageView.image = UIImage(named: "purple_choose")
+                    case 3:
+                        cell.colorImageView.image = UIImage(named: "green_choose")
+                    case 4:
+                        cell.colorImageView.image = UIImage(named: "yellow_choose")
+                    case 5:
+                        cell.colorImageView.image = UIImage(named: "orange_choose")
+                    case 6:
+                        cell.colorImageView.image = UIImage(named: "cyan_choose")
+                    default:
+                        print("This should not be called")
+                    }
+                }
+            }
+            
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! MyIconCollectionCell
             let iconName = icons[indexPath.row]
             cell.iconImage.image = UIImage(named: iconName)
             cell.backgroundColor = UIColor.white
+            print("Icon Image is loading")
+            if selectedIconIndexPath != nil {
+                print(selectedIconIndexPath.row,"is selectedIconIndexPath")
+               if selectedIconIndexPath == indexPath {
+                    cell.backgroundColor = UIColor.lightGray
+                }
+            }
             return cell
         }
     }
@@ -159,34 +236,39 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
                     indexPaths.append(selectedColorIndexPath)
                     selectedColorIndexPath = indexPath
                 }
+            } else {
+                selectedColorIndexPath = indexPath
             }
+            
             switch indexPath.row {
             case 0:
-                color = "red_choose"
+                color = "red"
             case 1:
-                color = "blue_choose"
+                color = "blue"
             case 2:
-                color = "purple_choose"
+                color = "purple"
             case 3:
-                color = "green_choose"
+                color = "green"
             case 4:
-                color = "yellow_choose"
+                color = "yellow"
             case 5:
-                color = "orange_choose"
+                color = "orange"
             case 6:
-                color = "cyan_choose"
+                color = "cyan"
             default:
                 color = "black"
             }
             collectionView.reloadItems(at: indexPaths)
             let colorCell = collectionView.cellForItem(at: selectedColorIndexPath) as! ColorCell
-            colorCell.colorImageView.image = UIImage(named: color)
+            colorCell.colorImageView.image = UIImage(named: color+"_choose")
         } else {
             if (selectedIconIndexPath != nil) {
                 if indexPath != selectedIconIndexPath {
                     indexPaths.append(selectedIconIndexPath)
                     selectedIconIndexPath = indexPath
                 }
+            } else {
+                selectedIconIndexPath = indexPath
             }
             
             switch indexPath.row {
@@ -214,6 +296,7 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             collectionView.reloadItems(at: indexPaths)
             collectionView.cellForItem(at: selectedIconIndexPath)?.backgroundColor = UIColor.lightGray
         }
+        doneBarButton.isEnabled = true
     }
 }
 

@@ -14,9 +14,9 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     fileprivate let itemsPerRow: CGFloat = 3
     var managedObjectContext: NSManagedObjectContext!
     var blockOperations: [BlockOperation] = []
-    var longPressGesture : UILongPressGestureRecognizer!
     var category : Category!
     var p :CGPoint!
+    var modeFlag: String = "Add"
     
 //    var categories = [String]()
     
@@ -68,33 +68,19 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         return fetchedResultsController
     }()
     
+    override func viewWillAppear(_ animated:Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
          super.viewDidLoad()
          performFetch()
-        
-//        如果写在这里，collectionview里面的prepare for segue就会不能用
-        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
-        collectionView.addGestureRecognizer(longPressGesture)
-        longPressGesture.minimumPressDuration = 0.5
-        
-        //不让long press 消耗
-        longPressGesture.cancelsTouchesInView = false
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-//        tapGesture.numberOfTapsRequired = 1
-//        tapGesture.numberOfTouchesRequired = 1
-        collectionView.addGestureRecognizer(tapGesture)
-        tapGesture.delegate = self
-        
+         loadGesture()
         //Remove the top margin, which is related with the collectionView's content margin
-         self.automaticallyAdjustsScrollViewInsets = false
-        UserDefaults.standard.set("No", forKey: "LongPressed")
-        UserDefaults.standard.set("No", forKey: "SingleTap")
-    
-        
-        
+        self.automaticallyAdjustsScrollViewInsets = false
     }
-    
+
     func performFetch() {
         do {
             try fetchedResultsController.performFetch()
@@ -103,19 +89,59 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    func loadGesture() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
+        collectionView.addGestureRecognizer(longPressGesture)
+        longPressGesture.minimumPressDuration = 0.5
+        //不让long press 消耗,否则，collectionview里面的prepare for segue就会不能用
+        longPressGesture.cancelsTouchesInView = false
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        //        tapGesture.numberOfTapsRequired = 1
+        //        tapGesture.numberOfTouchesRequired = 1
+        collectionView.addGestureRecognizer(tapGesture)
+        tapGesture.delegate = self
+        UserDefaults.standard.set("No", forKey: "LongPressed")
+        UserDefaults.standard.set("No", forKey: "SingleTap")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PickCategory" {
             let navController = segue.destination as! UINavigationController
             let controller = navController.viewControllers[0] as! CategoryAddViewController
-            controller.selectedCategoryName = "No Category"
-            controller.newItemId = fetchedResultsController.sections![0].numberOfObjects as NSNumber!
             controller.managedObjectContext = managedObjectContext
+            if modeFlag == "Add" {
+                controller.modeFlag = modeFlag
+                controller.selectedCategoryName = "No Category"
+                controller.newItemId = fetchedResultsController.sections![0].numberOfObjects as NSNumber!
+            } else if modeFlag == "Edit" {
+                controller.modeFlag = modeFlag
+                modeFlag = "Add"
+                let indexPath = collectionView.indexPathForItem(at: p)
+                let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+                fetchRequest.entity = Category.entity()
+                fetchRequest.predicate = NSPredicate(format: "id == %@", indexPath!.row as NSNumber!)
+                do {
+                    let categoryToEdits = try managedObjectContext.fetch(fetchRequest)
+                    
+                    for categoryToEdit in categoryToEdits {
+                        controller.selectedCategoryName = categoryToEdit.category!
+                        controller.selectedColor = categoryToEdit.color!
+                        controller.selectedIcon = categoryToEdit.iconName!
+                        controller.newItemId = categoryToEdit.id
+                    }
+                } catch {
+                    fatalCoreDataError(error)
+                }
+                controller.newItemId = indexPath!.row as NSNumber!
+                
+                
+            }
         }
         
         if segue.identifier == "CategoryDetails" {
             let controller = segue.destination as! LocationsViewController
             if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
-                print("CategoryDetails is called")
                 controller.categoryPassed = fetchedResultsController.object(at: indexPath).category!
             }
             controller.managedObjectContext = managedObjectContext
@@ -123,14 +149,13 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {
-        
+        UserDefaults.standard.set("Yes", forKey: "LongPressed")
         switch(gesture.state) {
         case UIGestureRecognizerState.began:
             guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
                 break
             }
             p = gesture.location(in: collectionView)
-            UserDefaults.standard.set("Yes", forKey: "LongPressed")
             collectionView.reloadData()
             collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
         case UIGestureRecognizerState.changed:
@@ -145,6 +170,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
    
     func handleTap(gesture: UITapGestureRecognizer) {
         NSLog("Single Tap")
+        UserDefaults.standard.set("Yes", forKey: "SingleTap")
         if gesture.state != UIGestureRecognizerState.ended {
             return
         }
@@ -152,19 +178,19 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         let indexPath = collectionView.indexPathForItem(at: p)
         if indexPath == nil {
             UserDefaults.standard.set("No", forKey: "LongPressed")
-            UserDefaults.standard.set("Yes", forKey: "SingleTap")
-             collectionView.reloadData()
+            collectionView.reloadData()
         } else if UserDefaults.standard.value(forKey:"LongPressed") as! String == "No" {
             performSegue(withIdentifier: "CategoryDetails", sender: collectionView.cellForItem(at: indexPath!))
         } else if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
+            modeFlag = "Edit"
             performSegue(withIdentifier: "PickCategory", sender: collectionView.cellForItem(at: indexPath!))
+            
         }
     }
     
         func collectionView(_ collectionView: UICollectionView,
                                  moveItemAtIndexPath sourceIndexPath: NSIndexPath,
                                  toIndexPath destinationIndexPath: NSIndexPath) {
-        print("This is called ******************")
         let category = fetchedResultsController.object(at: sourceIndexPath as IndexPath)
         category.setValue(destinationIndexPath.row, forKey: "id")
         
@@ -338,7 +364,6 @@ extension CategoriesViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
-        
         cell.layer.cornerRadius = 10.0 //cornerRadius
         
         //如果吧gesture写在cell上，不写在viewdidload里，cell就会闪得很厉害，而且fetchController会去调default
@@ -360,8 +385,6 @@ extension CategoriesViewController {
         let width = cell.frame.width
 //        cell.categoryImageView = UIImageView(frame: CGRect(x: width / 2, y: 3, width: width / 2, height: width / 2)) 为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
         cell.categoryImageView?.contentMode = UIViewContentMode.scaleAspectFit
-    
-        
         cell.categoryLabel?.frame = CGRect(x:0, y:width - 40, width:width, height:20)
         cell.categoryLabel?.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
         cell.categoryLabel?.textAlignment = .center
@@ -395,30 +418,22 @@ extension CategoriesViewController {
         collectionColor(indexPath, cell)
         
         if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
-            
-            let anim = CABasicAnimation(keyPath: "transform.rotation")
-            
-            anim.toValue = 0.0
-            
-            anim.fromValue =  M_PI / 64
-            
-            anim.duration = 0.1
-            
-            anim.repeatCount = Float(UInt.max)
-            
-            anim.autoreverses = true
-            
-            cell.layer.shouldRasterize = true
-            
-            cell.layer.add(anim, forKey: "SpringboardShake")
-            
-            
-            
-            let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 15, height: 15))
-            let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
-            deleteButton.addTarget(self, action: #selector(deleteCategory), for: .touchUpInside)
-            deleteButton.setImage(backgroundImage, for: .normal)
-            cell.addSubview(deleteButton)
+//            if UserDefaults.standard.value(forKey: "SingleTap") as! String == "No" {
+                let anim = CABasicAnimation(keyPath: "transform.rotation")
+                anim.toValue = 0.0
+                anim.fromValue =  M_PI / 64
+                anim.duration = 0.1
+                anim.repeatCount = Float(UInt.max)
+                anim.autoreverses = true
+                cell.layer.shouldRasterize = true
+                cell.layer.add(anim, forKey: "SpringboardShake")
+
+                let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 15, height: 15))
+                let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
+                deleteButton.addTarget(self, action: #selector(deleteCategory), for: .touchUpInside)
+                deleteButton.setImage(backgroundImage, for: .normal)
+                cell.addSubview(deleteButton)
+//            }
         }
         
         else if UserDefaults.standard.value(forKey: "SingleTap") as! String == "Yes" {
@@ -429,6 +444,7 @@ extension CategoriesViewController {
                     subView.removeFromSuperview()
                 }
             }
+//            UserDefaults.standard.set("No",forKey:"SingleTap")
         }
         
         return cell
