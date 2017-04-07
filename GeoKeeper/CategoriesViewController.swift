@@ -427,7 +427,8 @@ extension CategoriesViewController {
                 anim.autoreverses = true
                 cell.layer.shouldRasterize = true
                 cell.layer.add(anim, forKey: "SpringboardShake")
-
+            
+            
                 let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 15, height: 15))
                 let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
                 deleteButton.addTarget(self, action: #selector(deleteCategory), for: .touchUpInside)
@@ -451,10 +452,43 @@ extension CategoriesViewController {
     }
     
     func deleteCategory() {
-        let alert = UIAlertController(title: "Alert", message: "Delete?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Please make sure", message: "If you remove this category, all the inside data will be deleted", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Cancel is pressed")}))
-//        alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.deleteAtIndexPath(indexPath: indexPath)}))
+        alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.deleteAtIndexPath()}))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteAtIndexPath() {
+        print("deleteatIndexPath function is called")
+        if let id = collectionView.indexPathForItem(at: p) {
+            print(id.row, "indexpath is important")
+            let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+            fetchRequest.entity = Category.entity()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id.row as NSNumber)
+            do{
+                let toBeDeleteds = try managedObjectContext.fetch(fetchRequest)
+                for toBeDeleted in toBeDeleteds {
+                    managedObjectContext.delete(toBeDeleted)
+                }
+            } catch {
+                fatalCoreDataError(error)
+            }
+            
+            
+            let end = fetchedResultsController.sections![0].numberOfObjects
+            for i in id.row + 1..<end {
+                let indexPath = IndexPath(row: i, section: 0)
+                let category = fetchedResultsController.object(at: indexPath)
+                category.setValue((i - 1) as NSNumber, forKey: "id")
+            }
+        }
+        
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalCoreDataError(error)
+        }
     }
 }
 
