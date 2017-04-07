@@ -129,6 +129,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                         controller.selectedColor = categoryToEdit.color!
                         controller.selectedIcon = categoryToEdit.iconName!
                         controller.newItemId = categoryToEdit.id
+                        print(categoryToEdit.category,categoryToEdit.color,categoryToEdit.iconName,categoryToEdit.id)
                     }
                 } catch {
                     fatalCoreDataError(error)
@@ -414,6 +415,9 @@ extension CategoriesViewController {
         if category.iconName != nil {
             cell.categoryImageView?.image = UIImage(named: category.iconName!)
         }
+        print("category name", category.iconName)
+        print("category color", category.color)
+        
         
         collectionColor(indexPath, cell)
         

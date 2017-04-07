@@ -16,14 +16,13 @@ protocol ChangeDoneButtonColorDelegate {
 class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     var selectedCategoryName = ""
     var managedObjectContext: NSManagedObjectContext!
-    var color = "Black"
+    var color = "black"
     var icon = ""
-    var temp = 0
     var selectedIconIndexPath: IndexPath!
     var selectedColorIndexPath: IndexPath!
     var newItemId: NSNumber!
     var selectedColor: String = ""
-    var selectedIcon: String = ""
+    var selectedIcon: String = "" 
     var modeFlag = " "
     
     fileprivate let reuseIdentifier1 = "CategoryColorCell"
@@ -64,6 +63,9 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         textField.text = selectedCategoryName
         doneBarButton.isEnabled = false
         delegate?.changeColorOfButton(Color: UIColor.lightGray)
+       
+        color = selectedColor
+        icon = selectedIcon
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
@@ -71,12 +73,15 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         print("!!!!!", selectedIcon)
         print("selectedIcon in viewdidload is",selectedIcon)
         if let iconIndex = icons.index(of: selectedIcon) {
+            print("iconindex is", iconIndex)
             selectedIconIndexPath = IndexPath(row: iconIndex, section: 1)
         }
         
         if let colorIndex = colors.index(of: selectedColor) {
+            print("iconcolor is", colorIndex)
             selectedColorIndexPath = IndexPath(row: colorIndex, section: 0)
         }
+        print("selectedColor is",selectedIcon,selectedColor)
     }
 
     func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
@@ -166,8 +171,6 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! ColorCell
             cell.backgroundColor = UIColor.white
-            temp += 1
-            
             switch indexPath.row {
             case 0:
                 cell.colorImageView.image = UIImage(named: "red_unchoose")
@@ -216,7 +219,6 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             let iconName = icons[indexPath.row]
             cell.iconImage.image = UIImage(named: iconName)
             cell.backgroundColor = UIColor.white
-            print("Icon Image is loading")
             if selectedIconIndexPath != nil {
                 print(selectedIconIndexPath.row,"is selectedIconIndexPath")
                if selectedIconIndexPath == indexPath {
