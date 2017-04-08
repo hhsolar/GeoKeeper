@@ -24,6 +24,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     var selectedColor: String = ""
     var selectedIcon: String = ""
     var modeFlag = " "
+    var newCellColor: String!
     
     fileprivate let reuseIdentifier1 = "CategoryColorCell"
     fileprivate let reuseIdentifier2 = "IconCategoryCell"
@@ -66,6 +67,21 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
        
         color = selectedColor
         icon = selectedIcon
+        
+        switch Int(newItemId) % 5 {
+        case 0:
+            newCellColor = "baseColor0"
+        case 1:
+            newCellColor = "baseColor1"
+        case 2:
+            newCellColor = "baseColor2"
+        case 3:
+            newCellColor = "baseColor3"
+        case 4:
+            newCellColor = "baseColor4"
+        default:
+            newCellColor = "baseColor0"
+        }
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
@@ -119,6 +135,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
             category.setValue(color, forKey: "color")
             category.setValue(icon, forKey: "iconName")
             category.setValue(newItemId, forKey: "id")
+            category.setValue(newCellColor, forKey: "cellColor")
             do {
                 try managedObjectContext.save()
             } catch let error as NSError {

@@ -19,12 +19,19 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     var modeFlag: String = "Add"
     
 //    var categories = [String]()
-    
-    let baseColor1 = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
-    let baseColor2 = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
-    let baseColor3 = UIColor(red: 251/255.0, green: 240/255.0, blue: 244/255.0, alpha: 1.0)
-    let baseColor4 = UIColor(red: 230/255.0, green: 221/255.0, blue: 244/255.0, alpha: 1.0)
-    let baseColor5 = UIColor(red: 251/255.0, green: 246/255.0, blue: 213/255.0, alpha: 1.0)
+//    enum cellColor {
+//        case baseColor0 = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
+//        case baseColor1 = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
+//        case baseColor2 = UIColor(red: 251/255.0, green: 240/255.0, blue: 244/255.0, alpha: 1.0)
+//        case baseColor3 = UIColor(red: 230/255.0, green: 221/255.0, blue: 244/255.0, alpha: 1.0)
+//        case bseeColor4 = UIColor(red: 251/255.0, green: 246/255.0, blue: 213/255.0, alpha: 1.0)
+//
+//    }
+    let baseColor0 = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
+    let baseColor1 = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
+    let baseColor2 = UIColor(red: 251/255.0, green: 240/255.0, blue: 244/255.0, alpha: 1.0)
+    let baseColor3 = UIColor(red: 230/255.0, green: 221/255.0, blue: 244/255.0, alpha: 1.0)
+    let baseColor4 = UIColor(red: 251/255.0, green: 246/255.0, blue: 213/255.0, alpha: 1.0)
     
     let red = UIColor.red
     let blue = UIColor.blue
@@ -171,7 +178,10 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                 break
             }
             p = gesture.location(in: collectionView)
-            collectionView.reloadData()
+            ///为啥加了异步就可以了呢
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
             collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
         case UIGestureRecognizerState.changed:
             collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
@@ -325,20 +335,37 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         blockOperations.removeAll(keepingCapacity: false)
     }
     
-    func fillCollectionCellWithColor(_ indexPath: IndexPath, _ cell:UICollectionViewCell) {
-        switch indexPath.row % 5 {
-        case 0:
+//    func fillCollectionCellWithColor(_ indexPath: IndexPath, _ cell:UICollectionViewCell) {
+//        switch indexPath.row % 5 {
+//        case 0:
+//            cell.backgroundColor = baseColor0
+//        case 1:
+//            cell.backgroundColor = baseColor1
+//        case 2:
+//            cell.backgroundColor = baseColor2
+//        case 3:
+//            cell.backgroundColor = baseColor3
+//        case 4:
+//            cell.backgroundColor = baseColor4
+//        default:
+//            cell.backgroundColor = baseColor0
+//        }
+//    }
+    
+    func fillCollectionCellWithColor(_ color: String,_ cell: CategoryCell) {
+        switch color {
+        case "baseColor0":
+            cell.backgroundColor = baseColor0
+        case "baseColor1":
             cell.backgroundColor = baseColor1
-        case 1:
+        case "baseColor2":
             cell.backgroundColor = baseColor2
-        case 2:
+        case "baseColor3":
             cell.backgroundColor = baseColor3
-        case 3:
+        case "baseColor4":
             cell.backgroundColor = baseColor4
-        case 4:
-            cell.backgroundColor = baseColor5
         default:
-            cell.backgroundColor = baseColor1
+            cell.backgroundColor = baseColor0
         }
     }
     
@@ -384,7 +411,7 @@ extension CategoriesViewController {
         print("Data is reload")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
         cell.layer.cornerRadius = 10.0 //cornerRadius
-        fillCollectionCellWithColor(indexPath, cell)
+        
         
         //如果吧gesture写在cell上，不写在viewdidload里，cell就会闪得很厉害，而且fetchController会去调default
 //        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
@@ -408,7 +435,7 @@ extension CategoriesViewController {
         cell.categoryLabel?.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
         cell.categoryLabel?.textAlignment = .center
         cell.categoryLabel?.text = category.category!
-        
+        fillCollectionCellWithColor(category.cellColor,cell)
         if let categoryColor = category.color {
             switch categoryColor {
             case "red":
