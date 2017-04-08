@@ -70,7 +70,21 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
-        collectionView.reloadData()
+        print("\n")
+        print("                      ")
+        print(UserDefaults.standard.value(forKey: "LongPressed"))
+        print(UserDefaults.standard.value(forKey: "SingleTap"))
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+        
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.collectionView.reloadData()
+//        }
+        
+//        dispatch_async(dispatch_get_main_queue(), ^ {
+//            [self.collectionView reloadData];
+//            });
     }
     
     override func viewDidLoad() {
@@ -222,6 +236,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        print("fetchRequestController delegate is called")
         switch type {
         case .insert:
             blockOperations.append(
@@ -229,6 +244,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                     if let this = self {
                         this.collectionView!.insertItems(at: [newIndexPath!])
                     }
+                    
                 })
             )
         case .update:
@@ -261,7 +277,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        
         switch type {
         case .insert:
             blockOperations.append(
@@ -310,7 +325,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         blockOperations.removeAll(keepingCapacity: false)
     }
     
-    func collectionColor(_ indexPath: IndexPath, _ cell:UICollectionViewCell) {
+    func fillCollectionCellWithColor(_ indexPath: IndexPath, _ cell:UICollectionViewCell) {
         switch indexPath.row % 5 {
         case 0:
             cell.backgroundColor = baseColor1
@@ -359,13 +374,17 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 
 extension CategoriesViewController {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("number of item delegeat is called")
         let sectionInfo = fetchedResultsController.sections![section]
+        print(sectionInfo.numberOfObjects)
         return sectionInfo.numberOfObjects
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("Data is reload")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
         cell.layer.cornerRadius = 10.0 //cornerRadius
+        fillCollectionCellWithColor(indexPath, cell)
         
         //如果吧gesture写在cell上，不写在viewdidload里，cell就会闪得很厉害，而且fetchController会去调default
 //        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
@@ -382,7 +401,6 @@ extension CategoriesViewController {
 //        } catch {
 //            fatalCoreDataError(error)
 //        }
-//        
         let width = cell.frame.width
 //        cell.categoryImageView = UIImageView(frame: CGRect(x: width / 2, y: 3, width: width / 2, height: width / 2)) 为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
         cell.categoryImageView?.contentMode = UIViewContentMode.scaleAspectFit
@@ -415,14 +433,10 @@ extension CategoriesViewController {
         if category.iconName != nil {
             cell.categoryImageView?.image = UIImage(named: category.iconName!)
         }
-        print("category name", category.iconName)
-        print("category color", category.color)
         
-        
-        collectionColor(indexPath, cell)
         
         if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
-//            if UserDefaults.standard.value(forKey: "SingleTap") as! String == "No" {
+            print("LongPress cell is called")
                 let anim = CABasicAnimation(keyPath: "transform.rotation")
                 anim.toValue = 0.0
                 anim.fromValue =  M_PI / 64
@@ -438,10 +452,10 @@ extension CategoriesViewController {
                 deleteButton.addTarget(self, action: #selector(deleteCategory), for: .touchUpInside)
                 deleteButton.setImage(backgroundImage, for: .normal)
                 cell.addSubview(deleteButton)
-//            }
         }
         
         else if UserDefaults.standard.value(forKey: "SingleTap") as! String == "Yes" {
+            print("singleTap cell reload is called")
             cell.layer.removeAllAnimations()
             let subViews = cell.subviews
             for subView in subViews {

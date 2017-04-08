@@ -694,7 +694,7 @@
                                 <action selector="cancel" destination="dsc-7n-Vgn" id="d7M-8R-PII"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="hin-jW-bD0">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="hin-jW-bD0">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="done" destination="dsc-7n-Vgn" id="LP2-yf-mfk"/>

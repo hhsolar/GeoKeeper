@@ -22,7 +22,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     var selectedColorIndexPath: IndexPath!
     var newItemId: NSNumber!
     var selectedColor: String = ""
-    var selectedIcon: String = "" 
+    var selectedIcon: String = ""
     var modeFlag = " "
     
     fileprivate let reuseIdentifier1 = "CategoryColorCell"
