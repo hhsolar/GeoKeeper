@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let defaultColors = ["red", "blue", "purple", "orange"]
             let defaultId = [0, 1, 2, 3]
             let defaultIconNames = ["No Icon", "Drinks", "Appointments", "Folder"]
+            let defaultCellColor = ["baseColor0","baseColor1","baseColor2","baseColor2","baseColor4"]
             let entity = NSEntityDescription.entity(forEntityName: "Category", in: managedObjectContext)!
             for i in 0..<4 {
                 let categoryObject = NSManagedObject(entity: entity, insertInto: managedObjectContext)
@@ -60,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 categoryObject.setValue(defaultColors[i], forKey: "color")
                 categoryObject.setValue(defaultIconNames[i], forKey: "iconName")
                 categoryObject.setValue(defaultId[i], forKey: "id")
+                categoryObject.setValue(defaultCellColor[i], forKey: "cellColor")
             }
             
             do {

@@ -174,7 +174,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="address" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6I-ML-gN6">
-                                <rect key="frame" x="20" y="128" width="213" height="36.5"/>
+                                <rect key="frame" x="20" y="128" width="213" height="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -694,7 +694,7 @@
                                 <action selector="cancel" destination="dsc-7n-Vgn" id="d7M-8R-PII"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="hin-jW-bD0">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="hin-jW-bD0">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="done" destination="dsc-7n-Vgn" id="LP2-yf-mfk"/>
@@ -711,10 +711,10 @@
             </objects>
             <point key="canvasLocation" x="2240.8000000000002" y="993.55322338830592"/>
         </scene>
-        <!--My Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="D21-Hw-JoL">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hGb-5T-77P" customClass="MyNavigationController" customModule="GeoKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hGb-5T-77P" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="geI-jE-O9e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

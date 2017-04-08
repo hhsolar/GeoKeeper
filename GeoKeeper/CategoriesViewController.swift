@@ -14,16 +14,24 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     fileprivate let itemsPerRow: CGFloat = 3
     var managedObjectContext: NSManagedObjectContext!
     var blockOperations: [BlockOperation] = []
-    var longPressGesture : UILongPressGestureRecognizer!
     var category : Category!
+    var p :CGPoint!
+    var modeFlag: String = "Add"
     
 //    var categories = [String]()
-    
-    let baseColor1 = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
-    let baseColor2 = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
-    let baseColor3 = UIColor(red: 251/255.0, green: 240/255.0, blue: 244/255.0, alpha: 1.0)
-    let baseColor4 = UIColor(red: 230/255.0, green: 221/255.0, blue: 244/255.0, alpha: 1.0)
-    let baseColor5 = UIColor(red: 251/255.0, green: 246/255.0, blue: 213/255.0, alpha: 1.0)
+//    enum cellColor {
+//        case baseColor0 = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
+//        case baseColor1 = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
+//        case baseColor2 = UIColor(red: 251/255.0, green: 240/255.0, blue: 244/255.0, alpha: 1.0)
+//        case baseColor3 = UIColor(red: 230/255.0, green: 221/255.0, blue: 244/255.0, alpha: 1.0)
+//        case bseeColor4 = UIColor(red: 251/255.0, green: 246/255.0, blue: 213/255.0, alpha: 1.0)
+//
+//    }
+    let baseColor0 = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
+    let baseColor1 = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
+    let baseColor2 = UIColor(red: 251/255.0, green: 240/255.0, blue: 244/255.0, alpha: 1.0)
+    let baseColor3 = UIColor(red: 230/255.0, green: 221/255.0, blue: 244/255.0, alpha: 1.0)
+    let baseColor4 = UIColor(red: 251/255.0, green: 246/255.0, blue: 213/255.0, alpha: 1.0)
     
     let red = UIColor.red
     let blue = UIColor.blue
@@ -67,30 +75,33 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         return fetchedResultsController
     }()
     
+    override func viewWillAppear(_ animated:Bool) {
+        super.viewWillAppear(animated)
+        print("\n")
+        print("                      ")
+        print(UserDefaults.standard.value(forKey: "LongPressed"))
+        print(UserDefaults.standard.value(forKey: "SingleTap"))
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+        
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.collectionView.reloadData()
+//        }
+        
+//        dispatch_async(dispatch_get_main_queue(), ^ {
+//            [self.collectionView reloadData];
+//            });
+    }
+    
     override func viewDidLoad() {
          super.viewDidLoad()
          performFetch()
-        
-//        如果写在这里，collectionview里面的prepare for segue就会不能用
-        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
-        collectionView.addGestureRecognizer(longPressGesture)
-        longPressGesture.minimumPressDuration = 0.01
-        
-        //不让long press 消耗
-        longPressGesture.cancelsTouchesInView = false
-        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-//        tapGesture.numberOfTapsRequired = 1
-//        tapGesture.numberOfTouchesRequired = 1
-//        collectionView.addGestureRecognizer(tapGesture)
-//        tapGesture.delegate = self
-        
+         loadGesture()
         //Remove the top margin, which is related with the collectionView's content margin
-         self.automaticallyAdjustsScrollViewInsets = false
-        
-
+        self.automaticallyAdjustsScrollViewInsets = false
     }
-    
+
     func performFetch() {
         do {
             try fetchedResultsController.performFetch()
@@ -99,19 +110,60 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    func loadGesture() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
+        collectionView.addGestureRecognizer(longPressGesture)
+        longPressGesture.minimumPressDuration = 0.5
+        //不让long press 消耗,否则，collectionview里面的prepare for segue就会不能用
+        longPressGesture.cancelsTouchesInView = false
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        //        tapGesture.numberOfTapsRequired = 1
+        //        tapGesture.numberOfTouchesRequired = 1
+        collectionView.addGestureRecognizer(tapGesture)
+        tapGesture.delegate = self
+        UserDefaults.standard.set("No", forKey: "LongPressed")
+        UserDefaults.standard.set("No", forKey: "SingleTap")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PickCategory" {
             let navController = segue.destination as! UINavigationController
             let controller = navController.viewControllers[0] as! CategoryAddViewController
-            controller.selectedCategoryName = "No Category"
-            controller.newItemId = fetchedResultsController.sections![0].numberOfObjects as NSNumber!
             controller.managedObjectContext = managedObjectContext
+            if modeFlag == "Add" {
+                controller.modeFlag = modeFlag
+                controller.selectedCategoryName = "No Category"
+                controller.newItemId = fetchedResultsController.sections![0].numberOfObjects as NSNumber!
+            } else if modeFlag == "Edit" {
+                controller.modeFlag = modeFlag
+                modeFlag = "Add"
+                let indexPath = collectionView.indexPathForItem(at: p)
+                let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+                fetchRequest.entity = Category.entity()
+                fetchRequest.predicate = NSPredicate(format: "id == %@", indexPath!.row as NSNumber!)
+                do {
+                    let categoryToEdits = try managedObjectContext.fetch(fetchRequest)
+                    
+                    for categoryToEdit in categoryToEdits {
+                        controller.selectedCategoryName = categoryToEdit.category!
+                        controller.selectedColor = categoryToEdit.color!
+                        controller.selectedIcon = categoryToEdit.iconName!
+                        controller.newItemId = categoryToEdit.id
+                        print(categoryToEdit.category,categoryToEdit.color,categoryToEdit.iconName,categoryToEdit.id)
+                    }
+                } catch {
+                    fatalCoreDataError(error)
+                }
+                controller.newItemId = indexPath!.row as NSNumber!
+                
+                
+            }
         }
         
         if segue.identifier == "CategoryDetails" {
             let controller = segue.destination as! LocationsViewController
             if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
-                print("CategoryDetails is called")
                 controller.categoryPassed = fetchedResultsController.object(at: indexPath).category!
             }
             controller.managedObjectContext = managedObjectContext
@@ -119,10 +171,16 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        UserDefaults.standard.set("Yes", forKey: "LongPressed")
         switch(gesture.state) {
         case UIGestureRecognizerState.began:
             guard let selectedIndexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
                 break
+            }
+            p = gesture.location(in: collectionView)
+            ///为啥加了异步就可以了呢
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
             collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
         case UIGestureRecognizerState.changed:
@@ -134,15 +192,30 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    //多点碰触
-//    func handleTap(gesture: UITapGestureRecognizer) {
-//        print("Single Tap")
-//    }
+   
+    func handleTap(gesture: UITapGestureRecognizer) {
+        NSLog("Single Tap")
+        UserDefaults.standard.set("Yes", forKey: "SingleTap")
+        if gesture.state != UIGestureRecognizerState.ended {
+            return
+        }
+        p = gesture.location(in: collectionView)
+        let indexPath = collectionView.indexPathForItem(at: p)
+        if indexPath == nil {
+            UserDefaults.standard.set("No", forKey: "LongPressed")
+            collectionView.reloadData()
+        } else if UserDefaults.standard.value(forKey:"LongPressed") as! String == "No" {
+            performSegue(withIdentifier: "CategoryDetails", sender: collectionView.cellForItem(at: indexPath!))
+        } else if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
+            modeFlag = "Edit"
+            performSegue(withIdentifier: "PickCategory", sender: collectionView.cellForItem(at: indexPath!))
+            
+        }
+    }
     
-    func collectionView(_ collectionView: UICollectionView,
+        func collectionView(_ collectionView: UICollectionView,
                                  moveItemAtIndexPath sourceIndexPath: NSIndexPath,
                                  toIndexPath destinationIndexPath: NSIndexPath) {
-        print("This is called ******************")
         let category = fetchedResultsController.object(at: sourceIndexPath as IndexPath)
         category.setValue(destinationIndexPath.row, forKey: "id")
         
@@ -173,6 +246,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        print("fetchRequestController delegate is called")
         switch type {
         case .insert:
             blockOperations.append(
@@ -180,6 +254,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                     if let this = self {
                         this.collectionView!.insertItems(at: [newIndexPath!])
                     }
+                    
                 })
             )
         case .update:
@@ -212,7 +287,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        
         switch type {
         case .insert:
             blockOperations.append(
@@ -261,20 +335,37 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         blockOperations.removeAll(keepingCapacity: false)
     }
     
-    func collectionColor(_ indexPath: IndexPath, _ cell:UICollectionViewCell) {
-        switch indexPath.row % 5 {
-        case 0:
+//    func fillCollectionCellWithColor(_ indexPath: IndexPath, _ cell:UICollectionViewCell) {
+//        switch indexPath.row % 5 {
+//        case 0:
+//            cell.backgroundColor = baseColor0
+//        case 1:
+//            cell.backgroundColor = baseColor1
+//        case 2:
+//            cell.backgroundColor = baseColor2
+//        case 3:
+//            cell.backgroundColor = baseColor3
+//        case 4:
+//            cell.backgroundColor = baseColor4
+//        default:
+//            cell.backgroundColor = baseColor0
+//        }
+//    }
+    
+    func fillCollectionCellWithColor(_ color: String,_ cell: CategoryCell) {
+        switch color {
+        case "baseColor0":
+            cell.backgroundColor = baseColor0
+        case "baseColor1":
             cell.backgroundColor = baseColor1
-        case 1:
+        case "baseColor2":
             cell.backgroundColor = baseColor2
-        case 2:
+        case "baseColor3":
             cell.backgroundColor = baseColor3
-        case 3:
+        case "baseColor4":
             cell.backgroundColor = baseColor4
-        case 4:
-            cell.backgroundColor = baseColor5
         default:
-            cell.backgroundColor = baseColor1
+            cell.backgroundColor = baseColor0
         }
     }
     
@@ -310,15 +401,17 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 
 extension CategoriesViewController {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("number of item delegeat is called")
         let sectionInfo = fetchedResultsController.sections![section]
+        print(sectionInfo.numberOfObjects)
         return sectionInfo.numberOfObjects
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var i = 0;
+        print("Data is reload")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
-        
         cell.layer.cornerRadius = 10.0 //cornerRadius
+        
         
         //如果吧gesture写在cell上，不写在viewdidload里，cell就会闪得很厉害，而且fetchController会去调default
 //        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
@@ -335,17 +428,14 @@ extension CategoriesViewController {
 //        } catch {
 //            fatalCoreDataError(error)
 //        }
-//        
         let width = cell.frame.width
 //        cell.categoryImageView = UIImageView(frame: CGRect(x: width / 2, y: 3, width: width / 2, height: width / 2)) 为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
         cell.categoryImageView?.contentMode = UIViewContentMode.scaleAspectFit
-    
-        
         cell.categoryLabel?.frame = CGRect(x:0, y:width - 40, width:width, height:20)
         cell.categoryLabel?.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
         cell.categoryLabel?.textAlignment = .center
         cell.categoryLabel?.text = category.category!
-        
+        fillCollectionCellWithColor(category.cellColor,cell)
         if let categoryColor = category.color {
             switch categoryColor {
             case "red":
@@ -371,15 +461,80 @@ extension CategoriesViewController {
             cell.categoryImageView?.image = UIImage(named: category.iconName!)
         }
         
-        collectionColor(indexPath, cell)
+        
+        if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
+            print("LongPress cell is called")
+                let anim = CABasicAnimation(keyPath: "transform.rotation")
+                anim.toValue = 0.0
+                anim.fromValue =  M_PI / 64
+                anim.duration = 0.1
+                anim.repeatCount = Float(UInt.max)
+                anim.autoreverses = true
+                cell.layer.shouldRasterize = true
+                cell.layer.add(anim, forKey: "SpringboardShake")
+            
+            
+                let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 15, height: 15))
+                let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
+                deleteButton.addTarget(self, action: #selector(deleteCategory), for: .touchUpInside)
+                deleteButton.setImage(backgroundImage, for: .normal)
+                cell.addSubview(deleteButton)
+        }
+        
+        else if UserDefaults.standard.value(forKey: "SingleTap") as! String == "Yes" {
+            print("singleTap cell reload is called")
+            cell.layer.removeAllAnimations()
+            let subViews = cell.subviews
+            for subView in subViews {
+                if subView is UIButton {
+                    subView.removeFromSuperview()
+                }
+            }
+//            UserDefaults.standard.set("No",forKey:"SingleTap")
+        }
+        
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("didSelectItemAt is called")
-//        self.performSegue(withIdentifier: "CategoryDetails", sender: self)
-//    }
-
+    func deleteCategory() {
+        let alert = UIAlertController(title: "Please make sure", message: "If you remove this category, all the inside data will be deleted", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Cancel is pressed")}))
+        alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.deleteAtIndexPath()}))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteAtIndexPath() {
+        print("deleteatIndexPath function is called")
+        if let id = collectionView.indexPathForItem(at: p) {
+            print(id.row, "indexpath is important")
+            let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+            fetchRequest.entity = Category.entity()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id.row as NSNumber)
+            do{
+                let toBeDeleteds = try managedObjectContext.fetch(fetchRequest)
+                for toBeDeleted in toBeDeleteds {
+                    managedObjectContext.delete(toBeDeleted)
+                }
+            } catch {
+                fatalCoreDataError(error)
+            }
+            
+            
+            let end = fetchedResultsController.sections![0].numberOfObjects
+            for i in id.row + 1..<end {
+                let indexPath = IndexPath(row: i, section: 0)
+                let category = fetchedResultsController.object(at: indexPath)
+                category.setValue((i - 1) as NSNumber, forKey: "id")
+            }
+        }
+        
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalCoreDataError(error)
+        }
+    }
 }
 
 extension CategoriesViewController : UICollectionViewDelegateFlowLayout {

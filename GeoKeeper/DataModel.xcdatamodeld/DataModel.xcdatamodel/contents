@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16B2657" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName=".Category" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cellColor" attributeType="String" syncable="YES"/>
         <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="iconName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -19,7 +20,7 @@
         <attribute name="punch" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-63" positionY="36" width="128" height="105"/>
+        <element name="Category" positionX="-63" positionY="36" width="128" height="120"/>
         <element name="Location" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>
 </model>
