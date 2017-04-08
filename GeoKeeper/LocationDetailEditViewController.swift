@@ -8,9 +8,14 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 import Foundation
 
-class LocationDetailEditViewController: UIViewController {
+protocol LocationDetailEditViewControllerDelegate {
+    func passLocation(location: MyLocation)
+}
+
+class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var categoryPicker: UIButton!
@@ -20,7 +25,11 @@ class LocationDetailEditViewController: UIViewController {
     @IBOutlet weak var photoCollection: UICollectionView!
     
     var managedObjectContext: NSManagedObjectContext!
-    var locationToEdit: Location?
+    var locationToSave: Location?
+    var locationToEdit = MyLocation()
+    var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    
+    var delegate: LocationDetailEditViewControllerDelegate? = nil
     
     let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     
@@ -36,7 +45,12 @@ class LocationDetailEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
-  
+        
+        nameTextField.text = locationToEdit.locationName
+        categoryPicker.setTitle(locationToEdit.locationCategory, for: .normal)
+        portraitImageView.image = UIImage(named: locationToEdit.locationPhotoID)
+        remarkTextView.text = locationToEdit.locationDescription
+        
         setPara()
         initCollectionView()
                 
@@ -44,23 +58,19 @@ class LocationDetailEditViewController: UIViewController {
     
     func setPara() {
         // set portraitImageView
-        print("!!!!!!!!! \(locationToEdit?.locationPhotoID)")
-        portraitImageView.image = UIImage(named: (locationToEdit?.locationPhotoID)!)
         portraitImageView.layer.borderWidth = 5
         portraitImageView.layer.borderColor = UIColor.white.cgColor
         
         // set nameTextField
-        nameTextField.text = locationToEdit?.name
         nameTextField.font = UIFont(name: "TrebuchetMS", size: 16)
+        nameTextField.delegate = self
+        nameTextField.clearButtonMode = UITextFieldViewMode.whileEditing
         
         // set categoryPicker
-        categoryPicker.setTitle(locationToEdit?.category, for: .normal)
         categoryPicker.titleLabel!.font = UIFont(name: "TrebuchetMS", size: 14)
         categoryPicker.setTitleColor(UIColor.gray, for: .normal)
         categoryPicker.layer.cornerRadius = 4
 //        categoryPicker.addTarget(self, action: #selector(ViewController.noInteractPush), for: .touchUpInside)
-        
-        remarkTextView.text = locationToEdit?.locationDescription
         
         // set navigationBar
         nBar.barTintColor = baseColor
@@ -85,15 +95,90 @@ class LocationDetailEditViewController: UIViewController {
         photoCollection.showsHorizontalScrollIndicator = false
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func updateContent(location: Location) {
+        location.name = nameTextField.text
+        location.category = (categoryPicker.titleLabel?.text)!
+        location.locationDescription = remarkTextView.text
+        
+        locationToEdit.locationName = nameTextField.text!
+        locationToEdit.locationCategory = (categoryPicker.titleLabel?.text)!
+        locationToEdit.locationDescription = remarkTextView.text
+    }
+    
     @IBAction func done() {
+        
+        var locations = [Location]()
+        var hasRocord = false
+        
+        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
+        fetchedRequest.entity = Location.entity()
+        do {
+            locations = try managedObjectContext.fetch(fetchedRequest)
+        } catch {
+            fatalCoreDataError(error)
+        }
+        
+        for locationRecord in locations {
+            if let placemarkRecord = locationRecord.placemark {
+                if let placemarkEdit = locationToEdit.placemark {
+                    if string(from: placemarkEdit) == string(from: placemarkRecord) {
+                        updateContent(location: locationRecord)
+                        hasRocord = true
+                    }
+                }
+            }
+        }
+        if !hasRocord {
+            let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
+            location.name = locationToEdit.locationName
+            location.category = locationToEdit.locationCategory
+            location.date = locationToEdit.date!
+            location.latitude = locationToEdit.latitude
+            location.longitude = locationToEdit.longitude
+            location.placemark = locationToEdit.placemark
+            location.locationPhotoID = locationToEdit.locationPhotoID
+            location.punch = locationToEdit.punch
+            location.locationDescription = locationToEdit.locationDescription
+        }
         
         do {
             try managedObjectContext.save()
         } catch {
             fatalError("Failure to save context: \(error)")
         }
-        
+        delegate?.passLocation(location: locationToEdit)
         dismiss(animated: true, completion: nil)
+    }
+                
+    func string(from placemark: CLPlacemark) -> String {
+        var line1 = ""
+        
+        if let s = placemark.subThoroughfare {
+            line1 += s + " "
+        }
+                    
+        if let s = placemark.thoroughfare {
+            line1 += s
+        }
+                    
+        var line2 = ""
+                    
+        if let s = placemark.locality {
+            line2 += s + " "
+        }
+        if let s = placemark.administrativeArea {
+            line2 += s + " "
+        }
+        if let s = placemark.postalCode {
+            line2 += s
+        }
+                    
+        return line1 + "\n" + line2
     }
     
     @IBAction func cancel() {
@@ -154,7 +239,7 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
         cell.awakeFromNib()
         cell.delegate = self
-        cell.photoImageView.image = UIImage(named: "portrait_cat")
+        cell.photoImageView.image = UIImage(named: locationToEdit.locationPhotoID)
         return cell
     }
 }

@@ -19,9 +19,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var updatingLocation = false
     var lastLocationError: Error?
     var locations = [Location]()
-    var forPassLocation: Location!
+    var fetchedLocation: Location!
+    var forPassLocation = MyLocation()
     var isVisited: Bool = false
-    
     
     let geocoder = CLGeocoder()
     var placemark: CLPlacemark?
@@ -33,7 +33,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
-    
+    let disableColor = UIColor(red: 165/255.0, green: 187/255.0, blue: 217/255.0, alpha: 1.0)
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
@@ -90,13 +90,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         pickPhoto()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.tintColor = baseColor
-        
-        mapView?.showsUserLocation = true
-        
+    func setContainer() {
         // set navigationBar
         nBar.barTintColor = baseColor
         nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
@@ -104,7 +98,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         // set messageLabel
         messageLabel.font = UIFont(name: "TrebuchetMS-Italic", size: 16)
         messageLabel.textColor = secondColor
-       
+        
         // set cityName
         cityName.textColor = baseColor
         cityName.font = UIFont(name: "TrebuchetMS-Bold", size: 20)
@@ -119,9 +113,43 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         portraitImage.layer.borderWidth = 1.5
         portraitImage.layer.borderColor = baseColor.cgColor
         
+        // set tagButton
         tagLabel.text = "Tag"
-        updateLabels()
+        tagLabel.textColor = disableColor
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
+        fetchedRequest.entity = Location.entity()
+        do {
+            locations = try managedObjectContext.fetch(fetchedRequest)
+        } catch {
+            fatalCoreDataError(error)
+        }
+        for locationRecord in locations {
+            if let placemarkRecord = locationRecord.placemark {
+                if let placemark = forPassLocation.placemark {
+                    if string(from: placemark) == string(from: placemarkRecord) {
+                        cityName.text = locationRecord.name
+                    }
+                }
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.tintColor = baseColor
+        
+        mapView?.showsUserLocation = true
+        
+        updateLabels()
+        setContainer()
+        
+        // set user portrait
         let userDefaults = UserDefaults.standard
         let currentPortrait = userDefaults.string(forKey: "Portrait")
         if currentPortrait == "Default" {
@@ -135,10 +163,79 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
         userDefaults.synchronize()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func updateLabels() {
+        if let location = location {
+            latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
+            longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
+            tagButton.setTitleColor(baseColor, for: .normal)
+            tagLabel.text = "Tag"
+            tagButton.isEnabled = true
+            tagLabel.textColor = baseColor
+            
+            if let placemark = placemark {
+                addressLabel.text = string(from: placemark)
+                for locationRecord in locations {
+                    if let placemarkRecord = locationRecord.placemark {
+                        if addressLabel.text == string(from:placemarkRecord) {
+                            forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
+                            cityName.text = forPassLocation.locationName
+                            isVisited = true
+                        }
+                    }
+                }
+                if isVisited == false {
+                    cityName.text = placemark.locality
+                }
+                
+            } else if performingReverseGeocoding {
+                addressLabel.text = "Searching for Address..."
+            } else if lastGeocodingError != nil {
+                addressLabel.text = "Error Finding Address"
+            } else {
+                addressLabel.text = "No Address Found"
+            }
+            
+            if isVisited == true {
+                tagLabel.text = "Punch"
+                messageLabel.text = "Tap 'Punch' to Punch In"
+            } else {
+                messageLabel.text = "Tap 'Tag' to Save Location"
+            }
+            
+            
+        } else {
+            latitudeLabel.text = "Not available"
+            longitudeLabel.text = "Not available"
+            addressLabel.text = "My address"
+            
+            tagButton.isEnabled = false
+            tagLabel.textColor = disableColor
+            
+            tagButton.setTitleColor(UIColor.gray, for: .normal)
+            messageLabel.text = "Tap 'Get My Location' to Start"
+            
+            let statusMessage: String
+            if let error = lastLocationError {
+                if (error as NSError).domain == kCLErrorDomain && (error as NSError).code == CLError.denied.rawValue {
+                    statusMessage = "Location Services Disabled"
+                } else {
+                    statusMessage = "Error Getting Location"
+                }
+            } else if !CLLocationManager.locationServicesEnabled() {
+                statusMessage = "Location Services Disabled"
+            } else if updatingLocation {
+                statusMessage = "Searching..."
+            } else {
+                statusMessage = "Tap 'Get My Location' to Start"
+            }
+            messageLabel.text = statusMessage
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -146,18 +243,18 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             let navigationController = segue.destination as! UINavigationController
             let controller = navigationController.topViewController as! LocationDetailViewController
             controller.managedObjectContext = managedObjectContext
+            controller.delegate = self
 
+            forPassLocation.locationName = cityName.text!
             if tagLabel.text == "Tag" {
-                controller.placemark = placemark
-                controller.coordinate = location!.coordinate
-                controller.date = (location?.timestamp)!
-                
+                forPassLocation.placemark = placemark
+                forPassLocation.latitude = (location?.coordinate.latitude)!
+                forPassLocation.longitude = (location?.coordinate.longitude)!
+                forPassLocation.date = (location?.timestamp)!
             } else if tagLabel.text == "Punch" {
-                if let punchNumber = forPassLocation.punch {
-                    forPassLocation.punch = (Int(punchNumber) + 1) as NSNumber
-                }
-                controller.locationToEdit = forPassLocation
+                forPassLocation.punch = (Int(forPassLocation.punch) + 1) as NSNumber
             }
+            controller.locationToShow = forPassLocation
         }
     }
     
@@ -258,70 +355,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
     }
     
-    func updateLabels() {
-        if let location = location {
-            latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
-            longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
-            tagButton.setTitleColor(baseColor, for: .normal)
-            tagLabel.text = "Tag"
-            tagButton.isEnabled = true
-            
-            if let placemark = placemark {
-                cityName.text = placemark.locality
-                addressLabel.text = string(from: placemark)
-                for locationRecord in locations {
-                    if let placemarkRecord = locationRecord.placemark {
-                        if addressLabel.text == string(from:placemarkRecord) {
-                            forPassLocation = locationRecord
-                            isVisited = true
-                            print("Visited")
-                        }
-                    }
-                }
-            } else if performingReverseGeocoding {
-                addressLabel.text = "Searching for Address..."
-            } else if lastGeocodingError != nil {
-                addressLabel.text = "Error Finding Address"
-            } else {
-                addressLabel.text = "No Address Found"
-            }
-            
-            if isVisited == true {
-                tagLabel.text = "Punch"
-                messageLabel.text = "Tap 'Punch' to Punch In"
-            } else {
-                messageLabel.text = "Tap 'Tag' to Save Location"
-            }
-            
-            
-        } else {
-            latitudeLabel.text = "Not available"
-            longitudeLabel.text = "Not available"
-            addressLabel.text = "My address"
-            
-            tagButton.isEnabled = false
-
-            tagButton.setTitleColor(UIColor.gray, for: .normal)
-            messageLabel.text = "Tap 'Get My Location' to Start"
-            
-            let statusMessage: String
-            if let error = lastLocationError {
-                if (error as NSError).domain == kCLErrorDomain && (error as NSError).code == CLError.denied.rawValue {
-                    statusMessage = "Location Services Disabled"
-                } else {
-                    statusMessage = "Error Getting Location"
-                }
-            } else if !CLLocationManager.locationServicesEnabled() {
-                statusMessage = "Location Services Disabled"
-            } else if updatingLocation {
-                statusMessage = "Searching..."
-            } else {
-                statusMessage = "Tap 'Get My Location' to Start"
-            }
-            messageLabel.text = statusMessage
-        }
-    }
-    
     func string(from placemark: CLPlacemark) -> String {
         var line1 = ""
         
@@ -345,7 +378,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             line2 += s
         }
         
-        print(line1 + "\n" + line2)
         return line1 + "\n" + line2
     }
     
@@ -432,3 +464,9 @@ extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavi
     }
 }
 
+extension CurrentLocationViewController: LocationDetailViewControllerDelegate {
+    func passLocation(location: MyLocation) {
+        forPassLocation = location
+        cityName.text = forPassLocation.locationName
+    }
+}

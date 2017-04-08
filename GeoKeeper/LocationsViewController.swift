@@ -42,7 +42,6 @@ class LocationsViewController: UITableViewController {
         }
         
     }
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LocationDetail" {
@@ -52,10 +51,9 @@ class LocationsViewController: UITableViewController {
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 let location = locations[indexPath.row]
-                controller.locationToEdit = location
+                controller.locationToShow = MyLocation.toMyLocation(coreDataLocation: location)
             }
         }
-        
         
         if segue.identifier == "PickCategoryinCategoryView" {
             let controller = segue.destination as! CategoryPickerViewController
@@ -63,6 +61,7 @@ class LocationsViewController: UITableViewController {
         }
         
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
@@ -71,6 +70,7 @@ class LocationsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
         let location = locations[indexPath.row]
         cell.configure(for: location)
+        
         return cell
     }
     
@@ -79,7 +79,6 @@ class LocationsViewController: UITableViewController {
             let location = locations[indexPath.row]
             managedObjectContext.delete(location)
             locations.remove(at: indexPath.row)
-            
             do {
                 try managedObjectContext.save()
             } catch {
@@ -87,6 +86,37 @@ class LocationsViewController: UITableViewController {
             }
         }
         tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    func string(from placemark: CLPlacemark) -> String {
+        var line1 = ""
+        
+        if let s = placemark.subThoroughfare {
+            line1 += s + " "
+        }
+        
+        if let s = placemark.thoroughfare {
+            line1 += s
+        }
+        
+        var line2 = ""
+        
+        if let s = placemark.locality {
+            line2 += s + " "
+        }
+        if let s = placemark.administrativeArea {
+            line2 += s + " "
+        }
+        if let s = placemark.postalCode {
+            line2 += s
+        }
+        
+        return line1 + "\n" + line2
     }
 }
 

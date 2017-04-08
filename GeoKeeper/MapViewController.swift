@@ -68,7 +68,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
             let button = sender as! UIButton
             let location = locations[button.tag]
-            controller.locationToEdit = location
+            controller.locationToShow = MyLocation.toMyLocation(coreDataLocation: location)
         }
     }
     
