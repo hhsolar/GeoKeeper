@@ -12,6 +12,10 @@ import CoreData
 import MapKit
 import Foundation
 
+protocol LocationDetailViewControllerDelegate {
+    func passLocation(location: MyLocation)
+}
+
 class LocationDetailViewController: UIViewController {
     
     @IBOutlet weak var locationNameLabel: UILabel!
@@ -30,26 +34,15 @@ class LocationDetailViewController: UIViewController {
     let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
     
     var managedObjectContext: NSManagedObjectContext!
-    var categoryName = "No Category"
-    var date = Date()
+    var locationToShow = MyLocation()
     var placemark: CLPlacemark?
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    var delegate: LocationDetailViewControllerDelegate? = nil
     
     let kScreenWidth = UIScreen.main.bounds.size.width
     let kScreenHeight = UIScreen.main.bounds.size.height
     
     let apiKey = "64061cb2cff1e380d2011f5ad50d3bf8"
-    
-    var locationToEdit: Location? {
-        didSet {
-            if let location = locationToEdit {
-                categoryName = location.category
-                placemark = location.placemark
-                date = location.date
-                coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude)
-            }
-        }
-    }
     
     var temp = ""
     var weather = ""
@@ -62,44 +55,40 @@ class LocationDetailViewController: UIViewController {
     }
     
     @IBAction func getBack() {
+        delegate?.passLocation(location: locationToShow)
         dismiss(animated: true, completion: nil);
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditDetail" {
             let controller = segue.destination as! LocationDetailEditViewController
-            if let loc = locationToEdit {
-                controller.locationToEdit = loc
-            } else {
-                let location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
-                location.name = placemark?.locality
-                location.category = categoryName
-                location.date = date
-                location.latitude = coordinate.latitude
-                location.longitude = coordinate.longitude
-                location.locationPhotoID = "portrait_cat" // need to change later
-                location.placemark = placemark
-                location.locationDescription = "This guy is so lazy that he writes nothing here!"
-                location.punch = 0
-                controller.locationToEdit = location
-            }
+            controller.locationToEdit = locationToShow
             controller.collectionFrame = photoCollectionView.frame
             controller.managedObjectContext = managedObjectContext
+            controller.delegate = self
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.tintColor = secondColor
         
-        if let placemark = placemark {
-            title = placemark.locality
-            locationNameLabel.text = placemark.locality
-            categoryLabel.text = categoryName
+        title = locationToShow.locationName
+        locationNameLabel.text = locationToShow.locationName
+        categoryLabel.text = locationToShow.locationCategory
+        punchNumber.text = locationToShow.punch.stringValue
+        remarkTextView.text = locationToShow.locationDescription
+        punchNumber.text = locationToShow.punch.stringValue
+        
+        if let placemark = locationToShow.placemark {
             addressLabel.text = stringFromPlacemark(placemark: placemark)
         } else {
             addressLabel.text = "No Address Found"
         }
+        
+        coordinate.latitude = locationToShow.latitude
+        coordinate.longitude = locationToShow.longitude
         
         setLocation(coordinate: coordinate)
         weatherSearch(coordinate: coordinate)
@@ -143,11 +132,6 @@ class LocationDetailViewController: UIViewController {
         temperatureLabel.text = "\(temp)C"
         
         // set punchNumber
-        if let punchNum = locationToEdit?.punch {
-            punchNumber.text = punchNum.stringValue
-        } else {
-            punchNumber.text = "0"
-        }
         punchNumber.textColor = secondColor
     }
     
@@ -295,8 +279,18 @@ extension LocationDetailViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
         cell.awakeFromNib()
-        cell.photoImageView.image = UIImage(named: "portrait_cat")
+        cell.photoImageView.image = UIImage(named: locationToShow.locationPhotoID)
         cell.deleteButton.isHidden = true
         return cell
+    }
+}
+
+extension LocationDetailViewController: LocationDetailEditViewControllerDelegate {
+    func passLocation(location: MyLocation) {
+        locationToShow = location
+        title = locationToShow.locationName
+        locationNameLabel.text = locationToShow.locationName
+        categoryLabel.text = locationToShow.locationCategory
+        remarkTextView.text = locationToShow.locationDescription
     }
 }

@@ -29,11 +29,11 @@ class PhotoCell: UICollectionViewCell {
         deleteButton = UIButton(frame: CGRect(x: (contentView.frame.origin.x + 5), y: (contentView.frame.origin.y + 5), width: 15, height: 15))
         let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
         deleteButton.setImage(backgroundImage, for: .normal)
-        deleteButton.addTarget(self, action: #selector(deletePhoto), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(changeButtonColor), for: .touchUpInside)
         contentView.addSubview(deleteButton)
     }
     
-    func deletePhoto() {
+    func changeButtonColor() {
         delegate?.changeColorOfButton(forCell: self)
     }
 

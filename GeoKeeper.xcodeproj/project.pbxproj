@@ -13,6 +13,7 @@
 		185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */; };
 		185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */; };
 		185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */; };
+		18EEC0D01E983EC60096A52A /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEC0CF1E983EC60096A52A /* MyLocation.swift */; };
 		18F629F31E8626F200062EF8 /* LocationDetailEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */; };
 		18F62A001E89CC2E00062EF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F629FE1E89CC2E00062EF8 /* Main.storyboard */; };
 		18F62A021E89D1D700062EF8 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */; };
@@ -39,7 +40,6 @@
 		1FEAD4A31E6E2146007CC5F1 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */; };
 		1FEAD4A61E6E2B2A007CC5F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEAD4A51E6E2B2A007CC5F1 /* MapKit.framework */; };
 		1FEAD4AC1E70E41C007CC5F1 /* MyImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */; };
-		1FF7F1691E67AC9500E8F809 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7F1681E67AC9500E8F809 /* LocationDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +51,7 @@
 		185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		185F5C461E679C5F004E73B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185F5C481E679C5F004E73B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18EEC0CF1E983EC60096A52A /* MyLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLocation.swift; sourceTree = "<group>"; };
 		18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailEditViewController.swift; sourceTree = "<group>"; };
 		18F629FF1E89CC2E00062EF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		1FEAD4A51E6E2B2A007CC5F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
-		1FF7F1681E67AC9500E8F809 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,14 +130,11 @@
 			isa = PBXGroup;
 			children = (
 				1F8D4F831E83972B00A5D73E /* TabbarViewControllers */,
-				1FF7F1681E67AC9500E8F809 /* LocationDetailsViewController.swift */,
 				1801FB8B1E7F100C00705F92 /* LocationDetailViewController.swift */,
 				18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */,
 				1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */,
 				1F8D4F891E83990700A5D73E /* CategoryAddViewController.swift */,
 				1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */,
-				18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */,
-				18F62A321E8B74C300062EF8 /* FadeAnimation.swift */,
 				1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */,
 			);
 			name = Controllers;
@@ -157,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				1FEAD4911E6CB5D2007CC5F1 /* DataModel.xcdatamodeld */,
+				18EEC0CF1E983EC60096A52A /* MyLocation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -164,6 +162,8 @@
 		1F8D4F851E83979100A5D73E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */,
+				18F62A321E8B74C300062EF8 /* FadeAnimation.swift */,
 				1FEAD4891E6A8B19007CC5F1 /* HudView.swift */,
 				1F5876CB1E7CBDFD006FB269 /* MyTabBarController.swift */,
 				1801FB761E77BAAC00705F92 /* MyNavigationController.swift */,
@@ -275,7 +275,6 @@
 				1F8D4F961E839D4100A5D73E /* CategoryPickerViewController.swift in Sources */,
 				1F8D4F8A1E83990700A5D73E /* CategoryAddViewController.swift in Sources */,
 				1F5876CC1E7CBDFD006FB269 /* MyTabBarController.swift in Sources */,
-				1FF7F1691E67AC9500E8F809 /* LocationDetailsViewController.swift in Sources */,
 				1801FB8C1E7F100C00705F92 /* LocationDetailViewController.swift in Sources */,
 				1F8D4F811E83963100A5D73E /* CategoriesViewController.swift in Sources */,
 				1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */,
@@ -293,6 +292,7 @@
 				1FEAD4AC1E70E41C007CC5F1 /* MyImagePickerController.swift in Sources */,
 				18F62A021E89D1D700062EF8 /* DimmingPresentationController.swift in Sources */,
 				185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */,
+				18EEC0D01E983EC60096A52A /* MyLocation.swift in Sources */,
 				1FEAD49E1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift in Sources */,
 				1F8D4F8C1E83993F00A5D73E /* CategoryCell.swift in Sources */,
 				1F1CE3281E7A1D2F00A1FA77 /* Category+CoreDataClass.swift in Sources */,
