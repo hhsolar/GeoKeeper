@@ -64,6 +64,11 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         textField.text = selectedCategoryName
         doneBarButton.isEnabled = false
         delegate?.changeColorOfButton(Color: UIColor.lightGray)
+        if modeFlag == "Add" {
+            self.title = "Add Category"
+        } else {
+            self.title = "Edit Category"
+        }
        
         color = selectedColor
         icon = selectedIcon
