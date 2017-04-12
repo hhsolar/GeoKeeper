@@ -15,7 +15,7 @@ protocol LocationDetailEditViewControllerDelegate {
     func passLocation(location: MyLocation)
 }
 
-class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
+class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var categoryPicker: UIButton!
@@ -35,6 +35,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
     let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     
     var collectionFrame = CGRect.zero
+    var keyHeight = CGFloat()
     fileprivate let reuseIdentifier = "PhotoCell"
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,6 +63,12 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
         categoryPicker.setTitle(locationToEdit.locationCategory, for: .normal)
         portraitImageView.image = UIImage(named: locationToEdit.locationPhotoID)
         remarkTextView.text = locationToEdit.locationDescription
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(tapGesure:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
+        remarkTextView.delegate = self
         
         setPara()
         initCollectionView()
@@ -136,6 +143,41 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
         locationToEdit.locationName = nameTextField.text!
         locationToEdit.locationCategory = (categoryPicker.titleLabel?.text)!
         locationToEdit.locationDescription = remarkTextView.text
+    }
+    
+    // textView related
+    func hideKeyboard(tapGesure: UITapGestureRecognizer) {
+        self.remarkTextView.resignFirstResponder()
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        let centerDefault = NotificationCenter.default
+        centerDefault.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        return true
+    }
+    
+    func keyboardWillShow(aNotification: NSNotification) {
+        let userinfo: NSDictionary = aNotification.userInfo! as NSDictionary
+        let nsValue = userinfo.object(forKey: UIKeyboardFrameEndUserInfoKey)
+        let keyboardRec = (nsValue as AnyObject).cgRectValue
+        let height = keyboardRec?.size.height
+        self.keyHeight = height!
+        UIView.animate(withDuration: 0.5, animations: {
+            var frame = self.view.frame
+            frame.origin.y = -self.keyHeight
+            self.view.frame = frame
+        }, completion: nil)
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        UIView.animate(withDuration: 0.5, animations: {
+            var frame = self.view.frame
+            frame.origin.y = 0
+            self.view.frame = frame
+        }, completion: nil)
+        let centerDefault = NotificationCenter.default
+        centerDefault.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        return true
     }
     
     @IBAction func done() {

@@ -523,9 +523,10 @@ SWIFT_CLASS("_TtC9GeoKeeper12LocationCell")
 @end
 
 @class UITextView;
+@class NSNotification;
 
 SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
-@interface LocationDetailEditViewController : UIViewController <UITextFieldDelegate>
+@interface LocationDetailEditViewController : UIViewController <UIScrollViewDelegate, UITextViewDelegate, UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified nameTextField;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified categoryPicker;
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified portraitImageView;
@@ -539,6 +540,7 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
 @property (nonatomic) CGRect collectionFrame;
+@property (nonatomic) CGFloat keyHeight;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (void)viewDidLoad;
@@ -547,6 +549,10 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField;
 - (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string;
 - (void)updateContentWithLocation:(Location * _Nonnull)location;
+- (void)hideKeyboardWithTapGesure:(UITapGestureRecognizer * _Nonnull)tapGesure;
+- (BOOL)textViewShouldBeginEditing:(UITextView * _Nonnull)textView;
+- (void)keyboardWillShowWithANotification:(NSNotification * _Nonnull)aNotification;
+- (BOOL)textViewShouldEndEditing:(UITextView * _Nonnull)textView;
 - (IBAction)done;
 - (NSString * _Nonnull)stringFrom:(CLPlacemark * _Nonnull)placemark;
 - (IBAction)cancel;
@@ -580,7 +586,7 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 @end
 
 
-@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper)) <UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
+@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper)) <UICollectionViewDataSource, UICollectionViewDelegate>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView;
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
