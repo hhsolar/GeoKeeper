@@ -450,6 +450,7 @@ SWIFT_CLASS("_TtC9GeoKeeper29DimmingPresentationController")
 @interface DimmingPresentationController : UIPresentationController
 @property (nonatomic, readonly) BOOL shouldRemovePresentersView;
 @property (nonatomic, strong) UIView * _Nonnull dimmingView;
+@property (nonatomic, strong) UIView * _Nonnull secondView;
 - (void)presentationTransitionWillBegin;
 - (void)dismissalTransitionWillBegin;
 - (nonnull instancetype)initWithPresentedViewController:(UIViewController * _Nonnull)presentedViewController presentingViewController:(UIViewController * _Nullable)presentingViewController OBJC_DESIGNATED_INITIALIZER;

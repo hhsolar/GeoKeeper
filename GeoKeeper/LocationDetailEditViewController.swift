@@ -89,7 +89,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         categoryPicker.titleLabel!.font = UIFont(name: "TrebuchetMS", size: 14)
         categoryPicker.setTitleColor(UIColor.gray, for: .normal)
         categoryPicker.layer.cornerRadius = 4
-//        categoryPicker.addTarget(self, action: #selector(ViewController.noInteractPush), for: .touchUpInside)
         
         // set navigationBar
         nBar.barTintColor = baseColor
