@@ -59,6 +59,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
         
+        nBar.topItem?.title = "Edit Location"
         nameTextField.text = locationToEdit.locationName
         categoryPicker.setTitle(locationToEdit.locationCategory, for: .normal)
         portraitImageView.image = UIImage(named: locationToEdit.locationPhotoID)
@@ -95,7 +96,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
         nBar.topItem?.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
         nBar.topItem?.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
-        
     }
     
     func initCollectionView() {
@@ -323,3 +323,4 @@ extension LocationDetailEditViewController: CategoryPickerTableViewControllerDel
         locationToEdit.locationCategory = categoryName
     }
 }
+
