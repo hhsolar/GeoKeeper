@@ -23,6 +23,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var remarkTextView: UITextView!
     @IBOutlet weak var nBar: UINavigationBar!
     @IBOutlet weak var photoCollection: UICollectionView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     var managedObjectContext: NSManagedObjectContext!
     var locationToSave: Location?
@@ -40,6 +41,17 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
         super.init(coder: aDecoder)
         modalPresentationStyle = .custom
         transitioningDelegate = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CategoryChoose" {
+            let navigationController = segue.destination as! MyNavigationController
+            let controller = navigationController.topViewController as! CategoryPickerTableViewController
+            controller.managedObjectContext = managedObjectContext
+            
+            controller.categoryChosen = (categoryPicker.titleLabel?.text!)!
+            controller.delegate = self
+        }
     }
     
     override func viewDidLoad() {
@@ -66,7 +78,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
         nameTextField.delegate = self
         nameTextField.clearButtonMode = UITextFieldViewMode.whileEditing
         
-        // set categoryPicker
+        // set categoryPicker button
         categoryPicker.titleLabel!.font = UIFont(name: "TrebuchetMS", size: 14)
         categoryPicker.setTitleColor(UIColor.gray, for: .normal)
         categoryPicker.layer.cornerRadius = 4
@@ -77,6 +89,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
         nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
         nBar.topItem?.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
         nBar.topItem?.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
+        
     }
     
     func initCollectionView() {
@@ -95,8 +108,23 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
         photoCollection.showsHorizontalScrollIndicator = false
     }
 
+    // textField delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) ->Bool {
+        let oldText = textField.text! as NSString
+        let newText = oldText.replacingCharacters(in: range, with: string) as NSString
+        
+        if newText.length > 0 {
+            doneButton.isEnabled = true
+            doneButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
+        } else {
+            doneButton.isEnabled = false
+            doneButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.lightGray], for: .normal)
+        }
         return true
     }
     
@@ -133,6 +161,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+        
         if !hasRocord {
             let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
             location.name = locationToEdit.locationName
@@ -197,10 +226,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func nameDone() {
-        
-    }
-    
 }
 
 extension LocationDetailEditViewController: UIViewControllerTransitioningDelegate {
@@ -248,5 +273,12 @@ extension LocationDetailEditViewController: PhotoCellDelegate {
     func changeColorOfButton(forCell: PhotoCell) {
         let image = UIImage(named: "closeButton")
         forCell.deleteButton.setImage(image, for: .highlighted)
+    }
+}
+
+extension LocationDetailEditViewController: CategoryPickerTableViewControllerDelegate {
+    func passCategory(categoryName: String) {
+        categoryPicker.setTitle(categoryName, for: .normal)
+        locationToEdit.locationCategory = categoryName
     }
 }
