@@ -432,7 +432,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="qYX-wF-7UJ" customClass="CategoryCell" customModule="GeoKeeper" customModuleProvider="target">
-                                        <rect key="frame" x="88" y="0.0" width="200" height="200"/>
+                                        <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -507,7 +507,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aKX-Mg-WID" id="yec-cG-Psl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-Cw-2CI">
@@ -725,7 +725,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="loadCategoryPicker" destination="WT6-16-fKM" eventType="touchUpInside" id="Q6Y-9r-wEw"/>
+                                    <segue destination="r4w-O1-1Dg" kind="presentation" identifier="CategoryChoose" id="wlZ-kq-0iX"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remark for this location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvg-zn-uHZ">
@@ -748,9 +748,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <action selector="nameDone" destination="WT6-16-fKM" eventType="editingDidEnd" id="64h-wr-K3v"/>
-                                </connections>
                             </textField>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BQd-TW-84T">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -808,6 +805,7 @@
                     </view>
                     <connections>
                         <outlet property="categoryPicker" destination="Rhi-Ij-lZd" id="wrV-5h-nYR"/>
+                        <outlet property="doneButton" destination="rRD-Mj-QQv" id="s4K-T4-Kqs"/>
                         <outlet property="nBar" destination="BQd-TW-84T" id="5ku-Iq-h6j"/>
                         <outlet property="nameTextField" destination="q8a-1a-Jcm" id="wmW-03-gpU"/>
                         <outlet property="photoCollection" destination="BWu-ZJ-kUn" id="UOk-06-wrd"/>
@@ -818,6 +816,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESm-Dk-FGb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3837.5999999999999" y="1006.1469265367317"/>
+        </scene>
+        <!--Choose Category-->
+        <scene sceneID="7as-2h-nDX">
+            <objects>
+                <tableViewController id="5uQ-nY-m83" customClass="CategoryPickerTableViewController" customModule="GeoKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IZO-wK-r8g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Aq1-bH-p7z" customClass="CategoryPickerCell" customModule="GeoKeeper" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aq1-bH-p7z" id="rHo-1I-yRU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5uQ-nY-m83" id="QGA-Ez-HHh"/>
+                            <outlet property="delegate" destination="5uQ-nY-m83" id="Lia-Vg-txK"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Choose Category" id="dYI-Xb-wIs">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xEL-3I-ajt">
+                            <connections>
+                                <action selector="cancel" destination="5uQ-nY-m83" id="5x1-wJ-1OK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="3Tq-qh-Bl1">
+                            <connections>
+                                <action selector="done" destination="5uQ-nY-m83" id="0SU-va-6Y5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vw0-Q2-hyy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5514" y="1005"/>
+        </scene>
+        <!--My Navigation Controller-->
+        <scene sceneID="rzG-i9-6Xz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r4w-O1-1Dg" customClass="MyNavigationController" customModule="GeoKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7pS-BQ-hee">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5uQ-nY-m83" kind="relationship" relationship="rootViewController" id="tWK-xd-7Dr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xu3-i9-OQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4677.6000000000004" y="1005.2473763118442"/>
         </scene>
     </scenes>
     <resources>
