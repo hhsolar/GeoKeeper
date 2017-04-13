@@ -271,6 +271,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                     if let placemarkRecord = locationRecord.placemark {
                         if addressLabel.text == string(from:placemarkRecord) {
                             locationRecord.date = (location?.timestamp)!
+                            locationRecord.punch = (Int(forPassLocation.punch) + 1) as NSNumber
                         }
                     }
                 }
