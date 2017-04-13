@@ -21,7 +21,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var locations = [Location]()
     var fetchedLocation: Location!
     var forPassLocation = MyLocation()
-    var isVisited: Bool = false
+    var isVisited = false
+    var isPunched = false
+    
     
     let geocoder = CLGeocoder()
     var placemark: CLPlacemark?
@@ -170,9 +172,11 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     }
     
     func updateLabels() {
+//        var isPunched = false   我把这一句写到了最外面，如果写在这里，点get，detail和punch会互相转换一下；
         if let location = location {
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
+            
             tagButton.setTitleColor(baseColor, for: .normal)
             tagLabel.text = "Tag"
             tagButton.isEnabled = true
@@ -185,6 +189,13 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                         if addressLabel.text == string(from:placemarkRecord) {
                             forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
                             cityName.text = forPassLocation.locationName
+
+                            let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
+                            if timeInterval < 10000 {
+                                isPunched = true
+                            } else {
+                                isPunched = false
+                            }
                             isVisited = true
                         }
                     }
@@ -192,7 +203,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 if isVisited == false {
                     cityName.text = placemark.locality
                 }
-                
             } else if performingReverseGeocoding {
                 addressLabel.text = "Searching for Address..."
             } else if lastGeocodingError != nil {
@@ -200,14 +210,17 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             } else {
                 addressLabel.text = "No Address Found"
             }
-            
-            if isVisited == true {
+            print(isVisited)
+            if isVisited == false {
+                messageLabel.text = "Tap 'Tag' to Save Location"
+            } else if isPunched {
+                tagLabel.text = "Detail"
+                messageLabel.text = "Tap 'Detail' to read detail"
+            } else {
                 tagLabel.text = "Punch"
                 messageLabel.text = "Tap 'Punch' to Punch In"
-            } else {
-                messageLabel.text = "Tap 'Tag' to Save Location"
             }
-            
+
             
         } else {
             latitudeLabel.text = "Not available"
@@ -244,15 +257,30 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             let controller = navigationController.topViewController as! LocationDetailViewController
             controller.managedObjectContext = managedObjectContext
             controller.delegate = self
-
+            
             forPassLocation.locationName = cityName.text!
             if tagLabel.text == "Tag" {
                 forPassLocation.placemark = placemark
                 forPassLocation.latitude = (location?.coordinate.latitude)!
                 forPassLocation.longitude = (location?.coordinate.longitude)!
                 forPassLocation.date = (location?.timestamp)!
+                forPassLocation.punch = 1;
             } else if tagLabel.text == "Punch" {
                 forPassLocation.punch = (Int(forPassLocation.punch) + 1) as NSNumber
+                for locationRecord in locations {
+                    if let placemarkRecord = locationRecord.placemark {
+                        if addressLabel.text == string(from:placemarkRecord) {
+                            locationRecord.date = (location?.timestamp)!
+                        }
+                    }
+                }
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    fatalCoreDataError(error)
+                }
+            } else if tagLabel.text == "Detail" {
+                
             }
             controller.locationToShow = forPassLocation
         }

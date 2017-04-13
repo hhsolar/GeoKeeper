@@ -150,7 +150,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                         controller.selectedColor = categoryToEdit.color!
                         controller.selectedIcon = categoryToEdit.iconName!
                         controller.newItemId = categoryToEdit.id
-                        print(categoryToEdit.category,categoryToEdit.color,categoryToEdit.iconName,categoryToEdit.id)
                     }
                 } catch {
                     fatalCoreDataError(error)
