@@ -434,6 +434,24 @@ extension CategoriesViewController {
         cell.categoryLabel?.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
         cell.categoryLabel?.textAlignment = .center
         cell.categoryLabel?.text = category.category!
+        
+        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
+        fetchedRequest.entity = Location.entity()
+        fetchedRequest.predicate = NSPredicate(format: "category == %@", category.category!)
+        
+        var countItems = 0
+        do {
+            countItems = try managedObjectContext.count(for: fetchedRequest)
+        } catch {
+            fatalCoreDataError(error)
+        }
+        
+        cell.itemsCountLabel?.text = String(countItems) + ": " + "items"
+        cell.itemsCountLabel?.frame = CGRect(x:0, y:width - 5, width:width, height:20)
+        cell.itemsCountLabel?.textAlignment = .center
+        
+        
+        
         fillCollectionCellWithColor(category.cellColor,cell)
         if let categoryColor = category.color {
             switch categoryColor {
