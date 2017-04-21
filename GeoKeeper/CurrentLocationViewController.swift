@@ -215,7 +215,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 messageLabel.text = "Tap 'Tag' to Save Location"
             } else if isPunched {
                 tagLabel.text = "Detail"
-                messageLabel.text = "Tap 'Detail' to read detail"
+                messageLabel.text = "Tap 'Detail' to Read Details"
             } else {
                 tagLabel.text = "Punch"
                 messageLabel.text = "Tap 'Punch' to Punch In"
