@@ -38,15 +38,17 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     var delegate: ChangeDoneButtonColorDelegate? = nil
     
     let icons = [
-        "Appointments",
-        "Birthdays",
-        "Chores",
-        "Drinks",
-        "Folder",
-        "Groceries",
-        "Inbox",
-        "Photos",
-        "Trips" ]
+        "Moive",
+        "Shop",
+        "Restaurant",
+        "SkiResorts",
+        "Pizza",
+        "Hiking",
+        "Gym",
+        "Rails",
+        "Station",
+        "CityHall",
+        "Hotel"]
     
     let colors = [
         "red",
@@ -297,25 +299,29 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             
             switch indexPath.row {
             case 0:
-                icon = "Appointments"
+                icon = "Moive"
             case 1:
-                icon = "Birthdays"
+                icon = "Shop"
             case 2:
-                icon = "Chores"
+                icon = "Restaurant"
             case 3:
-                icon = "Drinks"
+                icon = "SkiResorts"
             case 4:
-                icon = "Folder"
+                icon = "Pizza"
             case 5:
-                icon = "Groceries"
+                icon = "Hiking"
             case 6:
-                icon = "Inbox"
+                icon = "Gym"
             case 7:
-                icon = "Photos"
+                icon = "Rails"
             case 8:
-                icon = "Trips"
+                icon = "Station"
+            case 9:
+                icon = "CityHall"
+            case 10:
+                icon = "Hotel"
             default:
-                icon = "Appointments"
+                icon = "No Icon"
            }
             collectionView.reloadItems(at: indexPaths)
             collectionView.cellForItem(at: selectedIconIndexPath)?.backgroundColor = UIColor.lightGray
