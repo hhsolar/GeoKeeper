@@ -43,15 +43,17 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 
     let icons = [
         "No Icon",
-        "Appointments",
-        "Birthdays",
-        "Chores",
-        "Drinks",
-        "Folder",
-        "Groceries",
-        "Inbox",
-        "Photos",
-        "Trips" ]
+        "Moive",
+        "Shop",
+        "Restaurant",
+        "SkiResorts",
+        "Pizza",
+        "Hiking",
+        "Gym",
+        "Rails",
+        "Station",
+        "CityHall",
+        "Hotel"]
     
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -400,16 +402,13 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 
 extension CategoriesViewController {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("number of item delegeat is called")
         let sectionInfo = fetchedResultsController.sections![section]
-        print(sectionInfo.numberOfObjects)
         return sectionInfo.numberOfObjects
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("Data is reload")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
-        cell.layer.cornerRadius = 10.0 //cornerRadius
+        cell.awakeFromNib()
         
         
         //如果吧gesture写在cell上，不写在viewdidload里，cell就会闪得很厉害，而且fetchController会去调default
@@ -428,11 +427,9 @@ extension CategoriesViewController {
 //            fatalCoreDataError(error)
 //        }
         let width = cell.frame.width
-//        cell.categoryImageView = UIImageView(frame: CGRect(x: width / 2, y: 3, width: width / 2, height: width / 2)) 为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-        cell.categoryImageView?.contentMode = UIViewContentMode.scaleAspectFit
-        cell.categoryLabel?.frame = CGRect(x:0, y:width - 40, width:width, height:20)
-        cell.categoryLabel?.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
-        cell.categoryLabel?.textAlignment = .center
+//        cell.categoryImageView = UIImageView(frame: CGRect(x: width / 2, y: 3, width: width / 2, height: width / 2))
+//        为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
         cell.categoryLabel?.text = category.category!
         
         let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
@@ -449,8 +446,6 @@ extension CategoriesViewController {
         cell.itemsCountLabel?.text = String(countItems) + ": " + "items"
         cell.itemsCountLabel?.frame = CGRect(x:0, y:width - 5, width:width, height:20)
         cell.itemsCountLabel?.textAlignment = .center
-        
-        
         
         fillCollectionCellWithColor(category.cellColor,cell)
         if let categoryColor = category.color {

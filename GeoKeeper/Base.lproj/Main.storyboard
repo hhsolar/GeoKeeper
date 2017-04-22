@@ -439,7 +439,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="qYX-wF-7UJ" customClass="CategoryCell" customModule="GeoKeeper" customModuleProvider="target">
-                                        <rect key="frame" x="88" y="0.0" width="200" height="200"/>
+                                        <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -452,21 +452,24 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y7s-sg-Ify">
-                                                    <rect key="frame" x="32" y="14" width="137" height="133"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wx5-Mc-MaN">
                                                     <rect key="frame" x="0.0" y="180" width="200" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y7s-sg-Ify">
+                                                    <rect key="frame" x="35" y="8" width="130" height="130"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="130" id="cUh-tc-3hd"/>
+                                                        <constraint firstAttribute="height" constant="130" id="psb-RM-1Xv"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="Y7s-sg-Ify" firstAttribute="centerX" secondItem="qYX-wF-7UJ" secondAttribute="centerX" id="0UK-8Z-1uU"/>
+                                            <constraint firstItem="Y7s-sg-Ify" firstAttribute="centerX" secondItem="qYX-wF-7UJ" secondAttribute="centerX" id="Bxl-No-58v"/>
                                             <constraint firstItem="wx5-Mc-MaN" firstAttribute="bottom" secondItem="qYX-wF-7UJ" secondAttribute="bottomMargin" id="Tc4-1V-tip"/>
-                                            <constraint firstItem="Y7s-sg-Ify" firstAttribute="top" secondItem="qYX-wF-7UJ" secondAttribute="top" constant="14" id="l0S-Cf-nqr"/>
                                         </constraints>
                                         <size key="customSize" width="200" height="200"/>
                                         <connections>
@@ -522,7 +525,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aKX-Mg-WID" id="yec-cG-Psl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-Cw-2CI">
@@ -845,7 +848,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aq1-bH-p7z" id="rHo-1I-yRU">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
