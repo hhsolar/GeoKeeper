@@ -116,8 +116,32 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func done() {
-        saveCategory(name: textField.text!)
-        dismiss(animated: true, completion: nil)
+        if modeFlag == "Add" {
+            var count = 0
+            let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+            fetchRequest.entity = Category.entity()
+            fetchRequest.predicate = NSPredicate(format: "category == %@", textField.text!)
+            do {
+                count = try managedObjectContext.count(for: fetchRequest)
+            } catch {
+                fatalCoreDataError(error)
+            }
+        
+            if count == 0 {
+                saveCategory(name: textField.text!)
+                dismiss(animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Reminder", message: "Category Name Already Exist!!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        } else if modeFlag == "Edit"{
+            saveCategory(name: textField.text!)
+            dismiss(animated: true, completion: nil)
+        }
+        
+
+       
     }
     
     
@@ -165,7 +189,6 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
                 fatalCoreDataError(error)
             }
             
-            print("color going to save is ", color)
             do {
                 try managedObjectContext.save()
             } catch {

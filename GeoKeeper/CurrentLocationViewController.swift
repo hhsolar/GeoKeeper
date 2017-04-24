@@ -66,11 +66,41 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 if let placemark = forPassLocation.placemark {
                     if string(from: placemark) == string(from: placemarkRecord) {
                         cityName.text = locationRecord.name
-                        print(cityName.text, "&&&&&&&&&&&&&&&&&&&&&&&&&&")
                     }
                 }
             }
         }
+        
+        if let location = location {
+            for locationRecord in locations {
+                if let placemarkRecord = locationRecord.placemark {
+                    if addressLabel.text == string(from:placemarkRecord) {
+                        forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
+                        cityName.text = forPassLocation.locationName
+                        //Repeated Punch is not allowed
+                        let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
+                        if timeInterval < 10 {
+                            isPunched = true
+                        } else {
+                            isPunched = false
+                        }
+                        isVisited = true
+                    }
+                }
+            }
+        }
+
+        
+        if isVisited == false {
+            messageLabel.text = "Tap 'Tag' to Save Location"
+        } else if isPunched {
+            tagLabel.text = "Detail"
+            messageLabel.text = "Tap 'Detail' to Read Details"
+        } else {
+            tagLabel.text = "Punch"
+            messageLabel.text = "Tap 'Punch' to Punch In"
+        }
+
     }
     
     override func viewDidLoad() {
@@ -87,9 +117,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         if let location = location {
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
-          print(cityName.text, "&&&&&&&&&  updateLabels   &&&&&&&&&&&&&&&&&")
             tagButton.setTitleColor(baseColor, for: .normal)
-            tagLabel.text = "Tag"
             tagButton.isEnabled = true
             tagLabel.textColor = baseColor
             
@@ -100,10 +128,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                         if addressLabel.text == string(from:placemarkRecord) {
                             forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
                             cityName.text = forPassLocation.locationName
-                            print(cityName.text, "&&&&&&&&&  position   &&&&&&&&&&&&&&&&&")
                             //Repeated Punch is not allowed
                             let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
-                            if timeInterval < 10000 {
+                            if timeInterval < 10 {
                                 isPunched = true
                             } else {
                                 isPunched = false
@@ -112,10 +139,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                         }
                     }
                 }
-                print(isVisited,"^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
                 if isVisited == false {
                     if let locationName = placemark.locality {
-                        print(locationName,"**************************")
                         cityName.text = locationName
                     } else {
                         cityName.text = "LocationName"
@@ -130,6 +155,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             }
             
             if isVisited == false {
+                tagLabel.text = "Tag"
                 messageLabel.text = "Tap 'Tag' to Save Location"
             } else if isPunched {
                 tagLabel.text = "Detail"

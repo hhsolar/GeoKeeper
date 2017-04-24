@@ -349,7 +349,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 //            if let indexPathRow = recognizer.view?.tag {
 //                let indexPath = IndexPath(row: indexPathRow, section: 0)
 //                let alert = UIAlertController(title: "Alert", message: "Delete?", preferredStyle: UIAlertControllerStyle.alert)
-//                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Cancel is pressed")}))
+//                ert.addActalion(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Cancel is pressed")}))
 //                alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.deleteAtIndexPath(indexPath: indexPath)}))
 //                self.present(alert, animated: true, completion: nil)
 //            }
