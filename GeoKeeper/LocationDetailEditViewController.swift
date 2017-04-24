@@ -61,6 +61,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         
         nBar.topItem?.title = "Edit Location"
         nameTextField.text = locationToEdit.locationName
+        print(locationToEdit.locationName," is ****************")
         categoryPicker.setTitle(locationToEdit.locationCategory, for: .normal)
         portraitImageView.image = UIImage(named: locationToEdit.locationPhotoID)
         remarkTextView.text = locationToEdit.locationDescription
@@ -180,7 +181,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     }
     
     @IBAction func done() {
-        
         var locations = [Location]()
         var hasRocord = false
         
@@ -205,7 +205,9 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         
         if !hasRocord {
             let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
+            locationToEdit.locationName = nameTextField.text!
             location.name = locationToEdit.locationName
+            print(locationToEdit.locationName, "location name going to save is")
             location.category = locationToEdit.locationCategory
             location.date = locationToEdit.date!
             location.latitude = locationToEdit.latitude
