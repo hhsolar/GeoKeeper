@@ -49,10 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set("Default", forKey: "Portrait")
             UserDefaults.standard.set(true, forKey: "launchBefore")
             
-            let defaultCategories = ["No Category", "Restaurant", "LandMark", "Friends'"]
+            let defaultCategories = ["No Category", "Restaurant", "Shop", "Moive"]
             let defaultColors = ["red", "blue", "purple", "orange"]
             let defaultId = [0, 1, 2, 3]
-            let defaultIconNames = ["No Icon", "Drinks", "Appointments", "Folder"]
+            let defaultIconNames = ["No Icon", "Restaurant", "Shop", "Moive"]
             let defaultCellColor = ["baseColor0","baseColor1","baseColor2","baseColor2","baseColor4"]
             let entity = NSEntityDescription.entity(forEntityName: "Category", in: managedObjectContext)!
             for i in 0..<4 {

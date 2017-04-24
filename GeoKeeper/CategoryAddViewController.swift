@@ -38,15 +38,17 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     var delegate: ChangeDoneButtonColorDelegate? = nil
     
     let icons = [
-        "Appointments",
-        "Birthdays",
-        "Chores",
-        "Drinks",
-        "Folder",
-        "Groceries",
-        "Inbox",
-        "Photos",
-        "Trips" ]
+        "Moive",
+        "Shop",
+        "Restaurant",
+        "SkiResorts",
+        "Pizza",
+        "Hiking",
+        "Gym",
+        "Rails",
+        "Station",
+        "CityHall",
+        "Hotel"]
     
     let colors = [
         "red",
@@ -114,8 +116,32 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func done() {
-        saveCategory(name: textField.text!)
-        dismiss(animated: true, completion: nil)
+        if modeFlag == "Add" {
+            var count = 0
+            let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+            fetchRequest.entity = Category.entity()
+            fetchRequest.predicate = NSPredicate(format: "category == %@", textField.text!)
+            do {
+                count = try managedObjectContext.count(for: fetchRequest)
+            } catch {
+                fatalCoreDataError(error)
+            }
+        
+            if count == 0 {
+                saveCategory(name: textField.text!)
+                dismiss(animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Reminder", message: "Category Name Already Exist!!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        } else if modeFlag == "Edit"{
+            saveCategory(name: textField.text!)
+            dismiss(animated: true, completion: nil)
+        }
+        
+
+       
     }
     
     
@@ -163,7 +189,6 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
                 fatalCoreDataError(error)
             }
             
-            print("color going to save is ", color)
             do {
                 try managedObjectContext.save()
             } catch {
@@ -297,25 +322,29 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             
             switch indexPath.row {
             case 0:
-                icon = "Appointments"
+                icon = "Moive"
             case 1:
-                icon = "Birthdays"
+                icon = "Shop"
             case 2:
-                icon = "Chores"
+                icon = "Restaurant"
             case 3:
-                icon = "Drinks"
+                icon = "SkiResorts"
             case 4:
-                icon = "Folder"
+                icon = "Pizza"
             case 5:
-                icon = "Groceries"
+                icon = "Hiking"
             case 6:
-                icon = "Inbox"
+                icon = "Gym"
             case 7:
-                icon = "Photos"
+                icon = "Rails"
             case 8:
-                icon = "Trips"
+                icon = "Station"
+            case 9:
+                icon = "CityHall"
+            case 10:
+                icon = "Hotel"
             default:
-                icon = "Appointments"
+                icon = "No Icon"
            }
             collectionView.reloadItems(at: indexPaths)
             collectionView.cellForItem(at: selectedIconIndexPath)?.backgroundColor = UIColor.lightGray

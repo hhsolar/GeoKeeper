@@ -11,6 +11,7 @@ import CoreLocation
 import CoreData
 import MapKit
 import Foundation
+import AudioToolbox
 
 protocol LocationDetailViewControllerDelegate {
     func passLocation(location: MyLocation)
@@ -38,6 +39,8 @@ class LocationDetailViewController: UIViewController {
     var placemark: CLPlacemark?
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var delegate: LocationDetailViewControllerDelegate? = nil
+    var soundID: SystemSoundID = 0
+    var soundURL: NSURL?
     
     let kScreenWidth = UIScreen.main.bounds.size.width
     let kScreenHeight = UIScreen.main.bounds.size.height
@@ -60,6 +63,34 @@ class LocationDetailViewController: UIViewController {
         }
     }
     
+
+    
+    @IBAction func playWeatherSound() {
+        switch w_icon {
+        case "01":
+            loadSoundEffect("Bird.caf")
+        case "02":
+            loadSoundEffect("Bird.caf")
+        case "03":
+            loadSoundEffect("Bird.caf")
+        case "04":
+            loadSoundEffect("Bird.caf")
+        case "09":
+            loadSoundEffect("Rain.caf")
+        case "10":
+            loadSoundEffect("Bird.caf")
+        case "11":
+            loadSoundEffect("Thunder.caf")
+        case "13":
+            loadSoundEffect("Bird.caf")
+        case "50":
+            loadSoundEffect("Bird.caf")
+        default:
+            loadSoundEffect("Bird.caf")
+        }
+        playSoundEffect()
+    }
+    
     @IBAction func getBack() {
         delegate?.passLocation(location: locationToShow)
         dismiss(animated: true, completion: nil);
@@ -78,7 +109,6 @@ class LocationDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.tintColor = secondColor
         
         title = locationToShow.locationName
@@ -275,6 +305,28 @@ class LocationDetailViewController: UIViewController {
         
         layout.scrollDirection = .horizontal
         photoCollectionView.showsHorizontalScrollIndicator = false
+    }
+    
+    // MARK: - Sound Effect
+    func loadSoundEffect(_ name: String) {
+        print("loadSoundEffect is called")
+        print(name)
+        if let path = Bundle.main.path(forResource: name, ofType: nil) {
+            let fileURL = URL(fileURLWithPath: path, isDirectory: false)
+            print("file path is ******* \(fileURL)")
+            let error = AudioServicesCreateSystemSoundID(fileURL as CFURL,&soundID)
+            if error != kAudioServicesNoError {
+                print("Error code \(error) loading sound at path: \(path)")
+            }
+        }
+    }
+    
+    func unloadSoundEffect() {
+        AudioServicesDisposeSystemSoundID(soundID)
+        soundID = 0
+    }
+    func playSoundEffect() {
+        AudioServicesPlaySystemSound(soundID)
     }
 }
 

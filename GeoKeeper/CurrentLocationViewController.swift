@@ -12,13 +12,12 @@ import CoreData
 import MapKit
 
 class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
-    
     var managedObjectContext: NSManagedObjectContext!
     let locationManager = CLLocationManager()
     var location: CLLocation?
+    var locations = [Location]()
     var updatingLocation = false
     var lastLocationError: Error?
-    var locations = [Location]()
     var fetchedLocation: Location!
     var forPassLocation = MyLocation()
     var isVisited = false
@@ -49,80 +48,12 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var portraitImage: UIImageView!
     @IBOutlet weak var tagLabel: UILabel!
     
-    
-    @IBAction func getLocation() {
-        let authStatus = CLLocationManager.authorizationStatus()
-        
-        if authStatus == .notDetermined {
-            locationManager.requestWhenInUseAuthorization()
-            return
-        }
-
-        if authStatus == .denied || authStatus == .restricted {
-            showLocationServicesDeniedAlert()
-            return
-        }
-        
-        if updatingLocation {
-            stopLocationManager()
-        } else {
-            location = nil
-            lastLocationError = nil
-            
-            placemark = nil
-            lastGeocodingError = nil
-            startLocationManager()
-        }
-        
-        let region = MKCoordinateRegionMakeWithDistance(mapView.userLocation.coordinate, 500, 500)
-        mapView.setRegion(mapView.regionThatFits(region), animated: true)
-
-        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
-        fetchedRequest.entity = Location.entity()
-        do {
-            locations = try managedObjectContext.fetch(fetchedRequest)
-        } catch {
-            fatalCoreDataError(error)
-        }
-        
-        updateLabels()
-    }
-    
     @IBAction func choosePortrait() {
         pickPhoto()
     }
     
-    func setContainer() {
-        // set navigationBar
-        nBar.barTintColor = baseColor
-        nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
-        
-        // set messageLabel
-        messageLabel.font = UIFont(name: "TrebuchetMS-Italic", size: 16)
-        messageLabel.textColor = secondColor
-        
-        // set cityName
-        cityName.textColor = baseColor
-        cityName.font = UIFont(name: "TrebuchetMS-Bold", size: 20)
-        
-        // set portrait button
-        portrait.layer.cornerRadius = portrait.frame.size.width / 2
-        portrait.layer.masksToBounds = true
-        
-        // set portraitImage
-        portraitImage.layer.cornerRadius = portraitImage.frame.size.width / 2
-        portraitImage.layer.masksToBounds = true
-        portraitImage.layer.borderWidth = 1.5
-        portraitImage.layer.borderColor = baseColor.cgColor
-        
-        // set tagButton
-        tagLabel.text = "Tag"
-        tagLabel.textColor = disableColor
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
         fetchedRequest.entity = Location.entity()
         do {
@@ -139,46 +70,54 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 }
             }
         }
+        
+        if let location = location {
+            for locationRecord in locations {
+                if let placemarkRecord = locationRecord.placemark {
+                    if addressLabel.text == string(from:placemarkRecord) {
+                        forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
+                        cityName.text = forPassLocation.locationName
+                        //Repeated Punch is not allowed
+                        let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
+                        if timeInterval < 10 {
+                            isPunched = true
+                        } else {
+                            isPunched = false
+                        }
+                        isVisited = true
+                    }
+                }
+            }
+        }
+
+        
+        if isVisited == false {
+            messageLabel.text = "Tap 'Tag' to Save Location"
+        } else if isPunched {
+            tagLabel.text = "Detail"
+            messageLabel.text = "Tap 'Detail' to Read Details"
+        } else {
+            tagLabel.text = "Punch"
+            messageLabel.text = "Tap 'Punch' to Punch In"
+        }
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.tintColor = baseColor
-        
         mapView?.showsUserLocation = true
-        
         updateLabels()
         setContainer()
-        
-        // set user portrait
-        let userDefaults = UserDefaults.standard
-        let currentPortrait = userDefaults.string(forKey: "Portrait")
-        if currentPortrait == "Default" {
-            if let theImage = UIImage(named: "default") {
-                show(image: theImage)
-            }
-        } else if currentPortrait == "MyPortrait" {
-            if let theImage = portraitPhotoImage {
-                show(image: theImage)
-            }
-        }
-        userDefaults.synchronize()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        setPortrait()
     }
     
     func updateLabels() {
-//        var isPunched = false   我把这一句写到了最外面，如果写在这里，点get，detail和punch会互相转换一下；
+        //        var isPunched = false   我把这一句写到了最外面，如果写在这里，点get，detail和punch会互相转换一下；
         if let location = location {
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
-            
             tagButton.setTitleColor(baseColor, for: .normal)
-            tagLabel.text = "Tag"
             tagButton.isEnabled = true
             tagLabel.textColor = baseColor
             
@@ -189,9 +128,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                         if addressLabel.text == string(from:placemarkRecord) {
                             forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
                             cityName.text = forPassLocation.locationName
-
+                            //Repeated Punch is not allowed
                             let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
-                            if timeInterval < 10000 {
+                            if timeInterval < 10 {
                                 isPunched = true
                             } else {
                                 isPunched = false
@@ -201,7 +140,11 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                     }
                 }
                 if isVisited == false {
-                    cityName.text = placemark.locality
+                    if let locationName = placemark.locality {
+                        cityName.text = locationName
+                    } else {
+                        cityName.text = "LocationName"
+                    }
                 }
             } else if performingReverseGeocoding {
                 addressLabel.text = "Searching for Address..."
@@ -210,17 +153,17 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             } else {
                 addressLabel.text = "No Address Found"
             }
-            print(isVisited)
+            
             if isVisited == false {
+                tagLabel.text = "Tag"
                 messageLabel.text = "Tap 'Tag' to Save Location"
             } else if isPunched {
                 tagLabel.text = "Detail"
-                messageLabel.text = "Tap 'Detail' to read detail"
+                messageLabel.text = "Tap 'Detail' to Read Details"
             } else {
                 tagLabel.text = "Punch"
                 messageLabel.text = "Tap 'Punch' to Punch In"
             }
-
             
         } else {
             latitudeLabel.text = "Not available"
@@ -250,6 +193,92 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             messageLabel.text = statusMessage
         }
     }
+
+    
+    func setContainer() {
+        // set navigationBar
+        nBar.barTintColor = baseColor
+        nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
+        
+        // set messageLabel
+        messageLabel.font = UIFont(name: "TrebuchetMS-Italic", size: 16)
+        messageLabel.textColor = secondColor
+        
+        // set cityName
+        cityName.textColor = baseColor
+        cityName.font = UIFont(name: "TrebuchetMS-Bold", size: 20)
+        
+        // set portrait button
+        portrait.layer.cornerRadius = portrait.frame.size.width / 2
+        portrait.layer.masksToBounds = true
+        
+        // set portraitImage
+        portraitImage.layer.cornerRadius = portraitImage.frame.size.width / 2
+        portraitImage.layer.masksToBounds = true
+        portraitImage.layer.borderWidth = 1.5
+        portraitImage.layer.borderColor = baseColor.cgColor
+        
+        // set tagButton
+        tagLabel.text = "Tag"
+        tagLabel.textColor = disableColor
+    }
+    
+    func setPortrait() {
+        let userDefaults = UserDefaults.standard
+        let currentPortrait = userDefaults.string(forKey: "Portrait")
+        if currentPortrait == "Default" {
+            if let theImage = UIImage(named: "default") {
+                show(image: theImage)
+            }
+        } else if currentPortrait == "MyPortrait" {
+            if let theImage = portraitPhotoImage {
+                show(image: theImage)
+            }
+        }
+        userDefaults.synchronize()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func getLocation() {
+        isVisited = false
+        let authStatus = CLLocationManager.authorizationStatus()
+        if authStatus == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+            return
+        }
+        if authStatus == .denied || authStatus == .restricted {
+            showLocationServicesDeniedAlert()
+            return
+        }
+        if updatingLocation {
+            stopLocationManager()
+        } else {
+            location = nil
+            placemark = nil
+            lastLocationError = nil
+            lastGeocodingError = nil
+            startLocationManager()
+        }
+        
+        let region = MKCoordinateRegionMakeWithDistance(mapView.userLocation.coordinate, 500, 500)
+        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+        
+        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
+        fetchedRequest.entity = Location.entity()
+        do {
+            locations = try managedObjectContext.fetch(fetchedRequest)
+        } catch {
+            fatalCoreDataError(error)
+        }
+        
+        updateLabels()
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TagLocation" {

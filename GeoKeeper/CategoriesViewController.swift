@@ -9,24 +9,19 @@ import UIKit
 import CoreData
 
 class CategoriesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate {
+    
+    
     fileprivate let reuseIdentifier = "CategoryCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
     fileprivate let itemsPerRow: CGFloat = 3
     var managedObjectContext: NSManagedObjectContext!
     var blockOperations: [BlockOperation] = []
     var category : Category!
-    var p :CGPoint!
+    var p : CGPoint!
     var modeFlag: String = "Add"
     
-//    var categories = [String]()
-//    enum cellColor {
-//        case baseColor0 = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
-//        case baseColor1 = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
-//        case baseColor2 = UIColor(red: 251/255.0, green: 240/255.0, blue: 244/255.0, alpha: 1.0)
-//        case baseColor3 = UIColor(red: 230/255.0, green: 221/255.0, blue: 244/255.0, alpha: 1.0)
-//        case bseeColor4 = UIColor(red: 251/255.0, green: 246/255.0, blue: 213/255.0, alpha: 1.0)
-//
-//    }
+    @IBOutlet weak var collectionView: UICollectionView!
+
     let baseColor0 = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
     let baseColor1 = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
     let baseColor2 = UIColor(red: 251/255.0, green: 240/255.0, blue: 244/255.0, alpha: 1.0)
@@ -43,19 +38,19 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 
     let icons = [
         "No Icon",
-        "Appointments",
-        "Birthdays",
-        "Chores",
-        "Drinks",
-        "Folder",
-        "Groceries",
-        "Inbox",
-        "Photos",
-        "Trips" ]
+        "Moive",
+        "Shop",
+        "Restaurant",
+        "SkiResorts",
+        "Pizza",
+        "Hiking",
+        "Gym",
+        "Rails",
+        "Station",
+        "CityHall",
+        "Hotel"]
     
-    @IBOutlet weak var collectionView: UICollectionView!
-
-
+    
     lazy var fetchedResultsController: NSFetchedResultsController<Category> = {
         let fetchRequest = NSFetchRequest<Category>()
         let entity = Category.entity()
@@ -77,10 +72,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
-        print("\n")
-        print("                      ")
-        print(UserDefaults.standard.value(forKey: "LongPressed"))
-        print(UserDefaults.standard.value(forKey: "SingleTap"))
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
@@ -98,8 +89,8 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
          super.viewDidLoad()
          performFetch()
          loadGesture()
-        //Remove the top margin, which is related with the collectionView's content margin
-        self.automaticallyAdjustsScrollViewInsets = false
+         //Remove the top margin, which is related with the collectionView's content margin
+         self.automaticallyAdjustsScrollViewInsets = false
     }
 
     func performFetch() {
@@ -212,9 +203,9 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-        func collectionView(_ collectionView: UICollectionView,
-                                 moveItemAtIndexPath sourceIndexPath: NSIndexPath,
-                                 toIndexPath destinationIndexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        moveItemAt sourceIndexPath: IndexPath,
+                        to destinationIndexPath: IndexPath) {
         let category = fetchedResultsController.object(at: sourceIndexPath as IndexPath)
         category.setValue(destinationIndexPath.row, forKey: "id")
         
@@ -334,22 +325,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         blockOperations.removeAll(keepingCapacity: false)
     }
     
-//    func fillCollectionCellWithColor(_ indexPath: IndexPath, _ cell:UICollectionViewCell) {
-//        switch indexPath.row % 5 {
-//        case 0:
-//            cell.backgroundColor = baseColor0
-//        case 1:
-//            cell.backgroundColor = baseColor1
-//        case 2:
-//            cell.backgroundColor = baseColor2
-//        case 3:
-//            cell.backgroundColor = baseColor3
-//        case 4:
-//            cell.backgroundColor = baseColor4
-//        default:
-//            cell.backgroundColor = baseColor0
-//        }
-//    }
     
     func fillCollectionCellWithColor(_ color: String,_ cell: CategoryCell) {
         switch color {
@@ -374,7 +349,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 //            if let indexPathRow = recognizer.view?.tag {
 //                let indexPath = IndexPath(row: indexPathRow, section: 0)
 //                let alert = UIAlertController(title: "Alert", message: "Delete?", preferredStyle: UIAlertControllerStyle.alert)
-//                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Cancel is pressed")}))
+//                ert.addActalion(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Cancel is pressed")}))
 //                alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.deleteAtIndexPath(indexPath: indexPath)}))
 //                self.present(alert, animated: true, completion: nil)
 //            }
@@ -400,17 +375,12 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 
 extension CategoriesViewController {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("number of item delegeat is called")
         let sectionInfo = fetchedResultsController.sections![section]
-        print(sectionInfo.numberOfObjects)
         return sectionInfo.numberOfObjects
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("Data is reload")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
-        cell.layer.cornerRadius = 10.0 //cornerRadius
-        
         
         //如果吧gesture写在cell上，不写在viewdidload里，cell就会闪得很厉害，而且fetchController会去调default
 //        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
@@ -419,21 +389,26 @@ extension CategoriesViewController {
 //        longPressRecognizer.delegate = self
 //        longPressRecognizer.view?.tag = indexPath.row
 
+
+//        cell.categoryImageView = UIImageView(frame: CGRect(x: width / 2, y: 3, width: width / 2, height: width / 2))
+//        为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        
         category = fetchedResultsController.object(at: indexPath)
-//        category.setValue(i as NSNumber , forKey: "id")
-//        i = i + 1
-//        do {
-//            try managedObjectContext.save()
-//        } catch {
-//            fatalCoreDataError(error)
-//        }
-        let width = cell.frame.width
-//        cell.categoryImageView = UIImageView(frame: CGRect(x: width / 2, y: 3, width: width / 2, height: width / 2)) 为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-        cell.categoryImageView?.contentMode = UIViewContentMode.scaleAspectFit
-        cell.categoryLabel?.frame = CGRect(x:0, y:width - 40, width:width, height:20)
-        cell.categoryLabel?.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
-        cell.categoryLabel?.textAlignment = .center
-        cell.categoryLabel?.text = category.category!
+        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
+        fetchedRequest.entity = Location.entity()
+        fetchedRequest.predicate = NSPredicate(format: "category == %@", category.category!)
+        
+        var countItems = 0
+        do {
+            countItems = try managedObjectContext.count(for: fetchedRequest)
+        } catch {
+            fatalCoreDataError(error)
+        }
+        
+        cell.awakeFromNib()
+        cell.categoryLabel?.text = category.category! + " (" + (String)(countItems) + ")"
+        
+        
         fillCollectionCellWithColor(category.cellColor,cell)
         if let categoryColor = category.color {
             switch categoryColor {
@@ -503,9 +478,7 @@ extension CategoriesViewController {
     }
     
     func deleteAtIndexPath() {
-        print("deleteatIndexPath function is called")
         if let id = collectionView.indexPathForItem(at: p) {
-            print(id.row, "indexpath is important")
             let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
             fetchRequest.entity = Category.entity()
             fetchRequest.predicate = NSPredicate(format: "id == %@", id.row as NSNumber)
@@ -518,7 +491,6 @@ extension CategoriesViewController {
                 fatalCoreDataError(error)
             }
             
-            
             let end = fetchedResultsController.sections![0].numberOfObjects
             for i in id.row + 1..<end {
                 let indexPath = IndexPath(row: i, section: 0)
@@ -526,7 +498,6 @@ extension CategoriesViewController {
                 category.setValue((i - 1) as NSNumber, forKey: "id")
             }
         }
-        
         
         do {
             try managedObjectContext.save()

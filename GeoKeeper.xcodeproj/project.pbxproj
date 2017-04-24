@@ -33,6 +33,9 @@
 		1F8D4F901E83995500A5D73E /* MyIconCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F8F1E83995500A5D73E /* MyIconCollectionCell.swift */; };
 		1F8D4F921E83995C00A5D73E /* RoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */; };
 		1F8D4F961E839D4100A5D73E /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */; };
+		1FA2AC2D1EA9A176000BACB0 /* Bird.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1FA2AC2C1EA9A176000BACB0 /* Bird.caf */; };
+		1FA2AC2F1EA9A1D2000BACB0 /* Rain.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1FA2AC2E1EA9A1D2000BACB0 /* Rain.caf */; };
+		1FA2AC311EA9A1DD000BACB0 /* Thunder.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1FA2AC301EA9A1DD000BACB0 /* Thunder.caf */; };
 		1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4ED521E722E3F002A6818 /* MapViewController.swift */; };
 		1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4891E6A8B19007CC5F1 /* HudView.swift */; };
 		1FEAD4901E6CAAEF007CC5F1 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */; };
@@ -73,6 +76,9 @@
 		1F8D4F8F1E83995500A5D73E /* MyIconCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyIconCollectionCell.swift; sourceTree = "<group>"; };
 		1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersView.swift; sourceTree = "<group>"; };
 		1F8D4F951E839D4100A5D73E /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
+		1FA2AC2C1EA9A176000BACB0 /* Bird.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bird.caf; sourceTree = "<group>"; };
+		1FA2AC2E1EA9A1D2000BACB0 /* Rain.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rain.caf; sourceTree = "<group>"; };
+		1FA2AC301EA9A1DD000BACB0 /* Thunder.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thunder.caf; sourceTree = "<group>"; };
 		1FA4ED521E722E3F002A6818 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1FEAD4891E6A8B19007CC5F1 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -120,6 +126,7 @@
 		185F5C391E679C5F004E73B7 /* GeoKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				1FA2AC2A1EA997D3000BACB0 /* Sound */,
 				18F08FF71E998E1D00D5C7A7 /* Main.storyboard */,
 				185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */,
 				1F8D4F861E8397C700A5D73E /* Generals */,
@@ -194,6 +201,17 @@
 			name = Generals;
 			sourceTree = "<group>";
 		};
+		1FA2AC2A1EA997D3000BACB0 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				1FA2AC301EA9A1DD000BACB0 /* Thunder.caf */,
+				1FA2AC2E1EA9A1D2000BACB0 /* Rain.caf */,
+				1FA2AC2C1EA9A176000BACB0 /* Bird.caf */,
+			);
+			name = Sound;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		1FEAD4A41E6E2B2A007CC5F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,10 +280,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FA2AC311EA9A1DD000BACB0 /* Thunder.caf in Resources */,
 				1801FB7B1E7BA05600705F92 /* Assets.xcassets in Resources */,
 				1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */,
 				185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */,
 				18F08FF91E998E1D00D5C7A7 /* Main.storyboard in Resources */,
+				1FA2AC2F1EA9A1D2000BACB0 /* Rain.caf in Resources */,
+				1FA2AC2D1EA9A176000BACB0 /* Bird.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
