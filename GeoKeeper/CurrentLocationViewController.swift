@@ -433,7 +433,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         let userDefaults = UserDefaults.standard
         userDefaults.set("MyPortrait", forKey: "Portrait")
     }
-    
 }
 
 extension CurrentLocationViewController: UINavigationBarDelegate {

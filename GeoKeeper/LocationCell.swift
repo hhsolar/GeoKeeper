@@ -36,14 +36,17 @@ class LocationCell: UITableViewCell {
             addressLabel.text = String(format: "Lat: %.8f, Long: %.8f", location.latitude, location.longitude)
         }
         
-        photoImageView.image = thumbnail(for: location)
+//        photoImageView.image = thumbnail(for: location)
+        if location.hasPhoto {
+            photoImageView.image = location.photoImage
+        }
     }
     
-    func thumbnail(for location: Location) -> UIImage {
-        if location.hasPhoto, let image = location.photoImage {
-            return image
-        }
-        return UIImage(named: location.locationPhotoID)!
-    }
+//    func thumbnail(for location: Location) -> UIImage {
+//        if location.hasPhoto, let image = location.photoImage {
+//            return image
+//        }
+//        return UIImage(named: location.locationPhotoID)!
+//    }
 
 }

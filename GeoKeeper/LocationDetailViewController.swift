@@ -51,7 +51,6 @@ class LocationDetailViewController: UIViewController {
     fileprivate let reuseIdentifier = "PhotoCell"
     
     @IBAction func openMapsApp() {
-        
         let targetURL = URL(string: "http://maps.apple.com/?ll=\(String(locationToShow.latitude)),\(String(locationToShow.longitude))")!
         print(targetURL)
         if #available(iOS 10.0, *) {
@@ -71,6 +70,7 @@ class LocationDetailViewController: UIViewController {
             let controller = segue.destination as! LocationDetailEditViewController
             controller.locationToEdit = locationToShow
             controller.collectionFrame = photoCollectionView.frame
+            controller.addImageButtonFrame = mapAppButton.frame
             controller.managedObjectContext = managedObjectContext
             controller.delegate = self
         }
@@ -87,6 +87,10 @@ class LocationDetailViewController: UIViewController {
         punchNumber.text = locationToShow.punch.stringValue
         remarkTextView.text = locationToShow.locationDescription
         punchNumber.text = locationToShow.punch.stringValue
+        
+        if locationToShow.hasPhoto {
+            portraitImage.image = locationToShow.photoImage
+        }
         
         if let placemark = locationToShow.placemark {
             addressLabel.text = stringFromPlacemark(placemark: placemark)
@@ -126,10 +130,10 @@ class LocationDetailViewController: UIViewController {
         remarkTextView.textColor = UIColor.black
         remarkTextView.font = UIFont(name: "TrebuchetMS", size: 15)
         remarkTextView.isEditable = false
-        remarkTextView.layer.cornerRadius = 5
-        remarkTextView.layer.borderWidth = 1
-        remarkTextView.layer.borderColor = UIColor.lightGray.cgColor
-        
+//        remarkTextView.layer.cornerRadius = 5
+//        remarkTextView.layer.borderWidth = 1
+//        remarkTextView.layer.borderColor = UIColor.lightGray.cgColor
+//        
         // set weatherImageView
         weatherImageView.image = UIImage(named: w_icon)
         
@@ -280,13 +284,14 @@ extension LocationDetailViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return locationToShow.photoID.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
         cell.awakeFromNib()
-        cell.photoImageView.image = UIImage(named: locationToShow.locationPhotoID)
+        let index = locationToShow.photoID[indexPath.row]
+        cell.photoImageView.image = locationToShow.photoImages(photoIndex: Int(index))
         cell.deleteButton.isHidden = true
         return cell
     }
@@ -299,5 +304,7 @@ extension LocationDetailViewController: LocationDetailEditViewControllerDelegate
         locationNameLabel.text = locationToShow.locationName
         categoryLabel.text = locationToShow.locationCategory
         remarkTextView.text = locationToShow.locationDescription
+        portraitImage.image = locationToShow.photoImage
+        photoCollectionView.reloadData()
     }
 }

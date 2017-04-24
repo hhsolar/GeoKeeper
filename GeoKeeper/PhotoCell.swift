@@ -9,13 +9,14 @@
 import UIKit
 
 protocol PhotoCellDelegate {
-    func changeColorOfButton(forCell: PhotoCell)
+    func deleteImage(forCell: PhotoCell)
 }
 
 class PhotoCell: UICollectionViewCell {
     
     var photoImageView: UIImageView!
     var deleteButton: UIButton!
+    var cellIndex = -1
     var delegate: PhotoCellDelegate? = nil
     
     override func awakeFromNib() {
@@ -29,12 +30,12 @@ class PhotoCell: UICollectionViewCell {
         deleteButton = UIButton(frame: CGRect(x: (contentView.frame.origin.x + 5), y: (contentView.frame.origin.y + 5), width: 15, height: 15))
         let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
         deleteButton.setImage(backgroundImage, for: .normal)
-        deleteButton.addTarget(self, action: #selector(changeButtonColor), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(deleteImage), for: .touchUpInside)
         contentView.addSubview(deleteButton)
     }
     
-    func changeButtonColor() {
-        delegate?.changeColorOfButton(forCell: self)
+    func deleteImage() {
+        delegate?.deleteImage(forCell: self)
     }
 
 }

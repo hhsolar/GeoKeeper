@@ -381,6 +381,7 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @property (nonatomic, strong) Location * _Null_unspecified fetchedLocation;
 @property (nonatomic, strong) MyLocation * _Nonnull forPassLocation;
 @property (nonatomic) BOOL isVisited;
+@property (nonatomic) BOOL isPunched;
 @property (nonatomic, readonly, strong) CLGeocoder * _Nonnull geocoder;
 @property (nonatomic, strong) CLPlacemark * _Nullable placemark;
 @property (nonatomic) BOOL performingReverseGeocoding;
@@ -488,12 +489,17 @@ SWIFT_CLASS("_TtC9GeoKeeper7HudView")
 SWIFT_CLASS("_TtC9GeoKeeper8Location")
 @interface Location : NSManagedObject <MKAnnotation>
 @property (nonatomic, readonly) BOOL hasPhoto;
-@property (nonatomic, readonly, copy) NSURL * _Nonnull photoURL;
 @property (nonatomic, readonly, strong) UIImage * _Nullable photoImage;
+@property (nonatomic, readonly, copy) NSURL * _Nonnull photoURL;
+@property (nonatomic, readonly, copy) NSString * _Nonnull getAddress;
+- (NSURL * _Nonnull)photosURLWithPhotoIndex:(NSNumber * _Nonnull)photoIndex;
+- (NSInteger)nextPhotoID;
++ (NSInteger)nextLocationPhotoID;
+- (void)removePhotoFileWithPhotoIndex:(NSNumber * _Nonnull)photoIndex;
+- (void)removePhotoFile;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly, copy) NSString * _Nullable title;
 @property (nonatomic, readonly, copy) NSString * _Nullable subtitle;
-+ (NSInteger)nextPhotoID;
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -504,9 +510,9 @@ SWIFT_CLASS("_TtC9GeoKeeper8Location")
 @property (nonatomic) double latitude;
 @property (nonatomic, copy) NSString * _Nonnull locationDescription;
 @property (nonatomic) double longitude;
-@property (nonatomic, strong) NSNumber * _Nullable photoID;
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull photoID;
+@property (nonatomic, strong) NSNumber * _Nullable locationPhotoID;
 @property (nonatomic, strong) CLPlacemark * _Nullable placemark;
-@property (nonatomic, copy) NSString * _Nonnull locationPhotoID;
 @property (nonatomic, strong) NSNumber * _Nullable punch;
 @property (nonatomic, copy) NSString * _Nullable name;
 @end
@@ -518,7 +524,6 @@ SWIFT_CLASS("_TtC9GeoKeeper12LocationCell")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified photoImageView;
 - (void)configureFor:(Location * _Nonnull)location;
-- (UIImage * _Nonnull)thumbnailFor:(Location * _Nonnull)location;
 - (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -535,43 +540,52 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 @property (nonatomic, weak) IBOutlet UINavigationBar * _Null_unspecified nBar;
 @property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified photoCollection;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * _Null_unspecified doneButton;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified addImageButton;
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, strong) Location * _Nullable locationToSave;
 @property (nonatomic, strong) MyLocation * _Nonnull locationToEdit;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
+@property (nonatomic, readonly, strong) UIColor * _Nonnull secondColor;
 @property (nonatomic) CGRect collectionFrame;
+@property (nonatomic) CGRect addImageButtonFrame;
 @property (nonatomic) CGFloat keyHeight;
+@property (nonatomic, copy) NSString * _Nonnull flag;
+@property (nonatomic) BOOL hasPortrait;
+@property (nonatomic) BOOL portraitChanged;
+@property (nonatomic, copy) NSArray<UIImage *> * _Nonnull imageArray;
+@property (nonatomic, strong) UIImage * _Nullable image;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
 - (void)setPara;
 - (void)initCollectionView SWIFT_METHOD_FAMILY(none);
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField;
 - (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string;
-- (void)updateContentWithLocation:(Location * _Nonnull)location;
 - (void)hideKeyboardWithTapGesure:(UITapGestureRecognizer * _Nonnull)tapGesure;
 - (BOOL)textViewShouldBeginEditing:(UITextView * _Nonnull)textView;
 - (void)keyboardWillShowWithANotification:(NSNotification * _Nonnull)aNotification;
 - (BOOL)textViewShouldEndEditing:(UITextView * _Nonnull)textView;
+- (void)updateContentWithLocation:(Location * _Nonnull)location;
 - (IBAction)done;
+- (IBAction)addImage;
+- (void)showWithImage:(UIImage * _Nonnull)image;
 - (NSString * _Nonnull)stringFrom:(CLPlacemark * _Nonnull)placemark;
 - (IBAction)cancel;
 - (IBAction)choosePortrait;
-- (IBAction)loadCategoryPicker;
-- (IBAction)editPhoto;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
-@end
-
-@class PhotoCell;
-
-@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)changeColorOfButtonForCell:(PhotoCell * _Nonnull)forCell;
 @end
 
 
 @interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
 - (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
+@end
+
+@class PhotoCell;
+
+@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)deleteImageForCell:(PhotoCell * _Nonnull)forCell;
 @end
 
 
@@ -591,6 +605,16 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView;
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+
+@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper)) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+- (void)pickPhoto;
+- (void)showPhotoMenu;
+- (void)takePhotoWithCamera;
+- (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> * _Nonnull)info;
+- (void)imagePickerControllerDidCancel:(UIImagePickerController * _Nonnull)picker;
+- (void)choosePhotoFromLibrary;
 @end
 
 
@@ -730,10 +754,17 @@ SWIFT_CLASS("_TtC9GeoKeeper10MyLocation")
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 @property (nonatomic, strong) CLPlacemark * _Nullable placemark;
-@property (nonatomic, copy) NSString * _Nonnull locationPhotoID;
+@property (nonatomic, strong) NSNumber * _Nullable locationPhotoID;
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull photoID;
 @property (nonatomic, strong) NSNumber * _Nonnull punch;
 @property (nonatomic, copy) NSString * _Nonnull locationDescription;
 + (MyLocation * _Nonnull)toMyLocationWithCoreDataLocation:(Location * _Nonnull)coreDataLocation;
+@property (nonatomic, readonly) BOOL hasPhoto;
+@property (nonatomic, readonly, strong) UIImage * _Nullable photoImage;
+@property (nonatomic, readonly, copy) NSURL * _Nonnull photoURL;
+@property (nonatomic, readonly, copy) NSString * _Nonnull getAddress;
+- (UIImage * _Nullable)photoImagesWithPhotoIndex:(NSInteger)photoIndex;
+- (NSURL * _Nonnull)photosURLWithPhotoIndex:(NSInteger)photoIndex;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -772,8 +803,9 @@ SWIFT_CLASS("_TtC9GeoKeeper9PhotoCell")
 @interface PhotoCell : UICollectionViewCell
 @property (nonatomic, strong) UIImageView * _Null_unspecified photoImageView;
 @property (nonatomic, strong) UIButton * _Null_unspecified deleteButton;
+@property (nonatomic) NSInteger cellIndex;
 - (void)awakeFromNib;
-- (void)changeButtonColor;
+- (void)deleteImage;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

@@ -24,6 +24,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     @IBOutlet weak var nBar: UINavigationBar!
     @IBOutlet weak var photoCollection: UICollectionView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var addImageButton: UIButton!
     
     var managedObjectContext: NSManagedObjectContext!
     var locationToSave: Location?
@@ -33,10 +34,18 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     var delegate: LocationDetailEditViewControllerDelegate? = nil
     
     let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
+    let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
     
     var collectionFrame = CGRect.zero
+    var addImageButtonFrame = CGRect.zero
     var keyHeight = CGFloat()
     fileprivate let reuseIdentifier = "PhotoCell"
+    var flag = ""
+    var hasPortrait = false
+    var portraitChanged = false
+    
+    var imageArray = [UIImage]()
+    var image: UIImage?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -58,11 +67,17 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
+        view.tintColor = secondColor
         
         nBar.topItem?.title = "Edit Location"
         nameTextField.text = locationToEdit.locationName
         categoryPicker.setTitle(locationToEdit.locationCategory, for: .normal)
-        portraitImageView.image = UIImage(named: locationToEdit.locationPhotoID)
+        
+        if locationToEdit.hasPhoto {
+            portraitImageView.image = locationToEdit.photoImage
+            hasPortrait = true
+        }
+        
         remarkTextView.text = locationToEdit.locationDescription
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(tapGesure:)))
@@ -74,6 +89,13 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         setPara()
         initCollectionView()
                 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if locationToEdit.photoID.count < 50 {
+            addImageButton.isEnabled = true
+        }
     }
     
     func setPara() {
@@ -90,6 +112,16 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         categoryPicker.titleLabel!.font = UIFont(name: "TrebuchetMS", size: 14)
         categoryPicker.setTitleColor(UIColor.gray, for: .normal)
         categoryPicker.layer.cornerRadius = 4
+        
+        // set addImageButton
+        addImageButton.frame = addImageButtonFrame
+        addImageButton.setTitleColor(secondColor, for: .normal)
+        addImageButton.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 16)
+        addImageButton.backgroundColor = UIColor.white
+        if locationToEdit.photoID.count >= 50 {
+            addImageButton.isEnabled = false
+        }
+        addImageButton.layer.cornerRadius = 14
         
         // set navigationBar
         nBar.barTintColor = baseColor
@@ -134,16 +166,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         return true
     }
     
-    func updateContent(location: Location) {
-        location.name = nameTextField.text
-        location.category = (categoryPicker.titleLabel?.text)!
-        location.locationDescription = remarkTextView.text
-        
-        locationToEdit.locationName = nameTextField.text!
-        locationToEdit.locationCategory = (categoryPicker.titleLabel?.text)!
-        locationToEdit.locationDescription = remarkTextView.text
-    }
-    
     // textView related
     func hideKeyboard(tapGesure: UITapGestureRecognizer) {
         self.remarkTextView.resignFirstResponder()
@@ -179,6 +201,63 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         return true
     }
     
+    func updateContent(location: Location) {
+        location.name = nameTextField.text
+        location.category = (categoryPicker.titleLabel?.text)!
+        location.locationDescription = remarkTextView.text
+        
+        locationToEdit.locationName = nameTextField.text!
+        locationToEdit.locationCategory = (categoryPicker.titleLabel?.text)!
+        locationToEdit.locationDescription = remarkTextView.text
+        
+        if location.hasPhoto && portraitChanged {
+            location.removePhotoFile()
+            if let data = UIImageJPEGRepresentation(portraitImageView.image!, 0.5) {
+                do {
+                    try data.write(to: location.photoURL, options: .atomic)
+                } catch {
+                    print("Error writing file: \(error)")
+                }
+            }
+        } else if !location.hasPhoto && portraitChanged {
+            location.locationPhotoID = Location.nextLocationPhotoID() as NSNumber
+            if let data = UIImageJPEGRepresentation(portraitImageView.image!, 0.5) {
+                do {
+                    try data.write(to: location.photoURL, options: .atomic)
+                } catch {
+                    print("Error writing file: \(error)")
+                }
+            }
+            locationToEdit.locationPhotoID = location.locationPhotoID
+        }
+        
+        
+        if location.photoID.count > locationToEdit.photoID.count {
+            for i in location.photoID {
+                if !locationToEdit.photoID.contains(i) {
+                    location.removePhotoFile(photoIndex: i)
+                    let ind = location.photoID.index(of: i)
+                    location.photoID.remove(at: ind!)
+                }
+            }
+        }
+        
+        if imageArray.count > 0 {
+            for img in imageArray {
+                location.photoID.append(location.nextPhotoID() as NSNumber)
+                if let data = UIImageJPEGRepresentation(img, 0.5) {
+                    do {
+                        try data.write(to: location.photosURL(photoIndex: location.photoID.last!), options: .atomic)
+                    } catch {
+                        print("Error writing file: \(error)")
+                    }
+                }
+            }
+            locationToEdit.photoID = location.photoID
+        }
+        
+    }
+    
     @IBAction func done() {
         
         var locations = [Location]()
@@ -211,9 +290,34 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             location.latitude = locationToEdit.latitude
             location.longitude = locationToEdit.longitude
             location.placemark = locationToEdit.placemark
-            location.locationPhotoID = locationToEdit.locationPhotoID
             location.punch = locationToEdit.punch
             location.locationDescription = locationToEdit.locationDescription
+            
+            if hasPortrait {
+                location.locationPhotoID = Location.nextLocationPhotoID() as NSNumber
+                if let data = UIImageJPEGRepresentation(portraitImageView.image!, 0.5) {
+                    do {
+                        try data.write(to: location.photoURL, options: .atomic)
+                    } catch {
+                        print("Error writing file: \(error)")
+                    }
+                }
+                locationToEdit.locationPhotoID = location.locationPhotoID
+            }
+            
+            if imageArray.count > 0 {
+                for img in imageArray {
+                    location.photoID.append(location.nextPhotoID() as NSNumber)
+                    if let data = UIImageJPEGRepresentation(img, 0.5) {
+                        do {
+                            try data.write(to: location.photosURL(photoIndex: location.photoID.last!), options: .atomic)
+                        } catch {
+                            print("Error writing file: \(error)")
+                        }
+                    }
+                }
+                locationToEdit.photoID = location.photoID
+            }
         }
         
         do {
@@ -222,9 +326,29 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             fatalError("Failure to save context: \(error)")
         }
         delegate?.passLocation(location: locationToEdit)
+        
+        imageArray.removeAll()
+
         dismiss(animated: true, completion: nil)
     }
-                
+    
+    @IBAction func addImage() {
+        flag = "collectionView"
+        pickPhoto()
+        if locationToEdit.photoID.count + imageArray.count == 50 {
+            addImageButton.isEnabled = false
+        }        
+    }
+    
+    func show(image: UIImage) {
+        if flag == "portrait" {
+            portraitImageView.image = image
+        } else if flag == "collectionView"{
+            imageArray.append(image)
+            photoCollection.reloadData()
+        }
+    }
+    
     func string(from placemark: CLPlacemark) -> String {
         var line1 = ""
         
@@ -256,17 +380,11 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     }
     
     @IBAction func choosePortrait() {
-        
+        flag = "portrait"
+        pickPhoto()
+        hasPortrait = true
+        portraitChanged = true
     }
-    
-    @IBAction func loadCategoryPicker() {
-        
-    }
-    
-    @IBAction func editPhoto() {
-        
-    }
-    
 }
 
 extension LocationDetailEditViewController: UIViewControllerTransitioningDelegate {
@@ -298,22 +416,40 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return locationToEdit.photoID.count + imageArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
         cell.awakeFromNib()
         cell.delegate = self
-        cell.photoImageView.image = UIImage(named: locationToEdit.locationPhotoID)
+        cell.cellIndex = indexPath.row
+        if !locationToEdit.photoID.isEmpty && indexPath.row < locationToEdit.photoID.count {
+            let index = locationToEdit.photoID[indexPath.row]
+            cell.photoImageView.image = locationToEdit.photoImages(photoIndex: Int(index))
+        } else {
+            let index = indexPath.row - locationToEdit.photoID.count
+            cell.photoImageView.image = imageArray[index]
+        }
         return cell
     }
 }
 
-extension LocationDetailEditViewController: PhotoCellDelegate {
-    func changeColorOfButton(forCell: PhotoCell) {
+extension LocationDetailEditViewController: PhotoCellDelegate {    
+    func deleteImage(forCell: PhotoCell) {
         let image = UIImage(named: "closeButton")
         forCell.deleteButton.setImage(image, for: .highlighted)
+        
+        if !locationToEdit.photoID.isEmpty && forCell.cellIndex < locationToEdit.photoID.count {
+            locationToEdit.photoID.remove(at: forCell.cellIndex)
+        } else if !locationToEdit.photoID.isEmpty && forCell.cellIndex >= locationToEdit.photoID.count {
+            let ind = forCell.cellIndex - locationToEdit.photoID.count
+            imageArray.remove(at: ind)
+        } else {
+            imageArray.remove(at: forCell.cellIndex)
+        }
+        photoCollection.reloadData()
+        
     }
 }
 
@@ -324,3 +460,52 @@ extension LocationDetailEditViewController: CategoryPickerTableViewControllerDel
     }
 }
 
+extension LocationDetailEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func pickPhoto() {
+        if MyImagePickerController.isSourceTypeAvailable(.camera) {
+            showPhotoMenu()
+        } else {
+            choosePhotoFromLibrary()
+        }
+    }
+    
+    func showPhotoMenu() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        let takePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in self.takePhotoWithCamera() })
+        alertController.addAction(takePhotoAction)
+        let chooseFormLibraryAction = UIAlertAction(title: "Choose From Library", style: .default, handler: { _ in self.choosePhotoFromLibrary() })
+        alertController.addAction(chooseFormLibraryAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func takePhotoWithCamera() {
+        let imagePicker = MyImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        image = info[UIImagePickerControllerEditedImage] as? UIImage
+        
+        if let theImage = image {
+            show(image: theImage)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func choosePhotoFromLibrary() {
+        let imagePicker = MyImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+}

@@ -22,9 +22,9 @@ extension Location {
     @NSManaged public var latitude: Double
     @NSManaged public var locationDescription: String
     @NSManaged public var longitude: Double
-    @NSManaged public var photoID: NSNumber?
+    @NSManaged public var photoID: [NSNumber]
+    @NSManaged public var locationPhotoID: NSNumber?
     @NSManaged public var placemark: CLPlacemark?
-    @NSManaged public var locationPhotoID: String
     
     @NSManaged public var punch: NSNumber?
     @NSManaged public var name: String?
