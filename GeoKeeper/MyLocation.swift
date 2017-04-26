@@ -18,7 +18,7 @@ class MyLocation: NSObject {
     var longitude: Double = 0
     var placemark: CLPlacemark?
     var locationPhotoID: NSNumber?
-    var photoID = [NSNumber]()
+    var photoID: [NSNumber]?
     var punch: NSNumber = 0
     var locationDescription: String = "This guy is so lazy that he writes nothing here!"
     
@@ -79,12 +79,10 @@ class MyLocation: NSObject {
     
     func photoImages(photoIndex: Int) -> UIImage? {
         let URL = photosURL(photoIndex: photoIndex)
-        print("photoIndex: \(photoIndex) in photoImages")
         return UIImage(contentsOfFile: URL.path)
     }
     
     func photosURL(photoIndex: Int) -> URL {
-        print("photoIndex: \(photoIndex)")
         let filename = "Photo-\(getAddress)-\(photoIndex).jpg"
         return applicationDocumentsDirectory.appendingPathComponent(filename)
     }

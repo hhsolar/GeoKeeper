@@ -29,6 +29,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     var managedObjectContext: NSManagedObjectContext!
     var locationToSave: Location?
     var locationToEdit = MyLocation()
+    var imageBackup: [NSNumber]?
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     
     var delegate: LocationDetailEditViewControllerDelegate? = nil
@@ -89,14 +90,19 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         
         setPara()
         initCollectionView()
-                
+        imageBackup = locationToEdit.photoID
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if locationToEdit.photoID.count < 50 {
+        if let photoIDs = locationToEdit.photoID {
+            if photoIDs.count < 50 {
+                addImageButton.isEnabled = true
+            }
+        } else {
             addImageButton.isEnabled = true
         }
+        
     }
     
     func setPara() {
@@ -119,9 +125,12 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         addImageButton.setTitleColor(secondColor, for: .normal)
         addImageButton.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 16)
         addImageButton.backgroundColor = UIColor.white
-        if locationToEdit.photoID.count >= 50 {
-            addImageButton.isEnabled = false
+        if let photoIDs = locationToEdit.photoID {
+            if photoIDs.count >= 50 {
+                addImageButton.isEnabled = false
+            }
         }
+        
         addImageButton.layer.cornerRadius = 14
         
         // set navigationBar
@@ -233,30 +242,52 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         }
         
         
-        if location.photoID.count > locationToEdit.photoID.count {
-            for i in location.photoID {
-                if !locationToEdit.photoID.contains(i) {
-                    location.removePhotoFile(photoIndex: i)
-                    let ind = location.photoID.index(of: i)
-                    location.photoID.remove(at: ind!)
+        if let photoIDs = location.photoID {
+            if let photoIDsEdit = locationToEdit.photoID {
+                if photoIDs.count > photoIDsEdit.count {
+                    for i in photoIDs.reversed() {
+                        if !photoIDsEdit.contains(i) {
+                            location.removePhotoFile(photoIndex: i)
+                            let ind = photoIDs.index(of: i)
+                            location.photoID?.remove(at: ind!)
+                        }
+                    }
                 }
             }
         }
         
         if imageArray.count > 0 {
-            for img in imageArray {
-                location.photoID.append(location.nextPhotoID() as NSNumber)
-                if let data = UIImageJPEGRepresentation(img, 0.5) {
-                    do {
-                        try data.write(to: location.photosURL(photoIndex: location.photoID.last!), options: .atomic)
-                    } catch {
-                        print("Error writing file: \(error)")
+            if let photoIDs = location.photoID {
+                print("!!!! before photoID \(photoIDs)")
+                for img in imageArray {
+                    location.photoID?.append(location.nextPhotoID() as NSNumber)
+                    if let data = UIImageJPEGRepresentation(img, 0.5) {
+                        do {
+                            try data.write(to: location.photosURL(photoIndex: (location.photoID?.last)!), options: .atomic)
+                        } catch {
+                            print("Error writing file: \(error)")
+                        }
+                    }
+                }
+                
+                print("!!!! after photoID \(location.photoID)")
+                
+            } else {
+                location.photoID = []
+                for img in imageArray {
+                    location.photoID?.append(location.nextPhotoID() as NSNumber)
+                    if let data = UIImageJPEGRepresentation(img, 0.5) {
+                        do {
+                            try data.write(to: location.photosURL(photoIndex: (location.photoID?.last)!), options: .atomic)
+                        } catch {
+                            print("Error writing file: \(error)")
+                        }
                     }
                 }
             }
             locationToEdit.photoID = location.photoID
+            print("!!!!  locationToEdit.photoID \(locationToEdit.photoID)")
         }
-        
     }
     
     @IBAction func done() {
@@ -283,6 +314,9 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         }
         
         if !hasRocord {
+            locationToEdit.locationName = nameTextField.text!
+            locationToEdit.locationDescription = remarkTextView.text
+            
             let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
             locationToEdit.locationName = nameTextField.text!
             location.name = locationToEdit.locationName
@@ -308,11 +342,12 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             }
             
             if imageArray.count > 0 {
+                location.photoID = []
                 for img in imageArray {
-                    location.photoID.append(location.nextPhotoID() as NSNumber)
+                    location.photoID?.append(location.nextPhotoID() as NSNumber)
                     if let data = UIImageJPEGRepresentation(img, 0.5) {
                         do {
-                            try data.write(to: location.photosURL(photoIndex: location.photoID.last!), options: .atomic)
+                            try data.write(to: location.photosURL(photoIndex: (location.photoID?.last!)!), options: .atomic)
                         } catch {
                             print("Error writing file: \(error)")
                         }
@@ -337,9 +372,13 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     @IBAction func addImage() {
         flag = "collectionView"
         pickPhoto()
-        if locationToEdit.photoID.count + imageArray.count == 50 {
+        if let photoIDs = locationToEdit.photoID {
+            if photoIDs.count + imageArray.count >= 50 {
+                addImageButton.isEnabled = false
+            }
+        } else if imageArray.count >= 50 {
             addImageButton.isEnabled = false
-        }        
+        }
     }
     
     func show(image: UIImage) {
@@ -378,6 +417,8 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     }
     
     @IBAction func cancel() {
+        locationToEdit.photoID = imageBackup
+        delegate?.passLocation(location: locationToEdit)
         dismiss(animated: true, completion: nil)
     }
     
@@ -418,7 +459,10 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return locationToEdit.photoID.count + imageArray.count
+        if let photoIDs = locationToEdit.photoID {
+            return photoIDs.count + imageArray.count
+        }
+        return imageArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -426,13 +470,19 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
         cell.awakeFromNib()
         cell.delegate = self
         cell.cellIndex = indexPath.row
-        if !locationToEdit.photoID.isEmpty && indexPath.row < locationToEdit.photoID.count {
-            let index = locationToEdit.photoID[indexPath.row]
-            cell.photoImageView.image = locationToEdit.photoImages(photoIndex: Int(index))
-        } else {
-            let index = indexPath.row - locationToEdit.photoID.count
-            cell.photoImageView.image = imageArray[index]
+        
+        if let photoIDs = locationToEdit.photoID {
+            if !photoIDs.isEmpty && indexPath.row < photoIDs.count {
+                let index = photoIDs[indexPath.row]
+                cell.photoImageView.image = locationToEdit.photoImages(photoIndex: Int(index))
+            } else {
+                let index = indexPath.row - photoIDs.count
+                cell.photoImageView.image = imageArray[index]
+            }
+            return cell
         }
+        
+        cell.photoImageView.image = imageArray[indexPath.row]
         return cell
     }
 }
@@ -442,16 +492,18 @@ extension LocationDetailEditViewController: PhotoCellDelegate {
         let image = UIImage(named: "closeButton")
         forCell.deleteButton.setImage(image, for: .highlighted)
         
-        if !locationToEdit.photoID.isEmpty && forCell.cellIndex < locationToEdit.photoID.count {
-            locationToEdit.photoID.remove(at: forCell.cellIndex)
-        } else if !locationToEdit.photoID.isEmpty && forCell.cellIndex >= locationToEdit.photoID.count {
-            let ind = forCell.cellIndex - locationToEdit.photoID.count
-            imageArray.remove(at: ind)
+        if let photoIDs = locationToEdit.photoID {
+            if !photoIDs.isEmpty && forCell.cellIndex < photoIDs.count {
+                locationToEdit.photoID?.remove(at: forCell.cellIndex)
+            } else if !photoIDs.isEmpty && forCell.cellIndex >= photoIDs.count {
+                let ind = forCell.cellIndex - photoIDs.count
+                imageArray.remove(at: ind)
+            }
         } else {
             imageArray.remove(at: forCell.cellIndex)
         }
-        photoCollection.reloadData()
         
+        photoCollection.reloadData()        
     }
 }
 

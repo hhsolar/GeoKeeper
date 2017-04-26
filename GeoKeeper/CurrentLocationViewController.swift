@@ -61,22 +61,24 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } catch {
             fatalCoreDataError(error)
         }
-        for locationRecord in locations {
-            if let placemarkRecord = locationRecord.placemark {
-                if let placemark = forPassLocation.placemark {
-                    if string(from: placemark) == string(from: placemarkRecord) {
-                        cityName.text = locationRecord.name
-                    }
-                }
-            }
-        }
+//        for locationRecord in locations {
+//            if let placemarkRecord = locationRecord.placemark {
+//                if let placemark = forPassLocation.placemark {
+//                    if string(from: placemark) == string(from: placemarkRecord) {
+//                        cityName.text = locationRecord.name
+//                    }
+//                }
+//            }
+//        }
         
         if let location = location {
             for locationRecord in locations {
                 if let placemarkRecord = locationRecord.placemark {
                     if addressLabel.text == string(from:placemarkRecord) {
+                        print("before forPassLocation \(forPassLocation.locationName)")
                         forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
                         cityName.text = forPassLocation.locationName
+                        print("after forPassLocation \(forPassLocation.locationName)")
                         //Repeated Punch is not allowed
                         let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
                         if timeInterval < 10 {
@@ -89,10 +91,15 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 }
             }
         }
-
         
         if isVisited == false {
+            tagLabel.text = "Tag"
             messageLabel.text = "Tap 'Tag' to Save Location"
+            if let placemark = placemark {
+                cityName.text = placemark.locality
+            }
+            forPassLocation = MyLocation()
+            
         } else if isPunched {
             tagLabel.text = "Detail"
             messageLabel.text = "Tap 'Detail' to Read Details"
@@ -101,6 +108,11 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             messageLabel.text = "Tap 'Punch' to Punch In"
         }
 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        isVisited = false
     }
     
     override func viewDidLoad() {
@@ -523,7 +535,7 @@ extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavi
 
 extension CurrentLocationViewController: LocationDetailViewControllerDelegate {
     func passLocation(location: MyLocation) {
-        forPassLocation = location
-        cityName.text = forPassLocation.locationName
+//        forPassLocation = location
+        cityName.text = location.locationName
     }
 }
