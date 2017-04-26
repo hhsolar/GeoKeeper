@@ -313,6 +313,9 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         }
         
         if !hasRocord {
+            locationToEdit.locationName = nameTextField.text!
+            locationToEdit.locationDescription = remarkTextView.text
+            
             let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
             location.name = locationToEdit.locationName
             location.category = locationToEdit.locationCategory
