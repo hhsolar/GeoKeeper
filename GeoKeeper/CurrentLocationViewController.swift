@@ -23,7 +23,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     var isVisited = false
     var isPunched = false
     
-    
     let geocoder = CLGeocoder()
     var placemark: CLPlacemark?
     var performingReverseGeocoding = false

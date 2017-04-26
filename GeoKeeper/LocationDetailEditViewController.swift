@@ -458,7 +458,12 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let photoIDs = locationToEdit.photoID {
+            if photoIDs.count + imageArray.count == 0 {
+                return 1
+            }
             return photoIDs.count + imageArray.count
+        } else if imageArray.count == 0 {
+            return 1
         }
         return imageArray.count
     }
@@ -470,6 +475,11 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
         cell.cellIndex = indexPath.row
         
         if let photoIDs = locationToEdit.photoID {
+            if photoIDs.count + imageArray.count == 0 {
+                cell.photoImageView.image = UIImage(named: "noPhoto2_icon")
+                cell.deleteButton.isHidden = true
+                return cell
+            }
             if !photoIDs.isEmpty && indexPath.row < photoIDs.count {
                 let index = photoIDs[indexPath.row]
                 cell.photoImageView.image = locationToEdit.photoImages(photoIndex: Int(index))
@@ -478,6 +488,9 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
                 cell.photoImageView.image = imageArray[index]
             }
             return cell
+        } else if imageArray.count == 0 {
+            cell.photoImageView.image = UIImage(named: "noPhoto2_icon")
+            cell.deleteButton.isHidden = true
         }
         
         cell.photoImageView.image = imageArray[indexPath.row]

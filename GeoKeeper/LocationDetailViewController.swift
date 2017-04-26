@@ -33,6 +33,7 @@ class LocationDetailViewController: UIViewController {
     
     let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
     let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
+    let grayColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1.0)
     
     var managedObjectContext: NSManagedObjectContext!
     var locationToShow = MyLocation()
@@ -62,8 +63,6 @@ class LocationDetailViewController: UIViewController {
             UIApplication.shared.openURL(targetURL)
         }
     }
-    
-
     
     @IBAction func playWeatherSound() {
         switch w_icon {
@@ -295,7 +294,7 @@ class LocationDetailViewController: UIViewController {
     func initCollectionView() {
         let collectionViewHeight = UIScreen.main.bounds.size.height / 13 * 3
         photoCollectionView.frame = CGRect(x: 0, y: (mapAppButton.frame.origin.y + mapAppButton.frame.height + 8), width: kScreenWidth, height: collectionViewHeight )
-        photoCollectionView.backgroundColor = UIColor.lightGray
+        photoCollectionView.backgroundColor = grayColor
         photoCollectionView.register(PhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         let layout = UICollectionViewFlowLayout()
@@ -340,19 +339,27 @@ extension LocationDetailViewController: UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let photoIDs = locationToShow.photoID {
-            return photoIDs.count
+            if photoIDs.count > 0 {
+                return photoIDs.count
+            }
+            return 1
         }
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
         cell.awakeFromNib()
+        cell.deleteButton.isHidden = true
         if let photoIDs = locationToShow.photoID {
-            let index = photoIDs[indexPath.row]
-            cell.photoImageView.image = locationToShow.photoImages(photoIndex: Int(index))
-            print("in collectionView \(locationToShow.photoID)")
-            cell.deleteButton.isHidden = true
+            if photoIDs.count > 0 {
+                let index = photoIDs[indexPath.row]
+                cell.photoImageView.image = locationToShow.photoImages(photoIndex: Int(index))
+            } else {
+                cell.photoImageView.image = UIImage(named: "noPhoto_icon")
+            }
+        } else {
+            cell.photoImageView.image = UIImage(named: "noPhoto_icon")
         }
         return cell
     }
