@@ -15,8 +15,9 @@ class LocationsViewController: UITableViewController {
     var categoryPassed = ""
     var locations = [Location]()
 
-    @IBAction func cancel() {
-        navigationController?.popViewController(animated: true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -24,7 +25,10 @@ class LocationsViewController: UITableViewController {
         navigationItem.rightBarButtonItem = editButtonItem
         navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
         navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
-        
+        fetchLocationInfo()
+    }
+    
+    func fetchLocationInfo() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
         fetchRequest.entity = Location.entity()
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
@@ -40,7 +44,6 @@ class LocationsViewController: UITableViewController {
         } catch {
             fatalCoreDataError(error)
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,6 +65,36 @@ class LocationsViewController: UITableViewController {
         
     }
     
+    @IBAction func cancel() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func string(from placemark: CLPlacemark) -> String {
+        var line1 = ""
+        if let s = placemark.subThoroughfare {
+            line1 += s + " "
+        }
+        
+        if let s = placemark.thoroughfare {
+            line1 += s
+        }
+        
+        var line2 = ""
+        if let s = placemark.locality {
+            line2 += s + " "
+        }
+        
+        if let s = placemark.administrativeArea {
+            line2 += s + " "
+        }
+        if let s = placemark.postalCode {
+            line2 += s
+        }
+        
+        return line1 + "\n" + line2
+    }
+    
+    //MARK: - TABLEVIEW DATASOURCE
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
@@ -70,8 +103,12 @@ class LocationsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
         let location = locations[indexPath.row]
         cell.configure(for: location)
-        
         return cell
+    }
+    
+    //MARK: - TALBEVIEW DELEGATE
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -86,37 +123,6 @@ class LocationsViewController: UITableViewController {
             }
         }
         tableView.reloadData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-    }
-    
-    func string(from placemark: CLPlacemark) -> String {
-        var line1 = ""
-        
-        if let s = placemark.subThoroughfare {
-            line1 += s + " "
-        }
-        
-        if let s = placemark.thoroughfare {
-            line1 += s
-        }
-        
-        var line2 = ""
-        
-        if let s = placemark.locality {
-            line2 += s + " "
-        }
-        if let s = placemark.administrativeArea {
-            line2 += s + " "
-        }
-        if let s = placemark.postalCode {
-            line2 += s
-        }
-        
-        return line1 + "\n" + line2
     }
 }
 

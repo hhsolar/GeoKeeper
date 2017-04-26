@@ -17,8 +17,6 @@ class CategoryCell: UICollectionViewCell {
         super.awakeFromNib()
         layer.cornerRadius = 10.0
         let width = frame.width
-        
-        
         categoryImageView?.contentMode = UIViewContentMode.scaleAspectFit
         categoryLabel?.frame = CGRect(x:0, y:width - 40, width:width, height:20)
         categoryLabel?.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)

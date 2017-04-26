@@ -13,7 +13,6 @@ class LocationCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     
-    
     func configure(for location: Location) {
         if location.locationDescription.isEmpty {
             descriptionLabel.text = "(No Description)"
@@ -26,7 +25,7 @@ class LocationCell: UITableViewCell {
                 text += s + " "
             }
             if let s = placemark.thoroughfare {
-                text += s + ","
+                text += s + ", "
             }
             if let s = placemark.locality {
                 text += s
@@ -36,8 +35,11 @@ class LocationCell: UITableViewCell {
             addressLabel.text = String(format: "Lat: %.8f, Long: %.8f", location.latitude, location.longitude)
         }
         
+        
 //        photoImageView.image = thumbnail(for: location)
         if location.hasPhoto {
+            photoImageView.layer.cornerRadius = 5.0
+            photoImageView.layer.masksToBounds = true
             photoImageView.image = location.photoImage
         }
     }
