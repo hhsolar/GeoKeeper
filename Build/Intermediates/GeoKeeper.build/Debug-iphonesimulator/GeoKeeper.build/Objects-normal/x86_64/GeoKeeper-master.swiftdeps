@@ -1,6 +1,6 @@
 version: "Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)"
 options: "71fc344e413b701f8089716d58772d98"
-build_time: [546505494, 624042000]
+build_time: [546556741, 657435000]
 inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/PhotoCell.swift": [546245054, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailEditViewController.swift": [546505494, 0]
@@ -29,5 +29,5 @@ inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/Location+CoreDataClass.swift": [546412318, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryCell.swift": [546390684, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Category+CoreDataClass.swift": [543041163, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CurrentLocationViewController.swift": [546412318, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CurrentLocationViewController.swift": [546556741, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Category+CoreDataProperties.swift": [544987133, 0]

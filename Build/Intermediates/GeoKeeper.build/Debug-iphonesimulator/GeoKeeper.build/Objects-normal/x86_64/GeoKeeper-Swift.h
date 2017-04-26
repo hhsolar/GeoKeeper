@@ -406,6 +406,7 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified tagLabel;
 - (IBAction)choosePortrait;
 - (void)viewWillAppear:(BOOL)animated;
+- (void)viewWillDisappear:(BOOL)animated;
 - (void)viewDidLoad;
 - (void)updateLabels;
 - (void)setContainer;
