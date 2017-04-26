@@ -547,6 +547,7 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, strong) Location * _Nullable locationToSave;
 @property (nonatomic, strong) MyLocation * _Nonnull locationToEdit;
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable imageBackup;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
 @property (nonatomic, readonly, strong) UIColor * _Nonnull secondColor;

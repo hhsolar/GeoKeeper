@@ -29,6 +29,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     var managedObjectContext: NSManagedObjectContext!
     var locationToSave: Location?
     var locationToEdit = MyLocation()
+    var imageBackup: [NSNumber]?
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     
     var delegate: LocationDetailEditViewControllerDelegate? = nil
@@ -88,7 +89,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         
         setPara()
         initCollectionView()
-                
+        imageBackup = locationToEdit.photoID
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -414,6 +415,8 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     }
     
     @IBAction func cancel() {
+        locationToEdit.photoID = imageBackup
+        delegate?.passLocation(location: locationToEdit)
         dismiss(animated: true, completion: nil)
     }
     

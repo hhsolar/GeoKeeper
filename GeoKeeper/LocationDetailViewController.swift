@@ -99,6 +99,9 @@ class LocationDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditDetail" {
             let controller = segue.destination as! LocationDetailEditViewController
+            
+            print("DetailView: \(locationToShow.photoID)")
+            
             controller.locationToEdit = locationToShow
             controller.collectionFrame = photoCollectionView.frame
             controller.addImageButtonFrame = mapAppButton.frame
@@ -348,6 +351,7 @@ extension LocationDetailViewController: UICollectionViewDataSource, UICollection
         if let photoIDs = locationToShow.photoID {
             let index = photoIDs[indexPath.row]
             cell.photoImageView.image = locationToShow.photoImages(photoIndex: Int(index))
+            print("in collectionView \(locationToShow.photoID)")
             cell.deleteButton.isHidden = true
         }
         return cell
