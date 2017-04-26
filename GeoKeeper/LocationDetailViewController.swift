@@ -336,15 +336,20 @@ extension LocationDetailViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return locationToShow.photoID.count
+        if let photoIDs = locationToShow.photoID {
+            return photoIDs.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
         cell.awakeFromNib()
-        let index = locationToShow.photoID[indexPath.row]
-        cell.photoImageView.image = locationToShow.photoImages(photoIndex: Int(index))
-        cell.deleteButton.isHidden = true
+        if let photoIDs = locationToShow.photoID {
+            let index = photoIDs[indexPath.row]
+            cell.photoImageView.image = locationToShow.photoImages(photoIndex: Int(index))
+            cell.deleteButton.isHidden = true
+        }
         return cell
     }
 }
@@ -356,7 +361,9 @@ extension LocationDetailViewController: LocationDetailEditViewControllerDelegate
         locationNameLabel.text = locationToShow.locationName
         categoryLabel.text = locationToShow.locationCategory
         remarkTextView.text = locationToShow.locationDescription
-        portraitImage.image = locationToShow.photoImage
+        if locationToShow.hasPhoto {
+            portraitImage.image = locationToShow.photoImage
+        }
         photoCollectionView.reloadData()
     }
 }

@@ -21,7 +21,7 @@ class Location: NSManagedObject, MKAnnotation {
     }
     
     var photoURL: URL {
-        assert(photoID != nil, "No location photo ID set")
+        assert(locationPhotoID != nil, "No location photo ID set")
         let filename = "Photo-\(locationPhotoID!.intValue).jpg"
         return applicationDocumentsDirectory.appendingPathComponent(filename)
     }
@@ -73,7 +73,7 @@ class Location: NSManagedObject, MKAnnotation {
     }
     
     func removePhotoFile(photoIndex: NSNumber) {
-        if photoID.contains(photoIndex) {
+        if (photoID?.contains(photoIndex))! {
             do {
                 try FileManager.default.removeItem(at: photosURL(photoIndex: photoIndex))
             } catch {

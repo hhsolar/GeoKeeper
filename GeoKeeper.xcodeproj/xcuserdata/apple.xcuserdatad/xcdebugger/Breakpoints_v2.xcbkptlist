@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoKeeper/LocationDetailEditViewController.swift"
-            timestampString = "514768032.516055"
+            timestampString = "514877553.508509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
+            startingLineNumber = "435"
+            endingLineNumber = "435"
             landmarkName = "animationController(forPresented:presenting:source:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoKeeper/LocationDetailEditViewController.swift"
-            timestampString = "514768032.516055"
+            timestampString = "514877553.508509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "LocationDetailEditViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -57,8 +57,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
             endingLineNumber = "55"
-            landmarkName = "openMapsApp()"
-            landmarkType = "7">
+            landmarkName = "LocationDetailViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -152,7 +152,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "274"
             endingLineNumber = "274"
-            landmarkName = "initCollectionView()"
+            landmarkName = "stringFromPlacemark(placemark:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -200,7 +200,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
-            landmarkName = "prepare(for:sender:)"
+            landmarkName = "playWeatherSound()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -216,7 +216,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
             endingLineNumber = "147"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "updateLabels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -232,7 +232,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
             endingLineNumber = "161"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "updateLabels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -264,7 +264,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "252"
             endingLineNumber = "252"
-            landmarkName = "updateLabels()"
+            landmarkName = "getLocation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -280,7 +280,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
             endingLineNumber = "124"
-            landmarkName = "viewWillAppear(_:)"
+            landmarkName = "updateLabels()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -339,11 +339,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoKeeper/LocationDetailEditViewController.swift"
-            timestampString = "514768032.516055"
+            timestampString = "514877553.508509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "done()"
             landmarkType = "7">
          </BreakpointContent>
@@ -355,11 +355,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoKeeper/LocationDetailEditViewController.swift"
-            timestampString = "514768032.516055"
+            timestampString = "514790183.055838"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "setPara()"
             landmarkType = "7">
          </BreakpointContent>
@@ -367,17 +367,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoKeeper/LocationDetailEditViewController.swift"
-            timestampString = "514768032.516055"
+            timestampString = "514877553.508509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "490"
-            endingLineNumber = "490"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
             landmarkName = "LocationDetailEditViewController"
             landmarkType = "4">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GeoKeeper/LocationDetailEditViewController.swift"
+            timestampString = "514877553.508509"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
+            landmarkName = "done()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

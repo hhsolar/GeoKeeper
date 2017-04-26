@@ -15,7 +15,7 @@
         <attribute name="locationPhotoID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="photoID" attributeType="Transformable" syncable="YES"/>
+        <attribute name="photoID" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="placemark" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="punch" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
