@@ -490,6 +490,7 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
         } else if imageArray.count == 0 {
             cell.photoImageView.image = UIImage(named: "noPhoto2_icon")
             cell.deleteButton.isHidden = true
+            return cell
         }
         
         cell.photoImageView.image = imageArray[indexPath.row]

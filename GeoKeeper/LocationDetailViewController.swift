@@ -349,9 +349,14 @@ extension LocationDetailViewController: UICollectionViewDataSource, UICollection
         cell.awakeFromNib()
         cell.deleteButton.isHidden = true
         if let photoIDs = locationToShow.photoID {
+            if photoIDs.count == 0 {
+                cell.photoImageView.image = UIImage(named: "noPhoto_icon")
+                return cell
+            }
             let index = photoIDs[indexPath.row]
             cell.photoImageView.image = locationToShow.photoImages(photoIndex: Int(index))
-            cell.deleteButton.isHidden = true
+        } else {
+            cell.photoImageView.image = UIImage(named: "noPhoto_icon")
         }
         return cell
     }
