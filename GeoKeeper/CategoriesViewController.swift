@@ -10,9 +10,8 @@ import CoreData
 
 class CategoriesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate {
     
-    
     fileprivate let reuseIdentifier = "CategoryCell"
-    fileprivate let sectionInsets = UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
+    fileprivate let sectionInsets = UIEdgeInsets(top: 1.0, left: 4.0, bottom: 1.0, right: 2.0)
     fileprivate let itemsPerRow: CGFloat = 3
     var managedObjectContext: NSManagedObjectContext!
     var blockOperations: [BlockOperation] = []

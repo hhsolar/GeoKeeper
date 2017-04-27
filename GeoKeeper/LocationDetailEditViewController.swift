@@ -269,9 +269,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
                         }
                     }
                 }
-                
-                print("!!!! after photoID \(location.photoID)")
-                
+
             } else {
                 location.photoID = []
                 for img in imageArray {
@@ -286,7 +284,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
                 }
             }
             locationToEdit.photoID = location.photoID
-            print("!!!!  locationToEdit.photoID \(locationToEdit.photoID)")
         }
     }
     

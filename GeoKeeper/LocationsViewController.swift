@@ -4,7 +4,6 @@
 //
 //  Created by Jingfu Ju on 3/5/17.
 //  Copyright © 2017 204. All rights reserved.
-//
 
 import UIKit
 import CoreData
@@ -33,9 +32,8 @@ class LocationsViewController: UITableViewController {
         fetchRequest.entity = Location.entity()
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        let fetchPredicate = NSPredicate(format: "category == %@", categoryPassed)
-        fetchRequest.predicate = fetchPredicate
-        
+        fetchRequest.predicate = NSPredicate(format: "category == %@", categoryPassed)
+
         do {
             let fetchedResults = try managedObjectContext.fetch(fetchRequest)
             for location in fetchedResults {
