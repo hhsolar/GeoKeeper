@@ -10,9 +10,8 @@ import CoreData
 
 class CategoriesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate {
     
-    
     fileprivate let reuseIdentifier = "CategoryCell"
-    fileprivate let sectionInsets = UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
+    fileprivate let sectionInsets = UIEdgeInsets(top: 1.0, left: 4.0, bottom: 1.0, right: 2.0)
     fileprivate let itemsPerRow: CGFloat = 3
     var managedObjectContext: NSManagedObjectContext!
     var blockOperations: [BlockOperation] = []
@@ -236,7 +235,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        print("fetchRequestController delegate is called")
         switch type {
         case .insert:
             blockOperations.append(
@@ -437,10 +435,9 @@ extension CategoriesViewController {
         
         
         if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
-            print("LongPress cell is called")
                 let anim = CABasicAnimation(keyPath: "transform.rotation")
                 anim.toValue = 0.0
-                anim.fromValue =  M_PI / 64
+                anim.fromValue =  Double.pi / 64
                 anim.duration = 0.1
                 anim.repeatCount = Float(UInt.max)
                 anim.autoreverses = true
@@ -456,7 +453,6 @@ extension CategoriesViewController {
         }
         
         else if UserDefaults.standard.value(forKey: "SingleTap") as! String == "Yes" {
-            print("singleTap cell reload is called")
             cell.layer.removeAllAnimations()
             let subViews = cell.subviews
             for subView in subViews {
