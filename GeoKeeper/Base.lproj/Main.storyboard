@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,6 +23,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Address goes here)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ed-1Q-auS">
+                                <rect key="frame" x="130" y="413.5" width="233" height="20"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPP-au-b2k">
+                                <rect key="frame" x="255" y="568" width="90" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="hLW-fq-vmM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                <state key="normal" backgroundImage="button_background"/>
+                                <connections>
+                                    <segue destination="EUO-Ug-UWF" kind="presentation" identifier="TagLocation" id="bQz-Iq-Xjr"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="owl-ma-bJy">
+                                <rect key="frame" x="0.0" y="64" width="375" height="268"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="owl-ma-bJy" secondAttribute="height" multiplier="375:268" id="CNk-29-t06"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="C8Y-oV-EVS"/>
+                                </connections>
+                            </mapView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yx9-Ru-bWn">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="barTintColor" red="0.2784313725" green="0.45882352939999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Tag" id="KcC-dq-sXS"/>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="f7W-G7-2tg"/>
+                                </connections>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXk-Sn-PXr">
+                                <rect key="frame" x="130" y="389" width="233" height="23.5"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="20"/>
+                                <color key="textColor" red="0.2784313725" green="0.45882352939999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdB-dm-jJW">
                                 <rect key="frame" x="50" y="525" width="72" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -43,53 +89,9 @@
                                 <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(Address goes here)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ed-1Q-auS">
-                                <rect key="frame" x="130" y="411" width="233" height="51"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPP-au-b2k">
-                                <rect key="frame" x="255" y="568" width="90" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
-                                <state key="normal" backgroundImage="button_background"/>
-                                <connections>
-                                    <segue destination="EUO-Ug-UWF" kind="presentation" identifier="TagLocation" id="bQz-Iq-Xjr"/>
-                                </connections>
-                            </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="owl-ma-bJy">
-                                <rect key="frame" x="0.0" y="64" width="375" height="268"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="C8Y-oV-EVS"/>
-                                </connections>
-                            </mapView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yx9-Ru-bWn">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" red="0.2784313725" green="0.45882352939999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Tag" id="KcC-dq-sXS"/>
-                                </items>
-                                <connections>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="f7W-G7-2tg"/>
-                                </connections>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXk-Sn-PXr">
-                                <rect key="frame" x="130" y="389" width="155" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="20"/>
-                                <color key="textColor" red="0.2784313725" green="0.45882352939999999" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(Longitude goes here)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuO-a1-uXb">
                                 <rect key="frame" x="130" y="525" width="169" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -105,22 +107,23 @@
                                     <action selector="choosePortrait" destination="9pv-A4-QxB" eventType="touchUpInside" id="udZ-xO-Mtw"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tj0-52-qAn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tj0-52-qAn">
                                 <rect key="frame" x="30" y="381" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="pMo-Vl-xZd"/>
+                                    <constraint firstAttribute="height" constant="80" id="xxW-i0-7Gs"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxA-V8-L7q">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxA-V8-L7q">
                                 <rect key="frame" x="30" y="568" width="200" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                 <state key="normal" title="Get My Location" backgroundImage="button_background"/>
                                 <connections>
                                     <action selector="getLocation" destination="9pv-A4-QxB" eventType="touchUpInside" id="aKz-kz-dHo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(Message Label)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IA-Xv-r4B">
-                                <rect key="frame" x="50" y="340" width="274" height="21"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Message Label)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IA-Xv-r4B">
+                                <rect key="frame" x="130" y="340" width="115" height="19"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS-Italic" family="Trebuchet MS" pointSize="16"/>
                                 <color key="textColor" red="0.97647058823529409" green="0.6705882352941176" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -134,6 +137,30 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="owl-ma-bJy" firstAttribute="top" secondItem="yx9-Ru-bWn" secondAttribute="bottom" id="35M-R1-KKv"/>
+                            <constraint firstItem="cPP-au-b2k" firstAttribute="leading" secondItem="CxA-V8-L7q" secondAttribute="trailing" constant="25" id="590-Ut-3TG"/>
+                            <constraint firstItem="Tj0-52-qAn" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="14" id="654-lT-zs8"/>
+                            <constraint firstAttribute="trailing" secondItem="owl-ma-bJy" secondAttribute="trailing" id="6jr-Jg-5ck"/>
+                            <constraint firstAttribute="trailing" secondItem="9Ed-1Q-auS" secondAttribute="trailing" constant="12" id="AXG-AY-LSh"/>
+                            <constraint firstAttribute="trailing" secondItem="yx9-Ru-bWn" secondAttribute="trailing" id="Akd-N3-fFr"/>
+                            <constraint firstItem="yx9-Ru-bWn" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="D3P-Cp-hID"/>
+                            <constraint firstItem="CxA-V8-L7q" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="14" id="DGf-TD-Nbg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cPP-au-b2k" secondAttribute="trailing" constant="14" id="EJG-7X-iWV"/>
+                            <constraint firstItem="5IA-Xv-r4B" firstAttribute="top" secondItem="owl-ma-bJy" secondAttribute="bottom" constant="8" id="IML-88-IZ8"/>
+                            <constraint firstItem="9Ed-1Q-auS" firstAttribute="leading" secondItem="Tj0-52-qAn" secondAttribute="trailing" constant="20" id="LJ3-aF-ixA"/>
+                            <constraint firstItem="owl-ma-bJy" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="OSz-ZW-KkO"/>
+                            <constraint firstAttribute="trailing" secondItem="TXk-Sn-PXr" secondAttribute="trailing" constant="12" id="PJx-PF-GqX"/>
+                            <constraint firstItem="9Ed-1Q-auS" firstAttribute="top" secondItem="TXk-Sn-PXr" secondAttribute="bottom" constant="1" id="QlS-Es-2r8"/>
+                            <constraint firstItem="TXk-Sn-PXr" firstAttribute="top" secondItem="5IA-Xv-r4B" secondAttribute="bottom" constant="30" id="T8c-Gy-ebo"/>
+                            <constraint firstItem="sxc-pI-dsb" firstAttribute="top" secondItem="cPP-au-b2k" secondAttribute="bottom" constant="22" id="VMd-39-YHQ"/>
+                            <constraint firstItem="yx9-Ru-bWn" firstAttribute="top" secondItem="TQt-jq-7bx" secondAttribute="bottom" id="hQY-XY-AMG"/>
+                            <constraint firstItem="owl-ma-bJy" firstAttribute="top" secondItem="yx9-Ru-bWn" secondAttribute="bottom" id="ktX-wO-5zL"/>
+                            <constraint firstItem="Tj0-52-qAn" firstAttribute="top" secondItem="owl-ma-bJy" secondAttribute="bottom" constant="49" id="lYD-Qb-eAy"/>
+                            <constraint firstItem="5IA-Xv-r4B" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="uH4-9V-b1q"/>
+                            <constraint firstItem="TXk-Sn-PXr" firstAttribute="leading" secondItem="Tj0-52-qAn" secondAttribute="trailing" constant="20" id="xHM-7G-veZ"/>
+                            <constraint firstItem="sxc-pI-dsb" firstAttribute="top" secondItem="CxA-V8-L7q" secondAttribute="bottom" constant="22" id="zkw-fs-Ash"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tag" image="tag_icon" id="acW-dT-cKf"/>
                     <connections>
@@ -163,7 +190,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PwL-fQ-fuF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="n6o-NO-WAd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbM-3Z-eEl">
@@ -174,7 +201,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="address" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6I-ML-gN6">
-                                <rect key="frame" x="20" y="128" width="213" height="36"/>
+                                <rect key="frame" x="20" y="128" width="213" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -210,7 +237,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49E-4m-aJZ">
-                                <rect key="frame" x="63" y="289" width="248" height="24"/>
+                                <rect key="frame" x="63" y="334" width="248" height="28"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <state key="normal" title="Open maps app" backgroundImage="button_background"/>
                                 <connections>
@@ -218,7 +245,7 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dNJ-gM-3of">
-                                <rect key="frame" x="0.0" y="176" width="375" height="135"/>
+                                <rect key="frame" x="0.0" y="176" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="JN4-Wz-kGr" id="fGp-dl-tKc"/>
@@ -928,6 +955,6 @@
         <image name="tag_icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rGS-U7-d3f"/>
+        <segue reference="bQz-Iq-Xjr"/>
     </inferredMetricsTieBreakers>
 </document>

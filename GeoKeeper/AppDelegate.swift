@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let categoriesViewController = navigationController.viewControllers[0] as! CategoriesViewController
             categoriesViewController.managedObjectContext = managedObjectContext
             
-    
             let mapViewController = tabBarViewControllers[2] as! MapViewController
             mapViewController.managedObjectContext = managedObjectContext
             
@@ -35,17 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         listenForFatalCoreDataNotifications()
         print(applicationDocumentsDirectory)
-        
-        
         return true
     }
     
     
     func checkFirstLaunch() {
         let launchBefore = UserDefaults.standard.bool(forKey: "launchBefore")
-        if launchBefore {
-            print("launch before")
-        } else {
+        if launchBefore == false {
             UserDefaults.standard.set("Default", forKey: "Portrait")
             UserDefaults.standard.set(true, forKey: "launchBefore")
             
