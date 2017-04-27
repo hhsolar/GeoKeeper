@@ -56,7 +56,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.mapType = .standard
         mapView.isZoomEnabled = true
         mapView?.showsUserLocation = true
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

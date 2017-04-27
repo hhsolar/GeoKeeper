@@ -74,10 +74,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             for locationRecord in locations {
                 if let placemarkRecord = locationRecord.placemark {
                     if addressLabel.text == string(from:placemarkRecord) {
-                        print("before forPassLocation \(forPassLocation.locationName)")
                         forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
                         cityName.text = forPassLocation.locationName
-                        print("after forPassLocation \(forPassLocation.locationName)")
                         //Repeated Punch is not allowed
                         let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
                         if timeInterval < 10 {
@@ -124,7 +122,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     }
     
     func updateLabels() {
-        //        var isPunched = false   我把这一句写到了最外面，如果写在这里，点get，detail和punch会互相转换一下；
         if let location = location {
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
@@ -368,7 +365,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 performingReverseGeocoding = true
                 geocoder.reverseGeocodeLocation(newLocation, completionHandler: {
                     placemarks, error in
-                    print("*** Found placemarks: \(String(describing: placemarks)), error: \(String(describing: error))")
                     self.lastGeocodingError = error
                     if error == nil, let p = placemarks, !p.isEmpty {
                         self.placemark = p.last!

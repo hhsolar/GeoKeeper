@@ -308,11 +308,8 @@ class LocationDetailViewController: UIViewController {
     
     // MARK: - Sound Effect
     func loadSoundEffect(_ name: String) {
-        print("loadSoundEffect is called")
-        print(name)
         if let path = Bundle.main.path(forResource: name, ofType: nil) {
             let fileURL = URL(fileURLWithPath: path, isDirectory: false)
-            print("file path is ******* \(fileURL)")
             let error = AudioServicesCreateSystemSoundID(fileURL as CFURL,&soundID)
             if error != kAudioServicesNoError {
                 print("Error code \(error) loading sound at path: \(path)")

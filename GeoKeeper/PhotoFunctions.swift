@@ -10,9 +10,6 @@ import Foundation
 import Dispatch
 import UIKit
 
-
-
-
 func afterDelay(seconds: Double, closure: @escaping () -> ()) {
     let when = DispatchTime.now() + seconds
     DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
