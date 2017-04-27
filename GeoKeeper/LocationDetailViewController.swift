@@ -55,8 +55,7 @@ class LocationDetailViewController: UIViewController {
     fileprivate let reuseIdentifier = "PhotoCell"
     
     @IBAction func openMapsApp() {
-        let targetURL = URL(string: "http://maps.apple.com/?ll=\(String(locationToShow.latitude)),\(String(locationToShow.longitude))")!
-        print(targetURL)
+        let targetURL = URL(string: "http://maps.apple.com/maps?saddr=Current%20Location&daddr=\(String(locationToShow.latitude)),\(String(locationToShow.longitude))")!
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(targetURL, options: [:], completionHandler: nil)
         } else {
