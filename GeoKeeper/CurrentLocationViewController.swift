@@ -48,7 +48,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var tagLabel: UILabel!
     
     @IBAction func choosePortrait() {
-        pickPhoto()
+        showPhotoMenu()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -474,18 +474,11 @@ extension CurrentLocationViewController: UINavigationBarDelegate {
 }
 
 extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func pickPhoto() {
-        if MyImagePickerController.isSourceTypeAvailable(.camera) {
-            showPhotoMenu()
-        } else {
-            choosePhotoFromLibrary()
-        }
-    }
-    
     func showPhotoMenu() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
+        
         let takePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in self.takePhotoWithCamera() })
         alertController.addAction(takePhotoAction)
         let chooseFormLibraryAction = UIAlertAction(title: "Choose From Library", style: .default, handler: { _ in self.choosePhotoFromLibrary() })
@@ -496,6 +489,14 @@ extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavi
     func takePhotoWithCamera() {
         let imagePicker = MyImagePickerController()
         imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func choosePhotoFromLibrary() {
+        let imagePicker = MyImagePickerController()
+        imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
@@ -513,14 +514,6 @@ extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavi
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
-    }
-
-    func choosePhotoFromLibrary() {
-        let imagePicker = MyImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil)
     }
 }
 

@@ -365,7 +365,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     
     @IBAction func addImage() {
         flag = "collectionView"
-        pickPhoto()
+        showPhotoMenu()
         if let photoIDs = locationToEdit.photoID {
             if photoIDs.count + imageArray.count >= 50 {
                 addImageButton.isEnabled = false
@@ -418,7 +418,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     
     @IBAction func choosePortrait() {
         flag = "portrait"
-        pickPhoto()
+        showPhotoMenu()
         hasPortrait = true
         portraitChanged = true
     }
@@ -523,14 +523,6 @@ extension LocationDetailEditViewController: CategoryPickerTableViewControllerDel
 }
 
 extension LocationDetailEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func pickPhoto() {
-        if MyImagePickerController.isSourceTypeAvailable(.camera) {
-            showPhotoMenu()
-        } else {
-            choosePhotoFromLibrary()
-        }
-    }
-    
     func showPhotoMenu() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
