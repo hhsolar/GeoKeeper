@@ -21,6 +21,9 @@
 		18F62A021E89D1D700062EF8 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */; };
 		18F62A331E8B74C300062EF8 /* FadeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62A321E8B74C300062EF8 /* FadeAnimation.swift */; };
 		18FB49611E8F63EC0075AFC8 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB49601E8F63EC0075AFC8 /* PhotoCell.swift */; };
+		1F0729151EB2A547005C6C6E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0729141EB2A547005C6C6E /* Settings.swift */; };
+		1F0729171EB2A580005C6C6E /* CoreDataFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0729161EB2A580005C6C6E /* CoreDataFunctions.swift */; };
+		1F0729191EB2A59F005C6C6E /* PhotoFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0729181EB2A59F005C6C6E /* PhotoFunctions.swift */; };
 		1F1CE3281E7A1D2F00A1FA77 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */; };
 		1F1CE3291E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */; };
 		1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5876C91E7BA0CE006FB269 /* Assets.xcassets */; };
@@ -38,7 +41,6 @@
 		1FA2AC311EA9A1DD000BACB0 /* Thunder.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1FA2AC301EA9A1DD000BACB0 /* Thunder.caf */; };
 		1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4ED521E722E3F002A6818 /* MapViewController.swift */; };
 		1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4891E6A8B19007CC5F1 /* HudView.swift */; };
-		1FEAD4901E6CAAEF007CC5F1 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */; };
 		1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4911E6CB5D2007CC5F1 /* DataModel.xcdatamodeld */; };
 		1FEAD49E1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */; };
 		1FEAD49F1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD49D1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift */; };
@@ -64,6 +66,9 @@
 		18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		18F62A321E8B74C300062EF8 /* FadeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeAnimation.swift; sourceTree = "<group>"; };
 		18FB49601E8F63EC0075AFC8 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		1F0729141EB2A547005C6C6E /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		1F0729161EB2A580005C6C6E /* CoreDataFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataFunctions.swift; sourceTree = "<group>"; };
+		1F0729181EB2A59F005C6C6E /* PhotoFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFunctions.swift; sourceTree = "<group>"; };
 		1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1F5876C91E7BA0CE006FB269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,7 +86,6 @@
 		1FA2AC301EA9A1DD000BACB0 /* Thunder.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thunder.caf; sourceTree = "<group>"; };
 		1FA4ED521E722E3F002A6818 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1FEAD4891E6A8B19007CC5F1 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
-		1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		1FEAD4921E6CB5D2007CC5F1 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1FEAD49D1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -194,7 +198,9 @@
 			isa = PBXGroup;
 			children = (
 				185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */,
-				1FEAD48F1E6CAAEF007CC5F1 /* Functions.swift */,
+				1F0729181EB2A59F005C6C6E /* PhotoFunctions.swift */,
+				1F0729161EB2A580005C6C6E /* CoreDataFunctions.swift */,
+				1F0729141EB2A547005C6C6E /* Settings.swift */,
 				185F5C481E679C5F004E73B7 /* Info.plist */,
 				1F5876C91E7BA0CE006FB269 /* Assets.xcassets */,
 			);
@@ -307,12 +313,13 @@
 				1F8D4F811E83963100A5D73E /* CategoriesViewController.swift in Sources */,
 				1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */,
 				1837E7DC1E9B419400A01461 /* CategoryPickerCell.swift in Sources */,
+				1F0729191EB2A59F005C6C6E /* PhotoFunctions.swift in Sources */,
 				1F8D4F8E1E83994F00A5D73E /* ColorCell.swift in Sources */,
 				1801FB771E77BAAC00705F92 /* MyNavigationController.swift in Sources */,
 				18F62A331E8B74C300062EF8 /* FadeAnimation.swift in Sources */,
 				1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */,
+				1F0729171EB2A580005C6C6E /* CoreDataFunctions.swift in Sources */,
 				1FEAD49F1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift in Sources */,
-				1FEAD4901E6CAAEF007CC5F1 /* Functions.swift in Sources */,
 				1F8D4F921E83995C00A5D73E /* RoundedCornersView.swift in Sources */,
 				1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */,
 				1F8D4F881E8398C700A5D73E /* LocationsViewController.swift in Sources */,
@@ -322,6 +329,7 @@
 				18F62A021E89D1D700062EF8 /* DimmingPresentationController.swift in Sources */,
 				185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */,
 				18EEC0D01E983EC60096A52A /* MyLocation.swift in Sources */,
+				1F0729151EB2A547005C6C6E /* Settings.swift in Sources */,
 				1FEAD49E1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift in Sources */,
 				1F8D4F8C1E83993F00A5D73E /* CategoryCell.swift in Sources */,
 				1F1CE3281E7A1D2F00A1FA77 /* Category+CoreDataClass.swift in Sources */,

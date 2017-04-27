@@ -315,11 +315,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                         }
                     }
                 }
-                do {
-                    try managedObjectContext.save()
-                } catch {
-                    fatalCoreDataError(error)
-                }
+                saveToCoreData(managedObjectContext)
             } else if tagLabel.text == "Detail" {
                 
             }

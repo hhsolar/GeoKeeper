@@ -72,7 +72,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         
         nBar.topItem?.title = "Edit Location"
         nameTextField.text = locationToEdit.locationName
-        print(locationToEdit.locationName," is ****************")
         categoryPicker.setTitle(locationToEdit.locationCategory, for: .normal)
         
         if locationToEdit.hasPhoto {
@@ -258,7 +257,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         
         if imageArray.count > 0 {
             if let photoIDs = location.photoID {
-                print("!!!! before photoID \(photoIDs)")
                 for img in imageArray {
                     location.photoID?.append(location.nextPhotoID() as NSNumber)
                     if let data = UIImageJPEGRepresentation(img, 0.5) {
@@ -317,7 +315,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
             locationToEdit.locationName = nameTextField.text!
             location.name = locationToEdit.locationName
-            print(locationToEdit.locationName, "location name going to save is")
             location.category = locationToEdit.locationCategory
             location.date = locationToEdit.date!
             location.latitude = locationToEdit.latitude

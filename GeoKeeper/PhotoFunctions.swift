@@ -10,12 +10,7 @@ import Foundation
 import Dispatch
 import UIKit
 
-let MyManagedObjectContextSaveDidFailNotification = Notification.Name(rawValue: "MyManagedObjectContextSaveDidFailNotification")
 
-func fatalCoreDataError(_ error: Error) {
-    print(" *** Fatal error: \(error)")
-    NotificationCenter.default.post(name: MyManagedObjectContextSaveDidFailNotification, object: nil)
-}
 
 
 func afterDelay(seconds: Double, closure: @escaping () -> ()) {

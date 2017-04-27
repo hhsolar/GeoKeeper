@@ -37,29 +37,6 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     
     var delegate: ChangeDoneButtonColorDelegate? = nil
     
-    let icons = [
-        "Moive",
-        "Shop",
-        "Restaurant",
-        "SkiResorts",
-        "Pizza",
-        "Hiking",
-        "Gym",
-        "Rails",
-        "Station",
-        "CityHall",
-        "Hotel"]
-    
-    let colors = [
-        "red",
-        "blue",
-        "purple",
-        "green",
-        "yellow",
-        "orange",
-        "cyan"
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.delegate = self
@@ -93,18 +70,13 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         gestureRecognizer.cancelsTouchesInView = false
         colorCollection?.addGestureRecognizer(gestureRecognizer)
-        print("!!!!!", selectedIcon)
-        print("selectedIcon in viewdidload is",selectedIcon)
         if let iconIndex = icons.index(of: selectedIcon) {
-            print("iconindex is", iconIndex)
             selectedIconIndexPath = IndexPath(row: iconIndex, section: 1)
         }
         
         if let colorIndex = colors.index(of: selectedColor) {
-            print("iconcolor is", colorIndex)
             selectedColorIndexPath = IndexPath(row: colorIndex, section: 0)
         }
-        print("selectedColor is",selectedIcon,selectedColor)
     }
 
     func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
@@ -167,11 +139,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
             category.setValue(icon, forKey: "iconName")
             category.setValue(newItemId, forKey: "id")
             category.setValue(newCellColor, forKey: "cellColor")
-            do {
-                try managedObjectContext.save()
-            } catch let error as NSError {
-                fatalCoreDataError(error)
-            }
+            saveToCoreData(managedObjectContext)
         } else if modeFlag == "Edit" {
             let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
             fetchRequest.entity = Category.entity()
@@ -182,19 +150,12 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
                     categoryToEdit.category = name
                     categoryToEdit.color = color
                     categoryToEdit.id = newItemId
-                    print("category name is going to save",icon)
                     categoryToEdit.iconName = icon
                 }
             } catch {
                 fatalCoreDataError(error)
             }
-            
-            do {
-                try managedObjectContext.save()
-            } catch {
-                fatalCoreDataError(error)
-            }
-
+            saveToCoreData(managedObjectContext)
         }
         
     }
@@ -267,7 +228,6 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             cell.iconImage.image = UIImage(named: iconName)
             cell.backgroundColor = UIColor.white
             if selectedIconIndexPath != nil {
-                print(selectedIconIndexPath.row,"is selectedIconIndexPath")
                if selectedIconIndexPath == indexPath {
                     cell.backgroundColor = UIColor.lightGray
                 }
@@ -352,7 +312,6 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
         doneBarButton.isEnabled = true
     }
 }
-
 
 extension CategoryAddViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

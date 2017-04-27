@@ -114,11 +114,7 @@ class LocationsViewController: UITableViewController {
             let location = locations[indexPath.row]
             managedObjectContext.delete(location)
             locations.remove(at: indexPath.row)
-            do {
-                try managedObjectContext.save()
-            } catch {
-                fatalCoreDataError(error)
-            }
+            saveToCoreData(managedObjectContext)
         }
         tableView.reloadData()
     }

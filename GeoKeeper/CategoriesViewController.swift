@@ -20,35 +20,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     var modeFlag: String = "Add"
     
     @IBOutlet weak var collectionView: UICollectionView!
-
-    let baseColor0 = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
-    let baseColor1 = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
-    let baseColor2 = UIColor(red: 251/255.0, green: 240/255.0, blue: 244/255.0, alpha: 1.0)
-    let baseColor3 = UIColor(red: 230/255.0, green: 221/255.0, blue: 244/255.0, alpha: 1.0)
-    let baseColor4 = UIColor(red: 251/255.0, green: 246/255.0, blue: 213/255.0, alpha: 1.0)
-    
-    let red = UIColor.red
-    let blue = UIColor.blue
-    let purple = UIColor.purple
-    let green = UIColor.green
-    let yellow = UIColor.yellow
-    let orange = UIColor.orange
-    let cyan = UIColor.cyan
-
-    let icons = [
-        "No Icon",
-        "Moive",
-        "Shop",
-        "Restaurant",
-        "SkiResorts",
-        "Pizza",
-        "Hiking",
-        "Gym",
-        "Rails",
-        "Station",
-        "CityHall",
-        "Hotel"]
-    
     
     lazy var fetchedResultsController: NSFetchedResultsController<Category> = {
         let fetchRequest = NSFetchRequest<Category>()
@@ -74,14 +45,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
-        
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.collectionView.reloadData()
-//        }
-        
-//        dispatch_async(dispatch_get_main_queue(), ^ {
-//            [self.collectionView reloadData];
-//            });
     }
     
     override func viewDidLoad() {
@@ -104,12 +67,10 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
         collectionView.addGestureRecognizer(longPressGesture)
         longPressGesture.minimumPressDuration = 0.5
-        //不让long press 消耗,否则，collectionview里面的prepare for segue就会不能用
+        // Retain press event
         longPressGesture.cancelsTouchesInView = false
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        //        tapGesture.numberOfTapsRequired = 1
-        //        tapGesture.numberOfTouchesRequired = 1
         collectionView.addGestureRecognizer(tapGesture)
         tapGesture.delegate = self
         UserDefaults.standard.set("No", forKey: "LongPressed")
@@ -183,7 +144,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     
    
     func handleTap(gesture: UITapGestureRecognizer) {
-        NSLog("Single Tap")
         UserDefaults.standard.set("Yes", forKey: "SingleTap")
         if gesture.state != UIGestureRecognizerState.ended {
             return
@@ -225,12 +185,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 
             }
         }
-        
-        do {
-            try managedObjectContext.save()
-        } catch  {
-            fatalCoreDataError(error)
-        }
+        saveToCoreData(managedObjectContext)
     }
 
     
@@ -340,34 +295,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             cell.backgroundColor = baseColor0
         }
     }
-    
-//    func handleLongPress(recognizer: UILongPressGestureRecognizer) {
-//        if recognizer.state == UIGestureRecognizerState.began {
-//            print("start")
-//            if let indexPathRow = recognizer.view?.tag {
-//                let indexPath = IndexPath(row: indexPathRow, section: 0)
-//                let alert = UIAlertController(title: "Alert", message: "Delete?", preferredStyle: UIAlertControllerStyle.alert)
-//                ert.addActalion(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Cancel is pressed")}))
-//                alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.deleteAtIndexPath(indexPath: indexPath)}))
-//                self.present(alert, animated: true, completion: nil)
-//            }
-//        }
-//    }
-//
-//    func deleteAtIndexPath(indexPath: IndexPath) {
-//        let category = fetchedResultsController.object(at: indexPath)
-//        managedObjectContext.delete(category)
-//        do {
-//            try managedObjectContext.save()
-//        } catch {
-//            fatalCoreDataError(error)
-//        }
-//    }
-    
-    // handle 多种触碰模式
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return true
-//    }
 
 }
 
@@ -379,15 +306,6 @@ extension CategoriesViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
-        
-        //如果吧gesture写在cell上，不写在viewdidload里，cell就会闪得很厉害，而且fetchController会去调default
-//        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture))
-//        cell.addGestureRecognizer(longPressRecognizer)
-//        longPressRecognizer.minimumPressDuration = 0.01
-//        longPressRecognizer.delegate = self
-//        longPressRecognizer.view?.tag = indexPath.row
-
-
 //        cell.categoryImageView = UIImageView(frame: CGRect(x: width / 2, y: 3, width: width / 2, height: width / 2))
 //        为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
         
@@ -460,7 +378,6 @@ extension CategoriesViewController {
                     subView.removeFromSuperview()
                 }
             }
-//            UserDefaults.standard.set("No",forKey:"SingleTap")
         }
         
         return cell
@@ -495,11 +412,7 @@ extension CategoriesViewController {
             }
         }
         
-        do {
-            try managedObjectContext.save()
-        } catch {
-            fatalCoreDataError(error)
-        }
+        saveToCoreData(managedObjectContext)
     }
 }
 
