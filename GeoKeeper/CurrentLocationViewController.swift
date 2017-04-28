@@ -323,7 +323,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("didFailWithError\(error)")
-        
         if (error as NSError).code == CLError.locationUnknown.rawValue {
             return
         }
@@ -333,8 +332,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let newLocation = locations.last!
-        print("didUpdataLocations \(newLocation)")
-        
         if newLocation.timestamp.timeIntervalSinceNow < -5 {
             return
         }
