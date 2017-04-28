@@ -221,10 +221,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         portrait.layer.masksToBounds = true
         
         // set portraitImage
-//        portraitImage.layer.cornerRadius = portraitImage.frame.size.width / 2
-//        portraitImage.layer.masksToBounds = true
-//        portraitImage.layer.borderWidth = 1.5
-//        portraitImage.layer.borderColor = baseColor.cgColor
+        portraitImage.layer.cornerRadius = portraitImage.frame.size.width / 2
+        portraitImage.layer.masksToBounds = true
+        portraitImage.layer.borderWidth = 1.5
+        portraitImage.layer.borderColor = baseColor.cgColor
         
         // set tagButton
         tagLabel.text = "Tag"

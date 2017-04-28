@@ -170,7 +170,6 @@ SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 @class NSBlockOperation;
 @class Category;
 @class UICollectionView;
-@class UIColor;
 @class UIStoryboardSegue;
 @class UILongPressGestureRecognizer;
 @class UITapGestureRecognizer;
@@ -186,19 +185,6 @@ SWIFT_CLASS("_TtC9GeoKeeper24CategoriesViewController")
 @property (nonatomic, strong) Category * _Null_unspecified category;
 @property (nonatomic, copy) NSString * _Nonnull modeFlag;
 @property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified collectionView;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor0;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor1;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor2;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor3;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor4;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull red;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull blue;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull purple;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull green;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull yellow;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull orange;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull cyan;
-@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull icons;
 // 'fetchedResultsController' below
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidLoad;
@@ -271,8 +257,6 @@ SWIFT_CLASS("_TtC9GeoKeeper25CategoryAddViewController")
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * _Null_unspecified doneBarButton;
 @property (nonatomic, strong) IBOutlet UICollectionView * _Nullable colorCollection;
 @property (nonatomic, strong) IBOutlet UITextField * _Null_unspecified textField;
-@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull icons;
-@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull colors;
 - (void)viewDidLoad;
 - (void)hideKeyboard:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
 - (IBAction)cancel;
@@ -344,6 +328,7 @@ SWIFT_CLASS("_TtC9GeoKeeper33CategoryPickerTableViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIColor;
 
 SWIFT_CLASS("_TtC9GeoKeeper28CategoryPickerViewController")
 @interface CategoryPickerViewController : UITableViewController
@@ -458,12 +443,11 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @class UIImagePickerController;
 
 @interface CurrentLocationViewController (SWIFT_EXTENSION(GeoKeeper)) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-- (void)pickPhoto;
 - (void)showPhotoMenu;
 - (void)takePhotoWithCamera;
+- (void)choosePhotoFromLibrary;
 - (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> * _Nonnull)info;
 - (void)imagePickerControllerDidCancel:(UIImagePickerController * _Nonnull)picker;
-- (void)choosePhotoFromLibrary;
 @end
 
 @class UIView;
@@ -631,7 +615,6 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 
 
 @interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper)) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-- (void)pickPhoto;
 - (void)showPhotoMenu;
 - (void)takePhotoWithCamera;
 - (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> * _Nonnull)info;

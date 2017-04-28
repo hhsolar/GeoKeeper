@@ -14,8 +14,8 @@
 		185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */; };
 		185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */; };
 		185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */; };
+		18DD5D811EB2D9C700DD40BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18DD5D7F1EB2D9C700DD40BC /* Main.storyboard */; };
 		18EEC0D01E983EC60096A52A /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEC0CF1E983EC60096A52A /* MyLocation.swift */; };
-		18F08FF91E998E1D00D5C7A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F08FF71E998E1D00D5C7A7 /* Main.storyboard */; };
 		18F08FFB1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F08FFA1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift */; };
 		18F629F31E8626F200062EF8 /* LocationDetailEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */; };
 		18F62A021E89D1D700062EF8 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */; };
@@ -59,8 +59,8 @@
 		185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		185F5C461E679C5F004E73B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185F5C481E679C5F004E73B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18DD5D801EB2D9C700DD40BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = GeoKeeper/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18EEC0CF1E983EC60096A52A /* MyLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLocation.swift; sourceTree = "<group>"; };
-		18F08FF81E998E1D00D5C7A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18F08FFA1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerTableViewController.swift; sourceTree = "<group>"; };
 		18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailEditViewController.swift; sourceTree = "<group>"; };
 		18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
@@ -130,9 +130,9 @@
 		185F5C391E679C5F004E73B7 /* GeoKeeper */ = {
 			isa = PBXGroup;
 			children = (
-				1FA2AC2A1EA997D3000BACB0 /* Sound */,
-				18F08FF71E998E1D00D5C7A7 /* Main.storyboard */,
+				18DD5D7F1EB2D9C700DD40BC /* Main.storyboard */,
 				185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */,
+				1FA2AC2A1EA997D3000BACB0 /* Sound */,
 				1F8D4F861E8397C700A5D73E /* Generals */,
 				1F8D4F821E8396C900A5D73E /* Controllers */,
 				1F8D4F841E83977300A5D73E /* Models */,
@@ -286,11 +286,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18DD5D811EB2D9C700DD40BC /* Main.storyboard in Resources */,
 				1FA2AC311EA9A1DD000BACB0 /* Thunder.caf in Resources */,
 				1801FB7B1E7BA05600705F92 /* Assets.xcassets in Resources */,
 				1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */,
 				185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */,
-				18F08FF91E998E1D00D5C7A7 /* Main.storyboard in Resources */,
 				1FA2AC2F1EA9A1D2000BACB0 /* Rain.caf in Resources */,
 				1FA2AC2D1EA9A176000BACB0 /* Bird.caf in Resources */,
 			);
@@ -349,12 +349,13 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		18F08FF71E998E1D00D5C7A7 /* Main.storyboard */ = {
+		18DD5D7F1EB2D9C700DD40BC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				18F08FF81E998E1D00D5C7A7 /* Base */,
+				18DD5D801EB2D9C700DD40BC /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
