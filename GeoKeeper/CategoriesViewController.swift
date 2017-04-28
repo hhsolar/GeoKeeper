@@ -35,6 +35,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             fetchRequest: fetchRequest,
             managedObjectContext: self.managedObjectContext,
             sectionNameKeyPath: nil,
+//            cacheName: nil)
             cacheName: "Categories")
         fetchedResultsController.delegate = self
         return fetchedResultsController
