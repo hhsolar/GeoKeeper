@@ -119,6 +119,8 @@ class LocationDetailViewController: UIViewController {
         
         if locationToShow.hasPhoto {
             portraitImage.image = locationToShow.photoImage
+        } else {
+            portraitImage.image = UIImage(named: "location_default")
         }
         
         if let placemark = locationToShow.placemark {

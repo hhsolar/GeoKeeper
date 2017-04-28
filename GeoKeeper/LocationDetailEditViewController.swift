@@ -78,6 +78,8 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         if locationToEdit.hasPhoto {
             portraitImageView.image = locationToEdit.photoImage
             hasPortrait = true
+        } else {
+            portraitImageView.image = UIImage(named: "location_default")
         }
         
         remarkTextView.text = locationToEdit.locationDescription
