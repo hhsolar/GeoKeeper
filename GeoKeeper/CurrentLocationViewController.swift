@@ -48,7 +48,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var tagLabel: UILabel!
     
     @IBAction func choosePortrait() {
-        pickPhoto()
+        showPhotoMenu()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,10 +74,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             for locationRecord in locations {
                 if let placemarkRecord = locationRecord.placemark {
                     if addressLabel.text == string(from:placemarkRecord) {
-                        print("before forPassLocation \(forPassLocation.locationName)")
                         forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
                         cityName.text = forPassLocation.locationName
-                        print("after forPassLocation \(forPassLocation.locationName)")
                         //Repeated Punch is not allowed
                         let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
                         if timeInterval < 10 {
@@ -124,7 +122,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     }
     
     func updateLabels() {
-        //        var isPunched = false   我把这一句写到了最外面，如果写在这里，点get，detail和punch会互相转换一下；
         if let location = location {
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
@@ -315,11 +312,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                         }
                     }
                 }
-                do {
-                    try managedObjectContext.save()
-                } catch {
-                    fatalCoreDataError(error)
-                }
+                saveToCoreData(managedObjectContext)
             } else if tagLabel.text == "Detail" {
                 
             }
@@ -372,7 +365,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                 performingReverseGeocoding = true
                 geocoder.reverseGeocodeLocation(newLocation, completionHandler: {
                     placemarks, error in
-                    print("*** Found placemarks: \(String(describing: placemarks)), error: \(String(describing: error))")
                     self.lastGeocodingError = error
                     if error == nil, let p = placemarks, !p.isEmpty {
                         self.placemark = p.last!
@@ -482,18 +474,11 @@ extension CurrentLocationViewController: UINavigationBarDelegate {
 }
 
 extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func pickPhoto() {
-        if MyImagePickerController.isSourceTypeAvailable(.camera) {
-            showPhotoMenu()
-        } else {
-            choosePhotoFromLibrary()
-        }
-    }
-    
     func showPhotoMenu() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
+        
         let takePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in self.takePhotoWithCamera() })
         alertController.addAction(takePhotoAction)
         let chooseFormLibraryAction = UIAlertAction(title: "Choose From Library", style: .default, handler: { _ in self.choosePhotoFromLibrary() })
@@ -504,6 +489,14 @@ extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavi
     func takePhotoWithCamera() {
         let imagePicker = MyImagePickerController()
         imagePicker.sourceType = .camera
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func choosePhotoFromLibrary() {
+        let imagePicker = MyImagePickerController()
+        imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
@@ -521,14 +514,6 @@ extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavi
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
-    }
-
-    func choosePhotoFromLibrary() {
-        let imagePicker = MyImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil)
     }
 }
 

@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let _ = categoriesViewController.view
         }
         listenForFatalCoreDataNotifications()
-        print(applicationDocumentsDirectory)
+//        print(applicationDocumentsDirectory)
         return true
     }
     
@@ -58,12 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 categoryObject.setValue(defaultId[i], forKey: "id")
                 categoryObject.setValue(defaultCellColor[i], forKey: "cellColor")
             }
-            
-            do {
-                try managedObjectContext.save()
-            } catch {
-                fatalError("Failure to save context: \(error)")
-            }
+            saveToCoreData(managedObjectContext)
         }
     }
 

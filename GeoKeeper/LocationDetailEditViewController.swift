@@ -72,7 +72,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         
         nBar.topItem?.title = "Edit Location"
         nameTextField.text = locationToEdit.locationName
-        print(locationToEdit.locationName," is ****************")
         categoryPicker.setTitle(locationToEdit.locationCategory, for: .normal)
         
         if locationToEdit.hasPhoto {
@@ -260,7 +259,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         
         if imageArray.count > 0 {
             if let photoIDs = location.photoID {
-                print("!!!! before photoID \(photoIDs)")
                 for img in imageArray {
                     location.photoID?.append(location.nextPhotoID() as NSNumber)
                     if let data = UIImageJPEGRepresentation(img, 0.5) {
@@ -319,7 +317,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
             locationToEdit.locationName = nameTextField.text!
             location.name = locationToEdit.locationName
-            print(locationToEdit.locationName, "location name going to save is")
             location.category = locationToEdit.locationCategory
             location.date = locationToEdit.date!
             location.latitude = locationToEdit.latitude
@@ -370,7 +367,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     
     @IBAction func addImage() {
         flag = "collectionView"
-        pickPhoto()
+        showPhotoMenu()
         if let photoIDs = locationToEdit.photoID {
             if photoIDs.count + imageArray.count >= 50 {
                 addImageButton.isEnabled = false
@@ -423,7 +420,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     
     @IBAction func choosePortrait() {
         flag = "portrait"
-        pickPhoto()
+        showPhotoMenu()
         hasPortrait = true
         portraitChanged = true
     }
@@ -528,14 +525,6 @@ extension LocationDetailEditViewController: CategoryPickerTableViewControllerDel
 }
 
 extension LocationDetailEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func pickPhoto() {
-        if MyImagePickerController.isSourceTypeAvailable(.camera) {
-            showPhotoMenu()
-        } else {
-            choosePhotoFromLibrary()
-        }
-    }
-    
     func showPhotoMenu() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

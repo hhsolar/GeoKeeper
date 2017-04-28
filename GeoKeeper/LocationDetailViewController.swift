@@ -55,8 +55,7 @@ class LocationDetailViewController: UIViewController {
     fileprivate let reuseIdentifier = "PhotoCell"
     
     @IBAction func openMapsApp() {
-        let targetURL = URL(string: "http://maps.apple.com/?ll=\(String(locationToShow.latitude)),\(String(locationToShow.longitude))")!
-        print(targetURL)
+        let targetURL = URL(string: "http://maps.apple.com/maps?saddr=Current%20Location&daddr=\(String(locationToShow.latitude)),\(String(locationToShow.longitude))")!
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(targetURL, options: [:], completionHandler: nil)
         } else {
@@ -310,11 +309,8 @@ class LocationDetailViewController: UIViewController {
     
     // MARK: - Sound Effect
     func loadSoundEffect(_ name: String) {
-        print("loadSoundEffect is called")
-        print(name)
         if let path = Bundle.main.path(forResource: name, ofType: nil) {
             let fileURL = URL(fileURLWithPath: path, isDirectory: false)
-            print("file path is ******* \(fileURL)")
             let error = AudioServicesCreateSystemSoundID(fileURL as CFURL,&soundID)
             if error != kAudioServicesNoError {
                 print("Error code \(error) loading sound at path: \(path)")
