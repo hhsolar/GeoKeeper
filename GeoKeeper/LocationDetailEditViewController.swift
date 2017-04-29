@@ -25,6 +25,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     @IBOutlet weak var photoCollection: UICollectionView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var remarkLabel: UILabel!
     
     var managedObjectContext: NSManagedObjectContext!
     var locationToSave: Location?
@@ -34,11 +35,14 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     
     var delegate: LocationDetailEditViewControllerDelegate? = nil
     
-    let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
-    let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
-    
-    var collectionFrame = CGRect.zero
+    var portraitViewFrame = CGRect.zero
+    var nameTextFrame = CGRect.zero
+    var categoryFrame = CGRect.zero
     var addImageButtonFrame = CGRect.zero
+    var collectionFrame = CGRect.zero
+    var remarkTextViewFrame = CGRect.zero
+    var remarkLabelFrame = CGRect.zero
+    
     var keyHeight = CGFloat()
     fileprivate let reuseIdentifier = "PhotoCell"
     var flag = ""
@@ -108,15 +112,18 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     
     func setPara() {
         // set portraitImageView
+        portraitImageView.frame = portraitViewFrame
         portraitImageView.layer.borderWidth = 5
         portraitImageView.layer.borderColor = UIColor.white.cgColor
         
         // set nameTextField
+        nameTextField.frame = nameTextFrame
         nameTextField.font = UIFont(name: "TrebuchetMS", size: 16)
         nameTextField.delegate = self
         nameTextField.clearButtonMode = UITextFieldViewMode.whileEditing
         
         // set categoryPicker button
+        categoryPicker.frame = CGRect(x: categoryFrame.origin.x, y: categoryFrame.origin.y, width: nameTextFrame.size.width, height: categoryFrame.size.height)
         categoryPicker.titleLabel!.font = UIFont(name: "TrebuchetMS", size: 14)
         categoryPicker.setTitleColor(UIColor.gray, for: .normal)
         categoryPicker.layer.cornerRadius = 4
@@ -131,8 +138,11 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
                 addImageButton.isEnabled = false
             }
         }
-        
         addImageButton.layer.cornerRadius = 14
+        
+        // set remarkTextView
+        remarkLabel.frame = remarkLabelFrame
+        remarkTextView.frame = remarkTextViewFrame
         
         // set navigationBar
         nBar.barTintColor = baseColor

@@ -392,9 +392,6 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @property (nonatomic) NSError * _Nullable lastGeocodingError;
 @property (nonatomic, strong) NSTimer * _Nullable timer;
 @property (nonatomic, strong) UIImage * _Nullable image;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull secondColor;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull disableColor;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified messageLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified latitudeLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified longitudeLabel;
@@ -546,15 +543,19 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 @property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified photoCollection;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * _Null_unspecified doneButton;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified addImageButton;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified remarkLabel;
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, strong) Location * _Nullable locationToSave;
 @property (nonatomic, strong) MyLocation * _Nonnull locationToEdit;
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nullable imageBackup;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull secondColor;
-@property (nonatomic) CGRect collectionFrame;
+@property (nonatomic) CGRect portraitViewFrame;
+@property (nonatomic) CGRect nameTextFrame;
+@property (nonatomic) CGRect categoryFrame;
 @property (nonatomic) CGRect addImageButtonFrame;
+@property (nonatomic) CGRect collectionFrame;
+@property (nonatomic) CGRect remarkTextViewFrame;
+@property (nonatomic) CGRect remarkLabelFrame;
 @property (nonatomic) CGFloat keyHeight;
 @property (nonatomic, copy) NSString * _Nonnull flag;
 @property (nonatomic) BOOL hasPortrait;
@@ -637,9 +638,7 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified portraitImage;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified punchNumber;
 @property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified photoCollectionView;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull secondColor;
-@property (nonatomic, readonly, strong) UIColor * _Nonnull grayColor;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified remarkLabel;
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, strong) MyLocation * _Nonnull locationToShow;
 @property (nonatomic, strong) CLPlacemark * _Nullable placemark;
@@ -786,7 +785,6 @@ SWIFT_CLASS("_TtC9GeoKeeper10MyLocation")
 
 SWIFT_CLASS("_TtC9GeoKeeper22MyNavigationController")
 @interface MyNavigationController : UINavigationController
-@property (nonatomic, readonly, strong) UIColor * _Nonnull baseColor;
 - (void)viewWillAppear:(BOOL)animated;
 @property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
 - (nonnull instancetype)initWithNavigationBarClass:(Class _Nullable)navigationBarClass toolbarClass:(Class _Nullable)toolbarClass OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=5.0);

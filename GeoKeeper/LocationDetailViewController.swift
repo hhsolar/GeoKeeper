@@ -30,10 +30,7 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var portraitImage: UIImageView!
     @IBOutlet weak var punchNumber: UILabel!
     @IBOutlet weak var photoCollectionView: UICollectionView!
-    
-    let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
-    let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
-    let grayColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1.0)
+    @IBOutlet weak var remarkLabel: UILabel!
     
     var managedObjectContext: NSManagedObjectContext!
     var locationToShow = MyLocation()
@@ -98,8 +95,15 @@ class LocationDetailViewController: UIViewController {
         if segue.identifier == "EditDetail" {
             let controller = segue.destination as! LocationDetailEditViewController
             controller.locationToEdit = locationToShow
+            
+            controller.portraitViewFrame = portraitImage.frame
+            controller.nameTextFrame = locationNameLabel.frame
+            controller.categoryFrame = categoryLabel.frame
             controller.collectionFrame = photoCollectionView.frame
             controller.addImageButtonFrame = mapAppButton.frame
+            controller.remarkLabelFrame = remarkLabel.frame
+            controller.remarkTextViewFrame = remarkTextView.frame
+            
             controller.managedObjectContext = managedObjectContext
             controller.delegate = self
         }

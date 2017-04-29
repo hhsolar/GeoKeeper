@@ -30,11 +30,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     var timer: Timer?
     var image: UIImage?
-    
-    let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
-    let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
-    let disableColor = UIColor(red: 165/255.0, green: 187/255.0, blue: 217/255.0, alpha: 1.0)
-    
+        
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
