@@ -95,8 +95,15 @@ class LocationDetailViewController: UIViewController {
         if segue.identifier == "EditDetail" {
             let controller = segue.destination as! LocationDetailEditViewController
             controller.locationToEdit = locationToShow
+            
+            controller.portraitViewFrame = portraitImage.frame
+            controller.nameTextFrame = locationNameLabel.frame
+            controller.categoryFrame = categoryLabel.frame
             controller.collectionFrame = photoCollectionView.frame
             controller.addImageButtonFrame = mapAppButton.frame
+            controller.remarkLabelFrame = remarkLabel.frame
+            controller.remarkTextViewFrame = remarkTextView.frame
+            
             controller.managedObjectContext = managedObjectContext
             controller.delegate = self
         }
