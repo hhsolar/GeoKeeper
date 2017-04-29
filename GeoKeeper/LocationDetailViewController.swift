@@ -30,6 +30,7 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var portraitImage: UIImageView!
     @IBOutlet weak var punchNumber: UILabel!
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    @IBOutlet weak var remarkLabel: UILabel!
     
     
     var managedObjectContext: NSManagedObjectContext!
