@@ -31,9 +31,6 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var punchNumber: UILabel!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
-    let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
-    let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
-    let grayColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1.0)
     
     var managedObjectContext: NSManagedObjectContext!
     var locationToShow = MyLocation()

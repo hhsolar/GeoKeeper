@@ -35,7 +35,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             fetchRequest: fetchRequest,
             managedObjectContext: self.managedObjectContext,
             sectionNameKeyPath: nil,
-//            cacheName: nil)
             cacheName: "Categories")
         fetchedResultsController.delegate = self
         return fetchedResultsController
@@ -107,8 +106,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                     fatalCoreDataError(error)
                 }
                 controller.newItemId = indexPath!.row as NSNumber!
-                
-                
             }
         }
         
@@ -163,19 +160,21 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        moveItemAt sourceIndexPath: IndexPath,
-                        to destinationIndexPath: IndexPath) {
+    //Move the Position of Collection View Cell
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let category = fetchedResultsController.object(at: sourceIndexPath as IndexPath)
         category.setValue(destinationIndexPath.row, forKey: "id")
-        
+        adjustLocationID(startFrom: sourceIndexPath, to: destinationIndexPath)
+    }
+    
+    func adjustLocationID(startFrom sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         if (sourceIndexPath.row > destinationIndexPath.row) {
             for id in destinationIndexPath.row..<sourceIndexPath.row {
                 let indexPath = IndexPath(row: id, section: 0)
                 let category = fetchedResultsController.object(at: indexPath)
                 category.setValue((id + 1) as NSNumber, forKey: "id")
             }
-         }
+        }
         else
         {
             for id in sourceIndexPath.row + 1...destinationIndexPath.row
@@ -183,13 +182,14 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                 let indexPath = IndexPath(row: id, section: 0)
                 let category = fetchedResultsController.object(at: indexPath)
                 category.setValue((id - 1) as NSNumber, forKey: "id")
-
+                
             }
         }
         saveToCoreData(managedObjectContext)
     }
 
     
+    //Feteched Result Controller Functions
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
@@ -279,6 +279,11 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         blockOperations.removeAll(keepingCapacity: false)
     }
     
+
+
+}
+
+extension CategoriesViewController {
     
     func fillCollectionCellWithColor(_ color: String,_ cell: CategoryCell) {
         switch color {
@@ -296,10 +301,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             cell.backgroundColor = baseColor0
         }
     }
-
-}
-
-extension CategoriesViewController {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
@@ -404,7 +405,6 @@ extension CategoriesViewController {
             } catch {
                 fatalCoreDataError(error)
             }
-            
             let end = fetchedResultsController.sections![0].numberOfObjects
             for i in id.row + 1..<end {
                 let indexPath = IndexPath(row: i, section: 0)
@@ -412,11 +412,12 @@ extension CategoriesViewController {
                 category.setValue((i - 1) as NSNumber, forKey: "id")
             }
         }
-        
         saveToCoreData(managedObjectContext)
     }
 }
 
+
+//CollectionView FlowLayout
 extension CategoriesViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)

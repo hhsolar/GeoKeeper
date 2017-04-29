@@ -15,6 +15,9 @@ let baseColor2 = UIColor(red: 251/255.0, green: 240/255.0, blue: 244/255.0, alph
 let baseColor3 = UIColor(red: 230/255.0, green: 221/255.0, blue: 244/255.0, alpha: 1.0)
 let baseColor4 = UIColor(red: 251/255.0, green: 246/255.0, blue: 213/255.0, alpha: 1.0)
 
+let baseColor = UIColor(red: 71/255.0, green: 117/255.0, blue: 179/255.0, alpha: 1.0)
+let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alpha: 1.0)
+let grayColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1.0)
 
 let red = UIColor.red
 let blue = UIColor.blue
