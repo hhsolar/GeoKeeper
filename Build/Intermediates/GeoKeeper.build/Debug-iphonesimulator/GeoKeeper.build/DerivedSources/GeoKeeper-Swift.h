@@ -645,8 +645,6 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic) SystemSoundID soundID;
 @property (nonatomic, strong) NSURL * _Nullable soundURL;
-@property (nonatomic, readonly) CGFloat kScreenWidth;
-@property (nonatomic, readonly) CGFloat kScreenHeight;
 @property (nonatomic, readonly, copy) NSString * _Nonnull apiKey;
 @property (nonatomic, copy) NSString * _Nonnull temp;
 @property (nonatomic, copy) NSString * _Nonnull weather;

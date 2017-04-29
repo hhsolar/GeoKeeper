@@ -40,9 +40,6 @@ class LocationDetailViewController: UIViewController {
     var soundID: SystemSoundID = 0
     var soundURL: NSURL?
     
-    let kScreenWidth = UIScreen.main.bounds.size.width
-    let kScreenHeight = UIScreen.main.bounds.size.height
-    
     let apiKey = "64061cb2cff1e380d2011f5ad50d3bf8"
     
     var temp = ""
@@ -289,7 +286,6 @@ class LocationDetailViewController: UIViewController {
         if let s = placemark.postalCode {
             text += s
         }
-        
         return text
     }
     
