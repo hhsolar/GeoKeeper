@@ -268,7 +268,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         }
         
         if imageArray.count > 0 {
-            if let photoIDs = location.photoID {
+            if location.photoID != nil {
                 for img in imageArray {
                     location.photoID?.append(location.nextPhotoID() as NSNumber)
                     if let data = UIImageJPEGRepresentation(img, 0.5) {

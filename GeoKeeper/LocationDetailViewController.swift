@@ -32,6 +32,7 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var remarkLabel: UILabel!
     
+    
     var managedObjectContext: NSManagedObjectContext!
     var locationToShow = MyLocation()
     var placemark: CLPlacemark?
