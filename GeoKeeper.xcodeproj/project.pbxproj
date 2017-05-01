@@ -26,7 +26,7 @@
 		1F0729191EB2A59F005C6C6E /* PhotoFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0729181EB2A59F005C6C6E /* PhotoFunctions.swift */; };
 		1F1CE3281E7A1D2F00A1FA77 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */; };
 		1F1CE3291E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */; };
-		1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5876C91E7BA0CE006FB269 /* Assets.xcassets */; };
+		1F43676C1EB7F747002F3928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F43676B1EB7F747002F3928 /* Assets.xcassets */; };
 		1F5876CC1E7CBDFD006FB269 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5876CB1E7CBDFD006FB269 /* MyTabBarController.swift */; };
 		1F8D4F811E83963100A5D73E /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F801E83963100A5D73E /* CategoriesViewController.swift */; };
 		1F8D4F881E8398C700A5D73E /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */; };
@@ -71,7 +71,7 @@
 		1F0729181EB2A59F005C6C6E /* PhotoFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFunctions.swift; sourceTree = "<group>"; };
 		1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		1F5876C91E7BA0CE006FB269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F43676B1EB7F747002F3928 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F5876CB1E7CBDFD006FB269 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		1F8D4F801E83963100A5D73E /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +109,7 @@
 		185F5C2E1E679C5F004E73B7 = {
 			isa = PBXGroup;
 			children = (
+				1F43676B1EB7F747002F3928 /* Assets.xcassets */,
 				1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */,
 				1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */,
 				1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */,
@@ -202,7 +203,6 @@
 				1F0729161EB2A580005C6C6E /* CoreDataFunctions.swift */,
 				1F0729141EB2A547005C6C6E /* Settings.swift */,
 				185F5C481E679C5F004E73B7 /* Info.plist */,
-				1F5876C91E7BA0CE006FB269 /* Assets.xcassets */,
 			);
 			name = Generals;
 			sourceTree = "<group>";
@@ -289,8 +289,8 @@
 				18DD5D811EB2D9C700DD40BC /* Main.storyboard in Resources */,
 				1FA2AC311EA9A1DD000BACB0 /* Thunder.caf in Resources */,
 				1801FB7B1E7BA05600705F92 /* Assets.xcassets in Resources */,
-				1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */,
 				185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */,
+				1F43676C1EB7F747002F3928 /* Assets.xcassets in Resources */,
 				1FA2AC2F1EA9A1D2000BACB0 /* Rain.caf in Resources */,
 				1FA2AC2D1EA9A176000BACB0 /* Bird.caf in Resources */,
 			);
