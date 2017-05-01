@@ -29,16 +29,20 @@ class CategoryPickerCell: UITableViewCell {
         isChecked = chosen
         if isChecked {
             checkmarkImage.image = UIImage(named: "checked")
+            categoryNameLabel.textColor = baseColor
         } else {
             checkmarkImage.image = nil
+            categoryNameLabel.textColor = UIColor.black
         }
     }
     
     func toggleChecked() {
         if isChecked {
             checkmarkImage.image = nil
+            categoryNameLabel.textColor = UIColor.black
         } else {
             checkmarkImage.image = UIImage(named: "checked")
+            categoryNameLabel.textColor = baseColor
         }
         isChecked = !isChecked
     }

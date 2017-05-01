@@ -174,7 +174,6 @@ SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 @class UILongPressGestureRecognizer;
 @class UITapGestureRecognizer;
 @protocol NSFetchedResultsSectionInfo;
-@class CategoryCell;
 @class NSBundle;
 @class NSCoder;
 
@@ -194,21 +193,12 @@ SWIFT_CLASS("_TtC9GeoKeeper24CategoriesViewController")
 - (void)handleLongGestureWithGesture:(UILongPressGestureRecognizer * _Nonnull)gesture;
 - (void)handleTapWithGesture:(UITapGestureRecognizer * _Nonnull)gesture;
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView moveItemAtIndexPath:(NSIndexPath * _Nonnull)sourceIndexPath toIndexPath:(NSIndexPath * _Nonnull)destinationIndexPath;
+- (void)adjustLocationIDWithStartFrom:(NSIndexPath * _Nonnull)sourceIndexPath to:(NSIndexPath * _Nonnull)destinationIndexPath;
 - (void)controller:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller didChangeObject:(id _Nonnull)anObject atIndexPath:(NSIndexPath * _Nullable)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath * _Nullable)newIndexPath;
 - (void)controller:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller didChangeSection:(id <NSFetchedResultsSectionInfo> _Nonnull)sectionInfo atIndex:(NSInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type;
 - (void)controllerDidChangeContent:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller;
-- (void)fillCollectionCellWithColor:(NSString * _Nonnull)color :(CategoryCell * _Nonnull)cell;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class UICollectionViewCell;
-
-@interface CategoriesViewController (SWIFT_EXTENSION(GeoKeeper))
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (void)deleteCategory;
-- (void)deleteAtIndexPath;
 @end
 
 @class UICollectionViewLayout;
@@ -218,6 +208,17 @@ SWIFT_CLASS("_TtC9GeoKeeper24CategoriesViewController")
 - (UIEdgeInsets)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout insetForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class CategoryCell;
+@class UICollectionViewCell;
+
+@interface CategoriesViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)fillCollectionCellWithColor:(NSString * _Nonnull)color :(CategoryCell * _Nonnull)cell;
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)deleteCategory;
+- (void)deleteAtIndexPath;
 @end
 
 @class NSEntityDescription;
@@ -645,8 +646,6 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic) SystemSoundID soundID;
 @property (nonatomic, strong) NSURL * _Nullable soundURL;
-@property (nonatomic, readonly) CGFloat kScreenWidth;
-@property (nonatomic, readonly) CGFloat kScreenHeight;
 @property (nonatomic, readonly, copy) NSString * _Nonnull apiKey;
 @property (nonatomic, copy) NSString * _Nonnull temp;
 @property (nonatomic, copy) NSString * _Nonnull weather;

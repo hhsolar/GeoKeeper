@@ -82,7 +82,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             portraitImageView.image = locationToEdit.photoImage
             hasPortrait = true
         } else {
-            portraitImageView.image = UIImage(named: "location_default")
+            portraitImageView.image = locationDefaultImage
         }
         
         remarkTextView.text = locationToEdit.locationDescription
@@ -325,7 +325,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             locationToEdit.locationDescription = remarkTextView.text
             
             let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
-            locationToEdit.locationName = nameTextField.text!
             location.name = locationToEdit.locationName
             location.category = locationToEdit.locationCategory
             location.date = locationToEdit.date!
@@ -334,6 +333,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             location.placemark = locationToEdit.placemark
             location.punch = locationToEdit.punch
             location.locationDescription = locationToEdit.locationDescription
+            location.locationPhotoID = locationToEdit.locationPhotoID
             
             if hasPortrait {
                 location.locationPhotoID = Location.nextLocationPhotoID() as NSNumber
