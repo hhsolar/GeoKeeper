@@ -14,17 +14,19 @@ protocol ChangeDoneButtonColorDelegate {
 }
 
 class CategoryAddViewController: UIViewController, UITextFieldDelegate {
-    var selectedCategoryName = ""
+    var selectedCategoryName: String = ""
+    var selectedColor: String = ""
+    var selectedIcon: String = ""
+    var selectedIconIndexPath: IndexPath!
+    var selectedColorIndexPath: IndexPath!
+    
     var managedObjectContext: NSManagedObjectContext!
     var color = "black"
     var icon = ""
-    var selectedIconIndexPath: IndexPath!
-    var selectedColorIndexPath: IndexPath!
     var newItemId: NSNumber!
-    var selectedColor: String = ""
-    var selectedIcon: String = ""
-    var modeFlag = " "
     var newCellColor: String!
+    
+    var modeFlag = " "
     
     fileprivate let reuseIdentifier1 = "CategoryColorCell"
     fileprivate let reuseIdentifier2 = "IconCategoryCell"
@@ -43,6 +45,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         textField.text = selectedCategoryName
         doneBarButton.isEnabled = false
         delegate?.changeColorOfButton(Color: UIColor.lightGray)
+        
         if modeFlag == "Add" {
             self.title = "Add Category"
         } else {
@@ -51,32 +54,24 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
        
         color = selectedColor
         icon = selectedIcon
+        loadTapGesture()
         
-        switch Int(newItemId) % 5 {
-        case 0:
-            newCellColor = "baseColor0"
-        case 1:
-            newCellColor = "baseColor1"
-        case 2:
-            newCellColor = "baseColor2"
-        case 3:
-            newCellColor = "baseColor3"
-        case 4:
-            newCellColor = "baseColor4"
-        default:
-            newCellColor = "baseColor0"
-        }
-        
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        gestureRecognizer.cancelsTouchesInView = false
-        colorCollection?.addGestureRecognizer(gestureRecognizer)
         if let iconIndex = icons.index(of: selectedIcon) {
             selectedIconIndexPath = IndexPath(row: iconIndex, section: 1)
         }
         
         if let colorIndex = colors.index(of: selectedColor) {
             selectedColorIndexPath = IndexPath(row: colorIndex, section: 0)
+            newCellColor = colors[colorIndex]
+        } else {
+            newCellColor = colors[Int(newItemId) % 5]
         }
+    }
+    
+    func loadTapGesture() {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        gestureRecognizer.cancelsTouchesInView = false
+        colorCollection?.addGestureRecognizer(gestureRecognizer)
     }
 
     func hideKeyboard(_ gestureRecognizer: UIGestureRecognizer) {
@@ -89,34 +84,55 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func done() {
         if modeFlag == "Add" {
-            var count = 0
             let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
             fetchRequest.entity = Category.entity()
             fetchRequest.predicate = NSPredicate(format: "category == %@", textField.text!)
+            
             do {
-                count = try managedObjectContext.count(for: fetchRequest)
+                let count = try managedObjectContext.count(for: fetchRequest)
+                if count == 0 {
+                    finishAddCategory(name: textField.text!)
+                    dismiss(animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Reminder", message: "Category Name Already Exist!!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             } catch {
                 fatalCoreDataError(error)
             }
-        
-            if count == 0 {
-                saveCategory(name: textField.text!)
-                dismiss(animated: true, completion: nil)
-            } else {
-                let alert = UIAlertController(title: "Reminder", message: "Category Name Already Exist!!", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-        } else if modeFlag == "Edit"{
-            saveCategory(name: textField.text!)
-            dismiss(animated: true, completion: nil)
         }
         
-
-       
+        if modeFlag == "Edit"{
+            let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+            fetchRequest.entity = Category.entity()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", newItemId)
+            do {
+                let categoryToEdits = try managedObjectContext.fetch(fetchRequest)
+                for categoryToEdit in categoryToEdits {
+                    categoryToEdit.category = textField.text!
+                    categoryToEdit.color = color
+                    categoryToEdit.id = newItemId
+                    categoryToEdit.iconName = icon
+                }
+            } catch {
+                fatalCoreDataError(error)
+            }
+            saveToCoreData(managedObjectContext)
+            dismiss(animated: true, completion: nil)
+        }
     }
     
-    
+    func finishAddCategory(name: String) {
+        let entity = NSEntityDescription.entity(forEntityName: "Category", in: managedObjectContext)!
+        let category = NSManagedObject(entity: entity, insertInto: managedObjectContext)
+        category.setValue(newItemId, forKey: "id")
+        category.setValue(name, forKey: "category")
+        category.setValue(icon, forKey: "iconName")
+        category.setValue(newCellColor, forKey: "color")
+        saveToCoreData(managedObjectContext)
+    }
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let oldText = textField.text! as NSString
         let newText = oldText.replacingCharacters(in:range, with: string) as NSString
@@ -128,36 +144,6 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
             delegate?.changeColorOfButton(Color: UIColor.lightGray)
         }
         return true
-    }
-    
-    func saveCategory(name: String) {
-        let entity = NSEntityDescription.entity(forEntityName: "Category", in: managedObjectContext)!
-        if modeFlag == "Add" {
-            let category = NSManagedObject(entity: entity, insertInto: managedObjectContext)
-            category.setValue(name, forKey: "category")
-            category.setValue(color, forKey: "color")
-            category.setValue(icon, forKey: "iconName")
-            category.setValue(newItemId, forKey: "id")
-            category.setValue(newCellColor, forKey: "cellColor")
-            saveToCoreData(managedObjectContext)
-        } else if modeFlag == "Edit" {
-            let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
-            fetchRequest.entity = Category.entity()
-            fetchRequest.predicate = NSPredicate(format: "id == %@", newItemId)
-            do {
-                let categoryToEdits = try managedObjectContext.fetch(fetchRequest)
-                for categoryToEdit in categoryToEdits {
-                    categoryToEdit.category = name
-                    categoryToEdit.color = color
-                    categoryToEdit.id = newItemId
-                    categoryToEdit.iconName = icon
-                }
-            } catch {
-                fatalCoreDataError(error)
-            }
-            saveToCoreData(managedObjectContext)
-        }
-        
     }
 }
 
@@ -179,49 +165,15 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! ColorCell
             cell.backgroundColor = UIColor.white
-            switch indexPath.row {
-            case 0:
-                cell.colorImageView.image = UIImage(named: "brown_unchecked")
-            case 1:
-                cell.colorImageView.image = UIImage(named: "darkgreen_unchecked")
-            case 2:
-                cell.colorImageView.image = UIImage(named: "darkpurple_unchecked")
-            case 3:
-                cell.colorImageView.image = UIImage(named: "green_unchecked")
-            case 4:
-                cell.colorImageView.image = UIImage(named: "pink_unchecked")
-            case 5:
-                cell.colorImageView.image = UIImage(named: "purple_unchecked")
-            case 6:
-                cell.colorImageView.image = UIImage(named: "yellow_unchecked")
-            default:
-                print("This should not be called")
-            }
+            cell.colorImageView.image = UIImage(named: colors[indexPath.row] + "_unchecked")
             
             if selectedColorIndexPath != nil {
                 if selectedColorIndexPath == indexPath {
-                    switch indexPath.row {
-                    case 0:
-                        cell.colorImageView.image = UIImage(named: "brown_checked")
-                    case 1:
-                        cell.colorImageView.image = UIImage(named: "darkgreen_checked")
-                    case 2:
-                        cell.colorImageView.image = UIImage(named: "darkpurple_checked")
-                    case 3:
-                        cell.colorImageView.image = UIImage(named: "green_checked")
-                    case 4:
-                        cell.colorImageView.image = UIImage(named: "pink_checked")
-                    case 5:
-                        cell.colorImageView.image = UIImage(named: "purple_checked")
-                    case 6:
-                        cell.colorImageView.image = UIImage(named: "yellow_checked")
-                    default:
-                        print("This should not be called")
-                    }
+                    cell.colorImageView.image = UIImage(named: colors[indexPath.row] + "_checked")
                 }
             }
-            
             return cell
+            
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! MyIconCollectionCell
             let iconName = icons[indexPath.row]
@@ -248,29 +200,13 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             } else {
                 selectedColorIndexPath = indexPath
             }
-            
-            switch indexPath.row {
-            case 0:
-                color = "red"
-            case 1:
-                color = "blue"
-            case 2:
-                color = "purple"
-            case 3:
-                color = "green"
-            case 4:
-                color = "yellow"
-            case 5:
-                color = "orange"
-            case 6:
-                color = "cyan"
-            default:
-                color = "black"
-            }
+            newCellColor = colors[selectedColorIndexPath.row]
             collectionView.reloadItems(at: indexPaths)
             let colorCell = collectionView.cellForItem(at: selectedColorIndexPath) as! ColorCell
-            colorCell.colorImageView.image = UIImage(named: color+"_choose")
-        } else {
+            colorCell.colorImageView.image = UIImage(named: colors[indexPath.row] + "_checked")
+        }
+        
+        if indexPath.section == 1 {
             if (selectedIconIndexPath != nil) {
                 if indexPath != selectedIconIndexPath {
                     indexPaths.append(selectedIconIndexPath)
@@ -279,33 +215,7 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             } else {
                 selectedIconIndexPath = indexPath
             }
-            
-            switch indexPath.row {
-            case 0:
-                icon = "Moive"
-            case 1:
-                icon = "Shop"
-            case 2:
-                icon = "Restaurant"
-            case 3:
-                icon = "SkiResorts"
-            case 4:
-                icon = "Pizza"
-            case 5:
-                icon = "Hiking"
-            case 6:
-                icon = "Gym"
-            case 7:
-                icon = "Rails"
-            case 8:
-                icon = "Station"
-            case 9:
-                icon = "CityHall"
-            case 10:
-                icon = "Hotel"
-            default:
-                icon = "No Icon"
-           }
+            icon = icons[selectedIconIndexPath.row]
             collectionView.reloadItems(at: indexPaths)
             collectionView.cellForItem(at: selectedIconIndexPath)?.backgroundColor = UIColor.lightGray
         }
@@ -329,7 +239,6 @@ extension CategoryAddViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
         return sectionInsets
     }
     
@@ -337,6 +246,3 @@ extension CategoryAddViewController : UICollectionViewDelegateFlowLayout {
         return sectionInsets.left
     }
 }
-
-
-

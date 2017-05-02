@@ -610,7 +610,7 @@
                                         <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="201" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y7s-sg-Ify">
@@ -818,12 +818,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ooB-VE-vsl">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ooB-VE-vsl">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="ooB-VE-vsl" secondAttribute="trailing" id="67k-xN-1qO"/>
+                                            <constraint firstItem="ooB-VE-vsl" firstAttribute="leading" secondItem="MeM-Kj-qZr" secondAttribute="leading" id="BxC-UG-t1E"/>
+                                            <constraint firstAttribute="bottom" secondItem="ooB-VE-vsl" secondAttribute="bottom" id="MVC-1u-TMM"/>
+                                            <constraint firstItem="ooB-VE-vsl" firstAttribute="top" secondItem="MeM-Kj-qZr" secondAttribute="top" id="hgW-Jn-OjI"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="iconImage" destination="ooB-VE-vsl" id="AwK-c5-GIc"/>
                                         </connections>

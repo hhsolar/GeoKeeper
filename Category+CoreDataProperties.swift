@@ -18,7 +18,6 @@ extension Category {
 
     @NSManaged public var category: String?
     @NSManaged public var color: String?
-    @NSManaged public var cellColor: String
     @NSManaged public var iconName: String?
     @NSManaged public var id: NSNumber?
 

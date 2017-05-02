@@ -20,28 +20,21 @@ let secondColor = UIColor(red: 249/255.0, green: 171/255.0, blue: 86/255.0, alph
 let grayColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1.0)
 let disableColor = UIColor(red: 165/255.0, green: 187/255.0, blue: 217/255.0, alpha: 1.0)
 
-let red = UIColor.red
-let blue = UIColor.blue
-let purple = UIColor.purple
-let green = UIColor.green
-let yellow = UIColor.yellow
-let orange = UIColor.orange
-let cyan = UIColor.cyan
+let brown = UIColor(red: 243/255.0, green: 203/255.0, blue: 173/255.0, alpha: 1.0)
+let darkgreen = UIColor(red: 203/255.0, green: 237/255.0, blue: 203/255.0, alpha: 1.0)
+let darkpurple = UIColor(red: 234/255.0, green: 209/255.0, blue: 237/255.0, alpha: 1.0)
+let green = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
+let pink = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
+let purple = UIColor(red: 230/255.0, green: 221/255.0, blue: 244/255.0, alpha: 1.0)
+let yellow = UIColor(red: 255/255.0, green: 255/255.0, blue: 185/255.0, alpha: 1.0)
 
 let kScreenWidth = UIScreen.main.bounds.size.width
 let kScreenHeight = UIScreen.main.bounds.size.height
 
 let locationDefaultImage = UIImage(named: "location_default")
 
-let colors = [
-    "red",
-    "blue",
-    "purple",
-    "green",
-    "yellow",
-    "orange",
-    "cyan"
-]
+let colors = ["brown", "darkgreen", "darkpurple", "green", "pink", "purple", "yellow"]
+
 
 let icons = [
     "No Icon",
