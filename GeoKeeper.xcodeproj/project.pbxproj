@@ -14,6 +14,7 @@
 		185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */; };
 		185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */; };
 		185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */; };
+		187404AF1EB8167100D4578C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187404AE1EB8167100D4578C /* Assets.xcassets */; };
 		18DD5D811EB2D9C700DD40BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18DD5D7F1EB2D9C700DD40BC /* Main.storyboard */; };
 		18EEC0D01E983EC60096A52A /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEC0CF1E983EC60096A52A /* MyLocation.swift */; };
 		18F08FFB1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F08FFA1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift */; };
@@ -26,7 +27,6 @@
 		1F0729191EB2A59F005C6C6E /* PhotoFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0729181EB2A59F005C6C6E /* PhotoFunctions.swift */; };
 		1F1CE3281E7A1D2F00A1FA77 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */; };
 		1F1CE3291E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */; };
-		1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5876C91E7BA0CE006FB269 /* Assets.xcassets */; };
 		1F5876CC1E7CBDFD006FB269 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5876CB1E7CBDFD006FB269 /* MyTabBarController.swift */; };
 		1F8D4F811E83963100A5D73E /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F801E83963100A5D73E /* CategoriesViewController.swift */; };
 		1F8D4F881E8398C700A5D73E /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */; };
@@ -59,6 +59,7 @@
 		185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
 		185F5C461E679C5F004E73B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185F5C481E679C5F004E73B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		187404AE1EB8167100D4578C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18DD5D801EB2D9C700DD40BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = GeoKeeper/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18EEC0CF1E983EC60096A52A /* MyLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLocation.swift; sourceTree = "<group>"; };
 		18F08FFA1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		1F0729181EB2A59F005C6C6E /* PhotoFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFunctions.swift; sourceTree = "<group>"; };
 		1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		1F5876C91E7BA0CE006FB269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F5876CB1E7CBDFD006FB269 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		1F8D4F801E83963100A5D73E /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +109,7 @@
 		185F5C2E1E679C5F004E73B7 = {
 			isa = PBXGroup;
 			children = (
+				187404AE1EB8167100D4578C /* Assets.xcassets */,
 				1F1CE3261E7A1D2F00A1FA77 /* Category+CoreDataClass.swift */,
 				1F1CE3271E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift */,
 				1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */,
@@ -202,7 +203,6 @@
 				1F0729161EB2A580005C6C6E /* CoreDataFunctions.swift */,
 				1F0729141EB2A547005C6C6E /* Settings.swift */,
 				185F5C481E679C5F004E73B7 /* Info.plist */,
-				1F5876C91E7BA0CE006FB269 /* Assets.xcassets */,
 			);
 			name = Generals;
 			sourceTree = "<group>";
@@ -258,7 +258,7 @@
 				TargetAttributes = {
 					185F5C361E679C5F004E73B7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = BR33AQS69G;
+						DevelopmentTeam = W2MFT9HK9F;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -289,8 +289,8 @@
 				18DD5D811EB2D9C700DD40BC /* Main.storyboard in Resources */,
 				1FA2AC311EA9A1DD000BACB0 /* Thunder.caf in Resources */,
 				1801FB7B1E7BA05600705F92 /* Assets.xcassets in Resources */,
-				1F5876CA1E7BA0CE006FB269 /* Assets.xcassets in Resources */,
 				185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */,
+				187404AF1EB8167100D4578C /* Assets.xcassets in Resources */,
 				1FA2AC2F1EA9A1D2000BACB0 /* Rain.caf in Resources */,
 				1FA2AC2D1EA9A176000BACB0 /* Bird.caf in Resources */,
 			);
@@ -456,7 +456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BR33AQS69G;
+				DEVELOPMENT_TEAM = W2MFT9HK9F;
 				INFOPLIST_FILE = GeoKeeper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -470,7 +470,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BR33AQS69G;
+				DEVELOPMENT_TEAM = W2MFT9HK9F;
 				INFOPLIST_FILE = GeoKeeper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
