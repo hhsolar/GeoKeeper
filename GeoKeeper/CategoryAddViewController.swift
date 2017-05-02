@@ -166,7 +166,6 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! ColorCell
             cell.backgroundColor = UIColor.white
             cell.colorImageView.image = UIImage(named: colors[indexPath.row] + "_unchecked")
-            
             if selectedColorIndexPath != nil {
                 if selectedColorIndexPath == indexPath {
                     cell.colorImageView.image = UIImage(named: colors[indexPath.row] + "_checked")
@@ -181,7 +180,9 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             cell.backgroundColor = UIColor.white
             if selectedIconIndexPath != nil {
                if selectedIconIndexPath == indexPath {
-                    cell.backgroundColor = UIColor.lightGray
+                    cell.backgroundColor = grayColor
+                cell.layer.cornerRadius = 5.0
+                cell.layer.masksToBounds = false
                 }
             }
             return cell
@@ -217,7 +218,7 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             }
             icon = icons[selectedIconIndexPath.row]
             collectionView.reloadItems(at: indexPaths)
-            collectionView.cellForItem(at: selectedIconIndexPath)?.backgroundColor = UIColor.lightGray
+//            collectionView.cellForItem(at: selectedIconIndexPath)?.backgroundColor = UIColor.lightGray
         }
         doneBarButton.isEnabled = true
     }

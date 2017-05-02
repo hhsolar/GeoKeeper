@@ -126,7 +126,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                 break
             }
             p = gesture.location(in: collectionView)
-            ///为啥加了异步就可以了呢
+            //async is necessary
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -182,7 +182,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                 let indexPath = IndexPath(row: id, section: 0)
                 let category = fetchedResultsController.object(at: indexPath)
                 category.setValue((id - 1) as NSNumber, forKey: "id")
-                
             }
         }
         saveToCoreData(managedObjectContext)
@@ -198,7 +197,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                     if let this = self {
                         this.collectionView!.insertItems(at: [newIndexPath!])
                     }
-                    
                 })
             )
         case .update:
@@ -278,13 +276,9 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         
         blockOperations.removeAll(keepingCapacity: false)
     }
-    
-
-
 }
 
 extension CategoriesViewController {
-    
     func fillCollectionCellWithColor(_ color: String,_ cell: CategoryCell) {
         switch color {
         case "brown":
@@ -366,7 +360,6 @@ extension CategoriesViewController {
                 }
             }
         }
-        
         return cell
     }
     
@@ -401,7 +394,6 @@ extension CategoriesViewController {
     }
 }
 
-
 //CollectionView FlowLayout
 extension CategoriesViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -424,8 +416,4 @@ extension CategoriesViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: self.view.bounds.width, height: 15)
     }
-    
-    
 }
-
-
