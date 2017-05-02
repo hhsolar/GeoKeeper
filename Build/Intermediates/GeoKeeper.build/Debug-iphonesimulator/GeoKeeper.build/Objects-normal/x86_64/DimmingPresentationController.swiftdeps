@@ -1,0 +1,444 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "DimmingPresentationController"
+provides-nominal:
+- "C9GeoKeeper29DimmingPresentationController"
+provides-member:
+- ["C9GeoKeeper29DimmingPresentationController", ""]
+provides-dynamic-lookup:
+- "dimmingView"
+- "dismissalTransitionWillBegin"
+- "presentationTransitionWillBegin"
+- "secondView"
+- "shouldRemovePresentersView"
+depends-top-level:
+- !private "+="
+- !private "-="
+- !private "/"
+- "AssignmentPrecedence"
+- "Bool"
+- !private "BooleanLiteralType"
+- "CGRect"
+- "DimmingPresentationController"
+- !private "UIColor"
+- "UIPresentationController"
+- "UIView"
+depends-member:
+- ["Ps9AnyObject", "CGRect"]
+- !private ["Ps9AnyObject", "UIColor"]
+- ["Ps9AnyObject", "UIView"]
+- !private ["Ps9AnyObject", "alpha"]
+- !private ["Ps9AnyObject", "backgroundColor"]
+- !private ["Ps9AnyObject", "bounds"]
+- !private ["Ps9AnyObject", "containerView"]
+- !private ["Ps9AnyObject", "dimmingView"]
+- !private ["Ps9AnyObject", "frame"]
+- ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "insertSubview"]
+- !private ["Ps9AnyObject", "presentedViewController"]
+- !private ["Ps9AnyObject", "secondView"]
+- !private ["Ps9AnyObject", "transitionCoordinator"]
+- ["Ps9AnyObject", ""]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["PSo15CALayerDelegate", "alpha"]
+- !private ["PSo15CALayerDelegate", "backgroundColor"]
+- !private ["PSo15CALayerDelegate", "bounds"]
+- !private ["PSo15CALayerDelegate", "frame"]
+- ["PSo15CALayerDelegate", "init"]
+- !private ["PSo15CALayerDelegate", "insertSubview"]
+- !private ["VSC7CGPoint", "y"]
+- !private ["VSC6CGRect", "origin"]
+- !private ["VSC6CGRect", "size"]
+- ["VSC6CGRect", "zero"]
+- !private ["VSC6CGSize", "height"]
+- ["Ps7CVarArg", "CGRect"]
+- !private ["Ps7CVarArg", "UIColor"]
+- ["Ps7CVarArg", "UIView"]
+- !private ["Ps7CVarArg", "alpha"]
+- !private ["Ps7CVarArg", "backgroundColor"]
+- !private ["Ps7CVarArg", "bounds"]
+- !private ["Ps7CVarArg", "containerView"]
+- !private ["Ps7CVarArg", "dimmingView"]
+- !private ["Ps7CVarArg", "frame"]
+- ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "insertSubview"]
+- !private ["Ps7CVarArg", "presentedViewController"]
+- !private ["Ps7CVarArg", "secondView"]
+- !private ["Ps7CVarArg", "transitionCoordinator"]
+- ["Ps7CVarArg", ""]
+- ["Ps28CustomDebugStringConvertible", "CGRect"]
+- !private ["Ps28CustomDebugStringConvertible", "UIColor"]
+- ["Ps28CustomDebugStringConvertible", "UIView"]
+- !private ["Ps28CustomDebugStringConvertible", "alpha"]
+- !private ["Ps28CustomDebugStringConvertible", "backgroundColor"]
+- !private ["Ps28CustomDebugStringConvertible", "bounds"]
+- !private ["Ps28CustomDebugStringConvertible", "containerView"]
+- !private ["Ps28CustomDebugStringConvertible", "dimmingView"]
+- !private ["Ps28CustomDebugStringConvertible", "frame"]
+- !private ["Ps28CustomDebugStringConvertible", "height"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "insertSubview"]
+- !private ["Ps28CustomDebugStringConvertible", "origin"]
+- !private ["Ps28CustomDebugStringConvertible", "presentedViewController"]
+- !private ["Ps28CustomDebugStringConvertible", "secondView"]
+- !private ["Ps28CustomDebugStringConvertible", "size"]
+- !private ["Ps28CustomDebugStringConvertible", "transitionCoordinator"]
+- !private ["Ps28CustomDebugStringConvertible", "y"]
+- ["Ps28CustomDebugStringConvertible", "zero"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "height"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "origin"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "size"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "y"]
+- ["Ps29CustomPlaygroundQuickLookable", "zero"]
+- !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
+- !private ["Ps17CustomReflectable", "height"]
+- !private ["Ps17CustomReflectable", "origin"]
+- !private ["Ps17CustomReflectable", "size"]
+- !private ["Ps17CustomReflectable", "y"]
+- ["Ps17CustomReflectable", "zero"]
+- ["Ps23CustomStringConvertible", "CGRect"]
+- !private ["Ps23CustomStringConvertible", "UIColor"]
+- ["Ps23CustomStringConvertible", "UIView"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "alpha"]
+- !private ["Ps23CustomStringConvertible", "backgroundColor"]
+- !private ["Ps23CustomStringConvertible", "bounds"]
+- !private ["Ps23CustomStringConvertible", "containerView"]
+- !private ["Ps23CustomStringConvertible", "dimmingView"]
+- !private ["Ps23CustomStringConvertible", "frame"]
+- ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "insertSubview"]
+- !private ["Ps23CustomStringConvertible", "presentedViewController"]
+- !private ["Ps23CustomStringConvertible", "secondView"]
+- !private ["Ps23CustomStringConvertible", "transitionCoordinator"]
+- ["Ps23CustomStringConvertible", ""]
+- ["C9GeoKeeper29DimmingPresentationController", "Bool"]
+- ["C9GeoKeeper29DimmingPresentationController", "CGRect"]
+- !private ["C9GeoKeeper29DimmingPresentationController", "UIColor"]
+- ["C9GeoKeeper29DimmingPresentationController", "UIView"]
+- !private ["C9GeoKeeper29DimmingPresentationController", "containerView"]
+- ["C9GeoKeeper29DimmingPresentationController", "deinit"]
+- ["C9GeoKeeper29DimmingPresentationController", "dimmingView"]
+- !private ["C9GeoKeeper29DimmingPresentationController", "dimmingView.storage"]
+- ["C9GeoKeeper29DimmingPresentationController", "dismissalTransitionWillBegin"]
+- ["C9GeoKeeper29DimmingPresentationController", "init"]
+- ["C9GeoKeeper29DimmingPresentationController", "presentationTransitionWillBegin"]
+- !private ["C9GeoKeeper29DimmingPresentationController", "presentedViewController"]
+- ["C9GeoKeeper29DimmingPresentationController", "secondView"]
+- !private ["C9GeoKeeper29DimmingPresentationController", "secondView.storage"]
+- ["C9GeoKeeper29DimmingPresentationController", "shouldRemovePresentersView"]
+- ["Ps9Equatable", "CGRect"]
+- !private ["Ps9Equatable", "UIColor"]
+- ["Ps9Equatable", "UIView"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "alpha"]
+- !private ["Ps9Equatable", "backgroundColor"]
+- !private ["Ps9Equatable", "bounds"]
+- !private ["Ps9Equatable", "containerView"]
+- !private ["Ps9Equatable", "dimmingView"]
+- !private ["Ps9Equatable", "frame"]
+- !private ["Ps9Equatable", "height"]
+- ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "insertSubview"]
+- !private ["Ps9Equatable", "origin"]
+- !private ["Ps9Equatable", "presentedViewController"]
+- !private ["Ps9Equatable", "secondView"]
+- !private ["Ps9Equatable", "size"]
+- !private ["Ps9Equatable", "transitionCoordinator"]
+- !private ["Ps9Equatable", "y"]
+- ["Ps9Equatable", "zero"]
+- ["Ps9Equatable", ""]
+- !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
+- ["Ps8Hashable", "CGRect"]
+- !private ["Ps8Hashable", "UIColor"]
+- ["Ps8Hashable", "UIView"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps8Hashable", "alpha"]
+- !private ["Ps8Hashable", "backgroundColor"]
+- !private ["Ps8Hashable", "bounds"]
+- !private ["Ps8Hashable", "containerView"]
+- !private ["Ps8Hashable", "dimmingView"]
+- !private ["Ps8Hashable", "frame"]
+- ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "insertSubview"]
+- !private ["Ps8Hashable", "presentedViewController"]
+- !private ["Ps8Hashable", "secondView"]
+- !private ["Ps8Hashable", "transitionCoordinator"]
+- ["Ps8Hashable", ""]
+- !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
+- !private ["PSo8NSCoding", "alpha"]
+- !private ["PSo8NSCoding", "backgroundColor"]
+- !private ["PSo8NSCoding", "bounds"]
+- !private ["PSo8NSCoding", "frame"]
+- ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "insertSubview"]
+- !private ["PSo8NSCoding", "transitionCoordinator"]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo26NSExtensionRequestHandling", "transitionCoordinator"]
+- ["CSo8NSObject", "Bool"]
+- ["CSo8NSObject", "CGRect"]
+- !private ["CSo8NSObject", "UIColor"]
+- ["CSo8NSObject", "UIView"]
+- !private ["CSo8NSObject", "alpha"]
+- !private ["CSo8NSObject", "backgroundColor"]
+- !private ["CSo8NSObject", "bounds"]
+- !private ["CSo8NSObject", "containerView"]
+- ["CSo8NSObject", "dimmingView"]
+- ["CSo8NSObject", "dimmingView.storage"]
+- ["CSo8NSObject", "dismissalTransitionWillBegin"]
+- !private ["CSo8NSObject", "frame"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "insertSubview"]
+- ["CSo8NSObject", "presentationTransitionWillBegin"]
+- !private ["CSo8NSObject", "presentedViewController"]
+- ["CSo8NSObject", "secondView"]
+- ["CSo8NSObject", "secondView.storage"]
+- ["CSo8NSObject", "shouldRemovePresentersView"]
+- !private ["CSo8NSObject", "transitionCoordinator"]
+- ["PSo16NSObjectProtocol", "CGRect"]
+- !private ["PSo16NSObjectProtocol", "UIColor"]
+- ["PSo16NSObjectProtocol", "UIView"]
+- !private ["PSo16NSObjectProtocol", "alpha"]
+- !private ["PSo16NSObjectProtocol", "animate"]
+- !private ["PSo16NSObjectProtocol", "backgroundColor"]
+- !private ["PSo16NSObjectProtocol", "bounds"]
+- !private ["PSo16NSObjectProtocol", "containerView"]
+- !private ["PSo16NSObjectProtocol", "dimmingView"]
+- !private ["PSo16NSObjectProtocol", "frame"]
+- ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "insertSubview"]
+- !private ["PSo16NSObjectProtocol", "presentedViewController"]
+- !private ["PSo16NSObjectProtocol", "secondView"]
+- !private ["PSo16NSObjectProtocol", "transitionCoordinator"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["PSo29UIAccessibilityIdentification", "alpha"]
+- !private ["PSo29UIAccessibilityIdentification", "backgroundColor"]
+- !private ["PSo29UIAccessibilityIdentification", "bounds"]
+- !private ["PSo29UIAccessibilityIdentification", "frame"]
+- ["PSo29UIAccessibilityIdentification", "init"]
+- !private ["PSo29UIAccessibilityIdentification", "insertSubview"]
+- !private ["PSo12UIAppearance", "alpha"]
+- !private ["PSo12UIAppearance", "backgroundColor"]
+- !private ["PSo12UIAppearance", "bounds"]
+- !private ["PSo12UIAppearance", "frame"]
+- ["PSo12UIAppearance", "init"]
+- !private ["PSo12UIAppearance", "insertSubview"]
+- ["PSo21UIAppearanceContainer", "CGRect"]
+- !private ["PSo21UIAppearanceContainer", "UIColor"]
+- ["PSo21UIAppearanceContainer", "UIView"]
+- !private ["PSo21UIAppearanceContainer", "alpha"]
+- !private ["PSo21UIAppearanceContainer", "backgroundColor"]
+- !private ["PSo21UIAppearanceContainer", "bounds"]
+- !private ["PSo21UIAppearanceContainer", "containerView"]
+- !private ["PSo21UIAppearanceContainer", "dimmingView"]
+- !private ["PSo21UIAppearanceContainer", "frame"]
+- ["PSo21UIAppearanceContainer", "init"]
+- !private ["PSo21UIAppearanceContainer", "insertSubview"]
+- !private ["PSo21UIAppearanceContainer", "presentedViewController"]
+- !private ["PSo21UIAppearanceContainer", "secondView"]
+- !private ["PSo21UIAppearanceContainer", "transitionCoordinator"]
+- ["PSo21UIAppearanceContainer", ""]
+- !private ["CSo7UIColor", "init"]
+- ["PSo18UIContentContainer", "CGRect"]
+- !private ["PSo18UIContentContainer", "UIColor"]
+- ["PSo18UIContentContainer", "UIView"]
+- !private ["PSo18UIContentContainer", "containerView"]
+- !private ["PSo18UIContentContainer", "dimmingView"]
+- !private ["PSo18UIContentContainer", "init"]
+- !private ["PSo18UIContentContainer", "presentedViewController"]
+- !private ["PSo18UIContentContainer", "secondView"]
+- !private ["PSo18UIContentContainer", "transitionCoordinator"]
+- ["PSo18UIContentContainer", ""]
+- !private ["PSo17UICoordinateSpace", "alpha"]
+- !private ["PSo17UICoordinateSpace", "backgroundColor"]
+- !private ["PSo17UICoordinateSpace", "bounds"]
+- !private ["PSo17UICoordinateSpace", "frame"]
+- ["PSo17UICoordinateSpace", "init"]
+- !private ["PSo17UICoordinateSpace", "insertSubview"]
+- !private ["PSo13UIDynamicItem", "alpha"]
+- !private ["PSo13UIDynamicItem", "backgroundColor"]
+- !private ["PSo13UIDynamicItem", "bounds"]
+- !private ["PSo13UIDynamicItem", "frame"]
+- ["PSo13UIDynamicItem", "init"]
+- !private ["PSo13UIDynamicItem", "insertSubview"]
+- ["PSo18UIFocusEnvironment", "CGRect"]
+- !private ["PSo18UIFocusEnvironment", "UIColor"]
+- ["PSo18UIFocusEnvironment", "UIView"]
+- !private ["PSo18UIFocusEnvironment", "alpha"]
+- !private ["PSo18UIFocusEnvironment", "backgroundColor"]
+- !private ["PSo18UIFocusEnvironment", "bounds"]
+- !private ["PSo18UIFocusEnvironment", "containerView"]
+- !private ["PSo18UIFocusEnvironment", "dimmingView"]
+- !private ["PSo18UIFocusEnvironment", "frame"]
+- ["PSo18UIFocusEnvironment", "init"]
+- !private ["PSo18UIFocusEnvironment", "insertSubview"]
+- !private ["PSo18UIFocusEnvironment", "presentedViewController"]
+- !private ["PSo18UIFocusEnvironment", "secondView"]
+- !private ["PSo18UIFocusEnvironment", "transitionCoordinator"]
+- ["PSo18UIFocusEnvironment", ""]
+- !private ["PSo11UIFocusItem", "alpha"]
+- !private ["PSo11UIFocusItem", "backgroundColor"]
+- !private ["PSo11UIFocusItem", "bounds"]
+- !private ["PSo11UIFocusItem", "frame"]
+- ["PSo11UIFocusItem", "init"]
+- !private ["PSo11UIFocusItem", "insertSubview"]
+- ["CSo24UIPresentationController", "Bool"]
+- ["CSo24UIPresentationController", "CGRect"]
+- !private ["CSo24UIPresentationController", "UIColor"]
+- ["CSo24UIPresentationController", "UIView"]
+- !private ["CSo24UIPresentationController", "containerView"]
+- ["CSo24UIPresentationController", "dimmingView"]
+- ["CSo24UIPresentationController", "dimmingView.storage"]
+- ["CSo24UIPresentationController", "dismissalTransitionWillBegin"]
+- ["CSo24UIPresentationController", "init"]
+- ["CSo24UIPresentationController", "presentationTransitionWillBegin"]
+- !private ["CSo24UIPresentationController", "presentedViewController"]
+- ["CSo24UIPresentationController", "secondView"]
+- ["CSo24UIPresentationController", "secondView.storage"]
+- ["CSo24UIPresentationController", "shouldRemovePresentersView"]
+- ["CSo24UIPresentationController", ""]
+- !private ["CSo11UIResponder", "alpha"]
+- !private ["CSo11UIResponder", "backgroundColor"]
+- !private ["CSo11UIResponder", "bounds"]
+- !private ["CSo11UIResponder", "frame"]
+- ["CSo11UIResponder", "init"]
+- !private ["CSo11UIResponder", "insertSubview"]
+- !private ["CSo11UIResponder", "transitionCoordinator"]
+- !private ["PSo30UIResponderStandardEditActions", "alpha"]
+- !private ["PSo30UIResponderStandardEditActions", "backgroundColor"]
+- !private ["PSo30UIResponderStandardEditActions", "bounds"]
+- !private ["PSo30UIResponderStandardEditActions", "frame"]
+- ["PSo30UIResponderStandardEditActions", "init"]
+- !private ["PSo30UIResponderStandardEditActions", "insertSubview"]
+- !private ["PSo30UIResponderStandardEditActions", "transitionCoordinator"]
+- !private ["PSo16UIStateRestoring", "transitionCoordinator"]
+- ["PSo18UITraitEnvironment", "CGRect"]
+- !private ["PSo18UITraitEnvironment", "UIColor"]
+- ["PSo18UITraitEnvironment", "UIView"]
+- !private ["PSo18UITraitEnvironment", "alpha"]
+- !private ["PSo18UITraitEnvironment", "backgroundColor"]
+- !private ["PSo18UITraitEnvironment", "bounds"]
+- !private ["PSo18UITraitEnvironment", "containerView"]
+- !private ["PSo18UITraitEnvironment", "dimmingView"]
+- !private ["PSo18UITraitEnvironment", "frame"]
+- ["PSo18UITraitEnvironment", "init"]
+- !private ["PSo18UITraitEnvironment", "insertSubview"]
+- !private ["PSo18UITraitEnvironment", "presentedViewController"]
+- !private ["PSo18UITraitEnvironment", "secondView"]
+- !private ["PSo18UITraitEnvironment", "transitionCoordinator"]
+- ["PSo18UITraitEnvironment", ""]
+- !private ["CSo6UIView", "alpha"]
+- !private ["CSo6UIView", "backgroundColor"]
+- !private ["CSo6UIView", "bounds"]
+- !private ["CSo6UIView", "frame"]
+- ["CSo6UIView", "init"]
+- !private ["CSo6UIView", "insertSubview"]
+- !private ["CSo16UIViewController", "transitionCoordinator"]
+- !private ["PSo37UIViewControllerTransitionCoordinator", "animate"]
+- !private ["PSo44UIViewControllerTransitionCoordinatorContext", "animate"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "alpha"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "backgroundColor"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "bounds"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "frame"]
+- ["Ps37_DefaultCustomPlaygroundQuickLookable", "init"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "insertSubview"]
+- !private ["Ps35_ExpressibleByBuiltinBooleanLiteral", "_getBuiltinLogicValue"]
+- !private ["Ps26_ExpressibleByColorLiteral", "init"]
+- ["Ps9_Hashable", "CGRect"]
+- !private ["Ps9_Hashable", "UIColor"]
+- ["Ps9_Hashable", "UIView"]
+- !private ["Ps9_Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps9_Hashable", "alpha"]
+- !private ["Ps9_Hashable", "backgroundColor"]
+- !private ["Ps9_Hashable", "bounds"]
+- !private ["Ps9_Hashable", "containerView"]
+- !private ["Ps9_Hashable", "dimmingView"]
+- !private ["Ps9_Hashable", "frame"]
+- ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "insertSubview"]
+- !private ["Ps9_Hashable", "presentedViewController"]
+- !private ["Ps9_Hashable", "secondView"]
+- !private ["Ps9_Hashable", "transitionCoordinator"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "height"]
+- !private ["Ps21_ObjectiveCBridgeable", "origin"]
+- !private ["Ps21_ObjectiveCBridgeable", "size"]
+- !private ["Ps21_ObjectiveCBridgeable", "y"]
+- ["Ps21_ObjectiveCBridgeable", "zero"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "Sb"
+- "PSo15CALayerDelegate"
+- !private "VSC7CGPoint"
+- "VSC6CGRect"
+- !private "VSC6CGSize"
+- "Ps7CVarArg"
+- "Ps28CustomDebugStringConvertible"
+- "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "C9GeoKeeper29DimmingPresentationController"
+- "Ps9Equatable"
+- !private "Ps27ExpressibleByBooleanLiteral"
+- "Ps8Hashable"
+- !private "Ps25LosslessStringConvertible"
+- "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- !private "PSo26NSExtensionRequestHandling"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- "PSo29UIAccessibilityIdentification"
+- "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- !private "CSo7UIColor"
+- "PSo18UIContentContainer"
+- "PSo17UICoordinateSpace"
+- "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- "PSo11UIFocusItem"
+- "CSo24UIPresentationController"
+- "CSo11UIResponder"
+- "PSo30UIResponderStandardEditActions"
+- !private "PSo16UIStateRestoring"
+- "PSo18UITraitEnvironment"
+- "CSo6UIView"
+- !private "CSo16UIViewController"
+- !private "PSo37UIViewControllerTransitionCoordinator"
+- !private "PSo44UIViewControllerTransitionCoordinatorContext"
+- "Ps37_DefaultCustomPlaygroundQuickLookable"
+- !private "Ps35_ExpressibleByBuiltinBooleanLiteral"
+- !private "Ps26_ExpressibleByColorLiteral"
+- "Ps9_Hashable"
+- "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/AudioToolbox.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+interface-hash: "092e6eb9130d24cd0696c429063e948b"

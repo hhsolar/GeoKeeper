@@ -1,0 +1,509 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "MyNavigationController"
+provides-nominal:
+- "C9GeoKeeper22MyNavigationController"
+provides-member:
+- ["C9GeoKeeper22MyNavigationController", ""]
+provides-dynamic-lookup:
+- "changeColorOfButton"
+- "preferredStatusBarStyle"
+- "viewWillAppear"
+depends-top-level:
+- "AssignmentPrecedence"
+- "Bool"
+- "ChangeDoneButtonColorDelegate"
+- !private "Dictionary"
+- "MyNavigationController"
+- !private "NSFontAttributeName"
+- !private "NSForegroundColorAttributeName"
+- !private "StringLiteralType"
+- "UIColor"
+- !private "UIFont"
+- "UINavigationController"
+- "UIStatusBarStyle"
+- !private "baseColor"
+depends-member:
+- !private ["Ps9AnyObject", "NSFontAttributeName"]
+- !private ["Ps9AnyObject", "NSForegroundColorAttributeName"]
+- !private ["Ps9AnyObject", "UIColor"]
+- !private ["Ps9AnyObject", "UIFont"]
+- !private ["Ps9AnyObject", "barTintColor"]
+- !private ["Ps9AnyObject", "baseColor"]
+- ["Ps9AnyObject", "changeColorOfButton"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "leftBarButtonItem"]
+- !private ["Ps9AnyObject", "navigationBar"]
+- !private ["Ps9AnyObject", "rightBarButtonItem"]
+- !private ["Ps9AnyObject", "setTitleTextAttributes"]
+- !private ["Ps9AnyObject", "titleTextAttributes"]
+- !private ["Ps9AnyObject", "topItem"]
+- !private ["Ps9AnyObject", "viewWillAppear"]
+- !private ["Ps9AnyObject", "white"]
+- ["Ps9AnyObject", ""]
+- !private ["PSo15CALayerDelegate", "barTintColor"]
+- !private ["PSo15CALayerDelegate", "titleTextAttributes"]
+- !private ["PSo15CALayerDelegate", "topItem"]
+- !private ["Ps7CVarArg", "NSFontAttributeName"]
+- !private ["Ps7CVarArg", "NSForegroundColorAttributeName"]
+- !private ["Ps7CVarArg", "UIColor"]
+- !private ["Ps7CVarArg", "UIFont"]
+- !private ["Ps7CVarArg", "barTintColor"]
+- !private ["Ps7CVarArg", "baseColor"]
+- ["Ps7CVarArg", "changeColorOfButton"]
+- !private ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "leftBarButtonItem"]
+- !private ["Ps7CVarArg", "navigationBar"]
+- !private ["Ps7CVarArg", "rightBarButtonItem"]
+- !private ["Ps7CVarArg", "setTitleTextAttributes"]
+- !private ["Ps7CVarArg", "titleTextAttributes"]
+- !private ["Ps7CVarArg", "topItem"]
+- !private ["Ps7CVarArg", "viewWillAppear"]
+- !private ["Ps7CVarArg", "white"]
+- ["Ps7CVarArg", ""]
+- !private ["P9GeoKeeper29ChangeDoneButtonColorDelegate", "NSFontAttributeName"]
+- !private ["P9GeoKeeper29ChangeDoneButtonColorDelegate", "NSForegroundColorAttributeName"]
+- !private ["P9GeoKeeper29ChangeDoneButtonColorDelegate", "UIColor"]
+- !private ["P9GeoKeeper29ChangeDoneButtonColorDelegate", "UIFont"]
+- !private ["P9GeoKeeper29ChangeDoneButtonColorDelegate", "baseColor"]
+- ["P9GeoKeeper29ChangeDoneButtonColorDelegate", "changeColorOfButton"]
+- !private ["P9GeoKeeper29ChangeDoneButtonColorDelegate", "navigationBar"]
+- ["P9GeoKeeper29ChangeDoneButtonColorDelegate", ""]
+- !private ["Ps10Comparable", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "NSFontAttributeName"]
+- !private ["Ps28CustomDebugStringConvertible", "NSForegroundColorAttributeName"]
+- !private ["Ps28CustomDebugStringConvertible", "UIColor"]
+- !private ["Ps28CustomDebugStringConvertible", "UIFont"]
+- !private ["Ps28CustomDebugStringConvertible", "barTintColor"]
+- !private ["Ps28CustomDebugStringConvertible", "baseColor"]
+- ["Ps28CustomDebugStringConvertible", "changeColorOfButton"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "leftBarButtonItem"]
+- !private ["Ps28CustomDebugStringConvertible", "navigationBar"]
+- !private ["Ps28CustomDebugStringConvertible", "rightBarButtonItem"]
+- !private ["Ps28CustomDebugStringConvertible", "setTitleTextAttributes"]
+- !private ["Ps28CustomDebugStringConvertible", "titleTextAttributes"]
+- !private ["Ps28CustomDebugStringConvertible", "topItem"]
+- !private ["Ps28CustomDebugStringConvertible", "viewWillAppear"]
+- !private ["Ps28CustomDebugStringConvertible", "white"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps23CustomStringConvertible", "NSFontAttributeName"]
+- !private ["Ps23CustomStringConvertible", "NSForegroundColorAttributeName"]
+- !private ["Ps23CustomStringConvertible", "UIColor"]
+- !private ["Ps23CustomStringConvertible", "UIFont"]
+- !private ["Ps23CustomStringConvertible", "barTintColor"]
+- !private ["Ps23CustomStringConvertible", "baseColor"]
+- ["Ps23CustomStringConvertible", "changeColorOfButton"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "leftBarButtonItem"]
+- !private ["Ps23CustomStringConvertible", "navigationBar"]
+- !private ["Ps23CustomStringConvertible", "rightBarButtonItem"]
+- !private ["Ps23CustomStringConvertible", "setTitleTextAttributes"]
+- !private ["Ps23CustomStringConvertible", "titleTextAttributes"]
+- !private ["Ps23CustomStringConvertible", "topItem"]
+- !private ["Ps23CustomStringConvertible", "viewWillAppear"]
+- !private ["Ps23CustomStringConvertible", "white"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Ps9Equatable", "NSFontAttributeName"]
+- !private ["Ps9Equatable", "NSForegroundColorAttributeName"]
+- !private ["Ps9Equatable", "UIColor"]
+- !private ["Ps9Equatable", "UIFont"]
+- !private ["Ps9Equatable", "barTintColor"]
+- !private ["Ps9Equatable", "baseColor"]
+- ["Ps9Equatable", "changeColorOfButton"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "leftBarButtonItem"]
+- !private ["Ps9Equatable", "lightContent"]
+- !private ["Ps9Equatable", "navigationBar"]
+- !private ["Ps9Equatable", "normal"]
+- !private ["Ps9Equatable", "rightBarButtonItem"]
+- !private ["Ps9Equatable", "setTitleTextAttributes"]
+- !private ["Ps9Equatable", "titleTextAttributes"]
+- !private ["Ps9Equatable", "topItem"]
+- !private ["Ps9Equatable", "viewWillAppear"]
+- !private ["Ps9Equatable", "white"]
+- ["Ps9Equatable", ""]
+- !private ["Ps25ExpressibleByArrayLiteral", "normal"]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["Ps8Hashable", "NSFontAttributeName"]
+- !private ["Ps8Hashable", "NSForegroundColorAttributeName"]
+- !private ["Ps8Hashable", "UIColor"]
+- !private ["Ps8Hashable", "UIFont"]
+- !private ["Ps8Hashable", "barTintColor"]
+- !private ["Ps8Hashable", "baseColor"]
+- ["Ps8Hashable", "changeColorOfButton"]
+- !private ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "leftBarButtonItem"]
+- !private ["Ps8Hashable", "lightContent"]
+- !private ["Ps8Hashable", "navigationBar"]
+- !private ["Ps8Hashable", "rightBarButtonItem"]
+- !private ["Ps8Hashable", "setTitleTextAttributes"]
+- !private ["Ps8Hashable", "titleTextAttributes"]
+- !private ["Ps8Hashable", "topItem"]
+- !private ["Ps8Hashable", "viewWillAppear"]
+- !private ["Ps8Hashable", "white"]
+- ["Ps8Hashable", ""]
+- !private ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps10MirrorPath", "init"]
+- ["C9GeoKeeper22MyNavigationController", "Bool"]
+- !private ["C9GeoKeeper22MyNavigationController", "NSFontAttributeName"]
+- !private ["C9GeoKeeper22MyNavigationController", "NSForegroundColorAttributeName"]
+- ["C9GeoKeeper22MyNavigationController", "UIColor"]
+- !private ["C9GeoKeeper22MyNavigationController", "UIFont"]
+- ["C9GeoKeeper22MyNavigationController", "UIStatusBarStyle"]
+- !private ["C9GeoKeeper22MyNavigationController", "baseColor"]
+- ["C9GeoKeeper22MyNavigationController", "changeColorOfButton"]
+- ["C9GeoKeeper22MyNavigationController", "deinit"]
+- ["C9GeoKeeper22MyNavigationController", "init"]
+- !private ["C9GeoKeeper22MyNavigationController", "navigationBar"]
+- ["C9GeoKeeper22MyNavigationController", "preferredStatusBarStyle"]
+- ["C9GeoKeeper22MyNavigationController", "viewWillAppear"]
+- !private ["PSo8NSCoding", "NSFontAttributeName"]
+- !private ["PSo8NSCoding", "NSForegroundColorAttributeName"]
+- !private ["PSo8NSCoding", "UIColor"]
+- !private ["PSo8NSCoding", "UIFont"]
+- !private ["PSo8NSCoding", "barTintColor"]
+- !private ["PSo8NSCoding", "baseColor"]
+- ["PSo8NSCoding", "changeColorOfButton"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "leftBarButtonItem"]
+- !private ["PSo8NSCoding", "navigationBar"]
+- !private ["PSo8NSCoding", "rightBarButtonItem"]
+- !private ["PSo8NSCoding", "setTitleTextAttributes"]
+- !private ["PSo8NSCoding", "titleTextAttributes"]
+- !private ["PSo8NSCoding", "topItem"]
+- !private ["PSo8NSCoding", "viewWillAppear"]
+- !private ["PSo8NSCoding", "white"]
+- ["PSo8NSCoding", ""]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "white"]
+- !private ["PSo26NSExtensionRequestHandling", "NSFontAttributeName"]
+- !private ["PSo26NSExtensionRequestHandling", "NSForegroundColorAttributeName"]
+- !private ["PSo26NSExtensionRequestHandling", "UIColor"]
+- !private ["PSo26NSExtensionRequestHandling", "UIFont"]
+- !private ["PSo26NSExtensionRequestHandling", "baseColor"]
+- ["PSo26NSExtensionRequestHandling", "changeColorOfButton"]
+- !private ["PSo26NSExtensionRequestHandling", "init"]
+- !private ["PSo26NSExtensionRequestHandling", "navigationBar"]
+- !private ["PSo26NSExtensionRequestHandling", "viewWillAppear"]
+- ["PSo26NSExtensionRequestHandling", ""]
+- !private ["PSo16NSMutableCopying", "init"]
+- ["CSo8NSObject", "Bool"]
+- !private ["CSo8NSObject", "NSFontAttributeName"]
+- !private ["CSo8NSObject", "NSForegroundColorAttributeName"]
+- ["CSo8NSObject", "UIColor"]
+- !private ["CSo8NSObject", "UIFont"]
+- ["CSo8NSObject", "UIStatusBarStyle"]
+- !private ["CSo8NSObject", "barTintColor"]
+- !private ["CSo8NSObject", "baseColor"]
+- ["CSo8NSObject", "changeColorOfButton"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "leftBarButtonItem"]
+- !private ["CSo8NSObject", "navigationBar"]
+- ["CSo8NSObject", "preferredStatusBarStyle"]
+- !private ["CSo8NSObject", "rightBarButtonItem"]
+- !private ["CSo8NSObject", "setTitleTextAttributes"]
+- !private ["CSo8NSObject", "titleTextAttributes"]
+- !private ["CSo8NSObject", "topItem"]
+- ["CSo8NSObject", "viewWillAppear"]
+- !private ["CSo8NSObject", "white"]
+- !private ["PSo16NSObjectProtocol", "NSFontAttributeName"]
+- !private ["PSo16NSObjectProtocol", "NSForegroundColorAttributeName"]
+- !private ["PSo16NSObjectProtocol", "UIColor"]
+- !private ["PSo16NSObjectProtocol", "UIFont"]
+- !private ["PSo16NSObjectProtocol", "barTintColor"]
+- !private ["PSo16NSObjectProtocol", "baseColor"]
+- ["PSo16NSObjectProtocol", "changeColorOfButton"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "leftBarButtonItem"]
+- !private ["PSo16NSObjectProtocol", "navigationBar"]
+- !private ["PSo16NSObjectProtocol", "rightBarButtonItem"]
+- !private ["PSo16NSObjectProtocol", "setTitleTextAttributes"]
+- !private ["PSo16NSObjectProtocol", "titleTextAttributes"]
+- !private ["PSo16NSObjectProtocol", "topItem"]
+- !private ["PSo16NSObjectProtocol", "viewWillAppear"]
+- !private ["PSo16NSObjectProtocol", "white"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["PSo14NSSecureCoding", "white"]
+- !private ["CSo8NSString", "init"]
+- !private ["Ps9OptionSet", "normal"]
+- !private ["Ps16RawRepresentable", "lightContent"]
+- !private ["Ps16RawRepresentable", "normal"]
+- !private ["Ps10SetAlgebra", "normal"]
+- !private ["SS", "init"]
+- !private ["Ps16TextOutputStream", "init"]
+- !private ["Ps20TextOutputStreamable", "init"]
+- !private ["PSo29UIAccessibilityIdentification", "barTintColor"]
+- !private ["PSo29UIAccessibilityIdentification", "setTitleTextAttributes"]
+- !private ["PSo29UIAccessibilityIdentification", "titleTextAttributes"]
+- !private ["PSo29UIAccessibilityIdentification", "topItem"]
+- !private ["PSo12UIAppearance", "barTintColor"]
+- !private ["PSo12UIAppearance", "setTitleTextAttributes"]
+- !private ["PSo12UIAppearance", "titleTextAttributes"]
+- !private ["PSo12UIAppearance", "topItem"]
+- !private ["PSo21UIAppearanceContainer", "NSFontAttributeName"]
+- !private ["PSo21UIAppearanceContainer", "NSForegroundColorAttributeName"]
+- !private ["PSo21UIAppearanceContainer", "UIColor"]
+- !private ["PSo21UIAppearanceContainer", "UIFont"]
+- !private ["PSo21UIAppearanceContainer", "barTintColor"]
+- !private ["PSo21UIAppearanceContainer", "baseColor"]
+- ["PSo21UIAppearanceContainer", "changeColorOfButton"]
+- !private ["PSo21UIAppearanceContainer", "init"]
+- !private ["PSo21UIAppearanceContainer", "navigationBar"]
+- !private ["PSo21UIAppearanceContainer", "titleTextAttributes"]
+- !private ["PSo21UIAppearanceContainer", "topItem"]
+- !private ["PSo21UIAppearanceContainer", "viewWillAppear"]
+- ["PSo21UIAppearanceContainer", ""]
+- !private ["CSo15UIBarButtonItem", "setTitleTextAttributes"]
+- !private ["CSo9UIBarItem", "setTitleTextAttributes"]
+- !private ["PSo16UIBarPositioning", "barTintColor"]
+- !private ["PSo16UIBarPositioning", "titleTextAttributes"]
+- !private ["PSo16UIBarPositioning", "topItem"]
+- !private ["CSo7UIColor", "white"]
+- !private ["PSo18UIContentContainer", "NSFontAttributeName"]
+- !private ["PSo18UIContentContainer", "NSForegroundColorAttributeName"]
+- !private ["PSo18UIContentContainer", "UIColor"]
+- !private ["PSo18UIContentContainer", "UIFont"]
+- !private ["PSo18UIContentContainer", "baseColor"]
+- ["PSo18UIContentContainer", "changeColorOfButton"]
+- !private ["PSo18UIContentContainer", "init"]
+- !private ["PSo18UIContentContainer", "navigationBar"]
+- !private ["PSo18UIContentContainer", "viewWillAppear"]
+- ["PSo18UIContentContainer", ""]
+- !private ["VSC14UIControlState", "normal"]
+- !private ["PSo17UICoordinateSpace", "barTintColor"]
+- !private ["PSo17UICoordinateSpace", "titleTextAttributes"]
+- !private ["PSo17UICoordinateSpace", "topItem"]
+- !private ["PSo13UIDynamicItem", "barTintColor"]
+- !private ["PSo13UIDynamicItem", "titleTextAttributes"]
+- !private ["PSo13UIDynamicItem", "topItem"]
+- !private ["PSo18UIFocusEnvironment", "NSFontAttributeName"]
+- !private ["PSo18UIFocusEnvironment", "NSForegroundColorAttributeName"]
+- !private ["PSo18UIFocusEnvironment", "UIColor"]
+- !private ["PSo18UIFocusEnvironment", "UIFont"]
+- !private ["PSo18UIFocusEnvironment", "barTintColor"]
+- !private ["PSo18UIFocusEnvironment", "baseColor"]
+- ["PSo18UIFocusEnvironment", "changeColorOfButton"]
+- !private ["PSo18UIFocusEnvironment", "init"]
+- !private ["PSo18UIFocusEnvironment", "navigationBar"]
+- !private ["PSo18UIFocusEnvironment", "titleTextAttributes"]
+- !private ["PSo18UIFocusEnvironment", "topItem"]
+- !private ["PSo18UIFocusEnvironment", "viewWillAppear"]
+- ["PSo18UIFocusEnvironment", ""]
+- !private ["PSo11UIFocusItem", "barTintColor"]
+- !private ["PSo11UIFocusItem", "titleTextAttributes"]
+- !private ["PSo11UIFocusItem", "topItem"]
+- !private ["CSo6UIFont", "init"]
+- !private ["CSo15UINavigationBar", "barTintColor"]
+- !private ["CSo15UINavigationBar", "titleTextAttributes"]
+- !private ["CSo15UINavigationBar", "topItem"]
+- ["CSo22UINavigationController", "Bool"]
+- !private ["CSo22UINavigationController", "NSFontAttributeName"]
+- !private ["CSo22UINavigationController", "NSForegroundColorAttributeName"]
+- ["CSo22UINavigationController", "UIColor"]
+- !private ["CSo22UINavigationController", "UIFont"]
+- ["CSo22UINavigationController", "UIStatusBarStyle"]
+- !private ["CSo22UINavigationController", "baseColor"]
+- ["CSo22UINavigationController", "changeColorOfButton"]
+- ["CSo22UINavigationController", "init"]
+- !private ["CSo22UINavigationController", "navigationBar"]
+- ["CSo22UINavigationController", "preferredStatusBarStyle"]
+- ["CSo22UINavigationController", "viewWillAppear"]
+- ["CSo22UINavigationController", ""]
+- !private ["CSo16UINavigationItem", "leftBarButtonItem"]
+- !private ["CSo16UINavigationItem", "rightBarButtonItem"]
+- ["CSo11UIResponder", "Bool"]
+- !private ["CSo11UIResponder", "NSFontAttributeName"]
+- !private ["CSo11UIResponder", "NSForegroundColorAttributeName"]
+- ["CSo11UIResponder", "UIColor"]
+- !private ["CSo11UIResponder", "UIFont"]
+- ["CSo11UIResponder", "UIStatusBarStyle"]
+- !private ["CSo11UIResponder", "barTintColor"]
+- !private ["CSo11UIResponder", "baseColor"]
+- ["CSo11UIResponder", "changeColorOfButton"]
+- ["CSo11UIResponder", "init"]
+- !private ["CSo11UIResponder", "navigationBar"]
+- ["CSo11UIResponder", "preferredStatusBarStyle"]
+- !private ["CSo11UIResponder", "titleTextAttributes"]
+- !private ["CSo11UIResponder", "topItem"]
+- ["CSo11UIResponder", "viewWillAppear"]
+- !private ["PSo30UIResponderStandardEditActions", "NSFontAttributeName"]
+- !private ["PSo30UIResponderStandardEditActions", "NSForegroundColorAttributeName"]
+- !private ["PSo30UIResponderStandardEditActions", "UIColor"]
+- !private ["PSo30UIResponderStandardEditActions", "UIFont"]
+- !private ["PSo30UIResponderStandardEditActions", "barTintColor"]
+- !private ["PSo30UIResponderStandardEditActions", "baseColor"]
+- ["PSo30UIResponderStandardEditActions", "changeColorOfButton"]
+- !private ["PSo30UIResponderStandardEditActions", "init"]
+- !private ["PSo30UIResponderStandardEditActions", "navigationBar"]
+- !private ["PSo30UIResponderStandardEditActions", "titleTextAttributes"]
+- !private ["PSo30UIResponderStandardEditActions", "topItem"]
+- !private ["PSo30UIResponderStandardEditActions", "viewWillAppear"]
+- ["PSo30UIResponderStandardEditActions", ""]
+- !private ["PSo16UIStateRestoring", "NSFontAttributeName"]
+- !private ["PSo16UIStateRestoring", "NSForegroundColorAttributeName"]
+- !private ["PSo16UIStateRestoring", "UIColor"]
+- !private ["PSo16UIStateRestoring", "UIFont"]
+- !private ["PSo16UIStateRestoring", "baseColor"]
+- ["PSo16UIStateRestoring", "changeColorOfButton"]
+- !private ["PSo16UIStateRestoring", "init"]
+- !private ["PSo16UIStateRestoring", "navigationBar"]
+- !private ["PSo16UIStateRestoring", "viewWillAppear"]
+- ["PSo16UIStateRestoring", ""]
+- !private ["OSC16UIStatusBarStyle", "lightContent"]
+- !private ["PSo18UITraitEnvironment", "NSFontAttributeName"]
+- !private ["PSo18UITraitEnvironment", "NSForegroundColorAttributeName"]
+- !private ["PSo18UITraitEnvironment", "UIColor"]
+- !private ["PSo18UITraitEnvironment", "UIFont"]
+- !private ["PSo18UITraitEnvironment", "barTintColor"]
+- !private ["PSo18UITraitEnvironment", "baseColor"]
+- ["PSo18UITraitEnvironment", "changeColorOfButton"]
+- !private ["PSo18UITraitEnvironment", "init"]
+- !private ["PSo18UITraitEnvironment", "navigationBar"]
+- !private ["PSo18UITraitEnvironment", "titleTextAttributes"]
+- !private ["PSo18UITraitEnvironment", "topItem"]
+- !private ["PSo18UITraitEnvironment", "viewWillAppear"]
+- ["PSo18UITraitEnvironment", ""]
+- !private ["CSo6UIView", "barTintColor"]
+- !private ["CSo6UIView", "titleTextAttributes"]
+- !private ["CSo6UIView", "topItem"]
+- ["CSo16UIViewController", "Bool"]
+- !private ["CSo16UIViewController", "NSFontAttributeName"]
+- !private ["CSo16UIViewController", "NSForegroundColorAttributeName"]
+- ["CSo16UIViewController", "UIColor"]
+- !private ["CSo16UIViewController", "UIFont"]
+- ["CSo16UIViewController", "UIStatusBarStyle"]
+- !private ["CSo16UIViewController", "baseColor"]
+- ["CSo16UIViewController", "changeColorOfButton"]
+- ["CSo16UIViewController", "init"]
+- !private ["CSo16UIViewController", "navigationBar"]
+- ["CSo16UIViewController", "preferredStatusBarStyle"]
+- ["CSo16UIViewController", "viewWillAppear"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "barTintColor"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "titleTextAttributes"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "topItem"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps26_ExpressibleByColorLiteral", "white"]
+- !private ["Ps33_ExpressibleByStringInterpolation", "init"]
+- !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- !private ["Ps9_Hashable", "NSFontAttributeName"]
+- !private ["Ps9_Hashable", "NSForegroundColorAttributeName"]
+- !private ["Ps9_Hashable", "UIColor"]
+- !private ["Ps9_Hashable", "UIFont"]
+- !private ["Ps9_Hashable", "barTintColor"]
+- !private ["Ps9_Hashable", "baseColor"]
+- ["Ps9_Hashable", "changeColorOfButton"]
+- !private ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "leftBarButtonItem"]
+- !private ["Ps9_Hashable", "lightContent"]
+- !private ["Ps9_Hashable", "navigationBar"]
+- !private ["Ps9_Hashable", "rightBarButtonItem"]
+- !private ["Ps9_Hashable", "setTitleTextAttributes"]
+- !private ["Ps9_Hashable", "titleTextAttributes"]
+- !private ["Ps9_Hashable", "topItem"]
+- !private ["Ps9_Hashable", "viewWillAppear"]
+- !private ["Ps9_Hashable", "white"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps21_ObjectiveCBridgeable", "init"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "PSo15CALayerDelegate"
+- "Ps7CVarArg"
+- "P9GeoKeeper29ChangeDoneButtonColorDelegate"
+- !private "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- !private "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- !private "Ps25ExpressibleByArrayLiteral"
+- !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps26ExpressibleByStringLiteral"
+- !private "Ps33ExpressibleByUnicodeScalarLiteral"
+- "Ps8Hashable"
+- !private "Ps25LosslessStringConvertible"
+- !private "Ps10MirrorPath"
+- "C9GeoKeeper22MyNavigationController"
+- "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- "PSo26NSExtensionRequestHandling"
+- !private "PSo16NSMutableCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "CSo8NSString"
+- !private "Ps9OptionSet"
+- !private "Ps16RawRepresentable"
+- !private "Ps10SetAlgebra"
+- !private "SS"
+- !private "Ps16TextOutputStream"
+- !private "Ps20TextOutputStreamable"
+- !private "PSo29UIAccessibilityIdentification"
+- !private "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- !private "CSo15UIBarButtonItem"
+- !private "CSo9UIBarItem"
+- !private "PSo16UIBarPositioning"
+- !private "CSo7UIColor"
+- "PSo18UIContentContainer"
+- !private "VSC14UIControlState"
+- !private "PSo17UICoordinateSpace"
+- !private "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- !private "PSo11UIFocusItem"
+- !private "CSo6UIFont"
+- !private "CSo15UINavigationBar"
+- "CSo22UINavigationController"
+- !private "CSo16UINavigationItem"
+- "CSo11UIResponder"
+- "PSo30UIResponderStandardEditActions"
+- "PSo16UIStateRestoring"
+- !private "OSC16UIStatusBarStyle"
+- "PSo18UITraitEnvironment"
+- !private "CSo6UIView"
+- "CSo16UIViewController"
+- !private "Ps37_DefaultCustomPlaygroundQuickLookable"
+- !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps34_ExpressibleByBuiltinStringLiteral"
+- !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- !private "Ps26_ExpressibleByColorLiteral"
+- !private "Ps33_ExpressibleByStringInterpolation"
+- !private "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- !private "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/AudioToolbox.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+interface-hash: "eda23afa7b32194879356e24e6e577d6"

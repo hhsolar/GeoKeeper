@@ -1,0 +1,396 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "MyTabBarController"
+provides-nominal:
+- "C9GeoKeeper18MyTabBarController"
+provides-member:
+- ["C9GeoKeeper18MyTabBarController", ""]
+provides-dynamic-lookup:
+- "childViewControllerForStatusBarStyle"
+- "preferredStatusBarStyle"
+- "selectedColor"
+- "tabBarColor"
+- "unselectedColor"
+- "viewWillAppear"
+depends-top-level:
+- "/"
+- "AssignmentPrecedence"
+- "Bool"
+- "MyTabBarController"
+- "UIColor"
+- "UIStatusBarStyle"
+- "UITabBarController"
+- "UIViewController"
+depends-member:
+- ["Ps9AnyObject", "UIColor"]
+- !private ["Ps9AnyObject", "barTintColor"]
+- ["Ps9AnyObject", "init"]
+- ["Ps9AnyObject", "lightGray"]
+- !private ["Ps9AnyObject", "selectedColor"]
+- !private ["Ps9AnyObject", "tabBar"]
+- !private ["Ps9AnyObject", "tabBarColor"]
+- !private ["Ps9AnyObject", "tintColor"]
+- !private ["Ps9AnyObject", "unselectedColor"]
+- !private ["Ps9AnyObject", "unselectedItemTintColor"]
+- !private ["Ps9AnyObject", "viewWillAppear"]
+- ["Ps9AnyObject", "white"]
+- ["Ps9AnyObject", ""]
+- !private ["PSo15CALayerDelegate", "barTintColor"]
+- !private ["PSo15CALayerDelegate", "tintColor"]
+- !private ["PSo15CALayerDelegate", "unselectedItemTintColor"]
+- ["Ps7CVarArg", "UIColor"]
+- !private ["Ps7CVarArg", "barTintColor"]
+- ["Ps7CVarArg", "init"]
+- ["Ps7CVarArg", "lightGray"]
+- !private ["Ps7CVarArg", "selectedColor"]
+- !private ["Ps7CVarArg", "tabBar"]
+- !private ["Ps7CVarArg", "tabBarColor"]
+- !private ["Ps7CVarArg", "tintColor"]
+- !private ["Ps7CVarArg", "unselectedColor"]
+- !private ["Ps7CVarArg", "unselectedItemTintColor"]
+- !private ["Ps7CVarArg", "viewWillAppear"]
+- ["Ps7CVarArg", "white"]
+- ["Ps7CVarArg", ""]
+- ["Ps28CustomDebugStringConvertible", "UIColor"]
+- !private ["Ps28CustomDebugStringConvertible", "barTintColor"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- ["Ps28CustomDebugStringConvertible", "lightGray"]
+- !private ["Ps28CustomDebugStringConvertible", "selectedColor"]
+- !private ["Ps28CustomDebugStringConvertible", "tabBar"]
+- !private ["Ps28CustomDebugStringConvertible", "tabBarColor"]
+- !private ["Ps28CustomDebugStringConvertible", "tintColor"]
+- !private ["Ps28CustomDebugStringConvertible", "unselectedColor"]
+- !private ["Ps28CustomDebugStringConvertible", "unselectedItemTintColor"]
+- !private ["Ps28CustomDebugStringConvertible", "viewWillAppear"]
+- ["Ps28CustomDebugStringConvertible", "white"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- ["Ps23CustomStringConvertible", "UIColor"]
+- !private ["Ps23CustomStringConvertible", "barTintColor"]
+- ["Ps23CustomStringConvertible", "init"]
+- ["Ps23CustomStringConvertible", "lightGray"]
+- !private ["Ps23CustomStringConvertible", "selectedColor"]
+- !private ["Ps23CustomStringConvertible", "tabBar"]
+- !private ["Ps23CustomStringConvertible", "tabBarColor"]
+- !private ["Ps23CustomStringConvertible", "tintColor"]
+- !private ["Ps23CustomStringConvertible", "unselectedColor"]
+- !private ["Ps23CustomStringConvertible", "unselectedItemTintColor"]
+- !private ["Ps23CustomStringConvertible", "viewWillAppear"]
+- ["Ps23CustomStringConvertible", "white"]
+- ["Ps23CustomStringConvertible", ""]
+- ["Ps9Equatable", "UIColor"]
+- !private ["Ps9Equatable", "barTintColor"]
+- ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "lightContent"]
+- ["Ps9Equatable", "lightGray"]
+- !private ["Ps9Equatable", "selectedColor"]
+- !private ["Ps9Equatable", "tabBar"]
+- !private ["Ps9Equatable", "tabBarColor"]
+- !private ["Ps9Equatable", "tintColor"]
+- !private ["Ps9Equatable", "unselectedColor"]
+- !private ["Ps9Equatable", "unselectedItemTintColor"]
+- !private ["Ps9Equatable", "viewWillAppear"]
+- ["Ps9Equatable", "white"]
+- ["Ps9Equatable", ""]
+- ["Ps8Hashable", "UIColor"]
+- !private ["Ps8Hashable", "barTintColor"]
+- ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "lightContent"]
+- ["Ps8Hashable", "lightGray"]
+- !private ["Ps8Hashable", "selectedColor"]
+- !private ["Ps8Hashable", "tabBar"]
+- !private ["Ps8Hashable", "tabBarColor"]
+- !private ["Ps8Hashable", "tintColor"]
+- !private ["Ps8Hashable", "unselectedColor"]
+- !private ["Ps8Hashable", "unselectedItemTintColor"]
+- !private ["Ps8Hashable", "viewWillAppear"]
+- ["Ps8Hashable", "white"]
+- ["Ps8Hashable", ""]
+- ["C9GeoKeeper18MyTabBarController", "Bool"]
+- ["C9GeoKeeper18MyTabBarController", "UIColor"]
+- ["C9GeoKeeper18MyTabBarController", "UIStatusBarStyle"]
+- ["C9GeoKeeper18MyTabBarController", "UIViewController"]
+- ["C9GeoKeeper18MyTabBarController", "childViewControllerForStatusBarStyle"]
+- ["C9GeoKeeper18MyTabBarController", "deinit"]
+- ["C9GeoKeeper18MyTabBarController", "init"]
+- ["C9GeoKeeper18MyTabBarController", "preferredStatusBarStyle"]
+- ["C9GeoKeeper18MyTabBarController", "selectedColor"]
+- !private ["C9GeoKeeper18MyTabBarController", "tabBar"]
+- ["C9GeoKeeper18MyTabBarController", "tabBarColor"]
+- ["C9GeoKeeper18MyTabBarController", "unselectedColor"]
+- ["C9GeoKeeper18MyTabBarController", "viewWillAppear"]
+- ["PSo8NSCoding", "UIColor"]
+- !private ["PSo8NSCoding", "barTintColor"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "lightGray"]
+- !private ["PSo8NSCoding", "selectedColor"]
+- !private ["PSo8NSCoding", "tabBar"]
+- !private ["PSo8NSCoding", "tabBarColor"]
+- !private ["PSo8NSCoding", "tintColor"]
+- !private ["PSo8NSCoding", "unselectedColor"]
+- !private ["PSo8NSCoding", "unselectedItemTintColor"]
+- !private ["PSo8NSCoding", "viewWillAppear"]
+- ["PSo8NSCoding", "white"]
+- ["PSo8NSCoding", ""]
+- ["PSo9NSCopying", "init"]
+- ["PSo9NSCopying", "lightGray"]
+- ["PSo9NSCopying", "white"]
+- ["PSo26NSExtensionRequestHandling", "UIColor"]
+- !private ["PSo26NSExtensionRequestHandling", "init"]
+- !private ["PSo26NSExtensionRequestHandling", "selectedColor"]
+- !private ["PSo26NSExtensionRequestHandling", "tabBar"]
+- !private ["PSo26NSExtensionRequestHandling", "tabBarColor"]
+- !private ["PSo26NSExtensionRequestHandling", "unselectedColor"]
+- !private ["PSo26NSExtensionRequestHandling", "viewWillAppear"]
+- ["PSo26NSExtensionRequestHandling", ""]
+- ["CSo8NSObject", "Bool"]
+- ["CSo8NSObject", "UIColor"]
+- ["CSo8NSObject", "UIStatusBarStyle"]
+- ["CSo8NSObject", "UIViewController"]
+- !private ["CSo8NSObject", "barTintColor"]
+- ["CSo8NSObject", "childViewControllerForStatusBarStyle"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "lightGray"]
+- ["CSo8NSObject", "preferredStatusBarStyle"]
+- ["CSo8NSObject", "selectedColor"]
+- !private ["CSo8NSObject", "tabBar"]
+- ["CSo8NSObject", "tabBarColor"]
+- !private ["CSo8NSObject", "tintColor"]
+- ["CSo8NSObject", "unselectedColor"]
+- !private ["CSo8NSObject", "unselectedItemTintColor"]
+- ["CSo8NSObject", "viewWillAppear"]
+- ["CSo8NSObject", "white"]
+- ["PSo16NSObjectProtocol", "UIColor"]
+- !private ["PSo16NSObjectProtocol", "barTintColor"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "lightGray"]
+- !private ["PSo16NSObjectProtocol", "selectedColor"]
+- !private ["PSo16NSObjectProtocol", "tabBar"]
+- !private ["PSo16NSObjectProtocol", "tabBarColor"]
+- !private ["PSo16NSObjectProtocol", "tintColor"]
+- !private ["PSo16NSObjectProtocol", "unselectedColor"]
+- !private ["PSo16NSObjectProtocol", "unselectedItemTintColor"]
+- !private ["PSo16NSObjectProtocol", "viewWillAppear"]
+- ["PSo16NSObjectProtocol", "white"]
+- ["PSo16NSObjectProtocol", ""]
+- ["PSo14NSSecureCoding", "init"]
+- ["PSo14NSSecureCoding", "lightGray"]
+- ["PSo14NSSecureCoding", "white"]
+- !private ["Ps16RawRepresentable", "lightContent"]
+- !private ["PSo29UIAccessibilityIdentification", "barTintColor"]
+- !private ["PSo29UIAccessibilityIdentification", "tintColor"]
+- !private ["PSo29UIAccessibilityIdentification", "unselectedItemTintColor"]
+- !private ["PSo12UIAppearance", "barTintColor"]
+- !private ["PSo12UIAppearance", "tintColor"]
+- !private ["PSo12UIAppearance", "unselectedItemTintColor"]
+- ["PSo21UIAppearanceContainer", "UIColor"]
+- !private ["PSo21UIAppearanceContainer", "barTintColor"]
+- !private ["PSo21UIAppearanceContainer", "init"]
+- !private ["PSo21UIAppearanceContainer", "selectedColor"]
+- !private ["PSo21UIAppearanceContainer", "tabBar"]
+- !private ["PSo21UIAppearanceContainer", "tabBarColor"]
+- !private ["PSo21UIAppearanceContainer", "tintColor"]
+- !private ["PSo21UIAppearanceContainer", "unselectedColor"]
+- !private ["PSo21UIAppearanceContainer", "unselectedItemTintColor"]
+- !private ["PSo21UIAppearanceContainer", "viewWillAppear"]
+- ["PSo21UIAppearanceContainer", ""]
+- ["CSo7UIColor", "init"]
+- ["CSo7UIColor", "lightGray"]
+- ["CSo7UIColor", "white"]
+- ["PSo18UIContentContainer", "UIColor"]
+- !private ["PSo18UIContentContainer", "init"]
+- !private ["PSo18UIContentContainer", "selectedColor"]
+- !private ["PSo18UIContentContainer", "tabBar"]
+- !private ["PSo18UIContentContainer", "tabBarColor"]
+- !private ["PSo18UIContentContainer", "unselectedColor"]
+- !private ["PSo18UIContentContainer", "viewWillAppear"]
+- ["PSo18UIContentContainer", ""]
+- !private ["PSo17UICoordinateSpace", "barTintColor"]
+- !private ["PSo17UICoordinateSpace", "tintColor"]
+- !private ["PSo17UICoordinateSpace", "unselectedItemTintColor"]
+- !private ["PSo13UIDynamicItem", "barTintColor"]
+- !private ["PSo13UIDynamicItem", "tintColor"]
+- !private ["PSo13UIDynamicItem", "unselectedItemTintColor"]
+- ["PSo18UIFocusEnvironment", "UIColor"]
+- !private ["PSo18UIFocusEnvironment", "barTintColor"]
+- !private ["PSo18UIFocusEnvironment", "init"]
+- !private ["PSo18UIFocusEnvironment", "selectedColor"]
+- !private ["PSo18UIFocusEnvironment", "tabBar"]
+- !private ["PSo18UIFocusEnvironment", "tabBarColor"]
+- !private ["PSo18UIFocusEnvironment", "tintColor"]
+- !private ["PSo18UIFocusEnvironment", "unselectedColor"]
+- !private ["PSo18UIFocusEnvironment", "unselectedItemTintColor"]
+- !private ["PSo18UIFocusEnvironment", "viewWillAppear"]
+- ["PSo18UIFocusEnvironment", ""]
+- !private ["PSo11UIFocusItem", "barTintColor"]
+- !private ["PSo11UIFocusItem", "tintColor"]
+- !private ["PSo11UIFocusItem", "unselectedItemTintColor"]
+- ["CSo11UIResponder", "Bool"]
+- ["CSo11UIResponder", "UIColor"]
+- ["CSo11UIResponder", "UIStatusBarStyle"]
+- ["CSo11UIResponder", "UIViewController"]
+- !private ["CSo11UIResponder", "barTintColor"]
+- ["CSo11UIResponder", "childViewControllerForStatusBarStyle"]
+- ["CSo11UIResponder", "init"]
+- ["CSo11UIResponder", "preferredStatusBarStyle"]
+- ["CSo11UIResponder", "selectedColor"]
+- !private ["CSo11UIResponder", "tabBar"]
+- ["CSo11UIResponder", "tabBarColor"]
+- !private ["CSo11UIResponder", "tintColor"]
+- ["CSo11UIResponder", "unselectedColor"]
+- !private ["CSo11UIResponder", "unselectedItemTintColor"]
+- ["CSo11UIResponder", "viewWillAppear"]
+- ["PSo30UIResponderStandardEditActions", "UIColor"]
+- !private ["PSo30UIResponderStandardEditActions", "barTintColor"]
+- !private ["PSo30UIResponderStandardEditActions", "init"]
+- !private ["PSo30UIResponderStandardEditActions", "selectedColor"]
+- !private ["PSo30UIResponderStandardEditActions", "tabBar"]
+- !private ["PSo30UIResponderStandardEditActions", "tabBarColor"]
+- !private ["PSo30UIResponderStandardEditActions", "tintColor"]
+- !private ["PSo30UIResponderStandardEditActions", "unselectedColor"]
+- !private ["PSo30UIResponderStandardEditActions", "unselectedItemTintColor"]
+- !private ["PSo30UIResponderStandardEditActions", "viewWillAppear"]
+- ["PSo30UIResponderStandardEditActions", ""]
+- ["PSo16UIStateRestoring", "UIColor"]
+- !private ["PSo16UIStateRestoring", "init"]
+- !private ["PSo16UIStateRestoring", "selectedColor"]
+- !private ["PSo16UIStateRestoring", "tabBar"]
+- !private ["PSo16UIStateRestoring", "tabBarColor"]
+- !private ["PSo16UIStateRestoring", "unselectedColor"]
+- !private ["PSo16UIStateRestoring", "viewWillAppear"]
+- ["PSo16UIStateRestoring", ""]
+- !private ["OSC16UIStatusBarStyle", "lightContent"]
+- !private ["CSo8UITabBar", "barTintColor"]
+- !private ["CSo8UITabBar", "tintColor"]
+- !private ["CSo8UITabBar", "unselectedItemTintColor"]
+- ["CSo18UITabBarController", "Bool"]
+- ["CSo18UITabBarController", "UIColor"]
+- ["CSo18UITabBarController", "UIStatusBarStyle"]
+- ["CSo18UITabBarController", "UIViewController"]
+- ["CSo18UITabBarController", "childViewControllerForStatusBarStyle"]
+- ["CSo18UITabBarController", "init"]
+- ["CSo18UITabBarController", "preferredStatusBarStyle"]
+- ["CSo18UITabBarController", "selectedColor"]
+- !private ["CSo18UITabBarController", "tabBar"]
+- ["CSo18UITabBarController", "tabBarColor"]
+- ["CSo18UITabBarController", "unselectedColor"]
+- ["CSo18UITabBarController", "viewWillAppear"]
+- ["CSo18UITabBarController", ""]
+- ["PSo16UITabBarDelegate", "UIColor"]
+- !private ["PSo16UITabBarDelegate", "init"]
+- !private ["PSo16UITabBarDelegate", "selectedColor"]
+- !private ["PSo16UITabBarDelegate", "tabBar"]
+- !private ["PSo16UITabBarDelegate", "tabBarColor"]
+- !private ["PSo16UITabBarDelegate", "unselectedColor"]
+- !private ["PSo16UITabBarDelegate", "viewWillAppear"]
+- ["PSo16UITabBarDelegate", ""]
+- ["PSo18UITraitEnvironment", "UIColor"]
+- !private ["PSo18UITraitEnvironment", "barTintColor"]
+- !private ["PSo18UITraitEnvironment", "init"]
+- !private ["PSo18UITraitEnvironment", "selectedColor"]
+- !private ["PSo18UITraitEnvironment", "tabBar"]
+- !private ["PSo18UITraitEnvironment", "tabBarColor"]
+- !private ["PSo18UITraitEnvironment", "tintColor"]
+- !private ["PSo18UITraitEnvironment", "unselectedColor"]
+- !private ["PSo18UITraitEnvironment", "unselectedItemTintColor"]
+- !private ["PSo18UITraitEnvironment", "viewWillAppear"]
+- ["PSo18UITraitEnvironment", ""]
+- !private ["CSo6UIView", "barTintColor"]
+- !private ["CSo6UIView", "tintColor"]
+- !private ["CSo6UIView", "unselectedItemTintColor"]
+- ["CSo16UIViewController", "Bool"]
+- ["CSo16UIViewController", "UIColor"]
+- ["CSo16UIViewController", "UIStatusBarStyle"]
+- ["CSo16UIViewController", "UIViewController"]
+- ["CSo16UIViewController", "childViewControllerForStatusBarStyle"]
+- ["CSo16UIViewController", "init"]
+- ["CSo16UIViewController", "preferredStatusBarStyle"]
+- ["CSo16UIViewController", "selectedColor"]
+- !private ["CSo16UIViewController", "tabBar"]
+- ["CSo16UIViewController", "tabBarColor"]
+- ["CSo16UIViewController", "unselectedColor"]
+- ["CSo16UIViewController", "viewWillAppear"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "barTintColor"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "tintColor"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "unselectedItemTintColor"]
+- ["Ps26_ExpressibleByColorLiteral", "init"]
+- ["Ps26_ExpressibleByColorLiteral", "lightGray"]
+- ["Ps26_ExpressibleByColorLiteral", "white"]
+- ["Ps9_Hashable", "UIColor"]
+- !private ["Ps9_Hashable", "barTintColor"]
+- ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "lightContent"]
+- ["Ps9_Hashable", "lightGray"]
+- !private ["Ps9_Hashable", "selectedColor"]
+- !private ["Ps9_Hashable", "tabBar"]
+- !private ["Ps9_Hashable", "tabBarColor"]
+- !private ["Ps9_Hashable", "tintColor"]
+- !private ["Ps9_Hashable", "unselectedColor"]
+- !private ["Ps9_Hashable", "unselectedItemTintColor"]
+- !private ["Ps9_Hashable", "viewWillAppear"]
+- ["Ps9_Hashable", "white"]
+- ["Ps9_Hashable", ""]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "PSo15CALayerDelegate"
+- "Ps7CVarArg"
+- "Ps28CustomDebugStringConvertible"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- "Ps8Hashable"
+- "C9GeoKeeper18MyTabBarController"
+- "PSo8NSCoding"
+- "PSo9NSCopying"
+- "PSo26NSExtensionRequestHandling"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo14NSSecureCoding"
+- !private "Ps16RawRepresentable"
+- !private "PSo29UIAccessibilityIdentification"
+- !private "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- "CSo7UIColor"
+- "PSo18UIContentContainer"
+- !private "PSo17UICoordinateSpace"
+- !private "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- !private "PSo11UIFocusItem"
+- "CSo11UIResponder"
+- "PSo30UIResponderStandardEditActions"
+- "PSo16UIStateRestoring"
+- !private "OSC16UIStatusBarStyle"
+- !private "CSo8UITabBar"
+- "CSo18UITabBarController"
+- "PSo16UITabBarDelegate"
+- "PSo18UITraitEnvironment"
+- !private "CSo6UIView"
+- "CSo16UIViewController"
+- !private "Ps37_DefaultCustomPlaygroundQuickLookable"
+- "Ps26_ExpressibleByColorLiteral"
+- "Ps9_Hashable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/AudioToolbox.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+interface-hash: "b1dc603c8dd65f6bd7477303a09d1afa"

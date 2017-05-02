@@ -1,0 +1,516 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "MyLocation"
+provides-nominal:
+- "C9GeoKeeper10MyLocation"
+provides-member:
+- ["C9GeoKeeper10MyLocation", ""]
+provides-dynamic-lookup:
+- "date"
+- "getAddress"
+- "hasPhoto"
+- "latitude"
+- "locationCategory"
+- "locationDescription"
+- "locationName"
+- "locationPhotoID"
+- "longitude"
+- "photoID"
+- "photoImage"
+- "photoImages"
+- "photoURL"
+- "photosURL"
+- "placemark"
+- "punch"
+- "toMyLocation"
+depends-top-level:
+- !private "!="
+- !private "+="
+- "AssignmentPrecedence"
+- "Bool"
+- "CLPlacemark"
+- "Date"
+- "Double"
+- "Int"
+- "Location"
+- "MyLocation"
+- "NSNumber"
+- "NSObject"
+- "String"
+- "StringLiteralType"
+- "UIImage"
+- "URL"
+- !private "UnicodeScalarType"
+- !private "applicationDocumentsDirectory"
+depends-member:
+- !private ["Ps9AnyObject", "MyLocation"]
+- !private ["Ps9AnyObject", "UIImage"]
+- !private ["Ps9AnyObject", "administrativeArea"]
+- !private ["Ps9AnyObject", "applicationDocumentsDirectory"]
+- !private ["Ps9AnyObject", "category"]
+- !private ["Ps9AnyObject", "date"]
+- !private ["Ps9AnyObject", "getAddress"]
+- ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "intValue"]
+- !private ["Ps9AnyObject", "latitude"]
+- !private ["Ps9AnyObject", "locality"]
+- !private ["Ps9AnyObject", "locationCategory"]
+- !private ["Ps9AnyObject", "locationDescription"]
+- !private ["Ps9AnyObject", "locationName"]
+- !private ["Ps9AnyObject", "locationPhotoID"]
+- !private ["Ps9AnyObject", "longitude"]
+- !private ["Ps9AnyObject", "name"]
+- !private ["Ps9AnyObject", "photoID"]
+- !private ["Ps9AnyObject", "photoURL"]
+- !private ["Ps9AnyObject", "photosURL"]
+- !private ["Ps9AnyObject", "placemark"]
+- !private ["Ps9AnyObject", "postalCode"]
+- !private ["Ps9AnyObject", "punch"]
+- !private ["Ps9AnyObject", "subThoroughfare"]
+- !private ["Ps9AnyObject", "thoroughfare"]
+- ["Ps9AnyObject", ""]
+- !private ["CSo11CLPlacemark", "administrativeArea"]
+- !private ["CSo11CLPlacemark", "locality"]
+- !private ["CSo11CLPlacemark", "postalCode"]
+- !private ["CSo11CLPlacemark", "subThoroughfare"]
+- !private ["CSo11CLPlacemark", "thoroughfare"]
+- !private ["Ps7CVarArg", "MyLocation"]
+- !private ["Ps7CVarArg", "UIImage"]
+- !private ["Ps7CVarArg", "administrativeArea"]
+- !private ["Ps7CVarArg", "applicationDocumentsDirectory"]
+- !private ["Ps7CVarArg", "category"]
+- !private ["Ps7CVarArg", "date"]
+- !private ["Ps7CVarArg", "getAddress"]
+- ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "intValue"]
+- !private ["Ps7CVarArg", "latitude"]
+- !private ["Ps7CVarArg", "locality"]
+- !private ["Ps7CVarArg", "locationCategory"]
+- !private ["Ps7CVarArg", "locationDescription"]
+- !private ["Ps7CVarArg", "locationName"]
+- !private ["Ps7CVarArg", "locationPhotoID"]
+- !private ["Ps7CVarArg", "longitude"]
+- !private ["Ps7CVarArg", "name"]
+- !private ["Ps7CVarArg", "photoID"]
+- !private ["Ps7CVarArg", "photoURL"]
+- !private ["Ps7CVarArg", "photosURL"]
+- !private ["Ps7CVarArg", "placemark"]
+- !private ["Ps7CVarArg", "postalCode"]
+- !private ["Ps7CVarArg", "punch"]
+- !private ["Ps7CVarArg", "subThoroughfare"]
+- !private ["Ps7CVarArg", "thoroughfare"]
+- ["Ps7CVarArg", ""]
+- ["Ps10Comparable", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "MyLocation"]
+- !private ["Ps28CustomDebugStringConvertible", "UIImage"]
+- !private ["Ps28CustomDebugStringConvertible", "administrativeArea"]
+- !private ["Ps28CustomDebugStringConvertible", "appendingPathComponent"]
+- !private ["Ps28CustomDebugStringConvertible", "applicationDocumentsDirectory"]
+- !private ["Ps28CustomDebugStringConvertible", "category"]
+- !private ["Ps28CustomDebugStringConvertible", "date"]
+- !private ["Ps28CustomDebugStringConvertible", "getAddress"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "intValue"]
+- !private ["Ps28CustomDebugStringConvertible", "latitude"]
+- !private ["Ps28CustomDebugStringConvertible", "locality"]
+- !private ["Ps28CustomDebugStringConvertible", "locationCategory"]
+- !private ["Ps28CustomDebugStringConvertible", "locationDescription"]
+- !private ["Ps28CustomDebugStringConvertible", "locationName"]
+- !private ["Ps28CustomDebugStringConvertible", "locationPhotoID"]
+- !private ["Ps28CustomDebugStringConvertible", "longitude"]
+- !private ["Ps28CustomDebugStringConvertible", "name"]
+- !private ["Ps28CustomDebugStringConvertible", "path"]
+- !private ["Ps28CustomDebugStringConvertible", "photoID"]
+- !private ["Ps28CustomDebugStringConvertible", "photoURL"]
+- !private ["Ps28CustomDebugStringConvertible", "photosURL"]
+- !private ["Ps28CustomDebugStringConvertible", "placemark"]
+- !private ["Ps28CustomDebugStringConvertible", "postalCode"]
+- !private ["Ps28CustomDebugStringConvertible", "punch"]
+- !private ["Ps28CustomDebugStringConvertible", "subThoroughfare"]
+- !private ["Ps28CustomDebugStringConvertible", "thoroughfare"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps29CustomPlaygroundQuickLookable", "appendingPathComponent"]
+- ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "path"]
+- ["Ps17CustomReflectable", "init"]
+- !private ["Ps23CustomStringConvertible", "MyLocation"]
+- !private ["Ps23CustomStringConvertible", "UIImage"]
+- !private ["Ps23CustomStringConvertible", "administrativeArea"]
+- !private ["Ps23CustomStringConvertible", "appendingPathComponent"]
+- !private ["Ps23CustomStringConvertible", "applicationDocumentsDirectory"]
+- !private ["Ps23CustomStringConvertible", "category"]
+- !private ["Ps23CustomStringConvertible", "date"]
+- !private ["Ps23CustomStringConvertible", "getAddress"]
+- ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "intValue"]
+- !private ["Ps23CustomStringConvertible", "latitude"]
+- !private ["Ps23CustomStringConvertible", "locality"]
+- !private ["Ps23CustomStringConvertible", "locationCategory"]
+- !private ["Ps23CustomStringConvertible", "locationDescription"]
+- !private ["Ps23CustomStringConvertible", "locationName"]
+- !private ["Ps23CustomStringConvertible", "locationPhotoID"]
+- !private ["Ps23CustomStringConvertible", "longitude"]
+- !private ["Ps23CustomStringConvertible", "name"]
+- !private ["Ps23CustomStringConvertible", "path"]
+- !private ["Ps23CustomStringConvertible", "photoID"]
+- !private ["Ps23CustomStringConvertible", "photoURL"]
+- !private ["Ps23CustomStringConvertible", "photosURL"]
+- !private ["Ps23CustomStringConvertible", "placemark"]
+- !private ["Ps23CustomStringConvertible", "postalCode"]
+- !private ["Ps23CustomStringConvertible", "punch"]
+- !private ["Ps23CustomStringConvertible", "subThoroughfare"]
+- !private ["Ps23CustomStringConvertible", "thoroughfare"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Ps9Equatable", "MyLocation"]
+- !private ["Ps9Equatable", "UIImage"]
+- !private ["Ps9Equatable", "administrativeArea"]
+- !private ["Ps9Equatable", "appendingPathComponent"]
+- !private ["Ps9Equatable", "applicationDocumentsDirectory"]
+- !private ["Ps9Equatable", "category"]
+- !private ["Ps9Equatable", "date"]
+- !private ["Ps9Equatable", "getAddress"]
+- ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "intValue"]
+- !private ["Ps9Equatable", "latitude"]
+- !private ["Ps9Equatable", "locality"]
+- !private ["Ps9Equatable", "locationCategory"]
+- !private ["Ps9Equatable", "locationDescription"]
+- !private ["Ps9Equatable", "locationName"]
+- !private ["Ps9Equatable", "locationPhotoID"]
+- !private ["Ps9Equatable", "longitude"]
+- !private ["Ps9Equatable", "name"]
+- !private ["Ps9Equatable", "path"]
+- !private ["Ps9Equatable", "photoID"]
+- !private ["Ps9Equatable", "photoURL"]
+- !private ["Ps9Equatable", "photosURL"]
+- !private ["Ps9Equatable", "placemark"]
+- !private ["Ps9Equatable", "postalCode"]
+- !private ["Ps9Equatable", "punch"]
+- !private ["Ps9Equatable", "subThoroughfare"]
+- !private ["Ps9Equatable", "thoroughfare"]
+- ["Ps9Equatable", ""]
+- !private ["Ps27ExpressibleByBooleanLiteral", "intValue"]
+- ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps25ExpressibleByFloatLiteral", "intValue"]
+- !private ["Ps27ExpressibleByIntegerLiteral", "intValue"]
+- ["Ps26ExpressibleByStringLiteral", "init"]
+- ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["Ps8Hashable", "MyLocation"]
+- !private ["Ps8Hashable", "UIImage"]
+- !private ["Ps8Hashable", "administrativeArea"]
+- !private ["Ps8Hashable", "appendingPathComponent"]
+- !private ["Ps8Hashable", "applicationDocumentsDirectory"]
+- !private ["Ps8Hashable", "category"]
+- !private ["Ps8Hashable", "date"]
+- !private ["Ps8Hashable", "getAddress"]
+- ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "intValue"]
+- !private ["Ps8Hashable", "latitude"]
+- !private ["Ps8Hashable", "locality"]
+- !private ["Ps8Hashable", "locationCategory"]
+- !private ["Ps8Hashable", "locationDescription"]
+- !private ["Ps8Hashable", "locationName"]
+- !private ["Ps8Hashable", "locationPhotoID"]
+- !private ["Ps8Hashable", "longitude"]
+- !private ["Ps8Hashable", "name"]
+- !private ["Ps8Hashable", "path"]
+- !private ["Ps8Hashable", "photoID"]
+- !private ["Ps8Hashable", "photoURL"]
+- !private ["Ps8Hashable", "photosURL"]
+- !private ["Ps8Hashable", "placemark"]
+- !private ["Ps8Hashable", "postalCode"]
+- !private ["Ps8Hashable", "punch"]
+- !private ["Ps8Hashable", "subThoroughfare"]
+- !private ["Ps8Hashable", "thoroughfare"]
+- ["Ps8Hashable", ""]
+- !private ["C9GeoKeeper8Location", "category"]
+- !private ["C9GeoKeeper8Location", "date"]
+- !private ["C9GeoKeeper8Location", "latitude"]
+- !private ["C9GeoKeeper8Location", "locationDescription"]
+- !private ["C9GeoKeeper8Location", "locationPhotoID"]
+- !private ["C9GeoKeeper8Location", "longitude"]
+- !private ["C9GeoKeeper8Location", "name"]
+- !private ["C9GeoKeeper8Location", "photoID"]
+- !private ["C9GeoKeeper8Location", "placemark"]
+- !private ["C9GeoKeeper8Location", "punch"]
+- ["Ps25LosslessStringConvertible", "init"]
+- !private ["PSo12MKAnnotation", "category"]
+- !private ["PSo12MKAnnotation", "date"]
+- !private ["PSo12MKAnnotation", "latitude"]
+- !private ["PSo12MKAnnotation", "locationDescription"]
+- !private ["PSo12MKAnnotation", "locationPhotoID"]
+- !private ["PSo12MKAnnotation", "longitude"]
+- !private ["PSo12MKAnnotation", "name"]
+- !private ["PSo12MKAnnotation", "photoID"]
+- !private ["PSo12MKAnnotation", "placemark"]
+- !private ["PSo12MKAnnotation", "punch"]
+- ["Ps10MirrorPath", "init"]
+- ["C9GeoKeeper10MyLocation", "Bool"]
+- ["C9GeoKeeper10MyLocation", "CLPlacemark"]
+- ["C9GeoKeeper10MyLocation", "Date"]
+- ["C9GeoKeeper10MyLocation", "Double"]
+- ["C9GeoKeeper10MyLocation", "Int"]
+- ["C9GeoKeeper10MyLocation", "Location"]
+- ["C9GeoKeeper10MyLocation", "MyLocation"]
+- ["C9GeoKeeper10MyLocation", "NSNumber"]
+- ["C9GeoKeeper10MyLocation", "String"]
+- ["C9GeoKeeper10MyLocation", "UIImage"]
+- ["C9GeoKeeper10MyLocation", "URL"]
+- !private ["C9GeoKeeper10MyLocation", "applicationDocumentsDirectory"]
+- ["C9GeoKeeper10MyLocation", "date"]
+- ["C9GeoKeeper10MyLocation", "deinit"]
+- ["C9GeoKeeper10MyLocation", "getAddress"]
+- ["C9GeoKeeper10MyLocation", "hasPhoto"]
+- ["C9GeoKeeper10MyLocation", "init"]
+- ["C9GeoKeeper10MyLocation", "latitude"]
+- ["C9GeoKeeper10MyLocation", "locationCategory"]
+- ["C9GeoKeeper10MyLocation", "locationDescription"]
+- ["C9GeoKeeper10MyLocation", "locationName"]
+- ["C9GeoKeeper10MyLocation", "locationPhotoID"]
+- ["C9GeoKeeper10MyLocation", "longitude"]
+- ["C9GeoKeeper10MyLocation", "photoID"]
+- ["C9GeoKeeper10MyLocation", "photoImage"]
+- ["C9GeoKeeper10MyLocation", "photoImages"]
+- ["C9GeoKeeper10MyLocation", "photoURL"]
+- ["C9GeoKeeper10MyLocation", "photosURL"]
+- ["C9GeoKeeper10MyLocation", "placemark"]
+- ["C9GeoKeeper10MyLocation", "punch"]
+- ["C9GeoKeeper10MyLocation", "toMyLocation"]
+- !private ["PSo8NSCoding", "administrativeArea"]
+- ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "intValue"]
+- !private ["PSo8NSCoding", "locality"]
+- !private ["PSo8NSCoding", "postalCode"]
+- !private ["PSo8NSCoding", "subThoroughfare"]
+- !private ["PSo8NSCoding", "thoroughfare"]
+- !private ["PSo9NSCopying", "administrativeArea"]
+- ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "intValue"]
+- !private ["PSo9NSCopying", "locality"]
+- !private ["PSo9NSCopying", "postalCode"]
+- !private ["PSo9NSCopying", "subThoroughfare"]
+- !private ["PSo9NSCopying", "thoroughfare"]
+- !private ["PSo20NSFetchRequestResult", "category"]
+- !private ["PSo20NSFetchRequestResult", "date"]
+- !private ["PSo20NSFetchRequestResult", "intValue"]
+- !private ["PSo20NSFetchRequestResult", "latitude"]
+- !private ["PSo20NSFetchRequestResult", "locationDescription"]
+- !private ["PSo20NSFetchRequestResult", "locationPhotoID"]
+- !private ["PSo20NSFetchRequestResult", "longitude"]
+- !private ["PSo20NSFetchRequestResult", "name"]
+- !private ["PSo20NSFetchRequestResult", "photoID"]
+- !private ["PSo20NSFetchRequestResult", "placemark"]
+- !private ["PSo20NSFetchRequestResult", "punch"]
+- !private ["CSo15NSManagedObject", "category"]
+- !private ["CSo15NSManagedObject", "date"]
+- !private ["CSo15NSManagedObject", "latitude"]
+- !private ["CSo15NSManagedObject", "locationDescription"]
+- !private ["CSo15NSManagedObject", "locationPhotoID"]
+- !private ["CSo15NSManagedObject", "longitude"]
+- !private ["CSo15NSManagedObject", "name"]
+- !private ["CSo15NSManagedObject", "photoID"]
+- !private ["CSo15NSManagedObject", "placemark"]
+- !private ["CSo15NSManagedObject", "punch"]
+- ["PSo16NSMutableCopying", "init"]
+- !private ["CSo8NSNumber", "intValue"]
+- ["CSo8NSObject", "Bool"]
+- ["CSo8NSObject", "CLPlacemark"]
+- ["CSo8NSObject", "Date"]
+- ["CSo8NSObject", "Double"]
+- ["CSo8NSObject", "Int"]
+- ["CSo8NSObject", "Location"]
+- ["CSo8NSObject", "MyLocation"]
+- ["CSo8NSObject", "NSNumber"]
+- ["CSo8NSObject", "String"]
+- ["CSo8NSObject", "UIImage"]
+- ["CSo8NSObject", "URL"]
+- !private ["CSo8NSObject", "administrativeArea"]
+- !private ["CSo8NSObject", "applicationDocumentsDirectory"]
+- !private ["CSo8NSObject", "category"]
+- ["CSo8NSObject", "date"]
+- ["CSo8NSObject", "getAddress"]
+- ["CSo8NSObject", "hasPhoto"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "intValue"]
+- ["CSo8NSObject", "latitude"]
+- !private ["CSo8NSObject", "locality"]
+- ["CSo8NSObject", "locationCategory"]
+- ["CSo8NSObject", "locationDescription"]
+- ["CSo8NSObject", "locationName"]
+- ["CSo8NSObject", "locationPhotoID"]
+- ["CSo8NSObject", "longitude"]
+- !private ["CSo8NSObject", "name"]
+- ["CSo8NSObject", "photoID"]
+- ["CSo8NSObject", "photoImage"]
+- ["CSo8NSObject", "photoImages"]
+- ["CSo8NSObject", "photoURL"]
+- ["CSo8NSObject", "photosURL"]
+- ["CSo8NSObject", "placemark"]
+- !private ["CSo8NSObject", "postalCode"]
+- ["CSo8NSObject", "punch"]
+- !private ["CSo8NSObject", "subThoroughfare"]
+- !private ["CSo8NSObject", "thoroughfare"]
+- ["CSo8NSObject", "toMyLocation"]
+- ["CSo8NSObject", ""]
+- !private ["PSo16NSObjectProtocol", "MyLocation"]
+- !private ["PSo16NSObjectProtocol", "UIImage"]
+- !private ["PSo16NSObjectProtocol", "administrativeArea"]
+- !private ["PSo16NSObjectProtocol", "applicationDocumentsDirectory"]
+- !private ["PSo16NSObjectProtocol", "category"]
+- !private ["PSo16NSObjectProtocol", "date"]
+- !private ["PSo16NSObjectProtocol", "getAddress"]
+- ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "intValue"]
+- !private ["PSo16NSObjectProtocol", "latitude"]
+- !private ["PSo16NSObjectProtocol", "locality"]
+- !private ["PSo16NSObjectProtocol", "locationCategory"]
+- !private ["PSo16NSObjectProtocol", "locationDescription"]
+- !private ["PSo16NSObjectProtocol", "locationName"]
+- !private ["PSo16NSObjectProtocol", "locationPhotoID"]
+- !private ["PSo16NSObjectProtocol", "longitude"]
+- !private ["PSo16NSObjectProtocol", "name"]
+- !private ["PSo16NSObjectProtocol", "photoID"]
+- !private ["PSo16NSObjectProtocol", "photoURL"]
+- !private ["PSo16NSObjectProtocol", "photosURL"]
+- !private ["PSo16NSObjectProtocol", "placemark"]
+- !private ["PSo16NSObjectProtocol", "postalCode"]
+- !private ["PSo16NSObjectProtocol", "punch"]
+- !private ["PSo16NSObjectProtocol", "subThoroughfare"]
+- !private ["PSo16NSObjectProtocol", "thoroughfare"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "administrativeArea"]
+- ["PSo14NSSecureCoding", "init"]
+- !private ["PSo14NSSecureCoding", "intValue"]
+- !private ["PSo14NSSecureCoding", "locality"]
+- !private ["PSo14NSSecureCoding", "postalCode"]
+- !private ["PSo14NSSecureCoding", "subThoroughfare"]
+- !private ["PSo14NSSecureCoding", "thoroughfare"]
+- ["CSo8NSString", "init"]
+- !private ["CSo7NSValue", "intValue"]
+- !private ["P10Foundation20ReferenceConvertible", "appendingPathComponent"]
+- !private ["P10Foundation20ReferenceConvertible", "path"]
+- ["SS", "init"]
+- ["Ps16TextOutputStream", "init"]
+- ["Ps20TextOutputStreamable", "init"]
+- !private ["PSo29UIAccessibilityIdentification", "init"]
+- !private ["CSo7UIImage", "init"]
+- !private ["V10Foundation3URL", "appendingPathComponent"]
+- !private ["V10Foundation3URL", "path"]
+- ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps34_ExpressibleByFileReferenceLiteral", "appendingPathComponent"]
+- !private ["Ps34_ExpressibleByFileReferenceLiteral", "path"]
+- !private ["Ps26_ExpressibleByImageLiteral", "init"]
+- ["Ps33_ExpressibleByStringInterpolation", "init"]
+- ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- !private ["Ps35_HasCustomAnyHashableRepresentation", "intValue"]
+- !private ["Ps9_Hashable", "MyLocation"]
+- !private ["Ps9_Hashable", "UIImage"]
+- !private ["Ps9_Hashable", "administrativeArea"]
+- !private ["Ps9_Hashable", "appendingPathComponent"]
+- !private ["Ps9_Hashable", "applicationDocumentsDirectory"]
+- !private ["Ps9_Hashable", "category"]
+- !private ["Ps9_Hashable", "date"]
+- !private ["Ps9_Hashable", "getAddress"]
+- ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "intValue"]
+- !private ["Ps9_Hashable", "latitude"]
+- !private ["Ps9_Hashable", "locality"]
+- !private ["Ps9_Hashable", "locationCategory"]
+- !private ["Ps9_Hashable", "locationDescription"]
+- !private ["Ps9_Hashable", "locationName"]
+- !private ["Ps9_Hashable", "locationPhotoID"]
+- !private ["Ps9_Hashable", "longitude"]
+- !private ["Ps9_Hashable", "name"]
+- !private ["Ps9_Hashable", "path"]
+- !private ["Ps9_Hashable", "photoID"]
+- !private ["Ps9_Hashable", "photoURL"]
+- !private ["Ps9_Hashable", "photosURL"]
+- !private ["Ps9_Hashable", "placemark"]
+- !private ["Ps9_Hashable", "postalCode"]
+- !private ["Ps9_Hashable", "punch"]
+- !private ["Ps9_Hashable", "subThoroughfare"]
+- !private ["Ps9_Hashable", "thoroughfare"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps21_ObjectiveCBridgeable", "appendingPathComponent"]
+- ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "path"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "CSo11CLPlacemark"
+- "Ps7CVarArg"
+- "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- !private "Ps27ExpressibleByBooleanLiteral"
+- "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps25ExpressibleByFloatLiteral"
+- !private "Ps27ExpressibleByIntegerLiteral"
+- "Ps26ExpressibleByStringLiteral"
+- "Ps33ExpressibleByUnicodeScalarLiteral"
+- "Ps8Hashable"
+- !private "C9GeoKeeper8Location"
+- "Ps25LosslessStringConvertible"
+- !private "PSo12MKAnnotation"
+- "Ps10MirrorPath"
+- "C9GeoKeeper10MyLocation"
+- "PSo8NSCoding"
+- "PSo9NSCopying"
+- !private "PSo20NSFetchRequestResult"
+- !private "CSo15NSManagedObject"
+- "PSo16NSMutableCopying"
+- !private "CSo8NSNumber"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo14NSSecureCoding"
+- "CSo8NSString"
+- !private "CSo7NSValue"
+- !private "P10Foundation20ReferenceConvertible"
+- "SS"
+- "Ps16TextOutputStream"
+- "Ps20TextOutputStreamable"
+- !private "PSo29UIAccessibilityIdentification"
+- !private "CSo7UIImage"
+- !private "V10Foundation3URL"
+- "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- "Ps34_ExpressibleByBuiltinStringLiteral"
+- "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- !private "Ps34_ExpressibleByFileReferenceLiteral"
+- !private "Ps26_ExpressibleByImageLiteral"
+- "Ps33_ExpressibleByStringInterpolation"
+- "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/AudioToolbox.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+interface-hash: "bb80c77ed9472303c042eca54c3ea20d"

@@ -1,0 +1,199 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["C9GeoKeeper8Location", ""]
+- ["C9GeoKeeper8Location", "fetchRequest"]
+- ["C9GeoKeeper8Location", "category"]
+- ["C9GeoKeeper8Location", "date"]
+- ["C9GeoKeeper8Location", "latitude"]
+- ["C9GeoKeeper8Location", "locationDescription"]
+- ["C9GeoKeeper8Location", "longitude"]
+- ["C9GeoKeeper8Location", "photoID"]
+- ["C9GeoKeeper8Location", "locationPhotoID"]
+- ["C9GeoKeeper8Location", "placemark"]
+- ["C9GeoKeeper8Location", "punch"]
+- ["C9GeoKeeper8Location", "name"]
+provides-dynamic-lookup:
+- "category"
+- "date"
+- "latitude"
+- "locationDescription"
+- "locationPhotoID"
+- "longitude"
+- "name"
+- "photoID"
+- "placemark"
+- "punch"
+depends-top-level:
+- "CLPlacemark"
+- "Date"
+- "Double"
+- "Location"
+- "NSFetchRequest"
+- "NSNumber"
+- "String"
+- !private "StringLiteralType"
+depends-member:
+- !private ["Ps9AnyObject", "NSFetchRequest"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps7CVarArg", "NSFetchRequest"]
+- !private ["Ps7CVarArg", "init"]
+- !private ["Ps10Comparable", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "NSFetchRequest"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps23CustomStringConvertible", "NSFetchRequest"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps9Equatable", "NSFetchRequest"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["Ps8Hashable", "NSFetchRequest"]
+- !private ["Ps8Hashable", "init"]
+- ["C9GeoKeeper8Location", "CLPlacemark"]
+- ["C9GeoKeeper8Location", "Date"]
+- ["C9GeoKeeper8Location", "Double"]
+- ["C9GeoKeeper8Location", "Location"]
+- ["C9GeoKeeper8Location", "NSFetchRequest"]
+- ["C9GeoKeeper8Location", "NSNumber"]
+- ["C9GeoKeeper8Location", "String"]
+- ["C9GeoKeeper8Location", "category"]
+- ["C9GeoKeeper8Location", "date"]
+- ["C9GeoKeeper8Location", "deinit"]
+- ["C9GeoKeeper8Location", "fetchRequest"]
+- ["C9GeoKeeper8Location", "latitude"]
+- ["C9GeoKeeper8Location", "locationDescription"]
+- ["C9GeoKeeper8Location", "locationPhotoID"]
+- ["C9GeoKeeper8Location", "longitude"]
+- ["C9GeoKeeper8Location", "name"]
+- ["C9GeoKeeper8Location", "photoID"]
+- ["C9GeoKeeper8Location", "placemark"]
+- ["C9GeoKeeper8Location", "punch"]
+- !private ["Ps25LosslessStringConvertible", "init"]
+- !private ["PSo12MKAnnotation", "NSFetchRequest"]
+- !private ["Ps10MirrorPath", "init"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo9NSCopying", "init"]
+- !private ["CSo14NSFetchRequest", "init"]
+- !private ["PSo20NSFetchRequestResult", "NSFetchRequest"]
+- ["CSo15NSManagedObject", "CLPlacemark"]
+- ["CSo15NSManagedObject", "Date"]
+- ["CSo15NSManagedObject", "Double"]
+- ["CSo15NSManagedObject", "Location"]
+- ["CSo15NSManagedObject", "NSFetchRequest"]
+- ["CSo15NSManagedObject", "NSNumber"]
+- ["CSo15NSManagedObject", "String"]
+- ["CSo15NSManagedObject", "category"]
+- ["CSo15NSManagedObject", "date"]
+- ["CSo15NSManagedObject", "fetchRequest"]
+- ["CSo15NSManagedObject", "latitude"]
+- ["CSo15NSManagedObject", "locationDescription"]
+- ["CSo15NSManagedObject", "locationPhotoID"]
+- ["CSo15NSManagedObject", "longitude"]
+- ["CSo15NSManagedObject", "name"]
+- ["CSo15NSManagedObject", "photoID"]
+- ["CSo15NSManagedObject", "placemark"]
+- ["CSo15NSManagedObject", "punch"]
+- !private ["PSo16NSMutableCopying", "init"]
+- ["CSo8NSObject", "CLPlacemark"]
+- ["CSo8NSObject", "Date"]
+- ["CSo8NSObject", "Double"]
+- ["CSo8NSObject", "Location"]
+- ["CSo8NSObject", "NSFetchRequest"]
+- ["CSo8NSObject", "NSNumber"]
+- ["CSo8NSObject", "String"]
+- ["CSo8NSObject", "category"]
+- ["CSo8NSObject", "date"]
+- ["CSo8NSObject", "fetchRequest"]
+- ["CSo8NSObject", "latitude"]
+- ["CSo8NSObject", "locationDescription"]
+- ["CSo8NSObject", "locationPhotoID"]
+- ["CSo8NSObject", "longitude"]
+- ["CSo8NSObject", "name"]
+- ["CSo8NSObject", "photoID"]
+- ["CSo8NSObject", "placemark"]
+- ["CSo8NSObject", "punch"]
+- !private ["PSo16NSObjectProtocol", "NSFetchRequest"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["CSo8NSString", "init"]
+- !private ["SS", "init"]
+- !private ["Ps16TextOutputStream", "init"]
+- !private ["Ps20TextOutputStreamable", "init"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps33_ExpressibleByStringInterpolation", "init"]
+- !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- !private ["Ps9_Hashable", "NSFetchRequest"]
+- !private ["Ps9_Hashable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "init"]
+depends-nominal:
+- !private "Ps9AnyObject"
+- !private "Ps7CVarArg"
+- !private "Ps10Comparable"
+- !private "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- !private "Ps17CustomReflectable"
+- !private "Ps23CustomStringConvertible"
+- !private "Ps9Equatable"
+- !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps26ExpressibleByStringLiteral"
+- !private "Ps33ExpressibleByUnicodeScalarLiteral"
+- !private "Ps8Hashable"
+- "C9GeoKeeper8Location"
+- !private "Ps25LosslessStringConvertible"
+- !private "PSo12MKAnnotation"
+- !private "Ps10MirrorPath"
+- !private "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- !private "CSo14NSFetchRequest"
+- !private "PSo20NSFetchRequestResult"
+- "CSo15NSManagedObject"
+- !private "PSo16NSMutableCopying"
+- "CSo8NSObject"
+- !private "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "CSo8NSString"
+- !private "SS"
+- !private "Ps16TextOutputStream"
+- !private "Ps20TextOutputStreamable"
+- !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps34_ExpressibleByBuiltinStringLiteral"
+- !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- !private "Ps33_ExpressibleByStringInterpolation"
+- !private "Ps35_HasCustomAnyHashableRepresentation"
+- !private "Ps9_Hashable"
+- !private "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/AudioToolbox.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+interface-hash: "de91e5992d072465536690927ddc67d2"

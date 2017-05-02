@@ -1,0 +1,298 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "baseColor0"
+- "baseColor1"
+- "baseColor2"
+- "baseColor3"
+- "baseColor4"
+- "baseColor"
+- "secondColor"
+- "grayColor"
+- "disableColor"
+- "red"
+- "blue"
+- "purple"
+- "green"
+- "yellow"
+- "orange"
+- "cyan"
+- "kScreenWidth"
+- "kScreenHeight"
+- "locationDefaultImage"
+- "colors"
+- "icons"
+provides-nominal:
+provides-member:
+provides-dynamic-lookup:
+depends-top-level:
+- "/"
+- "Array"
+- "StringLiteralType"
+- "UIColor"
+- "UIImage"
+- "UIScreen"
+- "baseColor"
+- "baseColor0"
+- "baseColor1"
+- "baseColor2"
+- "baseColor3"
+- "baseColor4"
+- "blue"
+- "colors"
+- "cyan"
+- "disableColor"
+- "grayColor"
+- "green"
+- "icons"
+- "kScreenHeight"
+- "kScreenWidth"
+- "locationDefaultImage"
+- "orange"
+- "purple"
+- "red"
+- "secondColor"
+- "yellow"
+depends-member:
+- ["Ps9AnyObject", "blue"]
+- ["Ps9AnyObject", "bounds"]
+- ["Ps9AnyObject", "cyan"]
+- ["Ps9AnyObject", "green"]
+- ["Ps9AnyObject", "init"]
+- ["Ps9AnyObject", "main"]
+- ["Ps9AnyObject", "orange"]
+- ["Ps9AnyObject", "purple"]
+- ["Ps9AnyObject", "red"]
+- ["Ps9AnyObject", "yellow"]
+- ["VSC6CGRect", "size"]
+- ["VSC6CGSize", "height"]
+- ["VSC6CGSize", "width"]
+- ["Ps7CVarArg", "blue"]
+- ["Ps7CVarArg", "bounds"]
+- ["Ps7CVarArg", "cyan"]
+- ["Ps7CVarArg", "green"]
+- ["Ps7CVarArg", "init"]
+- ["Ps7CVarArg", "main"]
+- ["Ps7CVarArg", "orange"]
+- ["Ps7CVarArg", "purple"]
+- ["Ps7CVarArg", "red"]
+- ["Ps7CVarArg", "yellow"]
+- ["Ps10Comparable", "init"]
+- ["Ps28CustomDebugStringConvertible", "blue"]
+- ["Ps28CustomDebugStringConvertible", "bounds"]
+- ["Ps28CustomDebugStringConvertible", "cyan"]
+- ["Ps28CustomDebugStringConvertible", "green"]
+- ["Ps28CustomDebugStringConvertible", "height"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- ["Ps28CustomDebugStringConvertible", "main"]
+- ["Ps28CustomDebugStringConvertible", "orange"]
+- ["Ps28CustomDebugStringConvertible", "purple"]
+- ["Ps28CustomDebugStringConvertible", "red"]
+- ["Ps28CustomDebugStringConvertible", "size"]
+- ["Ps28CustomDebugStringConvertible", "width"]
+- ["Ps28CustomDebugStringConvertible", "yellow"]
+- ["Ps29CustomPlaygroundQuickLookable", "height"]
+- ["Ps29CustomPlaygroundQuickLookable", "init"]
+- ["Ps29CustomPlaygroundQuickLookable", "size"]
+- ["Ps29CustomPlaygroundQuickLookable", "width"]
+- ["Ps17CustomReflectable", "height"]
+- ["Ps17CustomReflectable", "init"]
+- ["Ps17CustomReflectable", "size"]
+- ["Ps17CustomReflectable", "width"]
+- ["Ps23CustomStringConvertible", "blue"]
+- ["Ps23CustomStringConvertible", "bounds"]
+- ["Ps23CustomStringConvertible", "cyan"]
+- ["Ps23CustomStringConvertible", "green"]
+- ["Ps23CustomStringConvertible", "init"]
+- ["Ps23CustomStringConvertible", "main"]
+- ["Ps23CustomStringConvertible", "orange"]
+- ["Ps23CustomStringConvertible", "purple"]
+- ["Ps23CustomStringConvertible", "red"]
+- ["Ps23CustomStringConvertible", "yellow"]
+- ["Ps9Equatable", "blue"]
+- ["Ps9Equatable", "bounds"]
+- ["Ps9Equatable", "cyan"]
+- ["Ps9Equatable", "green"]
+- ["Ps9Equatable", "height"]
+- ["Ps9Equatable", "init"]
+- ["Ps9Equatable", "main"]
+- ["Ps9Equatable", "orange"]
+- ["Ps9Equatable", "purple"]
+- ["Ps9Equatable", "red"]
+- ["Ps9Equatable", "size"]
+- ["Ps9Equatable", "width"]
+- ["Ps9Equatable", "yellow"]
+- ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- ["Ps26ExpressibleByStringLiteral", "init"]
+- ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- ["Ps8Hashable", "blue"]
+- ["Ps8Hashable", "bounds"]
+- ["Ps8Hashable", "cyan"]
+- ["Ps8Hashable", "green"]
+- ["Ps8Hashable", "init"]
+- ["Ps8Hashable", "main"]
+- ["Ps8Hashable", "orange"]
+- ["Ps8Hashable", "purple"]
+- ["Ps8Hashable", "red"]
+- ["Ps8Hashable", "yellow"]
+- ["Ps25LosslessStringConvertible", "init"]
+- ["Ps10MirrorPath", "init"]
+- ["PSo8NSCoding", "blue"]
+- ["PSo8NSCoding", "cyan"]
+- ["PSo8NSCoding", "green"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "orange"]
+- ["PSo8NSCoding", "purple"]
+- ["PSo8NSCoding", "red"]
+- ["PSo8NSCoding", "yellow"]
+- ["PSo9NSCopying", "blue"]
+- ["PSo9NSCopying", "cyan"]
+- ["PSo9NSCopying", "green"]
+- ["PSo9NSCopying", "init"]
+- ["PSo9NSCopying", "orange"]
+- ["PSo9NSCopying", "purple"]
+- ["PSo9NSCopying", "red"]
+- ["PSo9NSCopying", "yellow"]
+- ["PSo16NSMutableCopying", "init"]
+- ["CSo8NSObject", "blue"]
+- ["CSo8NSObject", "bounds"]
+- ["CSo8NSObject", "cyan"]
+- ["CSo8NSObject", "green"]
+- ["CSo8NSObject", "main"]
+- ["CSo8NSObject", "orange"]
+- ["CSo8NSObject", "purple"]
+- ["CSo8NSObject", "red"]
+- ["CSo8NSObject", "yellow"]
+- ["PSo16NSObjectProtocol", "blue"]
+- ["PSo16NSObjectProtocol", "bounds"]
+- ["PSo16NSObjectProtocol", "cyan"]
+- ["PSo16NSObjectProtocol", "green"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "main"]
+- ["PSo16NSObjectProtocol", "orange"]
+- ["PSo16NSObjectProtocol", "purple"]
+- ["PSo16NSObjectProtocol", "red"]
+- ["PSo16NSObjectProtocol", "yellow"]
+- ["PSo14NSSecureCoding", "blue"]
+- ["PSo14NSSecureCoding", "cyan"]
+- ["PSo14NSSecureCoding", "green"]
+- ["PSo14NSSecureCoding", "init"]
+- ["PSo14NSSecureCoding", "orange"]
+- ["PSo14NSSecureCoding", "purple"]
+- ["PSo14NSSecureCoding", "red"]
+- ["PSo14NSSecureCoding", "yellow"]
+- ["CSo8NSString", "init"]
+- ["SS", "init"]
+- ["Ps16TextOutputStream", "init"]
+- ["Ps20TextOutputStreamable", "init"]
+- ["PSo29UIAccessibilityIdentification", "init"]
+- ["CSo7UIColor", "blue"]
+- ["CSo7UIColor", "cyan"]
+- ["CSo7UIColor", "green"]
+- ["CSo7UIColor", "init"]
+- ["CSo7UIColor", "orange"]
+- ["CSo7UIColor", "purple"]
+- ["CSo7UIColor", "red"]
+- ["CSo7UIColor", "yellow"]
+- ["CSo7UIImage", "init"]
+- ["CSo8UIScreen", "bounds"]
+- ["CSo8UIScreen", "main"]
+- ["PSo18UITraitEnvironment", "bounds"]
+- ["PSo18UITraitEnvironment", "main"]
+- ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- ["Ps26_ExpressibleByColorLiteral", "blue"]
+- ["Ps26_ExpressibleByColorLiteral", "cyan"]
+- ["Ps26_ExpressibleByColorLiteral", "green"]
+- ["Ps26_ExpressibleByColorLiteral", "init"]
+- ["Ps26_ExpressibleByColorLiteral", "orange"]
+- ["Ps26_ExpressibleByColorLiteral", "purple"]
+- ["Ps26_ExpressibleByColorLiteral", "red"]
+- ["Ps26_ExpressibleByColorLiteral", "yellow"]
+- ["Ps26_ExpressibleByImageLiteral", "init"]
+- ["Ps33_ExpressibleByStringInterpolation", "init"]
+- ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- ["Ps9_Hashable", "blue"]
+- ["Ps9_Hashable", "bounds"]
+- ["Ps9_Hashable", "cyan"]
+- ["Ps9_Hashable", "green"]
+- ["Ps9_Hashable", "init"]
+- ["Ps9_Hashable", "main"]
+- ["Ps9_Hashable", "orange"]
+- ["Ps9_Hashable", "purple"]
+- ["Ps9_Hashable", "red"]
+- ["Ps9_Hashable", "yellow"]
+- ["Ps21_ObjectiveCBridgeable", "height"]
+- ["Ps21_ObjectiveCBridgeable", "init"]
+- ["Ps21_ObjectiveCBridgeable", "size"]
+- ["Ps21_ObjectiveCBridgeable", "width"]
+depends-nominal:
+- "Ps9AnyObject"
+- "VSC6CGRect"
+- "VSC6CGSize"
+- "Ps7CVarArg"
+- "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- "Ps26ExpressibleByStringLiteral"
+- "Ps33ExpressibleByUnicodeScalarLiteral"
+- "Ps8Hashable"
+- "Ps25LosslessStringConvertible"
+- "Ps10MirrorPath"
+- "PSo8NSCoding"
+- "PSo9NSCopying"
+- "PSo16NSMutableCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo14NSSecureCoding"
+- "CSo8NSString"
+- "SS"
+- "Ps16TextOutputStream"
+- "Ps20TextOutputStreamable"
+- "PSo29UIAccessibilityIdentification"
+- "CSo7UIColor"
+- "CSo7UIImage"
+- "CSo8UIScreen"
+- "PSo18UITraitEnvironment"
+- "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- "Ps34_ExpressibleByBuiltinStringLiteral"
+- "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- "Ps26_ExpressibleByColorLiteral"
+- "Ps26_ExpressibleByImageLiteral"
+- "Ps33_ExpressibleByStringInterpolation"
+- "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreText.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/AudioToolbox.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+interface-hash: "c5e9eb9f521f5a791c5df885465eca4a"
