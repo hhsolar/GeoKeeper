@@ -14,7 +14,6 @@
 		185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */; };
 		185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */; };
 		185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */; };
-		187404AF1EB8167100D4578C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187404AE1EB8167100D4578C /* Assets.xcassets */; };
 		18DD5D811EB2D9C700DD40BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18DD5D7F1EB2D9C700DD40BC /* Main.storyboard */; };
 		18EEC0D01E983EC60096A52A /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEC0CF1E983EC60096A52A /* MyLocation.swift */; };
 		18F08FFB1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F08FFA1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift */; };
@@ -253,7 +252,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = 204;
 				TargetAttributes = {
 					185F5C361E679C5F004E73B7 = {
@@ -290,7 +289,6 @@
 				1FA2AC311EA9A1DD000BACB0 /* Thunder.caf in Resources */,
 				1801FB7B1E7BA05600705F92 /* Assets.xcassets in Resources */,
 				185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */,
-				187404AF1EB8167100D4578C /* Assets.xcassets in Resources */,
 				1FA2AC2F1EA9A1D2000BACB0 /* Rain.caf in Resources */,
 				1FA2AC2D1EA9A176000BACB0 /* Bird.caf in Resources */,
 			);
