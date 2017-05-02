@@ -56,15 +56,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } catch {
             fatalCoreDataError(error)
         }
-//        for locationRecord in locations {
-//            if let placemarkRecord = locationRecord.placemark {
-//                if let placemark = forPassLocation.placemark {
-//                    if string(from: placemark) == string(from: placemarkRecord) {
-//                        cityName.text = locationRecord.name
-//                    }
-//                }
-//            }
-//        }
         
         if let location = location {
             for locationRecord in locations {

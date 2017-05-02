@@ -43,20 +43,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if launchBefore == false {
             UserDefaults.standard.set("Default", forKey: "Portrait")
             UserDefaults.standard.set(true, forKey: "launchBefore")
-            
-            let defaultCategories = ["No Category", "Restaurant", "Shop", "Moive"]
-            let defaultColors = ["red", "blue", "purple", "orange"]
-            let defaultId = [0, 1, 2, 3]
-            let defaultIconNames = ["No Icon", "Restaurant", "Shop", "Moive"]
-            let defaultCellColor = ["baseColor0","baseColor1","baseColor2","baseColor2","baseColor4"]
+        
             let entity = NSEntityDescription.entity(forEntityName: "Category", in: managedObjectContext)!
             for i in 0..<4 {
                 let categoryObject = NSManagedObject(entity: entity, insertInto: managedObjectContext)
-                categoryObject.setValue(defaultCategories[i], forKey: "category")
-                categoryObject.setValue(defaultColors[i], forKey: "color")
-                categoryObject.setValue(defaultIconNames[i], forKey: "iconName")
-                categoryObject.setValue(defaultId[i], forKey: "id")
-                categoryObject.setValue(defaultCellColor[i], forKey: "cellColor")
+                categoryObject.setValue(icons[i], forKey: "category")
+                categoryObject.setValue(colors[i], forKey: "color")
+                categoryObject.setValue(icons[i], forKey: "iconName")
+                categoryObject.setValue(i, forKey: "id")
             }
             saveToCoreData(managedObjectContext)
         }
