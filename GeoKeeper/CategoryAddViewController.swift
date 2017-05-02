@@ -226,6 +226,7 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! MyIconCollectionCell
             let iconName = icons[indexPath.row]
             cell.iconImage.image = UIImage(named: iconName)
+            
             cell.backgroundColor = UIColor.white
             if selectedIconIndexPath != nil {
                if selectedIconIndexPath == indexPath {

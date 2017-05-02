@@ -300,9 +300,10 @@ class LocationDetailViewController: UIViewController {
         photoCollectionView.collectionViewLayout = layout
         layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
+        
         let itemHeight: CGFloat = photoCollectionView.frame.height - 8 * 2
         layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
-        layout.minimumLineSpacing = 8
+//        layout.minimumLineSpacing = 8
         
         layout.scrollDirection = .horizontal
         photoCollectionView.showsHorizontalScrollIndicator = false
