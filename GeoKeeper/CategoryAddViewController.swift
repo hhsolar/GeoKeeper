@@ -181,19 +181,19 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             cell.backgroundColor = UIColor.white
             switch indexPath.row {
             case 0:
-                cell.colorImageView.image = UIImage(named: "red_unchoose")
+                cell.colorImageView.image = UIImage(named: "brown_unchecked")
             case 1:
-                cell.colorImageView.image = UIImage(named: "blue_unchoose")
+                cell.colorImageView.image = UIImage(named: "darkgreen_unchecked")
             case 2:
-                cell.colorImageView.image = UIImage(named: "purple_unchoose")
+                cell.colorImageView.image = UIImage(named: "darkpurple_unchecked")
             case 3:
-                cell.colorImageView.image = UIImage(named: "green_unchoose")
+                cell.colorImageView.image = UIImage(named: "green_unchecked")
             case 4:
-                cell.colorImageView.image = UIImage(named: "yellow_unchoose")
+                cell.colorImageView.image = UIImage(named: "pink_unchecked")
             case 5:
-                cell.colorImageView.image = UIImage(named: "orange_unchoose")
+                cell.colorImageView.image = UIImage(named: "purple_unchecked")
             case 6:
-                cell.colorImageView.image = UIImage(named: "cyan_unchoose")
+                cell.colorImageView.image = UIImage(named: "yellow_unchecked")
             default:
                 print("This should not be called")
             }
@@ -202,19 +202,19 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
                 if selectedColorIndexPath == indexPath {
                     switch indexPath.row {
                     case 0:
-                        cell.colorImageView.image = UIImage(named: "red_choose")
+                        cell.colorImageView.image = UIImage(named: "brown_checked")
                     case 1:
-                        cell.colorImageView.image = UIImage(named: "blue_choose")
+                        cell.colorImageView.image = UIImage(named: "darkgreen_checked")
                     case 2:
-                        cell.colorImageView.image = UIImage(named: "purple_choose")
+                        cell.colorImageView.image = UIImage(named: "darkpurple_checked")
                     case 3:
-                        cell.colorImageView.image = UIImage(named: "green_choose")
+                        cell.colorImageView.image = UIImage(named: "green_checked")
                     case 4:
-                        cell.colorImageView.image = UIImage(named: "yellow_choose")
+                        cell.colorImageView.image = UIImage(named: "pink_checked")
                     case 5:
-                        cell.colorImageView.image = UIImage(named: "orange_choose")
+                        cell.colorImageView.image = UIImage(named: "purple_checked")
                     case 6:
-                        cell.colorImageView.image = UIImage(named: "cyan_choose")
+                        cell.colorImageView.image = UIImage(named: "yellow_checked")
                     default:
                         print("This should not be called")
                     }
