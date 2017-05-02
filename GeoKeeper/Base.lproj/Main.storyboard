@@ -608,29 +608,29 @@
                                         <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="201" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y7s-sg-Ify">
-                                                    <rect key="frame" x="50" y="35" width="100" height="100"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="ZM1-9D-3YR"/>
-                                                        <constraint firstAttribute="width" constant="100" id="rwt-Mj-Hc1"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label 信息" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4P-V9-Jzl">
                                                     <rect key="frame" x="0.0" y="172" width="200" height="20"/>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y7s-sg-Ify">
+                                                    <rect key="frame" x="55" y="41" width="90" height="90"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="90" id="ZM1-9D-3YR"/>
+                                                        <constraint firstAttribute="width" constant="90" id="rwt-Mj-Hc1"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="Y7s-sg-Ify" firstAttribute="centerX" secondItem="qYX-wF-7UJ" secondAttribute="centerX" id="Bxl-No-58v"/>
                                             <constraint firstAttribute="trailing" secondItem="T4P-V9-Jzl" secondAttribute="trailing" id="Cd0-2B-5Nn"/>
                                             <constraint firstItem="T4P-V9-Jzl" firstAttribute="leading" secondItem="qYX-wF-7UJ" secondAttribute="leading" id="PoY-Dy-Fli"/>
-                                            <constraint firstItem="Y7s-sg-Ify" firstAttribute="centerY" secondItem="qYX-wF-7UJ" secondAttribute="centerY" constant="-15" id="ZTX-aM-oFT"/>
+                                            <constraint firstItem="Y7s-sg-Ify" firstAttribute="centerY" secondItem="qYX-wF-7UJ" secondAttribute="centerY" constant="-14" id="ZTX-aM-oFT"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="T4P-V9-Jzl" secondAttribute="bottom" id="r3o-Bi-8wd"/>
                                         </constraints>
                                         <size key="customSize" width="200" height="200"/>
@@ -793,10 +793,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZNe-Oc-rId" colorLabel="IBBuiltInLabel-Red">
-                                                    <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                                    <rect key="frame" x="13" y="13" width="25" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="675-J8-gr5"/>
-                                                        <constraint firstAttribute="width" constant="20" id="oH8-VI-3aH"/>
+                                                        <constraint firstAttribute="height" constant="25" id="675-J8-gr5"/>
+                                                        <constraint firstAttribute="width" constant="25" id="oH8-VI-3aH"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
