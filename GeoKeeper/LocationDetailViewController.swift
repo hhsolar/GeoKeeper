@@ -162,10 +162,7 @@ class LocationDetailViewController: UIViewController {
         remarkTextView.textColor = UIColor.black
         remarkTextView.font = UIFont(name: "TrebuchetMS", size: 15)
         remarkTextView.isEditable = false
-//        remarkTextView.layer.cornerRadius = 5
-//        remarkTextView.layer.borderWidth = 1
-//        remarkTextView.layer.borderColor = UIColor.lightGray.cgColor
-//        
+        
         // set weatherImageView
         weatherImageView.image = UIImage(named: w_icon)
         
