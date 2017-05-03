@@ -379,17 +379,13 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         flag = "collectionView"
         if let photoIDs = locationToEdit.photoID {
             if photoIDs.count + imageArray.count >= photoCapacity {
-                addImageButton.setTitle("Capacity Maximum", for: .normal)
-                addImageButton.tintColor = UIColor.lightGray
-                addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
+                disableAddImageButton()
             } else {
                 showPhotoMenu()
             }
         } else {
             if imageArray.count >= photoCapacity {
-                addImageButton.setTitle("Capacity Maximum", for: .normal)
-                addImageButton.tintColor = UIColor.lightGray
-                addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
+                disableAddImageButton()
             } else {
                 showPhotoMenu()
             }
@@ -403,19 +399,21 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             imageArray.append(image)
             if let photoIDs = locationToEdit.photoID {
                 if photoIDs.count + imageArray.count == 2 {
-                    addImageButton.setTitle("Capacity Maximum", for: .normal)
-                    addImageButton.tintColor = UIColor.lightGray
-                    addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
+                    disableAddImageButton()
                 }
             } else {
                 if imageArray.count == 2 {
-                    addImageButton.setTitle("Capacity Maximum", for: .normal)
-                    addImageButton.tintColor = UIColor.lightGray
-                    addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
+                    disableAddImageButton()
                 }
             }
             photoCollection.reloadData()
         }
+    }
+    
+    func disableAddImageButton() {
+        addImageButton.setTitle("Capacity Maximum", for: .normal)
+        addImageButton.tintColor = UIColor.lightGray
+        addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
     }
     
     func string(from placemark: CLPlacemark) -> String {
