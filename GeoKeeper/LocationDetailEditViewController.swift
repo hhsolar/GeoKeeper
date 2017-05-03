@@ -101,7 +101,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let photoIDs = locationToEdit.photoID {
-            if photoIDs.count < 50 {
+            if photoIDs.count < photoCapacity {
                 addImageButton.isEnabled = true
             }
         } else {
@@ -134,7 +134,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         addImageButton.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 16)
         addImageButton.backgroundColor = UIColor.white
         if let photoIDs = locationToEdit.photoID {
-            if photoIDs.count >= 50 {
+            if photoIDs.count >= photoCapacity {
                 addImageButton.isEnabled = false
             }
         }
@@ -377,13 +377,20 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     
     @IBAction func addImage() {
         flag = "collectionView"
-        showPhotoMenu()
         if let photoIDs = locationToEdit.photoID {
-            if photoIDs.count + imageArray.count >= 50 {
-                addImageButton.isEnabled = false
+            if photoIDs.count + imageArray.count >= photoCapacity {
+                addImageButton.setTitle("Capacity Maximum", for: .normal)
+                addImageButton.tintColor = UIColor.lightGray
+                addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
+            } else {
+                showPhotoMenu()
             }
-        } else if imageArray.count >= 50 {
-            addImageButton.isEnabled = false
+        } else if imageArray.count >= photoCapacity {
+            addImageButton.setTitle("Capacity Maximum", for: .normal)
+            addImageButton.tintColor = UIColor.lightGray
+            addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
+        } else {
+            showPhotoMenu()
         }
     }
     
@@ -518,11 +525,14 @@ extension LocationDetailEditViewController: PhotoCellDelegate {
             } else if !photoIDs.isEmpty && forCell.cellIndex >= photoIDs.count {
                 let ind = forCell.cellIndex - photoIDs.count
                 imageArray.remove(at: ind)
+                
             }
         } else {
             imageArray.remove(at: forCell.cellIndex)
         }
-        
+        addImageButton.setTitle("Add Image", for: .normal)
+        addImageButton.tintColor = secondColor
+        addImageButton.setTitleColor(secondColor, for: .normal)
         photoCollection.reloadData()        
     }
 }
