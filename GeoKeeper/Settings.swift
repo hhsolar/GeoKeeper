@@ -35,9 +35,8 @@ let locationDefaultImage = UIImage(named: "location_default")
 
 let colors = ["brown", "darkgreen", "darkpurple", "green", "pink", "purple", "yellow"]
 
-
 let icons = [
-    "No Icon",
+    "No Category",
     "Moive",
     "Shop",
     "Restaurant",

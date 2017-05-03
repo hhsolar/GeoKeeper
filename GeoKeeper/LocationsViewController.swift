@@ -56,10 +56,10 @@ class LocationsViewController: UITableViewController {
             }
         }
         
-        if segue.identifier == "PickCategoryinCategoryView" {
-            let controller = segue.destination as! CategoryPickerViewController
-            controller.selectedCategoryName = "No Category"
-        }
+//        if segue.identifier == "PickCategoryinCategoryView" {
+//            let controller = segue.destination as! CategoryPickerViewController
+//            controller.selectedCategoryName = "No Category"
+//        }
         
     }
     
