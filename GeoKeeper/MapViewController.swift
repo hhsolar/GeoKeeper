@@ -43,13 +43,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         nBar.topItem?.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
         nBar.topItem?.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
         
-        locationLat = (locationManager.location?.coordinate.latitude)!
-        locationLong = (locationManager.location?.coordinate.longitude)!
-        
-        let span = MKCoordinateSpanMake(0.01, 0.01)
-        let center = CLLocationCoordinate2DMake(locationLat, locationLong)
-        let region = MKCoordinateRegionMake(center, span)
-        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+        let authStatus = CLLocationManager.authorizationStatus()
+        if authStatus == .authorizedAlways || authStatus == .authorizedWhenInUse {
+            locationLat = (locationManager.location?.coordinate.latitude)!
+            locationLong = (locationManager.location?.coordinate.longitude)!
+            
+            let span = MKCoordinateSpanMake(0.01, 0.01)
+            let center = CLLocationCoordinate2DMake(locationLat, locationLong)
+            let region = MKCoordinateRegionMake(center, span)
+            mapView.setRegion(mapView.regionThatFits(region), animated: true)
+        }
     }
     
     func configureMap() {
