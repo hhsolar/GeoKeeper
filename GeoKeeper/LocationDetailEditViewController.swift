@@ -384,9 +384,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
                 addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
             } else {
                 showPhotoMenu()
-//                if photoIDs.count + imageArray.count == 2 {
-//                    addImageButton.setTitle("Capacity Maximum", for: .normal)
-//                }
             }
         } else {
             if imageArray.count >= photoCapacity {
@@ -395,11 +392,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
                 addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
             } else {
                 showPhotoMenu()
-//                if imageArray.count == 2 {
-//                    addImageButton.setTitle("Capacity Maximum", for: .normal)
-//                    addImageButton.tintColor = UIColor.lightGray
-//                    addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
-//                }
             }
         }
     }
@@ -409,6 +401,19 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             portraitImageView.image = image
         } else if flag == "collectionView"{
             imageArray.append(image)
+            if let photoIDs = locationToEdit.photoID {
+                if photoIDs.count + imageArray.count == 2 {
+                    addImageButton.setTitle("Capacity Maximum", for: .normal)
+                    addImageButton.tintColor = UIColor.lightGray
+                    addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
+                }
+            } else {
+                if imageArray.count == 2 {
+                    addImageButton.setTitle("Capacity Maximum", for: .normal)
+                    addImageButton.tintColor = UIColor.lightGray
+                    addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
+                }
+            }
             photoCollection.reloadData()
         }
     }

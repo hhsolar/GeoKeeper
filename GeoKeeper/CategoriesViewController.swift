@@ -345,7 +345,7 @@ extension CategoriesViewController {
                 cell.layer.add(anim, forKey: "SpringboardShake")
             
             
-                let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 15, height: 15))
+                let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 20, height: 20))
                 let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
                 deleteButton.addTarget(self, action: #selector(deleteCategoryAlert), for: .touchUpInside)
                 deleteButton.setImage(backgroundImage, for: .normal)
@@ -365,7 +365,7 @@ extension CategoriesViewController {
     }
     
     func deleteCategoryAlert() {
-        let alert = UIAlertController(title: "Please Confirm", message: "If you remove this category, all the data inside will be deleted", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Please Confirm", message: "If you remove this category, all the data inside will be deleted!", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Cancel is pressed")}))
         alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.handleCategoryDeletion()}))
         self.present(alert, animated: true, completion: nil)
