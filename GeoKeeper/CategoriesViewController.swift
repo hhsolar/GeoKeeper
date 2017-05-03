@@ -347,7 +347,7 @@ extension CategoriesViewController {
             
                 let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 15, height: 15))
                 let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
-                deleteButton.addTarget(self, action: #selector(deleteCategory), for: .touchUpInside)
+                deleteButton.addTarget(self, action: #selector(deleteCategoryAlert), for: .touchUpInside)
                 deleteButton.setImage(backgroundImage, for: .normal)
                 cell.addSubview(deleteButton)
         }
@@ -364,21 +364,29 @@ extension CategoriesViewController {
         return cell
     }
     
-    func deleteCategory() {
-        let alert = UIAlertController(title: "Please make sure", message: "If you remove this category, all the inside data will be deleted", preferredStyle: UIAlertControllerStyle.alert)
+    func deleteCategoryAlert() {
+        let alert = UIAlertController(title: "Please Confirm", message: "If you remove this category, all the data inside will be deleted", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in print("Cancel is pressed")}))
-        alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.deleteAtIndexPath()}))
+        alert.addAction(UIAlertAction(title: "Done",  style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in self.handleCategoryDeletion()}))
         self.present(alert, animated: true, completion: nil)
     }
     
-    func deleteAtIndexPath() {
+    func handleCategoryDeletion() {
+        let category = deleteCategory()
+        deletedLocationsOfCategory(category)
+    }
+    
+    func deleteCategory() -> String {
+        var deletedCategory = ""
         if let id = collectionView.indexPathForItem(at: p) {
             let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
             fetchRequest.entity = Category.entity()
             fetchRequest.predicate = NSPredicate(format: "id == %@", id.row as NSNumber)
+            
             do{
                 let toBeDeleteds = try managedObjectContext.fetch(fetchRequest)
                 for toBeDeleted in toBeDeleteds {
+                    deletedCategory = toBeDeleted.category!
                     managedObjectContext.delete(toBeDeleted)
                 }
             } catch {
@@ -390,6 +398,22 @@ extension CategoriesViewController {
                 let category = fetchedResultsController.object(at: indexPath)
                 category.setValue((i - 1) as NSNumber, forKey: "id")
             }
+        }
+        saveToCoreData(managedObjectContext)
+        return deletedCategory
+    }
+    
+    func deletedLocationsOfCategory(_ deletedCategory: String) {
+        let fetchRequest1 = NSFetchRequest<Location>(entityName: "Location")
+        fetchRequest1.entity = Location.entity()
+        fetchRequest1.predicate = NSPredicate(format: "category == %@", deletedCategory)
+        do {
+            let toBeDeletedLocations = try managedObjectContext.fetch(fetchRequest1)
+            for toBeDeletedLocation in toBeDeletedLocations {
+                managedObjectContext.delete(toBeDeletedLocation)
+            }
+        } catch {
+            fatalCoreDataError(error)
         }
         saveToCoreData(managedObjectContext)
     }

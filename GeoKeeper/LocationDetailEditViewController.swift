@@ -384,13 +384,23 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
                 addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
             } else {
                 showPhotoMenu()
+//                if photoIDs.count + imageArray.count == 2 {
+//                    addImageButton.setTitle("Capacity Maximum", for: .normal)
+//                }
             }
-        } else if imageArray.count >= photoCapacity {
-            addImageButton.setTitle("Capacity Maximum", for: .normal)
-            addImageButton.tintColor = UIColor.lightGray
-            addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
         } else {
-            showPhotoMenu()
+            if imageArray.count >= photoCapacity {
+                addImageButton.setTitle("Capacity Maximum", for: .normal)
+                addImageButton.tintColor = UIColor.lightGray
+                addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
+            } else {
+                showPhotoMenu()
+//                if imageArray.count == 2 {
+//                    addImageButton.setTitle("Capacity Maximum", for: .normal)
+//                    addImageButton.tintColor = UIColor.lightGray
+//                    addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
+//                }
+            }
         }
     }
     
