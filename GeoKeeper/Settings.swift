@@ -35,6 +35,7 @@ let locationDefaultImage = UIImage(named: "location_default")
 
 let colors = ["brown", "darkgreen", "darkpurple", "green", "pink", "purple", "yellow"]
 let photoCapacity = 2
+let punchInterval = 3600.0
 
 let icons = [
     "No Category",

@@ -362,7 +362,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } else if distance < 1 {
             let timeInterval = newLocation.timestamp.timeIntervalSince(location!.timestamp)
             
-            if  timeInterval > 10 {
+            if  timeInterval > punchInterval {
                 stopLocationManager()
                 updateLabels()
             }
