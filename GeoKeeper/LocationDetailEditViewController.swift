@@ -487,6 +487,8 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
         cell.awakeFromNib()
         cell.delegate = self
+        cell.cellButton.isHidden = true
+
         cell.cellIndex = indexPath.row
         
         if let photoIDs = locationToEdit.photoID {

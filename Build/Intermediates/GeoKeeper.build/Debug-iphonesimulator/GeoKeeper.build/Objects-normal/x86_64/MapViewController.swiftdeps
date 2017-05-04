@@ -73,6 +73,7 @@ depends-top-level:
 - !private "abs"
 - !private "max"
 - !private "min"
+- !private "||"
 - !private "~="
 depends-member:
 - !private ["Ps9AnyObject", "CLLocationCoordinate2D"]
@@ -101,6 +102,7 @@ depends-member:
 - !private ["Ps9AnyObject", "addTarget"]
 - !private ["Ps9AnyObject", "animatesDrop"]
 - !private ["Ps9AnyObject", "annotation"]
+- !private ["Ps9AnyObject", "authorizationStatus"]
 - !private ["Ps9AnyObject", "barTintColor"]
 - !private ["Ps9AnyObject", "baseColor"]
 - !private ["Ps9AnyObject", "canShowCallout"]
@@ -194,10 +196,13 @@ depends-member:
 - !private ["PSo15CALayerDelegate", "titleTextAttributes"]
 - !private ["PSo15CALayerDelegate", "topItem"]
 - !private ["PSo15CALayerDelegate", "userLocation"]
+- !private ["OSC21CLAuthorizationStatus", "authorizedAlways"]
+- !private ["OSC21CLAuthorizationStatus", "authorizedWhenInUse"]
 - !private ["CSo10CLLocation", "coordinate"]
 - !private ["VSC22CLLocationCoordinate2D", "init"]
 - !private ["VSC22CLLocationCoordinate2D", "latitude"]
 - !private ["VSC22CLLocationCoordinate2D", "longitude"]
+- !private ["CSo17CLLocationManager", "authorizationStatus"]
 - ["CSo17CLLocationManager", "init"]
 - !private ["CSo17CLLocationManager", "location"]
 - !private ["PSo25CLLocationManagerDelegate", "CLLocationCoordinate2D"]
@@ -277,6 +282,7 @@ depends-member:
 - !private ["Ps7CVarArg", "addTarget"]
 - !private ["Ps7CVarArg", "animatesDrop"]
 - !private ["Ps7CVarArg", "annotation"]
+- !private ["Ps7CVarArg", "authorizationStatus"]
 - !private ["Ps7CVarArg", "barTintColor"]
 - !private ["Ps7CVarArg", "baseColor"]
 - !private ["Ps7CVarArg", "canShowCallout"]
@@ -376,6 +382,7 @@ depends-member:
 - !private ["Ps28CustomDebugStringConvertible", "addTarget"]
 - !private ["Ps28CustomDebugStringConvertible", "animatesDrop"]
 - !private ["Ps28CustomDebugStringConvertible", "annotation"]
+- !private ["Ps28CustomDebugStringConvertible", "authorizationStatus"]
 - !private ["Ps28CustomDebugStringConvertible", "barTintColor"]
 - !private ["Ps28CustomDebugStringConvertible", "baseColor"]
 - !private ["Ps28CustomDebugStringConvertible", "canShowCallout"]
@@ -478,6 +485,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "addTarget"]
 - !private ["Ps23CustomStringConvertible", "animatesDrop"]
 - !private ["Ps23CustomStringConvertible", "annotation"]
+- !private ["Ps23CustomStringConvertible", "authorizationStatus"]
 - !private ["Ps23CustomStringConvertible", "barTintColor"]
 - !private ["Ps23CustomStringConvertible", "baseColor"]
 - !private ["Ps23CustomStringConvertible", "canShowCallout"]
@@ -573,6 +581,9 @@ depends-member:
 - !private ["Ps9Equatable", "addTarget"]
 - !private ["Ps9Equatable", "animatesDrop"]
 - !private ["Ps9Equatable", "annotation"]
+- !private ["Ps9Equatable", "authorizationStatus"]
+- !private ["Ps9Equatable", "authorizedAlways"]
+- !private ["Ps9Equatable", "authorizedWhenInUse"]
 - !private ["Ps9Equatable", "barTintColor"]
 - !private ["Ps9Equatable", "baseColor"]
 - !private ["Ps9Equatable", "canShowCallout"]
@@ -680,6 +691,9 @@ depends-member:
 - !private ["Ps8Hashable", "addTarget"]
 - !private ["Ps8Hashable", "animatesDrop"]
 - !private ["Ps8Hashable", "annotation"]
+- !private ["Ps8Hashable", "authorizationStatus"]
+- !private ["Ps8Hashable", "authorizedAlways"]
+- !private ["Ps8Hashable", "authorizedWhenInUse"]
 - !private ["Ps8Hashable", "barTintColor"]
 - !private ["Ps8Hashable", "baseColor"]
 - !private ["Ps8Hashable", "canShowCallout"]
@@ -1093,6 +1107,7 @@ depends-member:
 - !private ["CSo8NSObject", "addTarget"]
 - !private ["CSo8NSObject", "animatesDrop"]
 - !private ["CSo8NSObject", "annotation"]
+- !private ["CSo8NSObject", "authorizationStatus"]
 - !private ["CSo8NSObject", "barTintColor"]
 - ["CSo8NSObject", "baseColor"]
 - !private ["CSo8NSObject", "canShowCallout"]
@@ -1184,6 +1199,7 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "addTarget"]
 - !private ["PSo16NSObjectProtocol", "animatesDrop"]
 - !private ["PSo16NSObjectProtocol", "annotation"]
+- !private ["PSo16NSObjectProtocol", "authorizationStatus"]
 - !private ["PSo16NSObjectProtocol", "barTintColor"]
 - !private ["PSo16NSObjectProtocol", "baseColor"]
 - !private ["PSo16NSObjectProtocol", "canShowCallout"]
@@ -1259,6 +1275,8 @@ depends-member:
 - !private ["CSo14OperationQueue", "main"]
 - !private ["Ps9OptionSet", "normal"]
 - !private ["Ps9OptionSet", "touchUpInside"]
+- !private ["P9GeoKeeper17PhotoCellDelegate", "locationToShow"]
+- !private ["P9GeoKeeper17PhotoCellDelegate", "managedObjectContext"]
 - !private ["Ps22RandomAccessCollection", "count"]
 - !private ["Ps22RandomAccessCollection", "index"]
 - ["Ps22RandomAccessCollection", "init"]
@@ -1268,6 +1286,8 @@ depends-member:
 - ["Ps26RangeReplaceableCollection", "init"]
 - !private ["Ps26RangeReplaceableCollection", "subscript"]
 - !private ["Ps16RawRepresentable", "NSManagedObjectContextObjectsDidChange"]
+- !private ["Ps16RawRepresentable", "authorizedAlways"]
+- !private ["Ps16RawRepresentable", "authorizedWhenInUse"]
 - !private ["Ps16RawRepresentable", "detailDisclosure"]
 - !private ["Ps16RawRepresentable", "normal"]
 - !private ["Ps16RawRepresentable", "standard"]
@@ -2185,6 +2205,9 @@ depends-member:
 - !private ["Ps9_Hashable", "addTarget"]
 - !private ["Ps9_Hashable", "animatesDrop"]
 - !private ["Ps9_Hashable", "annotation"]
+- !private ["Ps9_Hashable", "authorizationStatus"]
+- !private ["Ps9_Hashable", "authorizedAlways"]
+- !private ["Ps9_Hashable", "authorizedWhenInUse"]
 - !private ["Ps9_Hashable", "barTintColor"]
 - !private ["Ps9_Hashable", "baseColor"]
 - !private ["Ps9_Hashable", "canShowCallout"]
@@ -2287,6 +2310,7 @@ depends-nominal:
 - "Ps23BidirectionalCollection"
 - !private "Sb"
 - !private "PSo15CALayerDelegate"
+- !private "OSC21CLAuthorizationStatus"
 - !private "CSo10CLLocation"
 - !private "VSC22CLLocationCoordinate2D"
 - "CSo17CLLocationManager"
@@ -2341,6 +2365,7 @@ depends-nominal:
 - !private "CSo18NotificationCenter"
 - !private "CSo14OperationQueue"
 - !private "Ps9OptionSet"
+- !private "P9GeoKeeper17PhotoCellDelegate"
 - "Ps22RandomAccessCollection"
 - "Ps26RangeReplaceableCollection"
 - !private "Ps16RawRepresentable"

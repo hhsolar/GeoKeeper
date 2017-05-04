@@ -27,7 +27,6 @@ depends-top-level:
 - "CGFloat"
 - "CLPlacemark"
 - "CastingPrecedence"
-- !private "CategoryPickerViewController"
 - !private "Dictionary"
 - "IndexPath"
 - "Int"
@@ -93,7 +92,6 @@ depends-member:
 - !private ["Ps9AnyObject", "reloadData"]
 - !private ["Ps9AnyObject", "rightBarButtonItem"]
 - !private ["Ps9AnyObject", "saveToCoreData"]
-- !private ["Ps9AnyObject", "selectedCategoryName"]
 - !private ["Ps9AnyObject", "setTitleTextAttributes"]
 - !private ["Ps9AnyObject", "sortDescriptors"]
 - !private ["Ps9AnyObject", "subThoroughfare"]
@@ -165,7 +163,6 @@ depends-member:
 - !private ["Ps7CVarArg", "remove"]
 - !private ["Ps7CVarArg", "rightBarButtonItem"]
 - !private ["Ps7CVarArg", "saveToCoreData"]
-- !private ["Ps7CVarArg", "selectedCategoryName"]
 - !private ["Ps7CVarArg", "setTitleTextAttributes"]
 - !private ["Ps7CVarArg", "sortDescriptors"]
 - !private ["Ps7CVarArg", "subThoroughfare"]
@@ -178,7 +175,6 @@ depends-member:
 - !private ["Ps7CVarArg", "viewWillAppear"]
 - !private ["Ps7CVarArg", "white"]
 - ["Ps7CVarArg", ""]
-- !private ["C9GeoKeeper28CategoryPickerViewController", "selectedCategoryName"]
 - !private ["P9GeoKeeper29ChangeDoneButtonColorDelegate", "topViewController"]
 - !private ["Ps10Collection", "append"]
 - !private ["Ps10Collection", "count"]
@@ -228,7 +224,6 @@ depends-member:
 - !private ["Ps28CustomDebugStringConvertible", "rightBarButtonItem"]
 - !private ["Ps28CustomDebugStringConvertible", "row"]
 - !private ["Ps28CustomDebugStringConvertible", "saveToCoreData"]
-- !private ["Ps28CustomDebugStringConvertible", "selectedCategoryName"]
 - !private ["Ps28CustomDebugStringConvertible", "setTitleTextAttributes"]
 - !private ["Ps28CustomDebugStringConvertible", "sortDescriptors"]
 - !private ["Ps28CustomDebugStringConvertible", "subThoroughfare"]
@@ -291,7 +286,6 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "rightBarButtonItem"]
 - !private ["Ps23CustomStringConvertible", "row"]
 - !private ["Ps23CustomStringConvertible", "saveToCoreData"]
-- !private ["Ps23CustomStringConvertible", "selectedCategoryName"]
 - !private ["Ps23CustomStringConvertible", "setTitleTextAttributes"]
 - !private ["Ps23CustomStringConvertible", "sortDescriptors"]
 - !private ["Ps23CustomStringConvertible", "subThoroughfare"]
@@ -343,7 +337,6 @@ depends-member:
 - !private ["Ps9Equatable", "rightBarButtonItem"]
 - !private ["Ps9Equatable", "row"]
 - !private ["Ps9Equatable", "saveToCoreData"]
-- !private ["Ps9Equatable", "selectedCategoryName"]
 - !private ["Ps9Equatable", "setTitleTextAttributes"]
 - !private ["Ps9Equatable", "sortDescriptors"]
 - !private ["Ps9Equatable", "subThoroughfare"]
@@ -404,7 +397,6 @@ depends-member:
 - !private ["Ps8Hashable", "rightBarButtonItem"]
 - !private ["Ps8Hashable", "row"]
 - !private ["Ps8Hashable", "saveToCoreData"]
-- !private ["Ps8Hashable", "selectedCategoryName"]
 - !private ["Ps8Hashable", "setTitleTextAttributes"]
 - !private ["Ps8Hashable", "sortDescriptors"]
 - !private ["Ps8Hashable", "subThoroughfare"]
@@ -426,7 +418,6 @@ depends-member:
 - ["C9GeoKeeper23LocationsViewController", "Bool"]
 - ["C9GeoKeeper23LocationsViewController", "CGFloat"]
 - ["C9GeoKeeper23LocationsViewController", "CLPlacemark"]
-- !private ["C9GeoKeeper23LocationsViewController", "CategoryPickerViewController"]
 - ["C9GeoKeeper23LocationsViewController", "IndexPath"]
 - ["C9GeoKeeper23LocationsViewController", "Int"]
 - ["C9GeoKeeper23LocationsViewController", "Location"]
@@ -511,7 +502,6 @@ depends-member:
 - !private ["PSo8NSCoding", "reloadData"]
 - !private ["PSo8NSCoding", "rightBarButtonItem"]
 - !private ["PSo8NSCoding", "saveToCoreData"]
-- !private ["PSo8NSCoding", "selectedCategoryName"]
 - !private ["PSo8NSCoding", "setTitleTextAttributes"]
 - !private ["PSo8NSCoding", "sortDescriptors"]
 - !private ["PSo8NSCoding", "subThoroughfare"]
@@ -553,7 +543,6 @@ depends-member:
 - !private ["PSo26NSExtensionRequestHandling", "navigationItem"]
 - !private ["PSo26NSExtensionRequestHandling", "popViewController"]
 - !private ["PSo26NSExtensionRequestHandling", "saveToCoreData"]
-- !private ["PSo26NSExtensionRequestHandling", "selectedCategoryName"]
 - !private ["PSo26NSExtensionRequestHandling", "tableView"]
 - !private ["PSo26NSExtensionRequestHandling", "topViewController"]
 - !private ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
@@ -573,7 +562,6 @@ depends-member:
 - ["CSo8NSObject", "Bool"]
 - ["CSo8NSObject", "CGFloat"]
 - ["CSo8NSObject", "CLPlacemark"]
-- !private ["CSo8NSObject", "CategoryPickerViewController"]
 - ["CSo8NSObject", "IndexPath"]
 - ["CSo8NSObject", "Int"]
 - ["CSo8NSObject", "Location"]
@@ -624,7 +612,6 @@ depends-member:
 - !private ["CSo8NSObject", "reloadData"]
 - !private ["CSo8NSObject", "rightBarButtonItem"]
 - !private ["CSo8NSObject", "saveToCoreData"]
-- !private ["CSo8NSObject", "selectedCategoryName"]
 - !private ["CSo8NSObject", "setTitleTextAttributes"]
 - !private ["CSo8NSObject", "sortDescriptors"]
 - ["CSo8NSObject", "string"]
@@ -672,7 +659,6 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "reloadData"]
 - !private ["PSo16NSObjectProtocol", "rightBarButtonItem"]
 - !private ["PSo16NSObjectProtocol", "saveToCoreData"]
-- !private ["PSo16NSObjectProtocol", "selectedCategoryName"]
 - !private ["PSo16NSObjectProtocol", "setTitleTextAttributes"]
 - !private ["PSo16NSObjectProtocol", "sortDescriptors"]
 - !private ["PSo16NSObjectProtocol", "subThoroughfare"]
@@ -698,6 +684,8 @@ depends-member:
 - !private ["CSo16NSSortDescriptor", "init"]
 - ["CSo8NSString", "init"]
 - !private ["Ps9OptionSet", "normal"]
+- !private ["P9GeoKeeper17PhotoCellDelegate", "locationToShow"]
+- !private ["P9GeoKeeper17PhotoCellDelegate", "managedObjectContext"]
 - !private ["Ps22RandomAccessCollection", "append"]
 - !private ["Ps22RandomAccessCollection", "count"]
 - ["Ps22RandomAccessCollection", "init"]
@@ -757,7 +745,6 @@ depends-member:
 - !private ["PSo21UIAppearanceContainer", "popViewController"]
 - !private ["PSo21UIAppearanceContainer", "reloadData"]
 - !private ["PSo21UIAppearanceContainer", "saveToCoreData"]
-- !private ["PSo21UIAppearanceContainer", "selectedCategoryName"]
 - !private ["PSo21UIAppearanceContainer", "tableView"]
 - !private ["PSo21UIAppearanceContainer", "topViewController"]
 - !private ["PSo21UIAppearanceContainer", "viewDidLoad"]
@@ -791,7 +778,6 @@ depends-member:
 - !private ["PSo18UIContentContainer", "navigationItem"]
 - !private ["PSo18UIContentContainer", "popViewController"]
 - !private ["PSo18UIContentContainer", "saveToCoreData"]
-- !private ["PSo18UIContentContainer", "selectedCategoryName"]
 - !private ["PSo18UIContentContainer", "tableView"]
 - !private ["PSo18UIContentContainer", "topViewController"]
 - !private ["PSo18UIContentContainer", "viewDidLoad"]
@@ -831,7 +817,6 @@ depends-member:
 - !private ["PSo18UIFocusEnvironment", "popViewController"]
 - !private ["PSo18UIFocusEnvironment", "reloadData"]
 - !private ["PSo18UIFocusEnvironment", "saveToCoreData"]
-- !private ["PSo18UIFocusEnvironment", "selectedCategoryName"]
 - !private ["PSo18UIFocusEnvironment", "tableView"]
 - !private ["PSo18UIFocusEnvironment", "topViewController"]
 - !private ["PSo18UIFocusEnvironment", "viewDidLoad"]
@@ -850,7 +835,6 @@ depends-member:
 - ["CSo11UIResponder", "Bool"]
 - ["CSo11UIResponder", "CGFloat"]
 - ["CSo11UIResponder", "CLPlacemark"]
-- !private ["CSo11UIResponder", "CategoryPickerViewController"]
 - ["CSo11UIResponder", "IndexPath"]
 - ["CSo11UIResponder", "Int"]
 - ["CSo11UIResponder", "Location"]
@@ -890,7 +874,6 @@ depends-member:
 - ["CSo11UIResponder", "prepare"]
 - !private ["CSo11UIResponder", "reloadData"]
 - !private ["CSo11UIResponder", "saveToCoreData"]
-- !private ["CSo11UIResponder", "selectedCategoryName"]
 - ["CSo11UIResponder", "string"]
 - ["CSo11UIResponder", "tableView"]
 - !private ["CSo11UIResponder", "topViewController"]
@@ -921,7 +904,6 @@ depends-member:
 - !private ["PSo30UIResponderStandardEditActions", "popViewController"]
 - !private ["PSo30UIResponderStandardEditActions", "reloadData"]
 - !private ["PSo30UIResponderStandardEditActions", "saveToCoreData"]
-- !private ["PSo30UIResponderStandardEditActions", "selectedCategoryName"]
 - !private ["PSo30UIResponderStandardEditActions", "tableView"]
 - !private ["PSo30UIResponderStandardEditActions", "topViewController"]
 - !private ["PSo30UIResponderStandardEditActions", "viewDidLoad"]
@@ -950,7 +932,6 @@ depends-member:
 - !private ["PSo20UIScrollViewDelegate", "navigationController"]
 - !private ["PSo20UIScrollViewDelegate", "navigationItem"]
 - !private ["PSo20UIScrollViewDelegate", "saveToCoreData"]
-- !private ["PSo20UIScrollViewDelegate", "selectedCategoryName"]
 - !private ["PSo20UIScrollViewDelegate", "tableView"]
 - !private ["PSo20UIScrollViewDelegate", "viewDidLoad"]
 - !private ["PSo20UIScrollViewDelegate", "viewWillAppear"]
@@ -976,7 +957,6 @@ depends-member:
 - !private ["PSo16UIStateRestoring", "navigationItem"]
 - !private ["PSo16UIStateRestoring", "popViewController"]
 - !private ["PSo16UIStateRestoring", "saveToCoreData"]
-- !private ["PSo16UIStateRestoring", "selectedCategoryName"]
 - !private ["PSo16UIStateRestoring", "tableView"]
 - !private ["PSo16UIStateRestoring", "topViewController"]
 - !private ["PSo16UIStateRestoring", "viewDidLoad"]
@@ -992,7 +972,6 @@ depends-member:
 - ["CSo21UITableViewController", "Bool"]
 - ["CSo21UITableViewController", "CGFloat"]
 - ["CSo21UITableViewController", "CLPlacemark"]
-- !private ["CSo21UITableViewController", "CategoryPickerViewController"]
 - ["CSo21UITableViewController", "IndexPath"]
 - ["CSo21UITableViewController", "Int"]
 - ["CSo21UITableViewController", "Location"]
@@ -1026,7 +1005,6 @@ depends-member:
 - !private ["CSo21UITableViewController", "navigationItem"]
 - ["CSo21UITableViewController", "prepare"]
 - !private ["CSo21UITableViewController", "saveToCoreData"]
-- !private ["CSo21UITableViewController", "selectedCategoryName"]
 - ["CSo21UITableViewController", "string"]
 - ["CSo21UITableViewController", "tableView"]
 - ["CSo21UITableViewController", "viewDidLoad"]
@@ -1051,7 +1029,6 @@ depends-member:
 - !private ["PSo21UITableViewDataSource", "navigationController"]
 - !private ["PSo21UITableViewDataSource", "navigationItem"]
 - !private ["PSo21UITableViewDataSource", "saveToCoreData"]
-- !private ["PSo21UITableViewDataSource", "selectedCategoryName"]
 - !private ["PSo21UITableViewDataSource", "tableView"]
 - !private ["PSo21UITableViewDataSource", "viewDidLoad"]
 - !private ["PSo21UITableViewDataSource", "viewWillAppear"]
@@ -1075,7 +1052,6 @@ depends-member:
 - !private ["PSo19UITableViewDelegate", "navigationController"]
 - !private ["PSo19UITableViewDelegate", "navigationItem"]
 - !private ["PSo19UITableViewDelegate", "saveToCoreData"]
-- !private ["PSo19UITableViewDelegate", "selectedCategoryName"]
 - !private ["PSo19UITableViewDelegate", "tableView"]
 - !private ["PSo19UITableViewDelegate", "viewDidLoad"]
 - !private ["PSo19UITableViewDelegate", "viewWillAppear"]
@@ -1105,7 +1081,6 @@ depends-member:
 - !private ["PSo18UITraitEnvironment", "popViewController"]
 - !private ["PSo18UITraitEnvironment", "reloadData"]
 - !private ["PSo18UITraitEnvironment", "saveToCoreData"]
-- !private ["PSo18UITraitEnvironment", "selectedCategoryName"]
 - !private ["PSo18UITraitEnvironment", "tableView"]
 - !private ["PSo18UITraitEnvironment", "topViewController"]
 - !private ["PSo18UITraitEnvironment", "viewDidLoad"]
@@ -1118,7 +1093,6 @@ depends-member:
 - ["CSo16UIViewController", "Bool"]
 - ["CSo16UIViewController", "CGFloat"]
 - ["CSo16UIViewController", "CLPlacemark"]
-- !private ["CSo16UIViewController", "CategoryPickerViewController"]
 - ["CSo16UIViewController", "IndexPath"]
 - ["CSo16UIViewController", "Int"]
 - ["CSo16UIViewController", "Location"]
@@ -1154,7 +1128,6 @@ depends-member:
 - !private ["CSo16UIViewController", "popViewController"]
 - ["CSo16UIViewController", "prepare"]
 - !private ["CSo16UIViewController", "saveToCoreData"]
-- !private ["CSo16UIViewController", "selectedCategoryName"]
 - ["CSo16UIViewController", "string"]
 - ["CSo16UIViewController", "tableView"]
 - !private ["CSo16UIViewController", "topViewController"]
@@ -1226,7 +1199,6 @@ depends-member:
 - !private ["Ps9_Hashable", "rightBarButtonItem"]
 - !private ["Ps9_Hashable", "row"]
 - !private ["Ps9_Hashable", "saveToCoreData"]
-- !private ["Ps9_Hashable", "selectedCategoryName"]
 - !private ["Ps9_Hashable", "setTitleTextAttributes"]
 - !private ["Ps9_Hashable", "sortDescriptors"]
 - !private ["Ps9_Hashable", "subThoroughfare"]
@@ -1282,7 +1254,6 @@ depends-nominal:
 - !private "PSo15CALayerDelegate"
 - !private "CSo11CLPlacemark"
 - "Ps7CVarArg"
-- !private "C9GeoKeeper28CategoryPickerViewController"
 - !private "P9GeoKeeper29ChangeDoneButtonColorDelegate"
 - "Ps10Collection"
 - "Ps10Comparable"
@@ -1326,6 +1297,7 @@ depends-nominal:
 - !private "CSo16NSSortDescriptor"
 - "CSo8NSString"
 - !private "Ps9OptionSet"
+- !private "P9GeoKeeper17PhotoCellDelegate"
 - "Ps22RandomAccessCollection"
 - "Ps26RangeReplaceableCollection"
 - !private "Ps16RawRepresentable"

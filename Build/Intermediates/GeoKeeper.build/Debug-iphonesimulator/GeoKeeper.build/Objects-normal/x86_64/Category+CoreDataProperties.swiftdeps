@@ -6,12 +6,10 @@ provides-member:
 - ["C9GeoKeeper8Category", "fetchRequest"]
 - ["C9GeoKeeper8Category", "category"]
 - ["C9GeoKeeper8Category", "color"]
-- ["C9GeoKeeper8Category", "cellColor"]
 - ["C9GeoKeeper8Category", "iconName"]
 - ["C9GeoKeeper8Category", "id"]
 provides-dynamic-lookup:
 - "category"
-- "cellColor"
 - "color"
 - "iconName"
 - "id"
@@ -31,7 +29,6 @@ depends-member:
 - ["C9GeoKeeper8Category", "NSNumber"]
 - ["C9GeoKeeper8Category", "String"]
 - ["C9GeoKeeper8Category", "category"]
-- ["C9GeoKeeper8Category", "cellColor"]
 - ["C9GeoKeeper8Category", "color"]
 - ["C9GeoKeeper8Category", "deinit"]
 - ["C9GeoKeeper8Category", "fetchRequest"]
@@ -62,7 +59,6 @@ depends-member:
 - ["CSo15NSManagedObject", "NSNumber"]
 - ["CSo15NSManagedObject", "String"]
 - ["CSo15NSManagedObject", "category"]
-- ["CSo15NSManagedObject", "cellColor"]
 - ["CSo15NSManagedObject", "color"]
 - ["CSo15NSManagedObject", "fetchRequest"]
 - ["CSo15NSManagedObject", "iconName"]
@@ -73,7 +69,6 @@ depends-member:
 - ["CSo8NSObject", "NSNumber"]
 - ["CSo8NSObject", "String"]
 - ["CSo8NSObject", "category"]
-- ["CSo8NSObject", "cellColor"]
 - ["CSo8NSObject", "color"]
 - ["CSo8NSObject", "fetchRequest"]
 - ["CSo8NSObject", "iconName"]
@@ -157,4 +152,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "688aace1dee50f4c4a4dd6d2d9617a89"
+interface-hash: "b2619477044b3206db0a5db97ca6ed9a"

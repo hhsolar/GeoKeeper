@@ -54,13 +54,7 @@ class LocationsViewController: UITableViewController {
                 let location = locations[indexPath.row]
                 controller.locationToShow = MyLocation.toMyLocation(coreDataLocation: location)
             }
-        }
-        
-//        if segue.identifier == "PickCategoryinCategoryView" {
-//            let controller = segue.destination as! CategoryPickerViewController
-//            controller.selectedCategoryName = "No Category"
-//        }
-        
+        }        
     }
     
     @IBAction func cancel() {
