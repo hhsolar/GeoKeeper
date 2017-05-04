@@ -217,8 +217,10 @@ SWIFT_CLASS("_TtC9GeoKeeper24CategoriesViewController")
 - (void)fillCollectionCellWithColor:(NSString * _Nonnull)color :(CategoryCell * _Nonnull)cell;
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (void)deleteCategory;
-- (void)deleteAtIndexPath;
+- (void)deleteCategoryAlert;
+- (void)handleCategoryDeletion;
+- (NSString * _Nonnull)deleteCategory SWIFT_WARN_UNUSED_RESULT;
+- (void)deletedLocationsOfCategory:(NSString * _Nonnull)deletedCategory;
 @end
 
 @class NSEntityDescription;
@@ -553,6 +555,7 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 - (IBAction)done;
 - (IBAction)addImage;
 - (void)showWithImage:(UIImage * _Nonnull)image;
+- (void)disableAddImageButton;
 - (NSString * _Nonnull)stringFrom:(CLPlacemark * _Nonnull)placemark SWIFT_WARN_UNUSED_RESULT;
 - (IBAction)cancel;
 - (IBAction)choosePortrait;

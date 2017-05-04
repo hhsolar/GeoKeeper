@@ -792,9 +792,8 @@
                                     <outlet property="delegate" destination="dsc-7n-Vgn" id="dr7-CH-6BU"/>
                                 </connections>
                             </textField>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DiP-uZ-MXO">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DiP-uZ-MXO">
                                 <rect key="frame" x="0.0" y="110" width="375" height="557"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XLT-ZM-Q2S">
                                     <size key="itemSize" width="50" height="50"/>
@@ -858,8 +857,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DiP-uZ-MXO" secondAttribute="trailing" id="Dv9-jY-imf"/>
                             <constraint firstItem="E3r-Ru-Oc8" firstAttribute="top" secondItem="K3e-KR-q7w" secondAttribute="bottom" constant="8" id="IAS-1f-167"/>
+                            <constraint firstItem="DiP-uZ-MXO" firstAttribute="leading" secondItem="w6k-H4-K3T" secondAttribute="leading" id="QnR-kV-EBL"/>
+                            <constraint firstItem="DiP-uZ-MXO" firstAttribute="top" secondItem="E3r-Ru-Oc8" secondAttribute="bottom" constant="8" id="YMQ-LC-OST"/>
                             <constraint firstItem="E3r-Ru-Oc8" firstAttribute="trailing" secondItem="w6k-H4-K3T" secondAttribute="trailingMargin" id="ZiM-Be-tVd"/>
+                            <constraint firstItem="dl0-PI-8Vh" firstAttribute="top" secondItem="DiP-uZ-MXO" secondAttribute="bottom" id="riD-SM-lup"/>
                             <constraint firstItem="E3r-Ru-Oc8" firstAttribute="leading" secondItem="w6k-H4-K3T" secondAttribute="leadingMargin" id="wfP-tN-VYB"/>
                         </constraints>
                     </view>
