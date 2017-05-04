@@ -1,9 +1,9 @@
 version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
 options: "01d4e9053697dfea4e2c72d1608e5016"
-build_time: [547197435, 890047000]
+build_time: [547248796, 699463000]
 inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/PhotoCell.swift": [547108972, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailEditViewController.swift": [547192380, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailEditViewController.swift": [547248796, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryAddViewController.swift": [547197435, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyTabBarController.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerTableViewController.swift": [547074860, 0]
@@ -26,7 +26,7 @@ inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/DimmingPresentationController.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/AppDelegate.swift": [547149504, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyLocation.swift": [547074860, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/Settings.swift": [547195268, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/Settings.swift": [547197486, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Location+CoreDataClass.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryCell.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Category+CoreDataClass.swift": [547074858, 0]

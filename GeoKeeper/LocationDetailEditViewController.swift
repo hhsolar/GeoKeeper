@@ -594,6 +594,9 @@ extension LocationDetailEditViewController: UIImagePickerControllerDelegate, UIN
     
     func choosePhotoFromLibrary() {
         let imagePicker = MyImagePickerController()
+        imagePicker.navigationBar.barTintColor = baseColor
+        imagePicker.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
+        
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
