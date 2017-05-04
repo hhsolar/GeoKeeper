@@ -90,6 +90,7 @@ class LocationDetailViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
         if segue.identifier == "EditDetail" {
             let controller = segue.destination as! LocationDetailEditViewController
             controller.locationToEdit = locationToShow
@@ -105,6 +106,7 @@ class LocationDetailViewController: UIViewController {
             controller.managedObjectContext = managedObjectContext
             controller.delegate = self
         }
+        
     }
     
     override func viewDidLoad() {
@@ -343,7 +345,9 @@ extension LocationDetailViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
         cell.awakeFromNib()
+        cell.delegate = self
         cell.deleteButton.isHidden = true
+        cell.cellIndex = indexPath.row
         if let photoIDs = locationToShow.photoID {
             if photoIDs.count == 0 {
                 cell.photoImageView.image = UIImage(named: "noPhoto_icon")
@@ -369,5 +373,19 @@ extension LocationDetailViewController: LocationDetailEditViewControllerDelegate
             portraitImage.image = locationToShow.photoImage
         }
         photoCollectionView.reloadData()
+    }
+}
+
+extension LocationDetailViewController: PhotoCellDelegate {
+    func enlargeImage(forCell: PhotoCell) {
+        if let photoIDs = locationToShow.photoID {
+            if photoIDs.count > 0 {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier:"PhotoView") as! PhotoViewController
+                controller.locationWithPhoto = locationToShow
+                controller.showIndex = forCell.cellIndex
+                navigationController?.pushViewController(controller, animated: true)
+            }
+        }
     }
 }

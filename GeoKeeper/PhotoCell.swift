@@ -8,14 +8,16 @@
 
 import UIKit
 
-protocol PhotoCellDelegate {
-    func deleteImage(forCell: PhotoCell)
+@objc protocol PhotoCellDelegate {
+    @objc optional func deleteImage(forCell: PhotoCell)
+    @objc optional func enlargeImage(forCell: PhotoCell)
 }
 
 class PhotoCell: UICollectionViewCell {
     
     var photoImageView: UIImageView!
     var deleteButton: UIButton!
+    var cellButton: UIButton!
     var cellIndex = -1
     var delegate: PhotoCellDelegate? = nil
     
@@ -27,6 +29,13 @@ class PhotoCell: UICollectionViewCell {
         photoImageView.layer.masksToBounds = true
         contentView.addSubview(photoImageView)
         
+        cellButton = UIButton(frame: contentView.frame)
+        cellButton.clipsToBounds = true
+        cellButton.layer.cornerRadius = 4
+        cellButton.layer.masksToBounds = true
+        cellButton.addTarget(self, action: #selector(enlargeImage), for: .touchUpInside)
+        contentView.addSubview(cellButton)
+        
         deleteButton = UIButton(frame: CGRect(x: (contentView.frame.origin.x + 5), y: (contentView.frame.origin.y + 5), width: 15, height: 15))
         let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
         deleteButton.setImage(backgroundImage, for: .normal)
@@ -35,7 +44,11 @@ class PhotoCell: UICollectionViewCell {
     }
     
     func deleteImage() {
-        delegate?.deleteImage(forCell: self)
+        delegate?.deleteImage!(forCell: self)
+    }
+    
+    func enlargeImage() {
+        delegate?.enlargeImage!(forCell: self)
     }
 
 }

@@ -33,7 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let _ = categoriesViewController.view
         }
         listenForFatalCoreDataNotifications()
-//        print(applicationDocumentsDirectory)
+        
+        // setting for navigation bar
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16.0)!], for: .normal)
+        
         return true
     }
     

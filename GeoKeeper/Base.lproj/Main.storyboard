@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -483,6 +483,24 @@
             </objects>
             <point key="canvasLocation" x="3837.5999999999999" y="273.91304347826087"/>
         </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="HIT-OE-F04">
+            <objects>
+                <viewController storyboardIdentifier="PhotoView" id="HHC-SW-JRl" customClass="PhotoViewController" customModule="GeoKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7Zw-zu-I5w"/>
+                        <viewControllerLayoutGuide type="bottom" id="n6f-9A-gRt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="s6s-lz-QVS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yKa-cA-rxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4677.6000000000004" y="273.91304347826087"/>
+        </scene>
         <!--My Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -686,7 +704,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aKX-Mg-WID" id="yec-cG-Psl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rdq-Tq-HPp">
@@ -774,9 +792,8 @@
                                     <outlet property="delegate" destination="dsc-7n-Vgn" id="dr7-CH-6BU"/>
                                 </connections>
                             </textField>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DiP-uZ-MXO">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DiP-uZ-MXO">
                                 <rect key="frame" x="0.0" y="110" width="375" height="557"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XLT-ZM-Q2S">
                                     <size key="itemSize" width="50" height="50"/>
@@ -840,8 +857,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DiP-uZ-MXO" secondAttribute="trailing" id="Dv9-jY-imf"/>
                             <constraint firstItem="E3r-Ru-Oc8" firstAttribute="top" secondItem="K3e-KR-q7w" secondAttribute="bottom" constant="8" id="IAS-1f-167"/>
+                            <constraint firstItem="DiP-uZ-MXO" firstAttribute="leading" secondItem="w6k-H4-K3T" secondAttribute="leading" id="QnR-kV-EBL"/>
+                            <constraint firstItem="DiP-uZ-MXO" firstAttribute="top" secondItem="E3r-Ru-Oc8" secondAttribute="bottom" constant="8" id="YMQ-LC-OST"/>
                             <constraint firstItem="E3r-Ru-Oc8" firstAttribute="trailing" secondItem="w6k-H4-K3T" secondAttribute="trailingMargin" id="ZiM-Be-tVd"/>
+                            <constraint firstItem="dl0-PI-8Vh" firstAttribute="top" secondItem="DiP-uZ-MXO" secondAttribute="bottom" id="riD-SM-lup"/>
                             <constraint firstItem="E3r-Ru-Oc8" firstAttribute="leading" secondItem="w6k-H4-K3T" secondAttribute="leadingMargin" id="wfP-tN-VYB"/>
                         </constraints>
                     </view>
@@ -1047,7 +1068,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aq1-bH-p7z" id="rHo-1I-yRU">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
