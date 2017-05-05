@@ -183,6 +183,7 @@ SWIFT_CLASS("_TtC9GeoKeeper24CategoriesViewController")
 @property (nonatomic, copy) NSArray<NSBlockOperation *> * _Nonnull blockOperations;
 @property (nonatomic, strong) Category * _Null_unspecified category;
 @property (nonatomic, copy) NSString * _Nonnull modeFlag;
+@property (nonatomic) NSInteger totalItem;
 @property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified collectionView;
 // 'fetchedResultsController' below
 - (void)viewWillAppear:(BOOL)animated;

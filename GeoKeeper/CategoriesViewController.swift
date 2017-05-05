@@ -18,6 +18,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     var category : Category!
     var p : CGPoint!
     var modeFlag: String = "Add"
+    var totalItem = 0
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -309,9 +310,15 @@ extension CategoriesViewController {
 //        cell.categoryImageView = UIImageView(frame: CGRect(x: width / 2, y: 3, width: width / 2, height: width / 2))
 //        为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
         
-        category = fetchedResultsController.object(at: indexPath)
         let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
         fetchedRequest.entity = Location.entity()
+        do {
+            totalItem = try managedObjectContext.count(for: fetchedRequest)
+        } catch {
+            fatalCoreDataError(error)
+        }
+        
+        category = fetchedResultsController.object(at: indexPath)
         fetchedRequest.predicate = NSPredicate(format: "category == %@", category.category!)
         
         var countItems = 0
@@ -323,7 +330,7 @@ extension CategoriesViewController {
         
         cell.awakeFromNib()
         if category.category == "All" {
-            cell.categoryLabel?.text = "All"
+            cell.categoryLabel?.text = "All (" + (String)(totalItem) + ")"
         } else {
             cell.categoryLabel?.text = category.category! + " (" + (String)(countItems) + ")"
         }
@@ -333,7 +340,6 @@ extension CategoriesViewController {
         if category.iconName != nil {
             cell.categoryImageView?.image = UIImage(named: category.iconName!)
         }
-        
         
         if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
                 let anim = CABasicAnimation(keyPath: "transform.rotation")

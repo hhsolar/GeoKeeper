@@ -1,14 +1,14 @@
 version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
 options: "c34a3f3e9a4d60e41609a3539caee3a5"
-build_time: [547260982, 332920000]
+build_time: [547264654, 891339000]
 inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/PhotoCell.swift": [547108972, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailEditViewController.swift": [547260982, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryAddViewController.swift": [547197435, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyTabBarController.swift": [547074860, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerTableViewController.swift": [547074860, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerTableViewController.swift": [547261314, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailViewController.swift": [547178230, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoriesViewController.swift": [547259887, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoriesViewController.swift": [547264654, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerCell.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/PhotoFunctions.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/ColorCell.swift": [547074860, 0]
@@ -19,7 +19,7 @@ inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/Location+CoreDataProperties.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/RoundedCornersView.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MapViewController.swift": [547086067, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationsViewController.swift": [547102248, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationsViewController.swift": [547261314, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationCell.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyIconCollectionCell.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyImagePickerController.swift": [547074860, 0]
