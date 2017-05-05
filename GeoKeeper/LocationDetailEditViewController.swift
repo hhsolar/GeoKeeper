@@ -398,11 +398,11 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         } else if flag == "collectionView"{
             imageArray.append(image)
             if let photoIDs = locationToEdit.photoID {
-                if photoIDs.count + imageArray.count == 2 {
+                if photoIDs.count + imageArray.count == photoCapacity {
                     disableAddImageButton()
                 }
             } else {
-                if imageArray.count == 2 {
+                if imageArray.count == photoCapacity {
                     disableAddImageButton()
                 }
             }

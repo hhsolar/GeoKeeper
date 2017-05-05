@@ -45,12 +45,8 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
                 imageView.image = locationWithPhoto.photoImages(photoIndex: Int(index))
                 imageView.contentMode = UIViewContentMode.scaleAspectFit
                 scrollView.addSubview(imageView)
-                print("imageView.size: ", imageView.frame)
 
             }
-            print("contentSize: ", scrollView.contentSize.width, scrollView.contentSize.height)
-            print("scrollView.frame: ", scrollView.frame)
-            print("screenSize: ", kScreenWidth, kScreenHeight)
             scrollView.contentOffset = CGPoint(x: Int(kScreenWidth) * showIndex, y: 0)
         }
     }
