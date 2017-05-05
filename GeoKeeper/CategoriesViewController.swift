@@ -351,7 +351,11 @@ extension CategoriesViewController {
                 cell.layer.shouldRasterize = true
                 cell.layer.add(anim, forKey: "SpringboardShake")
             
-            if cell.categoryLabel.text != "All" {
+            let pat = "^All \\(\\d+\\)$"
+            let regex = try! NSRegularExpression(pattern: pat, options: [])
+            let matches = regex.matches(in: cell.categoryLabel.text!, options: [], range:NSRange(location: 0, length: (cell.categoryLabel.text?.characters.count)!))
+            
+            if matches.count == 0 {
                 let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 20, height: 20))
                 let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
                 deleteButton.addTarget(self, action: #selector(deleteCategoryAlert), for: .touchUpInside)

@@ -1,14 +1,14 @@
 version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
 options: "c34a3f3e9a4d60e41609a3539caee3a5"
-build_time: [547277806, 16985000]
+build_time: [547284023, 333105000]
 inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/PhotoCell.swift": [547108972, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailEditViewController.swift": [547260982, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryAddViewController.swift": [547197435, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryAddViewController.swift": [547284023, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyTabBarController.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerTableViewController.swift": [547277805, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailViewController.swift": [547178230, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoriesViewController.swift": [547264936, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoriesViewController.swift": [547281631, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerCell.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/PhotoFunctions.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/ColorCell.swift": [547074860, 0]
@@ -30,6 +30,6 @@ inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/Location+CoreDataClass.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryCell.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Category+CoreDataClass.swift": [547074858, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/PhotoViewController.swift": [547259761, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/PhotoViewController.swift": [547280553, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CurrentLocationViewController.swift": [547266063, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Category+CoreDataProperties.swift": [547081617, 0]

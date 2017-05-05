@@ -179,11 +179,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoKeeper/CategoryAddViewController.swift"
-            timestampString = "513066444.591888"
+            timestampString = "515661631.538668"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -465,11 +465,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoKeeper/PhotoViewController.swift"
-            timestampString = "515566622.586847"
+            timestampString = "515658524.871376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "setupScrollView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -481,11 +481,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoKeeper/CategoryAddViewController.swift"
-            timestampString = "515575043.567513"
+            timestampString = "515661631.538668"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>

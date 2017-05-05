@@ -19,8 +19,6 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Photos"
-    
-        
         
         setupScrollView()
         scrollView.delegate = self

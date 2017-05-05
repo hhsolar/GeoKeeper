@@ -50,6 +50,9 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
             self.title = "Add Category"
         } else {
             self.title = "Edit Category"
+            if selectedCategoryName == "All" {
+                textField.isEnabled = false
+            }
         }
        
         color = selectedColor
@@ -106,20 +109,36 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         if modeFlag == "Edit"{
             let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
             fetchRequest.entity = Category.entity()
-            fetchRequest.predicate = NSPredicate(format: "id == %@", newItemId)
+            
+            fetchRequest.predicate = NSPredicate(format: "category == %@", textField.text!)
+            
             do {
-                let categoryToEdits = try managedObjectContext.fetch(fetchRequest)
-                for categoryToEdit in categoryToEdits {
-                    categoryToEdit.category = textField.text!
-                    categoryToEdit.color = color
-                    categoryToEdit.id = newItemId
-                    categoryToEdit.iconName = icon
+                let count = try managedObjectContext.count(for: fetchRequest)
+                if count == 0 {
+                    fetchRequest.predicate = NSPredicate(format: "id == %@", newItemId)
+                    do {
+                        let categoryToEdits = try managedObjectContext.fetch(fetchRequest)
+                        for categoryToEdit in categoryToEdits {
+                            categoryToEdit.category = textField.text!
+                            categoryToEdit.color = color
+                            categoryToEdit.id = newItemId
+                            categoryToEdit.iconName = icon
+                        }
+                    } catch {
+                        fatalCoreDataError(error)
+                    }
+                    saveToCoreData(managedObjectContext)
+                    dismiss(animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Reminder", message: "Category Name Already Exist!!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             } catch {
                 fatalCoreDataError(error)
             }
-            saveToCoreData(managedObjectContext)
-            dismiss(animated: true, completion: nil)
+
+            
         }
     }
     
