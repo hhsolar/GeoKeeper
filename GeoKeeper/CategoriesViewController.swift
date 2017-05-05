@@ -157,7 +157,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         } else if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
             modeFlag = "Edit"
             performSegue(withIdentifier: "PickCategory", sender: collectionView.cellForItem(at: indexPath!))
-            
         }
     }
     
@@ -274,7 +273,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         for operation: BlockOperation in blockOperations {
             operation.cancel()
         }
-        
         blockOperations.removeAll(keepingCapacity: false)
     }
 }
@@ -324,8 +322,11 @@ extension CategoriesViewController {
         }
         
         cell.awakeFromNib()
-        cell.categoryLabel?.text = category.category! + " (" + (String)(countItems) + ")"
-        
+        if category.category == "All" {
+            cell.categoryLabel?.text = "All"
+        } else {
+            cell.categoryLabel?.text = category.category! + " (" + (String)(countItems) + ")"
+        }
         
         fillCollectionCellWithColor(category.color!,cell)
 
@@ -344,12 +345,13 @@ extension CategoriesViewController {
                 cell.layer.shouldRasterize = true
                 cell.layer.add(anim, forKey: "SpringboardShake")
             
-            
+            if cell.categoryLabel.text != "All" {
                 let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 20, height: 20))
                 let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
                 deleteButton.addTarget(self, action: #selector(deleteCategoryAlert), for: .touchUpInside)
                 deleteButton.setImage(backgroundImage, for: .normal)
                 cell.addSubview(deleteButton)
+            }
         }
         
         else if UserDefaults.standard.value(forKey: "SingleTap") as! String == "Yes" {
