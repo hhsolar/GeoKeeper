@@ -161,26 +161,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diC-43-0p0" userLabel="AddressView">
                                 <rect key="frame" x="0.0" y="481.5" width="375" height="90.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Longitude goes here)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuO-a1-uXb">
-                                        <rect key="frame" x="119" y="45" width="147" height="18"/>
-                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
-                                        <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdB-dm-jJW">
-                                        <rect key="frame" x="40" y="45" width="64" height="18"/>
+                                        <rect key="frame" x="40" y="36" width="64" height="18"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                         <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdZ-iL-cwJ">
-                                        <rect key="frame" x="40" y="13" width="62" height="18"/>
+                                        <rect key="frame" x="40" y="8" width="62" height="18"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                         <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Latitude goes here)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRw-ak-DUZ">
-                                        <rect key="frame" x="119" y="13" width="137" height="18"/>
+                                        <rect key="frame" x="119" y="8" width="137" height="18"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
+                                        <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Longitude goes here)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuO-a1-uXb">
+                                        <rect key="frame" x="119" y="36" width="147" height="18"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                         <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -188,11 +188,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="EuO-a1-uXb" firstAttribute="top" secondItem="HRw-ak-DUZ" secondAttribute="bottom" constant="14" id="1eG-oy-gqK"/>
-                                    <constraint firstItem="HRw-ak-DUZ" firstAttribute="top" secondItem="diC-43-0p0" secondAttribute="top" constant="13" id="BZA-y3-ycU"/>
-                                    <constraint firstItem="vdB-dm-jJW" firstAttribute="top" secondItem="qdZ-iL-cwJ" secondAttribute="bottom" constant="14" id="EIj-2c-aq4"/>
+                                    <constraint firstItem="EuO-a1-uXb" firstAttribute="top" secondItem="HRw-ak-DUZ" secondAttribute="bottom" constant="10" id="1eG-oy-gqK"/>
+                                    <constraint firstItem="HRw-ak-DUZ" firstAttribute="top" secondItem="diC-43-0p0" secondAttribute="top" constant="8" id="BZA-y3-ycU"/>
+                                    <constraint firstItem="vdB-dm-jJW" firstAttribute="top" secondItem="qdZ-iL-cwJ" secondAttribute="bottom" constant="10" id="EIj-2c-aq4"/>
                                     <constraint firstItem="vdB-dm-jJW" firstAttribute="leading" secondItem="diC-43-0p0" secondAttribute="leading" constant="40" id="PCy-v3-8en"/>
-                                    <constraint firstItem="qdZ-iL-cwJ" firstAttribute="top" secondItem="diC-43-0p0" secondAttribute="top" constant="13" id="RzZ-oK-mpL"/>
+                                    <constraint firstItem="qdZ-iL-cwJ" firstAttribute="top" secondItem="diC-43-0p0" secondAttribute="top" constant="8" id="RzZ-oK-mpL"/>
                                     <constraint firstItem="HRw-ak-DUZ" firstAttribute="leading" secondItem="qdZ-iL-cwJ" secondAttribute="trailing" constant="17" id="WIw-RQ-yA5"/>
                                     <constraint firstItem="EuO-a1-uXb" firstAttribute="leading" secondItem="vdB-dm-jJW" secondAttribute="trailing" constant="15" id="YVq-2U-jSm"/>
                                     <constraint firstItem="qdZ-iL-cwJ" firstAttribute="leading" secondItem="diC-43-0p0" secondAttribute="leading" constant="40" id="hTD-DV-JKZ"/>
