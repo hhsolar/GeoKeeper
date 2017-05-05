@@ -21,6 +21,6 @@ class CategoryCell: UICollectionViewCell {
         categoryLabel?.frame = CGRect(x:0, y:width - 40, width:width, height:20)
         categoryLabel?.font = UIFont(name: "TrebuchetMS-Bold", size: 14)
         categoryLabel?.textAlignment = .center
-        contentView.addSubview(categoryLabel) //去掉这一句，不会显示item那个标签
+        contentView.addSubview(categoryLabel) 
     }
 }

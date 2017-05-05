@@ -355,12 +355,15 @@ extension CategoriesViewController {
             let regex = try! NSRegularExpression(pattern: pat, options: [])
             let matches = regex.matches(in: cell.categoryLabel.text!, options: [], range:NSRange(location: 0, length: (cell.categoryLabel.text?.characters.count)!))
             // 没搞懂为什么在编辑All页面退回之后会有deleteButton在all cell上
-            print("matches.count: ", matches.count, "  cell.categoryLabel.text: ", cell.categoryLabel.text!)
-            if matches.count == 0 {
+//            print("matches.count: ", matches.count, "  cell.categoryLabel.text: ", cell.categoryLabel.text!)
+            
+                print("matches.count: ", matches.count, "  cell.categoryLabel.text: ", cell.categoryLabel.text!)
+                print("")
                 let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 20, height: 20))
                 let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
                 deleteButton.addTarget(self, action: #selector(deleteCategoryAlert), for: .touchUpInside)
                 deleteButton.setImage(backgroundImage, for: .normal)
+            if matches.count == 0 {
                 cell.addSubview(deleteButton)
                 print("!!!!!!")
             }
