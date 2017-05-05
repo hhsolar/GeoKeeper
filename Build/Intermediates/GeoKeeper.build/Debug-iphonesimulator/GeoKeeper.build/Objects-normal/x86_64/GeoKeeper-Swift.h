@@ -257,6 +257,7 @@ SWIFT_CLASS("_TtC9GeoKeeper25CategoryAddViewController")
 @property (nonatomic, strong) NSNumber * _Null_unspecified newItemId;
 @property (nonatomic, copy) NSString * _Null_unspecified newCellColor;
 @property (nonatomic, copy) NSString * _Nonnull modeFlag;
+@property (nonatomic) BOOL doneBarButtonStatus;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * _Null_unspecified doneBarButton;
 @property (nonatomic, strong) IBOutlet UICollectionView * _Nullable colorCollection;
 @property (nonatomic, strong) IBOutlet UITextField * _Null_unspecified textField;

@@ -15,6 +15,7 @@ provides-dynamic-lookup:
 - "colorCollection"
 - "done"
 - "doneBarButton"
+- "doneBarButtonStatus"
 - "finishAddCategory"
 - "hideKeyboard"
 - "icon"
@@ -32,8 +33,10 @@ provides-dynamic-lookup:
 - "textField"
 - "viewDidLoad"
 depends-top-level:
+- !private "!"
 - !private "!="
 - !private "%"
+- !private "&&"
 - !private "*"
 - !private "+"
 - !private "-"
@@ -42,7 +45,7 @@ depends-top-level:
 - !private ">"
 - "AssignmentPrecedence"
 - "Bool"
-- !private "BooleanLiteralType"
+- "BooleanLiteralType"
 - "CGFloat"
 - "CGSize"
 - "CastingPrecedence"
@@ -122,6 +125,7 @@ depends-member:
 - !private ["Ps9AnyObject", "dequeueReusableCell"]
 - !private ["Ps9AnyObject", "dismiss"]
 - !private ["Ps9AnyObject", "doneBarButton"]
+- !private ["Ps9AnyObject", "doneBarButtonStatus"]
 - !private ["Ps9AnyObject", "entity"]
 - !private ["Ps9AnyObject", "fatalCoreDataError"]
 - !private ["Ps9AnyObject", "fetch"]
@@ -263,6 +267,7 @@ depends-member:
 - !private ["Ps7CVarArg", "dequeueReusableCell"]
 - !private ["Ps7CVarArg", "dismiss"]
 - !private ["Ps7CVarArg", "doneBarButton"]
+- !private ["Ps7CVarArg", "doneBarButtonStatus"]
 - !private ["Ps7CVarArg", "entity"]
 - !private ["Ps7CVarArg", "fatalCoreDataError"]
 - !private ["Ps7CVarArg", "fetch"]
@@ -386,6 +391,7 @@ depends-member:
 - !private ["C9GeoKeeper25CategoryAddViewController", "dismiss"]
 - ["C9GeoKeeper25CategoryAddViewController", "done"]
 - ["C9GeoKeeper25CategoryAddViewController", "doneBarButton"]
+- ["C9GeoKeeper25CategoryAddViewController", "doneBarButtonStatus"]
 - !private ["C9GeoKeeper25CategoryAddViewController", "fatalCoreDataError"]
 - ["C9GeoKeeper25CategoryAddViewController", "finishAddCategory"]
 - !private ["C9GeoKeeper25CategoryAddViewController", "grayColor"]
@@ -487,6 +493,7 @@ depends-member:
 - !private ["Ps28CustomDebugStringConvertible", "dequeueReusableCell"]
 - !private ["Ps28CustomDebugStringConvertible", "dismiss"]
 - !private ["Ps28CustomDebugStringConvertible", "doneBarButton"]
+- !private ["Ps28CustomDebugStringConvertible", "doneBarButtonStatus"]
 - !private ["Ps28CustomDebugStringConvertible", "entity"]
 - !private ["Ps28CustomDebugStringConvertible", "fatalCoreDataError"]
 - !private ["Ps28CustomDebugStringConvertible", "fetch"]
@@ -614,6 +621,7 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "dequeueReusableCell"]
 - !private ["Ps23CustomStringConvertible", "dismiss"]
 - !private ["Ps23CustomStringConvertible", "doneBarButton"]
+- !private ["Ps23CustomStringConvertible", "doneBarButtonStatus"]
 - !private ["Ps23CustomStringConvertible", "entity"]
 - !private ["Ps23CustomStringConvertible", "fatalCoreDataError"]
 - !private ["Ps23CustomStringConvertible", "fetch"]
@@ -727,6 +735,7 @@ depends-member:
 - !private ["Ps9Equatable", "dequeueReusableCell"]
 - !private ["Ps9Equatable", "dismiss"]
 - !private ["Ps9Equatable", "doneBarButton"]
+- !private ["Ps9Equatable", "doneBarButtonStatus"]
 - !private ["Ps9Equatable", "entity"]
 - !private ["Ps9Equatable", "fatalCoreDataError"]
 - !private ["Ps9Equatable", "fetch"]
@@ -858,6 +867,7 @@ depends-member:
 - !private ["Ps8Hashable", "dequeueReusableCell"]
 - !private ["Ps8Hashable", "dismiss"]
 - !private ["Ps8Hashable", "doneBarButton"]
+- !private ["Ps8Hashable", "doneBarButtonStatus"]
 - !private ["Ps8Hashable", "entity"]
 - !private ["Ps8Hashable", "fatalCoreDataError"]
 - !private ["Ps8Hashable", "fetch"]
@@ -983,6 +993,7 @@ depends-member:
 - !private ["PSo8NSCoding", "dequeueReusableCell"]
 - !private ["PSo8NSCoding", "dismiss"]
 - !private ["PSo8NSCoding", "doneBarButton"]
+- !private ["PSo8NSCoding", "doneBarButtonStatus"]
 - !private ["PSo8NSCoding", "entity"]
 - !private ["PSo8NSCoding", "fatalCoreDataError"]
 - !private ["PSo8NSCoding", "fetch"]
@@ -1085,6 +1096,7 @@ depends-member:
 - !private ["PSo26NSExtensionRequestHandling", "delegate"]
 - !private ["PSo26NSExtensionRequestHandling", "dismiss"]
 - !private ["PSo26NSExtensionRequestHandling", "doneBarButton"]
+- !private ["PSo26NSExtensionRequestHandling", "doneBarButtonStatus"]
 - !private ["PSo26NSExtensionRequestHandling", "fatalCoreDataError"]
 - !private ["PSo26NSExtensionRequestHandling", "finishAddCategory"]
 - !private ["PSo26NSExtensionRequestHandling", "grayColor"]
@@ -1215,6 +1227,7 @@ depends-member:
 - !private ["CSo8NSObject", "dismiss"]
 - ["CSo8NSObject", "done"]
 - ["CSo8NSObject", "doneBarButton"]
+- ["CSo8NSObject", "doneBarButtonStatus"]
 - !private ["CSo8NSObject", "entity"]
 - !private ["CSo8NSObject", "fatalCoreDataError"]
 - !private ["CSo8NSObject", "fetch"]
@@ -1320,6 +1333,7 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "dequeueReusableCell"]
 - !private ["PSo16NSObjectProtocol", "dismiss"]
 - !private ["PSo16NSObjectProtocol", "doneBarButton"]
+- !private ["PSo16NSObjectProtocol", "doneBarButtonStatus"]
 - !private ["PSo16NSObjectProtocol", "entity"]
 - !private ["PSo16NSObjectProtocol", "fatalCoreDataError"]
 - !private ["PSo16NSObjectProtocol", "fetch"]
@@ -1430,6 +1444,7 @@ depends-member:
 - !private ["Ps8Sequence", "subscript"]
 - !private ["Ps13SignedInteger", "init"]
 - !private ["Ps12SignedNumber", "init"]
+- !private ["Vs12StaticString", "init"]
 - !private ["Ps10Strideable", "init"]
 - ["SS", "init"]
 - ["Ps16TextOutputStream", "init"]
@@ -1497,6 +1512,7 @@ depends-member:
 - !private ["PSo21UIAppearanceContainer", "dequeueReusableCell"]
 - !private ["PSo21UIAppearanceContainer", "dismiss"]
 - !private ["PSo21UIAppearanceContainer", "doneBarButton"]
+- !private ["PSo21UIAppearanceContainer", "doneBarButtonStatus"]
 - !private ["PSo21UIAppearanceContainer", "fatalCoreDataError"]
 - !private ["PSo21UIAppearanceContainer", "finishAddCategory"]
 - !private ["PSo21UIAppearanceContainer", "frame"]
@@ -1596,6 +1612,7 @@ depends-member:
 - !private ["PSo26UICollectionViewDataSource", "delegate"]
 - !private ["PSo26UICollectionViewDataSource", "dismiss"]
 - !private ["PSo26UICollectionViewDataSource", "doneBarButton"]
+- !private ["PSo26UICollectionViewDataSource", "doneBarButtonStatus"]
 - !private ["PSo26UICollectionViewDataSource", "fatalCoreDataError"]
 - !private ["PSo26UICollectionViewDataSource", "finishAddCategory"]
 - !private ["PSo26UICollectionViewDataSource", "grayColor"]
@@ -1671,6 +1688,7 @@ depends-member:
 - !private ["PSo24UICollectionViewDelegate", "delegate"]
 - !private ["PSo24UICollectionViewDelegate", "dismiss"]
 - !private ["PSo24UICollectionViewDelegate", "doneBarButton"]
+- !private ["PSo24UICollectionViewDelegate", "doneBarButtonStatus"]
 - !private ["PSo24UICollectionViewDelegate", "fatalCoreDataError"]
 - !private ["PSo24UICollectionViewDelegate", "finishAddCategory"]
 - !private ["PSo24UICollectionViewDelegate", "grayColor"]
@@ -1746,6 +1764,7 @@ depends-member:
 - !private ["PSo34UICollectionViewDelegateFlowLayout", "delegate"]
 - !private ["PSo34UICollectionViewDelegateFlowLayout", "dismiss"]
 - !private ["PSo34UICollectionViewDelegateFlowLayout", "doneBarButton"]
+- !private ["PSo34UICollectionViewDelegateFlowLayout", "doneBarButtonStatus"]
 - !private ["PSo34UICollectionViewDelegateFlowLayout", "fatalCoreDataError"]
 - !private ["PSo34UICollectionViewDelegateFlowLayout", "finishAddCategory"]
 - !private ["PSo34UICollectionViewDelegateFlowLayout", "grayColor"]
@@ -1824,6 +1843,7 @@ depends-member:
 - !private ["PSo18UIContentContainer", "delegate"]
 - !private ["PSo18UIContentContainer", "dismiss"]
 - !private ["PSo18UIContentContainer", "doneBarButton"]
+- !private ["PSo18UIContentContainer", "doneBarButtonStatus"]
 - !private ["PSo18UIContentContainer", "fatalCoreDataError"]
 - !private ["PSo18UIContentContainer", "finishAddCategory"]
 - !private ["PSo18UIContentContainer", "grayColor"]
@@ -1945,6 +1965,7 @@ depends-member:
 - !private ["PSo18UIFocusEnvironment", "dequeueReusableCell"]
 - !private ["PSo18UIFocusEnvironment", "dismiss"]
 - !private ["PSo18UIFocusEnvironment", "doneBarButton"]
+- !private ["PSo18UIFocusEnvironment", "doneBarButtonStatus"]
 - !private ["PSo18UIFocusEnvironment", "fatalCoreDataError"]
 - !private ["PSo18UIFocusEnvironment", "finishAddCategory"]
 - !private ["PSo18UIFocusEnvironment", "frame"]
@@ -2076,6 +2097,7 @@ depends-member:
 - !private ["CSo11UIResponder", "dismiss"]
 - ["CSo11UIResponder", "done"]
 - ["CSo11UIResponder", "doneBarButton"]
+- ["CSo11UIResponder", "doneBarButtonStatus"]
 - !private ["CSo11UIResponder", "fatalCoreDataError"]
 - ["CSo11UIResponder", "finishAddCategory"]
 - !private ["CSo11UIResponder", "frame"]
@@ -2166,6 +2188,7 @@ depends-member:
 - !private ["PSo30UIResponderStandardEditActions", "dequeueReusableCell"]
 - !private ["PSo30UIResponderStandardEditActions", "dismiss"]
 - !private ["PSo30UIResponderStandardEditActions", "doneBarButton"]
+- !private ["PSo30UIResponderStandardEditActions", "doneBarButtonStatus"]
 - !private ["PSo30UIResponderStandardEditActions", "fatalCoreDataError"]
 - !private ["PSo30UIResponderStandardEditActions", "finishAddCategory"]
 - !private ["PSo30UIResponderStandardEditActions", "frame"]
@@ -2255,6 +2278,7 @@ depends-member:
 - !private ["PSo20UIScrollViewDelegate", "delegate"]
 - !private ["PSo20UIScrollViewDelegate", "dismiss"]
 - !private ["PSo20UIScrollViewDelegate", "doneBarButton"]
+- !private ["PSo20UIScrollViewDelegate", "doneBarButtonStatus"]
 - !private ["PSo20UIScrollViewDelegate", "fatalCoreDataError"]
 - !private ["PSo20UIScrollViewDelegate", "finishAddCategory"]
 - !private ["PSo20UIScrollViewDelegate", "grayColor"]
@@ -2331,6 +2355,7 @@ depends-member:
 - !private ["PSo16UIStateRestoring", "delegate"]
 - !private ["PSo16UIStateRestoring", "dismiss"]
 - !private ["PSo16UIStateRestoring", "doneBarButton"]
+- !private ["PSo16UIStateRestoring", "doneBarButtonStatus"]
 - !private ["PSo16UIStateRestoring", "fatalCoreDataError"]
 - !private ["PSo16UIStateRestoring", "finishAddCategory"]
 - !private ["PSo16UIStateRestoring", "grayColor"]
@@ -2414,6 +2439,7 @@ depends-member:
 - !private ["PSo19UITextFieldDelegate", "delegate"]
 - !private ["PSo19UITextFieldDelegate", "dismiss"]
 - !private ["PSo19UITextFieldDelegate", "doneBarButton"]
+- !private ["PSo19UITextFieldDelegate", "doneBarButtonStatus"]
 - !private ["PSo19UITextFieldDelegate", "fatalCoreDataError"]
 - !private ["PSo19UITextFieldDelegate", "finishAddCategory"]
 - !private ["PSo19UITextFieldDelegate", "grayColor"]
@@ -2503,6 +2529,7 @@ depends-member:
 - !private ["PSo18UITraitEnvironment", "dequeueReusableCell"]
 - !private ["PSo18UITraitEnvironment", "dismiss"]
 - !private ["PSo18UITraitEnvironment", "doneBarButton"]
+- !private ["PSo18UITraitEnvironment", "doneBarButtonStatus"]
 - !private ["PSo18UITraitEnvironment", "fatalCoreDataError"]
 - !private ["PSo18UITraitEnvironment", "finishAddCategory"]
 - !private ["PSo18UITraitEnvironment", "frame"]
@@ -2621,6 +2648,7 @@ depends-member:
 - !private ["CSo16UIViewController", "dismiss"]
 - ["CSo16UIViewController", "done"]
 - ["CSo16UIViewController", "doneBarButton"]
+- ["CSo16UIViewController", "doneBarButtonStatus"]
 - !private ["CSo16UIViewController", "fatalCoreDataError"]
 - ["CSo16UIViewController", "finishAddCategory"]
 - !private ["CSo16UIViewController", "grayColor"]
@@ -2755,6 +2783,7 @@ depends-member:
 - !private ["Ps9_Hashable", "dequeueReusableCell"]
 - !private ["Ps9_Hashable", "dismiss"]
 - !private ["Ps9_Hashable", "doneBarButton"]
+- !private ["Ps9_Hashable", "doneBarButtonStatus"]
 - !private ["Ps9_Hashable", "entity"]
 - !private ["Ps9_Hashable", "fatalCoreDataError"]
 - !private ["Ps9_Hashable", "fetch"]
@@ -2940,6 +2969,7 @@ depends-nominal:
 - !private "Ps8Sequence"
 - !private "Ps13SignedInteger"
 - !private "Ps12SignedNumber"
+- !private "Vs12StaticString"
 - !private "Ps10Strideable"
 - "SS"
 - "Ps16TextOutputStream"
@@ -3037,4 +3067,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "8060ef88a8571f01c9f7f6e29cee630d"
+interface-hash: "a2470b69f5bbda1aa84b802019e59ae6"

@@ -27,6 +27,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     var newCellColor: String!
     
     var modeFlag = " "
+    var doneBarButtonStatus = true
     
     fileprivate let reuseIdentifier1 = "CategoryColorCell"
     fileprivate let reuseIdentifier2 = "IconCategoryCell"
@@ -109,36 +110,20 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
         if modeFlag == "Edit"{
             let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
             fetchRequest.entity = Category.entity()
-            
-            fetchRequest.predicate = NSPredicate(format: "category == %@", textField.text!)
-            
+            fetchRequest.predicate = NSPredicate(format: "id == %@", newItemId)
             do {
-                let count = try managedObjectContext.count(for: fetchRequest)
-                if count == 0 {
-                    fetchRequest.predicate = NSPredicate(format: "id == %@", newItemId)
-                    do {
-                        let categoryToEdits = try managedObjectContext.fetch(fetchRequest)
-                        for categoryToEdit in categoryToEdits {
-                            categoryToEdit.category = textField.text!
-                            categoryToEdit.color = color
-                            categoryToEdit.id = newItemId
-                            categoryToEdit.iconName = icon
-                        }
-                    } catch {
-                        fatalCoreDataError(error)
-                    }
-                    saveToCoreData(managedObjectContext)
-                    dismiss(animated: true, completion: nil)
-                } else {
-                    let alert = UIAlertController(title: "Reminder", message: "Category Name Already Exist!!", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:nil))
-                    self.present(alert, animated: true, completion: nil)
+                let categoryToEdits = try managedObjectContext.fetch(fetchRequest)
+                for categoryToEdit in categoryToEdits {
+                    categoryToEdit.category = textField.text!
+                    categoryToEdit.color = color
+                    categoryToEdit.id = newItemId
+                    categoryToEdit.iconName = icon
                 }
             } catch {
                 fatalCoreDataError(error)
             }
-
-            
+            saveToCoreData(managedObjectContext)
+            dismiss(animated: true, completion: nil)
         }
     }
     
@@ -155,6 +140,13 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let oldText = textField.text! as NSString
         let newText = oldText.replacingCharacters(in:range, with: string) as NSString
+        if modeFlag == "Edit" && newText == "All" {
+            doneBarButton.isEnabled = false
+            doneBarButtonStatus = false
+            delegate?.changeColorOfButton(Color: UIColor.lightGray)
+            return true
+        }
+        
         if newText.length > 0 {
             doneBarButton.isEnabled = true
             delegate?.changeColorOfButton(Color: UIColor.white)
@@ -239,7 +231,12 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             collectionView.reloadItems(at: indexPaths)
 //            collectionView.cellForItem(at: selectedIconIndexPath)?.backgroundColor = UIColor.lightGray
         }
-        doneBarButton.isEnabled = true
+        if !doneBarButtonStatus {
+            doneBarButton.isEnabled = false
+        } else {
+            doneBarButton.isEnabled = true
+        }
+        
     }
 }
 
