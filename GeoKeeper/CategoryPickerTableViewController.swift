@@ -51,7 +51,7 @@ class CategoryPickerTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categorys.count
+        return categorys.count - 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,7 +64,7 @@ class CategoryPickerTableViewController: UITableViewController {
         }
         cell.awakeFromNib()
         cell.configure(name: categoryName!, chosen: isChosen)
-        
+
         return cell
     }
     

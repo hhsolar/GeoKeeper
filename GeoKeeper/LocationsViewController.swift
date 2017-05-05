@@ -30,17 +30,30 @@ class LocationsViewController: UITableViewController {
     func fetchLocationInfo() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
         fetchRequest.entity = Location.entity()
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchRequest.predicate = NSPredicate(format: "category == %@", categoryPassed)
 
-        do {
-            let fetchedResults = try managedObjectContext.fetch(fetchRequest)
-            for location in fetchedResults {
-                locations.append(location as! Location)
+        if categoryPassed == "All" {
+            let sortDescriptor = NSSortDescriptor(key: "category", ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            do {
+                let fetchedResults = try managedObjectContext.fetch(fetchRequest)
+                for location in fetchedResults {
+                    locations.append(location as! Location)
+                }
+            } catch {
+                fatalCoreDataError(error)
             }
-        } catch {
-            fatalCoreDataError(error)
+        } else {
+            let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            fetchRequest.predicate = NSPredicate(format: "category == %@", categoryPassed)
+            do {
+                let fetchedResults = try managedObjectContext.fetch(fetchRequest)
+                for location in fetchedResults {
+                    locations.append(location as! Location)
+                }
+            } catch {
+                fatalCoreDataError(error)
+            }
         }
     }
     
