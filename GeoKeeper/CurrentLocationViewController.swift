@@ -284,6 +284,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             
             forPassLocation.locationName = cityName.text!
             if tagLabel.text == "Tag" {
+                forPassLocation.locationCategory = "All"
                 forPassLocation.placemark = placemark
                 forPassLocation.latitude = (location?.coordinate.latitude)!
                 forPassLocation.longitude = (location?.coordinate.longitude)!
@@ -503,7 +504,6 @@ extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavi
 
 extension CurrentLocationViewController: LocationDetailViewControllerDelegate {
     func passLocation(location: MyLocation) {
-//        forPassLocation = location
         cityName.text = location.locationName
     }
 }
