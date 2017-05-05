@@ -1,14 +1,14 @@
 version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
-options: "01d4e9053697dfea4e2c72d1608e5016"
-build_time: [547259761, 774619000]
+options: "c34a3f3e9a4d60e41609a3539caee3a5"
+build_time: [547260982, 332920000]
 inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/PhotoCell.swift": [547108972, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailEditViewController.swift": [547249373, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailEditViewController.swift": [547260982, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryAddViewController.swift": [547197435, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyTabBarController.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerTableViewController.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/LocationDetailViewController.swift": [547178230, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoriesViewController.swift": [547192380, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoriesViewController.swift": [547259887, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryPickerCell.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/PhotoFunctions.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/ColorCell.swift": [547074860, 0]
@@ -25,8 +25,8 @@ inputs:
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyImagePickerController.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/DimmingPresentationController.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/AppDelegate.swift": [547149504, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyLocation.swift": [547074860, 0]
-  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/Settings.swift": [547197486, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/MyLocation.swift": [547260052, 0]
+  "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/Settings.swift": [547259887, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Location+CoreDataClass.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/GeoKeeper/CategoryCell.swift": [547074860, 0]
   "/Users/apple/NewStudy/IOS/GeoKeeper/Category+CoreDataClass.swift": [547074858, 0]

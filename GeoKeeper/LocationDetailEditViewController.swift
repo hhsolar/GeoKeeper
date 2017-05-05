@@ -322,6 +322,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         
         if !hasRocord {
             locationToEdit.locationName = nameTextField.text!
+            locationToEdit.locationCategory = (categoryPicker.titleLabel?.text)!
             locationToEdit.locationDescription = remarkTextView.text
             
             let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
@@ -555,7 +556,7 @@ extension LocationDetailEditViewController: PhotoCellDelegate {
 extension LocationDetailEditViewController: CategoryPickerTableViewControllerDelegate {
     func passCategory(categoryName: String) {
         categoryPicker.setTitle(categoryName, for: .normal)
-        locationToEdit.locationCategory = categoryName
+//        locationToEdit.locationCategory = categoryName
     }
 }
 

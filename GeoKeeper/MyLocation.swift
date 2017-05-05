@@ -12,7 +12,7 @@ import CoreLocation
 
 class MyLocation: NSObject {
     var locationName: String = "Location Name"
-    var locationCategory: String = "No Category"
+    var locationCategory: String = "All"
     var date: Date?
     var latitude: Double = 0
     var longitude: Double = 0
