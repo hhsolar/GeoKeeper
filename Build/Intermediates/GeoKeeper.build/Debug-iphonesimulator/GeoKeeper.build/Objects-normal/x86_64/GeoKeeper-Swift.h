@@ -133,9 +133,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if defined(__has_feature) && __has_feature(modules)
 @import UIKit;
+@import CoreGraphics;
 @import CoreData;
 @import Foundation;
-@import CoreGraphics;
 @import CoreLocation;
 @import ObjectiveC;
 @import MapKit;
@@ -144,6 +144,22 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
+@class UIImageView;
+@class UILabel;
+@class UIButton;
+@class NSCoder;
+
+SWIFT_CLASS("_TtC9GeoKeeper7AllCell")
+@interface AllCell : UICollectionViewCell
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified categoryImageView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified categoryLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified itemsCountLabel;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified deleteButton;
+- (void)awakeFromNib;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class UIWindow;
 @class NSManagedObjectContext;
 @class UIApplication;
@@ -175,7 +191,6 @@ SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 @class UITapGestureRecognizer;
 @protocol NSFetchedResultsSectionInfo;
 @class NSBundle;
-@class NSCoder;
 
 SWIFT_CLASS("_TtC9GeoKeeper24CategoriesViewController")
 @interface CategoriesViewController : UIViewController <UIScrollViewDelegate, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate, UICollectionViewDataSource>
@@ -211,11 +226,8 @@ SWIFT_CLASS("_TtC9GeoKeeper24CategoriesViewController")
 - (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class CategoryCell;
-@class UICollectionViewCell;
 
 @interface CategoriesViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)fillCollectionCellWithColor:(NSString * _Nonnull)color :(CategoryCell * _Nonnull)cell;
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (void)deleteCategoryAlert;
@@ -287,14 +299,13 @@ SWIFT_CLASS("_TtC9GeoKeeper25CategoryAddViewController")
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
-@class UIImageView;
-@class UILabel;
 
 SWIFT_CLASS("_TtC9GeoKeeper12CategoryCell")
 @interface CategoryCell : UICollectionViewCell
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified categoryImageView;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified categoryLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified itemsCountLabel;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified deleteButton;
 - (void)awakeFromNib;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -349,7 +360,6 @@ SWIFT_CLASS("_TtC9GeoKeeper9ColorCell")
 @class CLPlacemark;
 @class NSTimer;
 @class UIImage;
-@class UIButton;
 @class UINavigationBar;
 @class MKMapView;
 
@@ -661,13 +671,13 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @end
 
 
-@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
-- (void)enlargeImageForCell:(PhotoCell * _Nonnull)forCell;
+@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)passLocationWithLocation:(MyLocation * _Nonnull)location;
 @end
 
 
-@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)passLocationWithLocation:(MyLocation * _Nonnull)location;
+@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
+- (void)enlargeImageForCell:(PhotoCell * _Nonnull)forCell;
 @end
 
 
