@@ -159,7 +159,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         photoCollection.collectionViewLayout = layout
         layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        let itemHeight: CGFloat = photoCollection.frame.height - 8 * 2
+        let itemHeight: CGFloat = photoCollection.frame.height - 10 * 2
         layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
         layout.minimumLineSpacing = 8
         
