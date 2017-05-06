@@ -39,6 +39,7 @@
 		1FA2AC2F1EA9A1D2000BACB0 /* Rain.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1FA2AC2E1EA9A1D2000BACB0 /* Rain.caf */; };
 		1FA2AC311EA9A1DD000BACB0 /* Thunder.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1FA2AC301EA9A1DD000BACB0 /* Thunder.caf */; };
 		1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4ED521E722E3F002A6818 /* MapViewController.swift */; };
+		1FBB71FA1EBD52B400795790 /* AllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB71F91EBD52B400795790 /* AllCell.swift */; };
 		1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4891E6A8B19007CC5F1 /* HudView.swift */; };
 		1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4911E6CB5D2007CC5F1 /* DataModel.xcdatamodeld */; };
 		1FEAD49E1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */; };
@@ -84,6 +85,7 @@
 		1FA2AC2E1EA9A1D2000BACB0 /* Rain.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rain.caf; sourceTree = "<group>"; };
 		1FA2AC301EA9A1DD000BACB0 /* Thunder.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thunder.caf; sourceTree = "<group>"; };
 		1FA4ED521E722E3F002A6818 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		1FBB71F91EBD52B400795790 /* AllCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCell.swift; sourceTree = "<group>"; };
 		1FEAD4891E6A8B19007CC5F1 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		1FEAD4921E6CB5D2007CC5F1 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				1801FB761E77BAAC00705F92 /* MyNavigationController.swift */,
 				1FEAD4A21E6E2146007CC5F1 /* LocationCell.swift */,
 				1F8D4F8B1E83993F00A5D73E /* CategoryCell.swift */,
+				1FBB71F91EBD52B400795790 /* AllCell.swift */,
 				1F8D4F8D1E83994F00A5D73E /* ColorCell.swift */,
 				1F8D4F8F1E83995500A5D73E /* MyIconCollectionCell.swift */,
 				1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */,
@@ -316,6 +319,7 @@
 				18F62A331E8B74C300062EF8 /* FadeAnimation.swift in Sources */,
 				1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */,
 				1F0729171EB2A580005C6C6E /* CoreDataFunctions.swift in Sources */,
+				1FBB71FA1EBD52B400795790 /* AllCell.swift in Sources */,
 				1FEAD49F1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift in Sources */,
 				1F8D4F921E83995C00A5D73E /* RoundedCornersView.swift in Sources */,
 				1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */,

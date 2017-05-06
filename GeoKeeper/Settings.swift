@@ -34,6 +34,7 @@ let kScreenHeight = UIScreen.main.bounds.size.height
 let locationDefaultImage = UIImage(named: "location_default")
 
 let colors = ["brown", "darkgreen", "darkpurple", "green", "pink", "purple", "yellow"]
+
 let photoCapacity = 20
 let punchInterval = 10000.0
 

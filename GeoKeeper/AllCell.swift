@@ -1,14 +1,14 @@
 //
-//  CategoryCell.swift
+//  AllCell.swift
 //  GeoKeeper
 //
-//  Created by Jingfu Ju on 3/20/17.
+//  Created by Jingfu Ju on 5/5/17.
 //  Copyright © 2017 204. All rights reserved.
 //
 
 import UIKit
 
-class CategoryCell: UICollectionViewCell {
+class AllCell: UICollectionViewCell {
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var itemsCountLabel: UILabel!

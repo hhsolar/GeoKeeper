@@ -290,8 +290,6 @@ class LocationDetailViewController: UIViewController {
     }
     
     func initCollectionView() {
-        let collectionViewHeight = UIScreen.main.bounds.size.height / 13 * 3
-        photoCollectionView.frame = CGRect(x: 0, y: (mapAppButton.frame.origin.y + mapAppButton.frame.height + 8), width: kScreenWidth, height: collectionViewHeight )
         photoCollectionView.backgroundColor = grayColor
         photoCollectionView.register(PhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         

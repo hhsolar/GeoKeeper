@@ -10,7 +10,8 @@ import CoreData
 
 class CategoriesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate {
     
-    fileprivate let reuseIdentifier = "CategoryCell"
+    fileprivate let reuseIdentifier1 = "CategoryCell"
+    fileprivate let reuseIdentifier2 = "AllCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1.0, left: 4.0, bottom: 1.0, right: 2.0)
     fileprivate let itemsPerRow: CGFloat = 3
     var managedObjectContext: NSManagedObjectContext!
@@ -44,10 +45,14 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
+        UserDefaults.standard.set("Yes", forKey: "dataReload")
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
+        UserDefaults.standard.set("No", forKey: "dataReload")
     }
+    
+
     
     override func viewDidLoad() {
          super.viewDidLoad()
@@ -279,37 +284,12 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
 }
 
 extension CategoriesViewController {
-    func fillCollectionCellWithColor(_ color: String,_ cell: CategoryCell) {
-        switch color {
-        case "brown":
-            cell.backgroundColor = brown
-        case "darkgreen":
-            cell.backgroundColor = darkgreen
-        case "darkpurple":
-            cell.backgroundColor = darkpurple
-        case "green":
-            cell.backgroundColor = green
-        case "purple":
-            cell.backgroundColor = purple
-        case "pink":
-            cell.backgroundColor = pink
-        case "yellow":
-            cell.backgroundColor = yellow
-        default:
-            cell.backgroundColor = pink
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CategoryCell
-//        cell.categoryImageView = UIImageView(frame: CGRect(x: width / 2, y: 3, width: width / 2, height: width / 2))
-//        为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-        
         let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
         fetchedRequest.entity = Location.entity()
         do {
@@ -317,10 +297,8 @@ extension CategoriesViewController {
         } catch {
             fatalCoreDataError(error)
         }
-        
         category = fetchedResultsController.object(at: indexPath)
         fetchedRequest.predicate = NSPredicate(format: "category == %@", category.category!)
-        
         var countItems = 0
         do {
             countItems = try managedObjectContext.count(for: fetchedRequest)
@@ -328,20 +306,33 @@ extension CategoriesViewController {
             fatalCoreDataError(error)
         }
         
-        cell.awakeFromNib()
-        if category.category == "All" {
+        
+        if category.category! == "All" {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! AllCell
+            cell.awakeFromNib()
             cell.categoryLabel?.text = "All (" + (String)(totalItem) + ")"
-        } else {
-            cell.categoryLabel?.text = category.category! + " (" + (String)(countItems) + ")"
-        }
-        
-        fillCollectionCellWithColor(category.color!,cell)
-
-        if category.iconName != nil {
-            cell.categoryImageView?.image = UIImage(named: category.iconName!)
-        }
-        
-        if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
+            if category.iconName != nil {
+                cell.categoryImageView?.image = UIImage(named: category.iconName!)
+            }
+            switch category.color! {
+            case "brown":
+                cell.backgroundColor = brown
+            case "darkgreen":
+                cell.backgroundColor = darkgreen
+            case "darkpurple":
+                cell.backgroundColor = darkpurple
+            case "green":
+                cell.backgroundColor = green
+            case "purple":
+                cell.backgroundColor = purple
+            case "pink":
+                cell.backgroundColor = pink
+            case "yellow":
+                cell.backgroundColor = yellow
+            default:
+                cell.backgroundColor = pink
+            }
+            if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
                 let anim = CABasicAnimation(keyPath: "transform.rotation")
                 anim.toValue = 0.0
                 anim.fromValue =  Double.pi / 64
@@ -350,33 +341,73 @@ extension CategoriesViewController {
                 anim.autoreverses = true
                 cell.layer.shouldRasterize = true
                 cell.layer.add(anim, forKey: "SpringboardShake")
-            
-            let pat = "^All \\(\\d+\\)$"
-            let regex = try! NSRegularExpression(pattern: pat, options: [])
-            let matches = regex.matches(in: cell.categoryLabel.text!, options: [], range:NSRange(location: 0, length: (cell.categoryLabel.text?.characters.count)!))
-            // 没搞懂为什么在编辑All页面退回之后会有deleteButton在all cell上
-//            print("matches.count: ", matches.count, "  cell.categoryLabel.text: ", cell.categoryLabel.text!)
-            
-                print("matches.count: ", matches.count, "  cell.categoryLabel.text: ", cell.categoryLabel.text!)
-                print("")
+            } else if UserDefaults.standard.value(forKey: "SingleTap") as! String == "Yes" {
+                cell.layer.removeAllAnimations()
+                let subViews = cell.subviews
+                for subView in subViews {
+                    if subView is UIButton {
+                        subView.removeFromSuperview()
+                    }
+                }
+            }
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! CategoryCell
+            //        cell.categoryImageView = UIImageView(frame: CGRect(x: width / 2, y: 3, width: width / 2, height: width / 2))
+            //        为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+            cell.awakeFromNib()
+            cell.categoryLabel?.text = category.category! + " (" + (String)(countItems) + ")"
+            switch category.color! {
+            case "brown":
+                cell.backgroundColor = brown
+            case "darkgreen":
+                cell.backgroundColor = darkgreen
+            case "darkpurple":
+                cell.backgroundColor = darkpurple
+            case "green":
+                cell.backgroundColor = green
+            case "purple":
+                cell.backgroundColor = purple
+            case "pink":
+                cell.backgroundColor = pink
+            case "yellow":
+                cell.backgroundColor = yellow
+            default:
+                cell.backgroundColor = pink
+            }
+            if category.iconName != nil {
+                cell.categoryImageView?.image = UIImage(named: category.iconName!)
+            }
+            if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
+                let anim = CABasicAnimation(keyPath: "transform.rotation")
+                anim.toValue = 0.0
+                anim.fromValue =  Double.pi / 64
+                anim.duration = 0.1
+                anim.repeatCount = Float(UInt.max)
+                anim.autoreverses = true
+                cell.layer.shouldRasterize = true
+                cell.layer.add(anim, forKey: "SpringboardShake")
+                
+                //                let pat = "^All \\(\\d+\\)$"
+                //                let regex = try! NSRegularExpression(pattern: pat, options: [])
+                //                let matches = regex.matches(in: cell.categoryLabel.text!, options: [], range:NSRange(location: 0, length: (cell.categoryLabel.text?.characters.count)!))
+                
                 let deleteButton = UIButton(frame: CGRect(x: (cell.contentView.frame.origin.x + 5), y: (cell.contentView.frame.origin.y + 5), width: 20, height: 20))
                 let backgroundImage = UIImage(named: "deleteButton_Orange") as UIImage?
                 deleteButton.addTarget(self, action: #selector(deleteCategoryAlert), for: .touchUpInside)
                 deleteButton.setImage(backgroundImage, for: .normal)
-            if matches.count == 0 {
                 cell.addSubview(deleteButton)
-                print("!!!!!!")
-            }
-        } else if UserDefaults.standard.value(forKey: "SingleTap") as! String == "Yes" {
-            cell.layer.removeAllAnimations()
-            let subViews = cell.subviews
-            for subView in subViews {
-                if subView is UIButton {
-                    subView.removeFromSuperview()
+            } else if UserDefaults.standard.value(forKey: "SingleTap") as! String == "Yes" {
+                cell.layer.removeAllAnimations()
+                let subViews = cell.subviews
+                for subView in subViews {
+                    if subView is UIButton {
+                        subView.removeFromSuperview()
+                    }
                 }
             }
+            return cell
         }
-        return cell
     }
     
     func deleteCategoryAlert() {
