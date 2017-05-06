@@ -627,6 +627,7 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified punchNumber;
 @property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified photoCollectionView;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified remarkLabel;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified conbinationView;
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, strong) MyLocation * _Nonnull locationToShow;
 @property (nonatomic, strong) CLPlacemark * _Nullable placemark;

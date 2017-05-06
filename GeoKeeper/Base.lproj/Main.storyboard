@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="owl-ma-bJy">
-                                <rect key="frame" x="0.0" y="64" width="375" height="268.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="268"/>
                                 <connections>
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="C8Y-oV-EVS"/>
                                 </connections>
@@ -65,13 +65,13 @@
                                 <rect key="frame" x="0.0" y="572" width="375" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECT-K8-qz0">
-                                        <rect key="frame" x="292" y="7.5" width="28.5" height="21"/>
+                                        <rect key="frame" x="292" y="7.5" width="29" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxA-V8-L7q">
-                                        <rect key="frame" x="24" y="4" width="212" height="28"/>
+                                        <rect key="frame" x="24" y="4.5" width="212" height="28"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                         <state key="normal" title="Get My Location" backgroundImage="button_background"/>
                                         <connections>
@@ -79,7 +79,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPP-au-b2k">
-                                        <rect key="frame" x="261" y="4" width="90" height="28"/>
+                                        <rect key="frame" x="261" y="4.5" width="90" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="hLW-fq-vmM"/>
                                         </constraints>
@@ -107,7 +107,7 @@
                                 <rect key="frame" x="0.0" y="362" width="375" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sC-M6-hLJ">
-                                        <rect key="frame" x="24" y="20" width="80" height="80"/>
+                                        <rect key="frame" x="24" y="20.5" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="2bN-mf-ZHt"/>
                                             <constraint firstAttribute="width" secondItem="5sC-M6-hLJ" secondAttribute="height" multiplier="1:1" id="GIO-z5-XiT"/>
@@ -122,7 +122,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tj0-52-qAn">
-                                        <rect key="frame" x="24" y="20" width="80" height="80"/>
+                                        <rect key="frame" x="24" y="20.5" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Tj0-52-qAn" secondAttribute="height" multiplier="1:1" id="A21-sy-bg0"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="MNF-Yf-TLr"/>
@@ -285,6 +285,17 @@
                                             <outlet property="delegate" destination="JN4-Wz-kGr" id="fGp-dl-tKc"/>
                                         </connections>
                                     </mapView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49E-4m-aJZ">
+                                        <rect key="frame" x="63.5" y="156" width="248" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="MYy-MQ-sNH"/>
+                                            <constraint firstAttribute="width" constant="248" id="SM5-3r-9C5"/>
+                                        </constraints>
+                                        <state key="normal" title="Open maps app" backgroundImage="button_background"/>
+                                        <connections>
+                                            <action selector="openMapsApp" destination="JN4-Wz-kGr" eventType="touchUpInside" id="9kp-qW-YO8"/>
+                                        </connections>
+                                    </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qwu-iR-Jra">
                                         <rect key="frame" x="0.0" y="190" width="375" height="150"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -309,25 +320,14 @@
                                             <outlet property="delegate" destination="JN4-Wz-kGr" id="vhM-5f-vI5"/>
                                         </connections>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49E-4m-aJZ">
-                                        <rect key="frame" x="63" y="156" width="248" height="28"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="MYy-MQ-sNH"/>
-                                            <constraint firstAttribute="width" constant="248" id="SM5-3r-9C5"/>
-                                        </constraints>
-                                        <state key="normal" title="Open maps app" backgroundImage="button_background"/>
-                                        <connections>
-                                            <action selector="openMapsApp" destination="JN4-Wz-kGr" eventType="touchUpInside" id="9kp-qW-YO8"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Qwu-iR-Jra" firstAttribute="height" secondItem="dNJ-gM-3of" secondAttribute="height" multiplier="1:1" id="HNj-XS-vVi"/>
                                     <constraint firstItem="Qwu-iR-Jra" firstAttribute="leading" secondItem="H4i-6g-5rc" secondAttribute="leading" id="JuV-I3-buy"/>
                                     <constraint firstItem="49E-4m-aJZ" firstAttribute="top" secondItem="dNJ-gM-3of" secondAttribute="bottom" constant="6" id="XsM-Cp-xdj"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qwu-iR-Jra" secondAttribute="bottom" id="ZZv-8b-kvD"/>
                                     <constraint firstItem="dNJ-gM-3of" firstAttribute="leading" secondItem="H4i-6g-5rc" secondAttribute="leading" id="ch2-PW-ogZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="Qwu-iR-Jra" secondAttribute="bottom" id="epU-Bb-bwR"/>
                                     <constraint firstAttribute="trailing" secondItem="dNJ-gM-3of" secondAttribute="trailing" id="hyP-em-ZNA"/>
                                     <constraint firstItem="Qwu-iR-Jra" firstAttribute="top" secondItem="49E-4m-aJZ" secondAttribute="bottom" constant="6" id="iTL-v5-xgc"/>
                                     <constraint firstAttribute="trailing" secondItem="Qwu-iR-Jra" secondAttribute="trailing" id="m1B-oU-1j1"/>
@@ -431,7 +431,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="gxp-x3-Wad" secondAttribute="trailing" id="38Y-cL-0Tw"/>
                             <constraint firstItem="gxp-x3-Wad" firstAttribute="leading" secondItem="EH2-yB-4Sd" secondAttribute="trailing" id="3Mb-B7-TyQ"/>
                             <constraint firstItem="d6I-ML-gN6" firstAttribute="top" secondItem="Fby-DY-ncp" secondAttribute="bottom" constant="4" id="8c3-cW-IIA"/>
-                            <constraint firstItem="bqs-6k-L2q" firstAttribute="top" secondItem="Qwu-iR-Jra" secondAttribute="bottom" constant="8" id="9HJ-db-sin"/>
                             <constraint firstItem="d6I-ML-gN6" firstAttribute="leading" secondItem="n6o-NO-WAd" secondAttribute="leadingMargin" constant="4" id="CzR-mM-odB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="r6l-QX-lrI" secondAttribute="trailing" constant="4" id="ExO-67-uWW"/>
                             <constraint firstItem="xzc-qf-YXF" firstAttribute="centerX" secondItem="3Xu-4x-5iZ" secondAttribute="centerX" id="IS5-7u-SAC"/>
@@ -457,6 +456,7 @@
                             <constraint firstItem="H4i-6g-5rc" firstAttribute="top" secondItem="vzx-xj-eB4" secondAttribute="bottom" constant="110" id="m3f-OA-djv"/>
                             <constraint firstItem="J39-Gt-wIs" firstAttribute="top" secondItem="bqs-6k-L2q" secondAttribute="bottom" id="o0b-NK-icC"/>
                             <constraint firstItem="bbM-3Z-eEl" firstAttribute="top" secondItem="vzx-xj-eB4" secondAttribute="bottom" constant="10" id="qxL-Zs-xAi"/>
+                            <constraint firstItem="bqs-6k-L2q" firstAttribute="top" secondItem="H4i-6g-5rc" secondAttribute="bottom" constant="8" id="tJo-TF-5EO"/>
                             <constraint firstItem="r6l-QX-lrI" firstAttribute="top" secondItem="vzx-xj-eB4" secondAttribute="bottom" constant="5" id="wUP-ET-uQT"/>
                         </constraints>
                     </view>
@@ -475,6 +475,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="d6I-ML-gN6" id="ap2-n3-cVv"/>
                         <outlet property="categoryLabel" destination="EF8-VE-IK1" id="aeQ-ON-MMY"/>
+                        <outlet property="conbinationView" destination="H4i-6g-5rc" id="Xo1-Bd-XGD"/>
                         <outlet property="locationNameLabel" destination="bbM-3Z-eEl" id="ZpB-nW-Haz"/>
                         <outlet property="mapAppButton" destination="49E-4m-aJZ" id="LGp-M3-hJ3"/>
                         <outlet property="mapKit" destination="dNJ-gM-3of" id="4c9-hT-yXW"/>
@@ -634,11 +635,11 @@
                                         <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="201" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label 信息" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4P-V9-Jzl">
-                                                    <rect key="frame" x="0.0" y="172" width="200" height="20"/>
+                                                    <rect key="frame" x="0.0" y="171" width="200" height="21"/>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -712,7 +713,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aKX-Mg-WID" id="yec-cG-Psl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rdq-Tq-HPp">
@@ -1076,7 +1077,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aq1-bH-p7z" id="rHo-1I-yRU">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
