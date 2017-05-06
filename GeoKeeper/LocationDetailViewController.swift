@@ -31,7 +31,7 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var punchNumber: UILabel!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var remarkLabel: UILabel!
-    
+    @IBOutlet weak var conbinationView: UIView!
     
     var managedObjectContext: NSManagedObjectContext!
     var locationToShow = MyLocation()
@@ -90,7 +90,7 @@ class LocationDetailViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
         if segue.identifier == "EditDetail" {
             let controller = segue.destination as! LocationDetailEditViewController
             controller.locationToEdit = locationToShow
@@ -98,8 +98,8 @@ class LocationDetailViewController: UIViewController {
             controller.portraitViewFrame = portraitImage.frame
             controller.nameTextFrame = locationNameLabel.frame
             controller.categoryFrame = categoryLabel.frame
-            controller.collectionFrame = photoCollectionView.frame
-            controller.addImageButtonFrame = mapAppButton.frame
+            controller.collectionFrame = CGRect(x: conbinationView.frame.origin.x + photoCollectionView.frame.origin.x, y: conbinationView.frame.origin.y + photoCollectionView.frame.origin.y, width: photoCollectionView.frame.width, height: photoCollectionView.frame.height)
+            controller.addImageButtonFrame = CGRect(x: conbinationView.frame.origin.x + mapAppButton.frame.origin.x, y: conbinationView.frame.origin.y + mapAppButton.frame.origin.y, width: mapAppButton.frame.width, height: mapAppButton.frame.height)
             controller.remarkLabelFrame = remarkLabel.frame
             controller.remarkTextViewFrame = remarkTextView.frame
             
@@ -137,10 +137,8 @@ class LocationDetailViewController: UIViewController {
         
         setLocation(coordinate: coordinate)
         weatherSearch(coordinate: coordinate)
-        
         setContainer()
         initCollectionView()
-        
     }
     
     func setContainer() {
@@ -292,13 +290,13 @@ class LocationDetailViewController: UIViewController {
     func initCollectionView() {
         photoCollectionView.backgroundColor = grayColor
         photoCollectionView.register(PhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
         let layout = UICollectionViewFlowLayout()
         photoCollectionView.collectionViewLayout = layout
         layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        let itemHeight: CGFloat = photoCollectionView.frame.height - 10 * 2
+        let itemHeight: CGFloat = photoCollectionView.frame.height - 8 * 2
         layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
+        
         layout.minimumLineSpacing = 8
         
         layout.scrollDirection = .horizontal

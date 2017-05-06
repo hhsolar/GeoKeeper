@@ -9,6 +9,7 @@ provides-dynamic-lookup:
 - "awakeFromNib"
 - "categoryImageView"
 - "categoryLabel"
+- "deleteButton"
 - "itemsCountLabel"
 depends-top-level:
 - !private "-"
@@ -16,6 +17,7 @@ depends-top-level:
 - !private "CGRect"
 - "CategoryCell"
 - !private "StringLiteralType"
+- "UIButton"
 - "UICollectionViewCell"
 - !private "UIFont"
 - "UIImageView"
@@ -74,6 +76,7 @@ depends-member:
 - !private ["Ps7CVarArg", "textAlignment"]
 - ["Ps7CVarArg", ""]
 - !private ["C9GeoKeeper12CategoryCell", "CGRect"]
+- ["C9GeoKeeper12CategoryCell", "UIButton"]
 - !private ["C9GeoKeeper12CategoryCell", "UIFont"]
 - ["C9GeoKeeper12CategoryCell", "UIImageView"]
 - ["C9GeoKeeper12CategoryCell", "UILabel"]
@@ -83,6 +86,7 @@ depends-member:
 - ["C9GeoKeeper12CategoryCell", "categoryLabel"]
 - !private ["C9GeoKeeper12CategoryCell", "contentView"]
 - ["C9GeoKeeper12CategoryCell", "deinit"]
+- ["C9GeoKeeper12CategoryCell", "deleteButton"]
 - !private ["C9GeoKeeper12CategoryCell", "frame"]
 - ["C9GeoKeeper12CategoryCell", "init"]
 - ["C9GeoKeeper12CategoryCell", "itemsCountLabel"]
@@ -186,6 +190,7 @@ depends-member:
 - !private ["PSo9NSCopying", "init"]
 - !private ["PSo16NSMutableCopying", "init"]
 - !private ["CSo8NSObject", "CGRect"]
+- ["CSo8NSObject", "UIButton"]
 - !private ["CSo8NSObject", "UIFont"]
 - ["CSo8NSObject", "UIImageView"]
 - ["CSo8NSObject", "UILabel"]
@@ -197,6 +202,7 @@ depends-member:
 - !private ["CSo8NSObject", "contentMode"]
 - !private ["CSo8NSObject", "contentView"]
 - !private ["CSo8NSObject", "cornerRadius"]
+- ["CSo8NSObject", "deleteButton"]
 - !private ["CSo8NSObject", "font"]
 - !private ["CSo8NSObject", "frame"]
 - ["CSo8NSObject", "init"]
@@ -273,6 +279,7 @@ depends-member:
 - !private ["PSo21UIAppearanceContainer", "textAlignment"]
 - ["PSo21UIAppearanceContainer", ""]
 - !private ["CSo24UICollectionReusableView", "CGRect"]
+- ["CSo24UICollectionReusableView", "UIButton"]
 - !private ["CSo24UICollectionReusableView", "UIFont"]
 - ["CSo24UICollectionReusableView", "UIImageView"]
 - ["CSo24UICollectionReusableView", "UILabel"]
@@ -281,11 +288,13 @@ depends-member:
 - ["CSo24UICollectionReusableView", "categoryImageView"]
 - ["CSo24UICollectionReusableView", "categoryLabel"]
 - !private ["CSo24UICollectionReusableView", "contentView"]
+- ["CSo24UICollectionReusableView", "deleteButton"]
 - !private ["CSo24UICollectionReusableView", "frame"]
 - ["CSo24UICollectionReusableView", "init"]
 - ["CSo24UICollectionReusableView", "itemsCountLabel"]
 - !private ["CSo24UICollectionReusableView", "layer"]
 - !private ["CSo20UICollectionViewCell", "CGRect"]
+- ["CSo20UICollectionViewCell", "UIButton"]
 - !private ["CSo20UICollectionViewCell", "UIFont"]
 - ["CSo20UICollectionViewCell", "UIImageView"]
 - ["CSo20UICollectionViewCell", "UILabel"]
@@ -294,6 +303,7 @@ depends-member:
 - ["CSo20UICollectionViewCell", "categoryImageView"]
 - ["CSo20UICollectionViewCell", "categoryLabel"]
 - !private ["CSo20UICollectionViewCell", "contentView"]
+- ["CSo20UICollectionViewCell", "deleteButton"]
 - !private ["CSo20UICollectionViewCell", "frame"]
 - ["CSo20UICollectionViewCell", "init"]
 - ["CSo20UICollectionViewCell", "itemsCountLabel"]
@@ -368,6 +378,7 @@ depends-member:
 - !private ["CSo7UILabel", "frame"]
 - !private ["CSo7UILabel", "textAlignment"]
 - !private ["CSo11UIResponder", "CGRect"]
+- ["CSo11UIResponder", "UIButton"]
 - !private ["CSo11UIResponder", "UIFont"]
 - ["CSo11UIResponder", "UIImageView"]
 - ["CSo11UIResponder", "UILabel"]
@@ -378,6 +389,7 @@ depends-member:
 - ["CSo11UIResponder", "categoryLabel"]
 - !private ["CSo11UIResponder", "contentMode"]
 - !private ["CSo11UIResponder", "contentView"]
+- ["CSo11UIResponder", "deleteButton"]
 - !private ["CSo11UIResponder", "font"]
 - !private ["CSo11UIResponder", "frame"]
 - ["CSo11UIResponder", "init"]
@@ -415,6 +427,7 @@ depends-member:
 - !private ["PSo18UITraitEnvironment", "textAlignment"]
 - ["PSo18UITraitEnvironment", ""]
 - !private ["CSo6UIView", "CGRect"]
+- ["CSo6UIView", "UIButton"]
 - !private ["CSo6UIView", "UIFont"]
 - ["CSo6UIView", "UIImageView"]
 - ["CSo6UIView", "UILabel"]
@@ -425,6 +438,7 @@ depends-member:
 - ["CSo6UIView", "categoryLabel"]
 - !private ["CSo6UIView", "contentMode"]
 - !private ["CSo6UIView", "contentView"]
+- ["CSo6UIView", "deleteButton"]
 - !private ["CSo6UIView", "font"]
 - !private ["CSo6UIView", "frame"]
 - ["CSo6UIView", "init"]
@@ -558,4 +572,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "be329737a6b5078e883b6e726a8443ea"
+interface-hash: "952d442fb0847a3fd9b23e2551a220b3"
