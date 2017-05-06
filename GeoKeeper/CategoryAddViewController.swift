@@ -115,7 +115,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
                 let categoryToEdits = try managedObjectContext.fetch(fetchRequest)
                 for categoryToEdit in categoryToEdits {
                     categoryToEdit.category = textField.text!
-                    categoryToEdit.color = color
+                    categoryToEdit.color = newCellColor
                     categoryToEdit.id = newItemId
                     categoryToEdit.iconName = icon
                 }
@@ -229,7 +229,6 @@ extension CategoryAddViewController: UICollectionViewDelegate, UICollectionViewD
             }
             icon = icons[selectedIconIndexPath.row]
             collectionView.reloadItems(at: indexPaths)
-//            collectionView.cellForItem(at: selectedIconIndexPath)?.backgroundColor = UIColor.lightGray
         }
         if !doneBarButtonStatus {
             doneBarButton.isEnabled = false

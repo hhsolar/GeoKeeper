@@ -45,11 +45,9 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
-        UserDefaults.standard.set("Yes", forKey: "dataReload")
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
-        UserDefaults.standard.set("No", forKey: "dataReload")
     }
     
 
@@ -112,7 +110,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                 } catch {
                     fatalCoreDataError(error)
                 }
-                controller.newItemId = indexPath!.row as NSNumber!
+//                controller.newItemId = indexPath!.row as NSNumber!
             }
         }
         
@@ -365,6 +363,7 @@ extension CategoriesViewController {
             //        为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
             cell.awakeFromNib()
             cell.categoryLabel?.text = category.category! + " (" + (String)(countItems) + ")"
+            print(category.color!,"太不要脸了")
             switch category.color! {
             case "brown":
                 cell.backgroundColor = brown
