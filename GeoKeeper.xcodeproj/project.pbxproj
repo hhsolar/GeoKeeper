@@ -40,6 +40,7 @@
 		1FA2AC311EA9A1DD000BACB0 /* Thunder.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1FA2AC301EA9A1DD000BACB0 /* Thunder.caf */; };
 		1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4ED521E722E3F002A6818 /* MapViewController.swift */; };
 		1FBB71FA1EBD52B400795790 /* AllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB71F91EBD52B400795790 /* AllCell.swift */; };
+		1FBB71FC1EBD679800795790 /* AllLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB71FB1EBD679800795790 /* AllLocationsViewController.swift */; };
 		1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4891E6A8B19007CC5F1 /* HudView.swift */; };
 		1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4911E6CB5D2007CC5F1 /* DataModel.xcdatamodeld */; };
 		1FEAD49E1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */; };
@@ -86,6 +87,7 @@
 		1FA2AC301EA9A1DD000BACB0 /* Thunder.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thunder.caf; sourceTree = "<group>"; };
 		1FA4ED521E722E3F002A6818 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1FBB71F91EBD52B400795790 /* AllCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCell.swift; sourceTree = "<group>"; };
+		1FBB71FB1EBD679800795790 /* AllLocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllLocationsViewController.swift; sourceTree = "<group>"; };
 		1FEAD4891E6A8B19007CC5F1 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		1FEAD4921E6CB5D2007CC5F1 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */,
 				18F08FFA1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift */,
 				18DF0D3A1EB979B90092AE77 /* PhotoViewController.swift */,
+				1FBB71FB1EBD679800795790 /* AllLocationsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				1FEAD49E1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift in Sources */,
 				1F8D4F8C1E83993F00A5D73E /* CategoryCell.swift in Sources */,
 				1F1CE3281E7A1D2F00A1FA77 /* Category+CoreDataClass.swift in Sources */,
+				1FBB71FC1EBD679800795790 /* AllLocationsViewController.swift in Sources */,
 				18DF0D3B1EB979B90092AE77 /* PhotoViewController.swift in Sources */,
 				185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */,
 				1F1CE3291E7A1D2F00A1FA77 /* Category+CoreDataProperties.swift in Sources */,

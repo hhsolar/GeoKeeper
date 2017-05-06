@@ -9,11 +9,11 @@ import UIKit
 import CoreData
 import CoreLocation
 
-class LocationsViewController: UITableViewController {
+class AllLocationsViewController: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!
     var categoryPassed = ""
     var locations = [Location]()
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -30,10 +30,9 @@ class LocationsViewController: UITableViewController {
     func fetchLocationInfo() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
         fetchRequest.entity = Location.entity()
-
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        
+        let sortDescriptor = NSSortDescriptor(key: "category", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchRequest.predicate = NSPredicate(format: "category == %@", categoryPassed)
         do {
             let fetchedResults = try managedObjectContext.fetch(fetchRequest)
             for location in fetchedResults {
@@ -54,7 +53,7 @@ class LocationsViewController: UITableViewController {
                 let location = locations[indexPath.row]
                 controller.locationToShow = MyLocation.toMyLocation(coreDataLocation: location)
             }
-        }        
+        }
     }
     
     @IBAction func cancel() {
@@ -87,6 +86,7 @@ class LocationsViewController: UITableViewController {
     }
     
     //MARK: - TABLEVIEW DATASOURCE
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }

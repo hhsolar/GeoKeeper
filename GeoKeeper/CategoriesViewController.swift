@@ -123,6 +123,14 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             }
             controller.managedObjectContext = managedObjectContext
         }
+        
+        if segue.identifier == "AllLocations" {
+            let controller = segue.destination as! LocationsViewController
+            if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
+                controller.categoryPassed = fetchedResultsController.object(at: indexPath).category!
+            }
+            controller.managedObjectContext = managedObjectContext
+        }
     }
     
     func handleLongGesture(gesture: UILongPressGestureRecognizer) {

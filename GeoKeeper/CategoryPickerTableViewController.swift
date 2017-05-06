@@ -36,6 +36,8 @@ class CategoryPickerTableViewController: UITableViewController {
         tableView.register(CategoryPickerCell.self, forCellReuseIdentifier: "CategoryPickerCell")
         
         let fetchedRequest = NSFetchRequest<Category>(entityName: "Category")
+        let sortDescriptor = NSSortDescriptor(key: "category", ascending: true)
+        fetchedRequest.sortDescriptors = [sortDescriptor]
         fetchedRequest.entity = Category.entity()
         do {
             categorys = try managedObjectContext.fetch(fetchedRequest)
