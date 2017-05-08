@@ -110,7 +110,6 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
                 } catch {
                     fatalCoreDataError(error)
                 }
-//                controller.newItemId = indexPath!.row as NSNumber!
             }
         }
         
@@ -123,10 +122,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
         if segue.identifier == "AllLocations" {
-            let controller = segue.destination as! LocationsViewController
-            if let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell) {
-                controller.categoryPassed = fetchedResultsController.object(at: indexPath).category!
-            }
+            let controller = segue.destination as! AllLocationsViewController
             controller.managedObjectContext = managedObjectContext
         }
     }
@@ -165,7 +161,11 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
             UserDefaults.standard.set("No", forKey: "LongPressed")
             collectionView.reloadData()
         } else if UserDefaults.standard.value(forKey:"LongPressed") as! String == "No" {
-            performSegue(withIdentifier: "CategoryDetails", sender: collectionView.cellForItem(at: indexPath!))
+            if (collectionView.cellForItem(at: indexPath!) is AllCell) {
+                performSegue(withIdentifier: "AllLocations", sender: collectionView.cellForItem(at: indexPath!))
+            } else {
+                performSegue(withIdentifier: "CategoryDetails", sender: collectionView.cellForItem(at: indexPath!))
+            }
         } else if UserDefaults.standard.value(forKey: "LongPressed") as! String == "Yes" {
             modeFlag = "Edit"
             performSegue(withIdentifier: "PickCategory", sender: collectionView.cellForItem(at: indexPath!))
@@ -198,9 +198,9 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
         }
         saveToCoreData(managedObjectContext)
     }
-
     
-    //Feteched Result Controller Functions
+    
+    //MARK: - Feteched Result Controller Delegate
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
@@ -289,6 +289,7 @@ class CategoriesViewController: UIViewController, UICollectionViewDataSource, UI
     }
 }
 
+//MARK: - CollectionView Datasource
 extension CategoriesViewController {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
@@ -349,12 +350,6 @@ extension CategoriesViewController {
                 cell.layer.add(anim, forKey: "SpringboardShake")
             } else if UserDefaults.standard.value(forKey: "SingleTap") as! String == "Yes" {
                 cell.layer.removeAllAnimations()
-                let subViews = cell.subviews
-                for subView in subViews {
-                    if subView is UIButton {
-                        subView.removeFromSuperview()
-                    }
-                }
             }
             return cell
         } else {
@@ -363,7 +358,6 @@ extension CategoriesViewController {
             //        为何加了这一句，就看不到图片呀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
             cell.awakeFromNib()
             cell.categoryLabel?.text = category.category! + " (" + (String)(countItems) + ")"
-            print(category.color!,"太不要脸了")
             switch category.color! {
             case "brown":
                 cell.backgroundColor = brown
@@ -472,7 +466,7 @@ extension CategoriesViewController {
     }
 }
 
-//CollectionView FlowLayout
+//MARK: - CollectionView FlowLayout
 extension CategoriesViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
