@@ -44,6 +44,7 @@ depends-top-level:
 - !private "=="
 - !private ">"
 - !private "AllCell"
+- !private "AllLocationsViewController"
 - "Array"
 - "AssignmentPrecedence"
 - "BlockOperation"
@@ -122,7 +123,7 @@ depends-member:
 - !private ["C9GeoKeeper7AllCell", "categoryImageView"]
 - !private ["C9GeoKeeper7AllCell", "categoryLabel"]
 - !private ["C9GeoKeeper7AllCell", "layer"]
-- !private ["C9GeoKeeper7AllCell", "subviews"]
+- !private ["C9GeoKeeper26AllLocationsViewController", "managedObjectContext"]
 - !private ["Ps9AnyObject", "BlockOperation"]
 - !private ["Ps9AnyObject", "CABasicAnimation"]
 - !private ["Ps9AnyObject", "CGRect"]
@@ -551,6 +552,7 @@ depends-member:
 - !private ["Ps7CVarArg", "yellow"]
 - ["Ps7CVarArg", ""]
 - !private ["C9GeoKeeper24CategoriesViewController", "AllCell"]
+- !private ["C9GeoKeeper24CategoriesViewController", "AllLocationsViewController"]
 - ["C9GeoKeeper24CategoriesViewController", "BlockOperation"]
 - ["C9GeoKeeper24CategoriesViewController", "Bool"]
 - !private ["C9GeoKeeper24CategoriesViewController", "CABasicAnimation"]
@@ -1844,6 +1846,7 @@ depends-member:
 - !private ["CSo22NSManagedObjectContext", "fetch"]
 - ["PSo16NSMutableCopying", "init"]
 - !private ["CSo8NSObject", "AllCell"]
+- !private ["CSo8NSObject", "AllLocationsViewController"]
 - ["CSo8NSObject", "BlockOperation"]
 - ["CSo8NSObject", "Bool"]
 - !private ["CSo8NSObject", "CABasicAnimation"]
@@ -3210,6 +3213,7 @@ depends-member:
 - !private ["CSo28UILongPressGestureRecognizer", "view"]
 - !private ["CSo22UINavigationController", "viewControllers"]
 - !private ["CSo11UIResponder", "AllCell"]
+- !private ["CSo11UIResponder", "AllLocationsViewController"]
 - ["CSo11UIResponder", "BlockOperation"]
 - ["CSo11UIResponder", "Bool"]
 - !private ["CSo11UIResponder", "CABasicAnimation"]
@@ -3885,6 +3889,7 @@ depends-member:
 - !private ["CSo6UIView", "text"]
 - !private ["CSo6UIView", "updateInteractiveMovementTargetPosition"]
 - !private ["CSo16UIViewController", "AllCell"]
+- !private ["CSo16UIViewController", "AllLocationsViewController"]
 - ["CSo16UIViewController", "BlockOperation"]
 - ["CSo16UIViewController", "Bool"]
 - !private ["CSo16UIViewController", "CABasicAnimation"]
@@ -4294,6 +4299,7 @@ depends-member:
 depends-nominal:
 - !private "Ps16AbsoluteValuable"
 - !private "C9GeoKeeper7AllCell"
+- !private "C9GeoKeeper26AllLocationsViewController"
 - "Ps9AnyObject"
 - !private "Sa"
 - !private "Ps23BidirectionalCollection"

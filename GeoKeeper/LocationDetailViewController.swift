@@ -115,10 +115,14 @@ class LocationDetailViewController: UIViewController {
         
         title = locationToShow.locationName
         locationNameLabel.text = locationToShow.locationName
-        categoryLabel.text = locationToShow.locationCategory
         punchNumber.text = locationToShow.punch.stringValue
         remarkTextView.text = locationToShow.locationDescription
         punchNumber.text = locationToShow.punch.stringValue
+        if locationToShow.locationCategory == "All" {
+            categoryLabel.text = "No category"
+        } else {
+            categoryLabel.text = locationToShow.locationCategory
+        }
         
         if locationToShow.hasPhoto {
             portraitImage.image = locationToShow.photoImage
@@ -363,8 +367,14 @@ extension LocationDetailViewController: LocationDetailEditViewControllerDelegate
         locationToShow = location
         title = locationToShow.locationName
         locationNameLabel.text = locationToShow.locationName
-        categoryLabel.text = locationToShow.locationCategory
         remarkTextView.text = locationToShow.locationDescription
+
+        if locationToShow.locationCategory == "All" {
+            categoryLabel.text = "No category"
+        } else {
+            categoryLabel.text = locationToShow.locationCategory
+        }
+        
         if locationToShow.hasPhoto {
             portraitImage.image = locationToShow.photoImage
         }

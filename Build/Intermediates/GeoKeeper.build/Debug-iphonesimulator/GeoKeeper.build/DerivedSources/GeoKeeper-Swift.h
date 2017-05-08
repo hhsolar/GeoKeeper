@@ -160,8 +160,43 @@ SWIFT_CLASS("_TtC9GeoKeeper7AllCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIWindow;
 @class NSManagedObjectContext;
+@class UIStoryboardSegue;
+@class CLPlacemark;
+@class UITableView;
+@class UITableViewCell;
+@class NSBundle;
+
+SWIFT_CLASS("_TtC9GeoKeeper26AllLocationsViewController")
+@interface AllLocationsViewController : UITableViewController
+@property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
+// 'fetchedResultsController' below
+- (void)viewDidLoad;
+- (void)performFetch;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
+- (IBAction)cancel;
+- (NSString * _Nonnull)stringFrom:(CLPlacemark * _Nonnull)placemark SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)tableView:(UITableView * _Nonnull)tableView titleForHeaderInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)tableView:(UITableView * _Nonnull)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (nonnull instancetype)initWithStyle:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol NSFetchedResultsSectionInfo;
+
+@interface AllLocationsViewController (SWIFT_EXTENSION(GeoKeeper)) <NSFetchedResultsControllerDelegate>
+- (void)controllerWillChangeContent:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller;
+- (void)controller:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller didChangeObject:(id _Nonnull)anObject atIndexPath:(NSIndexPath * _Nullable)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath * _Nullable)newIndexPath;
+- (void)controller:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller didChangeSection:(id <NSFetchedResultsSectionInfo> _Nonnull)sectionInfo atIndex:(NSInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type;
+- (void)controllerDidChangeContent:(NSFetchedResultsController<id <NSFetchRequestResult>> * _Nonnull)controller;
+@end
+
+@class UIWindow;
 @class UIApplication;
 @class NSPersistentContainer;
 @class UIViewController;
@@ -186,11 +221,8 @@ SWIFT_CLASS("_TtC9GeoKeeper11AppDelegate")
 @class NSBlockOperation;
 @class Category;
 @class UICollectionView;
-@class UIStoryboardSegue;
 @class UILongPressGestureRecognizer;
 @class UITapGestureRecognizer;
-@protocol NSFetchedResultsSectionInfo;
-@class NSBundle;
 
 SWIFT_CLASS("_TtC9GeoKeeper24CategoriesViewController")
 @interface CategoriesViewController : UIViewController <UIScrollViewDelegate, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UIGestureRecognizerDelegate, UICollectionViewDataSource>
@@ -324,7 +356,6 @@ SWIFT_CLASS("_TtC9GeoKeeper18CategoryPickerCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UITableView;
 
 SWIFT_CLASS("_TtC9GeoKeeper33CategoryPickerTableViewController")
 @interface CategoryPickerTableViewController : UITableViewController
@@ -357,7 +388,6 @@ SWIFT_CLASS("_TtC9GeoKeeper9ColorCell")
 @class Location;
 @class MyLocation;
 @class CLGeocoder;
-@class CLPlacemark;
 @class NSTimer;
 @class UIImage;
 @class UINavigationBar;
@@ -479,6 +509,9 @@ SWIFT_CLASS("_TtC9GeoKeeper7HudView")
 
 SWIFT_CLASS("_TtC9GeoKeeper8Location")
 @interface Location : NSManagedObject <MKAnnotation>
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly, copy) NSString * _Nullable title;
+@property (nonatomic, readonly, copy) NSString * _Nullable subtitle;
 @property (nonatomic, readonly) BOOL hasPhoto;
 @property (nonatomic, readonly, strong) UIImage * _Nullable photoImage;
 @property (nonatomic, readonly, copy) NSURL * _Nonnull photoURL;
@@ -488,9 +521,6 @@ SWIFT_CLASS("_TtC9GeoKeeper8Location")
 + (NSInteger)nextLocationPhotoID SWIFT_WARN_UNUSED_RESULT;
 - (void)removePhotoFileWithPhotoIndex:(NSNumber * _Nonnull)photoIndex;
 - (void)removePhotoFile;
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-@property (nonatomic, readonly, copy) NSString * _Nullable title;
-@property (nonatomic, readonly, copy) NSString * _Nullable subtitle;
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -574,11 +604,6 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
 
-
-@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
-@end
-
 @class PhotoCell;
 
 SWIFT_PROTOCOL("_TtP9GeoKeeper17PhotoCellDelegate_")
@@ -591,6 +616,11 @@ SWIFT_PROTOCOL("_TtP9GeoKeeper17PhotoCellDelegate_")
 
 @interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
 - (void)deleteImageForCell:(PhotoCell * _Nonnull)forCell;
+@end
+
+
+@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
 @end
 
 
@@ -671,13 +701,13 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @end
 
 
-@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)passLocationWithLocation:(MyLocation * _Nonnull)location;
+@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
+- (void)enlargeImageForCell:(PhotoCell * _Nonnull)forCell;
 @end
 
 
-@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
-- (void)enlargeImageForCell:(PhotoCell * _Nonnull)forCell;
+@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)passLocationWithLocation:(MyLocation * _Nonnull)location;
 @end
 
 
@@ -851,6 +881,10 @@ SWIFT_CLASS("_TtC9GeoKeeper18RoundedCornersView")
 @property (nonatomic) CGFloat cornerRadius;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@interface AllLocationsViewController (SWIFT_EXTENSION(GeoKeeper))
+@property (nonatomic, strong) NSFetchedResultsController<Location *> * _Nonnull fetchedResultsController;
 @end
 
 @interface CategoriesViewController (SWIFT_EXTENSION(GeoKeeper))
