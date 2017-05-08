@@ -11,6 +11,21 @@ import CoreData
 import MapKit
 
 class Location: NSManagedObject, MKAnnotation {
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2DMake(latitude, longitude)
+    }
+    
+    var title: String? {
+        if (name?.isEmpty)! {
+            return "(No Name)"
+        } else {
+            return name!
+        }
+    }
+    
+    var subtitle: String? {
+        return category
+    }
     
     var hasPhoto: Bool {
         return locationPhotoID != nil
@@ -91,23 +106,6 @@ class Location: NSManagedObject, MKAnnotation {
             }
         }
     }
-    
-    var coordinate: CLLocationCoordinate2D {
-        return CLLocationCoordinate2DMake(latitude, longitude)
-    }
-    
-    var title: String? {
-        if locationDescription.isEmpty {
-            return "(No Description)"
-        } else {
-            return locationDescription
-        }
-    }
-    
-    var subtitle: String? {
-        return category
-    }
-        
 }
 
 

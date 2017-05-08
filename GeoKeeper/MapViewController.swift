@@ -146,7 +146,7 @@ extension MapViewController: MKMapViewDelegate {
         }
         let identifier = "Location"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        
+       
         if annotationView == nil {
             let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             
