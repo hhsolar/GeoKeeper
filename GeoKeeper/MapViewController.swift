@@ -120,7 +120,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             let center = CLLocationCoordinate2D(
                 latitude: topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) / 2, longitude: topLeftCoord.longitude - (topLeftCoord.longitude - bottomRightCoord.longitude) / 2)
             
-            let extraSpace = 1.1
+            let extraSpace = 1.5
             let span = MKCoordinateSpan(
                 latitudeDelta: abs(topLeftCoord.latitude - bottomRightCoord.latitude) * extraSpace, longitudeDelta: abs(topLeftCoord.longitude - bottomRightCoord.longitude) * extraSpace)
             region = MKCoordinateRegion(center: center, span: span)
