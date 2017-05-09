@@ -153,10 +153,10 @@
 				18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */,
 				1F8D4F891E83990700A5D73E /* CategoryAddViewController.swift */,
 				1FEAD4AB1E70E41C007CC5F1 /* MyImagePickerController.swift */,
-				1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */,
 				18F08FFA1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift */,
 				18DF0D3A1EB979B90092AE77 /* PhotoViewController.swift */,
 				1FBB71FB1EBD679800795790 /* AllLocationsViewController.swift */,
+				1F8D4F871E8398C700A5D73E /* LocationsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
