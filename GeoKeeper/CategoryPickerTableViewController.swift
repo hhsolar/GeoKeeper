@@ -26,11 +26,6 @@ class CategoryPickerTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func done() {
-        delegate?.passCategory(categoryName: categoryChosen)
-        dismiss(animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(CategoryPickerCell.self, forCellReuseIdentifier: "CategoryPickerCell")
@@ -79,5 +74,8 @@ class CategoryPickerTableViewController: UITableViewController {
         cell.toggleChecked()
         chosenIndex = indexPath.row
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        delegate?.passCategory(categoryName: categoryChosen)
+        dismiss(animated: true, completion: nil)
     }
 }
