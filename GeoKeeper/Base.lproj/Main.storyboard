@@ -1129,11 +1129,6 @@
                                 <action selector="cancel" destination="5uQ-nY-m83" id="5x1-wJ-1OK"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="3Tq-qh-Bl1">
-                            <connections>
-                                <action selector="done" destination="5uQ-nY-m83" id="0SU-va-6Y5"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vw0-Q2-hyy" userLabel="First Responder" sceneMemberID="firstResponder"/>

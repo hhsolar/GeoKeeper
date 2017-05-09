@@ -14,7 +14,6 @@ provides-dynamic-lookup:
 - "categorys"
 - "chosenIndex"
 - "didReceiveMemoryWarning"
-- "done"
 - "managedObjectContext"
 - "tableView"
 - "viewDidLoad"
@@ -147,7 +146,6 @@ depends-member:
 - ["C9GeoKeeper33CategoryPickerTableViewController", "delegate"]
 - ["C9GeoKeeper33CategoryPickerTableViewController", "didReceiveMemoryWarning"]
 - !private ["C9GeoKeeper33CategoryPickerTableViewController", "dismiss"]
-- ["C9GeoKeeper33CategoryPickerTableViewController", "done"]
 - !private ["C9GeoKeeper33CategoryPickerTableViewController", "fatalCoreDataError"]
 - ["C9GeoKeeper33CategoryPickerTableViewController", "init"]
 - ["C9GeoKeeper33CategoryPickerTableViewController", "managedObjectContext"]
@@ -400,7 +398,6 @@ depends-member:
 - !private ["CSo8NSObject", "deselectRow"]
 - ["CSo8NSObject", "didReceiveMemoryWarning"]
 - !private ["CSo8NSObject", "dismiss"]
-- ["CSo8NSObject", "done"]
 - !private ["CSo8NSObject", "entity"]
 - !private ["CSo8NSObject", "fatalCoreDataError"]
 - !private ["CSo8NSObject", "fetch"]
@@ -606,7 +603,6 @@ depends-member:
 - !private ["CSo11UIResponder", "deselectRow"]
 - ["CSo11UIResponder", "didReceiveMemoryWarning"]
 - !private ["CSo11UIResponder", "dismiss"]
-- ["CSo11UIResponder", "done"]
 - !private ["CSo11UIResponder", "fatalCoreDataError"]
 - ["CSo11UIResponder", "init"]
 - ["CSo11UIResponder", "managedObjectContext"]
@@ -705,7 +701,6 @@ depends-member:
 - ["CSo21UITableViewController", "delegate"]
 - ["CSo21UITableViewController", "didReceiveMemoryWarning"]
 - !private ["CSo21UITableViewController", "dismiss"]
-- ["CSo21UITableViewController", "done"]
 - !private ["CSo21UITableViewController", "fatalCoreDataError"]
 - ["CSo21UITableViewController", "init"]
 - ["CSo21UITableViewController", "managedObjectContext"]
@@ -799,7 +794,6 @@ depends-member:
 - ["CSo16UIViewController", "delegate"]
 - ["CSo16UIViewController", "didReceiveMemoryWarning"]
 - !private ["CSo16UIViewController", "dismiss"]
-- ["CSo16UIViewController", "done"]
 - !private ["CSo16UIViewController", "fatalCoreDataError"]
 - ["CSo16UIViewController", "init"]
 - ["CSo16UIViewController", "managedObjectContext"]
@@ -1006,4 +1000,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "5911f8d295a652e6ffc3b11824421d2f"
+interface-hash: "78d057f135e4b3e88cf4b62ddb9b7f44"

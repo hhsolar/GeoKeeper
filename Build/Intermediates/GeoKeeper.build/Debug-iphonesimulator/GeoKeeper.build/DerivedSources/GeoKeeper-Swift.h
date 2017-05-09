@@ -364,7 +364,6 @@ SWIFT_CLASS("_TtC9GeoKeeper33CategoryPickerTableViewController")
 @property (nonatomic, copy) NSString * _Nonnull categoryChosen;
 @property (nonatomic) NSInteger chosenIndex;
 - (IBAction)cancel;
-- (IBAction)done;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
