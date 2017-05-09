@@ -27,18 +27,41 @@ class Location: NSManagedObject, MKAnnotation {
         return category
     }
     
+    // method for locationPhotoID
     var hasPhoto: Bool {
         return locationPhotoID != nil
     }
     
+    // method for locationPhotoID
     var photoImage: UIImage? {
         return UIImage(contentsOfFile: photoURL.path)
     }
     
+    // method for locationPhotoID
     var photoURL: URL {
         assert(locationPhotoID != nil, "No location photo ID set")
         let filename = "Photo-\(locationPhotoID!.intValue).jpg"
         return applicationDocumentsDirectory.appendingPathComponent(filename)
+    }
+    
+    // mathod for locationPhotoID
+    class func nextLocationPhotoID() -> Int {
+        let userDefaults = UserDefaults.standard
+        let currentID = userDefaults.integer(forKey: "locationPhotoID")
+        userDefaults.set(currentID + 1, forKey: "locationPhotoID")
+        userDefaults.synchronize()
+        return currentID
+    }
+    
+    // mathod for locationPhotoID
+    func removePhotoFile() {
+        if hasPhoto {
+            do {
+                try FileManager.default.removeItem(at: photoURL)
+            } catch {
+                print("Error removing file: \(error)")
+            }
+        }
     }
     
     var getAddress: String {
@@ -66,11 +89,13 @@ class Location: NSManagedObject, MKAnnotation {
         return add
     }
     
+    // method for photoID
     func photosURL(photoIndex: NSNumber) -> URL {
         let filename = "Photo-\(getAddress)-\(photoIndex.intValue).jpg"
         return applicationDocumentsDirectory.appendingPathComponent(filename)
     }
  
+    // method for photoID
     func nextPhotoID() -> Int {
         let userDefaults = UserDefaults.standard
         let currentID = userDefaults.integer(forKey: "\(getAddress)")
@@ -79,14 +104,7 @@ class Location: NSManagedObject, MKAnnotation {
         return currentID
     }
     
-    class func nextLocationPhotoID() -> Int {
-        let userDefaults = UserDefaults.standard
-        let currentID = userDefaults.integer(forKey: "locationPhotoID")
-        userDefaults.set(currentID + 1, forKey: "locationPhotoID")
-        userDefaults.synchronize()
-        return currentID
-    }
-    
+    // mathod for photoID
     func removePhotoFile(photoIndex: NSNumber) {
         if (photoID?.contains(photoIndex))! {
             do {
@@ -96,16 +114,7 @@ class Location: NSManagedObject, MKAnnotation {
             }
         }
     }
-    
-    func removePhotoFile() {
-        if hasPhoto {
-            do {
-                try FileManager.default.removeItem(at: photoURL)
-            } catch {
-                print("Error removing file: \(error)")
-            }
-        }
-    }
+
 }
 
 

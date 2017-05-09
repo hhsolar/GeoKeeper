@@ -64,7 +64,12 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             let controller = navigationController.topViewController as! CategoryPickerTableViewController
             controller.managedObjectContext = managedObjectContext
             
-            controller.categoryChosen = (categoryPicker.titleLabel?.text!)!
+            if (categoryPicker.titleLabel?.text!)! == "Choose a category" {
+                controller.categoryChosen = "All"
+            } else {
+                controller.categoryChosen = (categoryPicker.titleLabel?.text!)!
+            }
+            
             controller.delegate = self
         }
     }
@@ -76,7 +81,11 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         
         nBar.topItem?.title = "Edit Location"
         nameTextField.text = locationToEdit.locationName
-        categoryPicker.setTitle(locationToEdit.locationCategory, for: .normal)
+        if locationToEdit.locationCategory == "All" {
+            categoryPicker.setTitle("Choose a category", for: .normal)
+        } else {
+            categoryPicker.setTitle(locationToEdit.locationCategory, for: .normal)
+        }
         
         if locationToEdit.hasPhoto {
             portraitImageView.image = locationToEdit.photoImage
@@ -224,12 +233,16 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     
     func updateContent(location: Location) {
         location.name = nameTextField.text
-        location.category = (categoryPicker.titleLabel?.text)!
+        if (categoryPicker.titleLabel?.text)! != "Choose a category" {
+            location.category = (categoryPicker.titleLabel?.text)!
+        } else {
+            location.category = "All"
+        }
         location.locationDescription = remarkTextView.text
         
-        locationToEdit.locationName = nameTextField.text!
-        locationToEdit.locationCategory = (categoryPicker.titleLabel?.text)!
-        locationToEdit.locationDescription = remarkTextView.text
+        locationToEdit.locationName = location.name!
+        locationToEdit.locationCategory = location.category
+        locationToEdit.locationDescription = location.locationDescription
         
         if location.hasPhoto && portraitChanged {
             location.removePhotoFile()
@@ -322,7 +335,9 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         
         if !hasRocord {
             locationToEdit.locationName = nameTextField.text!
-            locationToEdit.locationCategory = (categoryPicker.titleLabel?.text)!
+            if (categoryPicker.titleLabel?.text)! != "Choose a category" {
+                locationToEdit.locationCategory = (categoryPicker.titleLabel?.text)!
+            }
             locationToEdit.locationDescription = remarkTextView.text
             
             let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
@@ -555,8 +570,11 @@ extension LocationDetailEditViewController: PhotoCellDelegate {
 
 extension LocationDetailEditViewController: CategoryPickerTableViewControllerDelegate {
     func passCategory(categoryName: String) {
-        categoryPicker.setTitle(categoryName, for: .normal)
-//        locationToEdit.locationCategory = categoryName
+        if categoryName == "All" {
+            categoryPicker.setTitle("Choose a category", for: .normal)
+        } else {
+            categoryPicker.setTitle(categoryName, for: .normal)
+        }
     }
 }
 
