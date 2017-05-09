@@ -14,22 +14,18 @@ class AllLocationsViewController: UITableViewController {
     
     lazy var fetchedResultsController: NSFetchedResultsController<Location> = {
         let fetchRequest = NSFetchRequest<Location>()
-        
         let entity = Location.entity()
         fetchRequest.entity = entity
         
         let sortDescriptor1 = NSSortDescriptor(key: "category", ascending: true)
-        let sortDescriptor2 = NSSortDescriptor(key: "date", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
+        fetchRequest.sortDescriptors = [sortDescriptor1]
         
         fetchRequest.fetchBatchSize = 20
-        
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
             managedObjectContext: self.managedObjectContext,
             sectionNameKeyPath: "category",
             cacheName: "Locations")
-        
         fetchedResultsController.delegate = self
         return fetchedResultsController
     }()
@@ -115,8 +111,7 @@ class AllLocationsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: "LocationCell", for: indexPath) as! LocationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
         let location = fetchedResultsController.object(at: indexPath)
         cell.configure(for: location)
         return cell
