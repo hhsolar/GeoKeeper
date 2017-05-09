@@ -65,7 +65,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                         cityName.text = forPassLocation.locationName
                         //Repeated Punch is not allowed
                         let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
-                        if timeInterval < 10 {
+                        if timeInterval < punchInterval {
                             isPunched = true
                         } else {
                             isPunched = false
@@ -125,7 +125,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                             cityName.text = forPassLocation.locationName
                             //Repeated Punch is not allowed
                             let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
-                            if timeInterval < 10 {
+                            if timeInterval < punchInterval {
                                 isPunched = true
                             } else {
                                 isPunched = false
