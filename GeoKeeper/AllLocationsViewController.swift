@@ -130,7 +130,15 @@ class AllLocationsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let location = fetchedResultsController.object(at: indexPath)
-            location.removePhotoFile()
+            if location.hasPhoto {
+                location.removePhotoFile()
+            }
+            
+            if let photoID = location.photoID {
+                for id in photoID {
+                    location.removePhotoFile(photoIndex: id)
+                }
+            }
             managedObjectContext.delete(location)
             saveToCoreData(managedObjectContext)
         }

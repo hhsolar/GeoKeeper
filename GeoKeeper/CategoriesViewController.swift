@@ -457,6 +457,15 @@ extension CategoriesViewController {
         do {
             let toBeDeletedLocations = try managedObjectContext.fetch(fetchRequest1)
             for toBeDeletedLocation in toBeDeletedLocations {
+                if toBeDeletedLocation.hasPhoto {
+                    toBeDeletedLocation.removePhotoFile()
+                }
+                
+                if let photoID = toBeDeletedLocation.photoID {
+                    for id in photoID {
+                        toBeDeletedLocation.removePhotoFile(photoIndex: id)
+                    }
+                }
                 managedObjectContext.delete(toBeDeletedLocation)
             }
         } catch {

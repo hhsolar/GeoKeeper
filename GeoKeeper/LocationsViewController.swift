@@ -107,6 +107,16 @@ class LocationsViewController: UITableViewController {
         if editingStyle == .delete {
             let location = locations[indexPath.row]
             managedObjectContext.delete(location)
+            
+            if location.hasPhoto {
+                location.removePhotoFile()
+            }
+            
+            if let photoID = location.photoID {
+                for id in photoID {
+                    location.removePhotoFile(photoIndex: id)
+                }
+            }
             locations.remove(at: indexPath.row)
             saveToCoreData(managedObjectContext)
         }

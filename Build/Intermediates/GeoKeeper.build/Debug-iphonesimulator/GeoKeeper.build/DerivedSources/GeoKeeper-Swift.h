@@ -515,12 +515,12 @@ SWIFT_CLASS("_TtC9GeoKeeper8Location")
 @property (nonatomic, readonly) BOOL hasPhoto;
 @property (nonatomic, readonly, strong) UIImage * _Nullable photoImage;
 @property (nonatomic, readonly, copy) NSURL * _Nonnull photoURL;
++ (NSInteger)nextLocationPhotoID SWIFT_WARN_UNUSED_RESULT;
+- (void)removePhotoFile;
 @property (nonatomic, readonly, copy) NSString * _Nonnull getAddress;
 - (NSURL * _Nonnull)photosURLWithPhotoIndex:(NSNumber * _Nonnull)photoIndex SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)nextPhotoID SWIFT_WARN_UNUSED_RESULT;
-+ (NSInteger)nextLocationPhotoID SWIFT_WARN_UNUSED_RESULT;
 - (void)removePhotoFileWithPhotoIndex:(NSNumber * _Nonnull)photoIndex;
-- (void)removePhotoFile;
 - (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
 @end
 
