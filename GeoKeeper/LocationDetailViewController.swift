@@ -90,7 +90,6 @@ class LocationDetailViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "EditDetail" {
             let controller = segue.destination as! LocationDetailEditViewController
             controller.locationToEdit = locationToShow
@@ -98,6 +97,7 @@ class LocationDetailViewController: UIViewController {
             controller.portraitViewFrame = portraitImage.frame
             controller.nameTextFrame = locationNameLabel.frame
             controller.categoryFrame = categoryLabel.frame
+            
             controller.collectionFrame = CGRect(x: conbinationView.frame.origin.x + photoCollectionView.frame.origin.x, y: conbinationView.frame.origin.y + photoCollectionView.frame.origin.y, width: photoCollectionView.frame.width, height: photoCollectionView.frame.height)
             controller.addImageButtonFrame = CGRect(x: conbinationView.frame.origin.x + mapAppButton.frame.origin.x, y: conbinationView.frame.origin.y + mapAppButton.frame.origin.y, width: mapAppButton.frame.width, height: mapAppButton.frame.height)
             controller.remarkLabelFrame = remarkLabel.frame
@@ -112,7 +112,6 @@ class LocationDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.tintColor = secondColor
-        
         title = locationToShow.locationName
         locationNameLabel.text = locationToShow.locationName
         punchNumber.text = locationToShow.punch.stringValue
@@ -305,6 +304,7 @@ class LocationDetailViewController: UIViewController {
         
         layout.scrollDirection = .horizontal
         photoCollectionView.showsHorizontalScrollIndicator = false
+        
     }
     
     // MARK: - Sound Effect
