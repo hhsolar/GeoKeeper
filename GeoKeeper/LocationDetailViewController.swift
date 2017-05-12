@@ -270,26 +270,6 @@ class LocationDetailViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func stringFromPlacemark(placemark: CLPlacemark) -> String {
-        var text = ""
-        if let s = placemark.subThoroughfare {
-            text += s + " "
-        }
-        if let s = placemark.thoroughfare {
-            text += s + ", "
-        }
-        if let s = placemark.locality {
-            text += s + ", "
-        }
-        if let s = placemark.administrativeArea {
-            text += s + " "
-        }
-        if let s = placemark.postalCode {
-            text += s
-        }
-        return text
-    }
-    
     func initCollectionView() {
         photoCollectionView.backgroundColor = grayColor
         photoCollectionView.register(PhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier)

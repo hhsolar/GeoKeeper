@@ -60,7 +60,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         if let location = location {
             for locationRecord in locations {
                 if let placemarkRecord = locationRecord.placemark {
-                    if addressLabel.text == string(from:placemarkRecord) {
+                    if addressLabel.text == stringFromPlacemark(placemark:placemarkRecord) {
                         forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
                         cityName.text = forPassLocation.locationName
                         //Repeated Punch is not allowed
@@ -409,13 +409,13 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
         
         if let s = placemark.thoroughfare {
-            line1 += s
+            line1 += s + ", "
         }
         
         var line2 = ""
         
         if let s = placemark.locality {
-            line2 += s + " "
+            line2 += s + ", "
         }
         if let s = placemark.administrativeArea {
             line2 += s + " "

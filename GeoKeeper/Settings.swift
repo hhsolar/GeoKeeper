@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 let baseColor0 = UIColor(red: 210/255.0, green: 246/255.0, blue: 244/255.0, alpha: 1.0)
 let baseColor1 = UIColor(red: 251/255.0, green: 246/255.0, blue: 240/255.0, alpha: 1.0)
@@ -51,3 +52,23 @@ let icons = [
     "Station",
     "CityHall",
     "Hotel"]
+
+func stringFromPlacemark(placemark: CLPlacemark) -> String {
+    var text = ""
+    if let s = placemark.subThoroughfare {
+        text += s + " "
+    }
+    if let s = placemark.thoroughfare {
+        text += s + ", "
+    }
+    if let s = placemark.locality {
+        text += s + ", "
+    }
+    if let s = placemark.administrativeArea {
+        text += s + " "
+    }
+    if let s = placemark.postalCode {
+        text += s
+    }
+    return text
+}

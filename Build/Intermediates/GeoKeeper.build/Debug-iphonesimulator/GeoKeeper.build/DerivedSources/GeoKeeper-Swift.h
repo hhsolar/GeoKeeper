@@ -690,7 +690,6 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 - (NSDictionary<NSString *, id> * _Nullable)parseWithJson:(NSString * _Nonnull)json SWIFT_WARN_UNUSED_RESULT;
 - (void)parseWithDictionary:(NSDictionary<NSString *, id> * _Nonnull)dictionary;
 - (void)showNetworkError;
-- (NSString * _Nonnull)stringFromPlacemarkWithPlacemark:(CLPlacemark * _Nonnull)placemark SWIFT_WARN_UNUSED_RESULT;
 - (void)initCollectionView SWIFT_METHOD_FAMILY(none);
 - (void)loadSoundEffect:(NSString * _Nonnull)name;
 - (void)unloadSoundEffect;

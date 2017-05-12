@@ -146,22 +146,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GeoKeeper/LocationDetailViewController.swift"
-            timestampString = "515978871.296706"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "stringFromPlacemark(placemark:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GeoKeeper/LocationsViewController.swift"
             timestampString = "513364104.472313"
             startingColumnNumber = "9223372036854775807"
@@ -435,11 +419,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GeoKeeper/Settings.swift"
-            timestampString = "515379230.850029"
+            timestampString = "516306958.433568"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50">
+            startingLineNumber = "51"
+            endingLineNumber = "51">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
