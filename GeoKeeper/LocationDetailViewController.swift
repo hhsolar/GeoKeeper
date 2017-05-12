@@ -276,13 +276,13 @@ class LocationDetailViewController: UIViewController {
             text += s + " "
         }
         if let s = placemark.thoroughfare {
-            text += s + ","
+            text += s + ", "
         }
         if let s = placemark.locality {
-            text += s + ","
+            text += s + ", "
         }
         if let s = placemark.administrativeArea {
-            text += s + ","
+            text += s + " "
         }
         if let s = placemark.postalCode {
             text += s
