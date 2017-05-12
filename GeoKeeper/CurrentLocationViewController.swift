@@ -74,24 +74,24 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                     }
                 }
             }
-        }
-        
-        if isVisited == false {
-            tagLabel.text = "Tag"
-            messageLabel.text = "Tap 'Tag' to Save Location"
-            if let placemark = placemark {
-                cityName.text = placemark.locality
+            if isVisited == false {
+                tagLabel.text = "Tag"
+                messageLabel.text = "Tap 'Tag' to Save Location"
+                if let placemark = placemark {
+                    cityName.text = placemark.locality
+                }
+                forPassLocation = MyLocation()
+                
+            } else if isPunched {
+                tagLabel.text = "Detail"
+                messageLabel.text = "Tap 'Detail' to Read Details"
+            } else {
+                tagLabel.text = "Punch"
+                messageLabel.text = "Tap 'Punch' to Punch In"
             }
-            forPassLocation = MyLocation()
-            
-        } else if isPunched {
-            tagLabel.text = "Detail"
-            messageLabel.text = "Tap 'Detail' to Read Details"
         } else {
-            tagLabel.text = "Punch"
-            messageLabel.text = "Tap 'Punch' to Punch In"
+            messageLabel.text = "Tap 'Get My Location' to Start"
         }
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
