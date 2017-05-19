@@ -49,6 +49,7 @@ class LocationsViewController: UITableViewController {
             let myNavigationController = segue.destination as! MyNavigationController
             let controller = myNavigationController.topViewController as! LocationDetailViewController
             controller.managedObjectContext = managedObjectContext
+            controller.locationInfo = "Detail"
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 let location = locations[indexPath.row]

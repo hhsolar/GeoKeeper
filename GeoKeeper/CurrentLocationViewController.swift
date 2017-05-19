@@ -282,6 +282,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             controller.managedObjectContext = managedObjectContext
             controller.delegate = self
             
+            controller.locationInfo = tagLabel.text!
+            
             forPassLocation.locationName = cityName.text!
             if tagLabel.text == "Tag" {
 //                forPassLocation.locationCategory = "All"

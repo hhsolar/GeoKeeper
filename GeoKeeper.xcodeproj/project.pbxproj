@@ -14,6 +14,7 @@
 		185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3A1E679C5F004E73B7 /* AppDelegate.swift */; };
 		185F5C3D1E679C5F004E73B7 /* CurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F5C3C1E679C5F004E73B7 /* CurrentLocationViewController.swift */; };
 		185F5C471E679C5F004E73B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185F5C451E679C5F004E73B7 /* LaunchScreen.storyboard */; };
+		18A7CC611ECAD9AC00824DC5 /* AddPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7CC601ECAD9AC00824DC5 /* AddPhotoCell.swift */; };
 		18DD5D811EB2D9C700DD40BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18DD5D7F1EB2D9C700DD40BC /* Main.storyboard */; };
 		18DF0D3B1EB979B90092AE77 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DF0D3A1EB979B90092AE77 /* PhotoViewController.swift */; };
 		18EEC0D01E983EC60096A52A /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEC0CF1E983EC60096A52A /* MyLocation.swift */; };
@@ -61,6 +62,7 @@
 		185F5C461E679C5F004E73B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185F5C481E679C5F004E73B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		187404AE1EB8167100D4578C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		18A7CC601ECAD9AC00824DC5 /* AddPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoCell.swift; sourceTree = "<group>"; };
 		18DD5D801EB2D9C700DD40BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = GeoKeeper/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18DF0D3A1EB979B90092AE77 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		18EEC0CF1E983EC60096A52A /* MyLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLocation.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				1F8D4F911E83995C00A5D73E /* RoundedCornersView.swift */,
 				18FB49601E8F63EC0075AFC8 /* PhotoCell.swift */,
 				1837E7DB1E9B419400A01461 /* CategoryPickerCell.swift */,
+				18A7CC601ECAD9AC00824DC5 /* AddPhotoCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */,
 				1F0729171EB2A580005C6C6E /* CoreDataFunctions.swift in Sources */,
 				1FBB71FA1EBD52B400795790 /* AllCell.swift in Sources */,
+				18A7CC611ECAD9AC00824DC5 /* AddPhotoCell.swift in Sources */,
 				1FEAD49F1E6CBAE9007CC5F1 /* Location+CoreDataProperties.swift in Sources */,
 				1F8D4F921E83995C00A5D73E /* RoundedCornersView.swift in Sources */,
 				1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */,

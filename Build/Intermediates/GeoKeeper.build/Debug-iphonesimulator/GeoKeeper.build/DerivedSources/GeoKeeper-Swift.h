@@ -144,10 +144,20 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
-@class UIImageView;
-@class UILabel;
 @class UIButton;
 @class NSCoder;
+
+SWIFT_CLASS("_TtC9GeoKeeper12AddPhotoCell")
+@interface AddPhotoCell : UICollectionViewCell
+@property (nonatomic, strong) UIButton * _Null_unspecified addButton;
+- (void)awakeFromNib;
+- (void)addImage;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIImageView;
+@class UILabel;
 
 SWIFT_CLASS("_TtC9GeoKeeper7AllCell")
 @interface AllCell : UICollectionViewCell
@@ -597,7 +607,6 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 - (IBAction)addImage;
 - (void)showWithImage:(UIImage * _Nonnull)image;
 - (void)disableAddImageButton;
-- (NSString * _Nonnull)stringFrom:(CLPlacemark * _Nonnull)placemark SWIFT_WARN_UNUSED_RESULT;
 - (IBAction)cancel;
 - (IBAction)choosePortrait;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
@@ -677,10 +686,15 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @property (nonatomic, copy) NSString * _Nonnull temp;
 @property (nonatomic, copy) NSString * _Nonnull weather;
 @property (nonatomic, copy) NSString * _Nonnull w_icon;
+@property (nonatomic, copy) NSArray<UIImage *> * _Nonnull imageArray;
+@property (nonatomic, strong) UIImage * _Nullable image;
+@property (nonatomic) BOOL imageFlag;
+@property (nonatomic, copy) NSString * _Nonnull locationInfo;
 - (IBAction)openMapsApp;
 - (IBAction)playWeatherSound;
 - (IBAction)getBack;
-- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
+- (IBAction)saveOrEdit;
+- (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidLoad;
 - (void)setContainer;
 - (void)setLocationWithCoordinate:(CLLocationCoordinate2D)coordinate;
@@ -694,8 +708,15 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 - (void)loadSoundEffect:(NSString * _Nonnull)name;
 - (void)unloadSoundEffect;
 - (void)playSoundEffect;
+- (void)showWithImage:(UIImage * _Nonnull)image;
+- (void)updateLocationWithPhoto:(UIImage * _Nonnull)photo;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)addPhoto;
 @end
 
 
@@ -713,6 +734,15 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper)) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+- (void)showPhotoMenu;
+- (void)takePhotoWithCamera;
+- (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> * _Nonnull)info;
+- (void)imagePickerControllerDidCancel:(UIImagePickerController * _Nonnull)picker;
+- (void)choosePhotoFromLibrary;
 @end
 
 

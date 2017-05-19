@@ -325,7 +325,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         for locationRecord in locations {
             if let placemarkRecord = locationRecord.placemark {
                 if let placemarkEdit = locationToEdit.placemark {
-                    if string(from: placemarkEdit) == string(from: placemarkRecord) {
+                    if stringFromPlacemark(placemark: placemarkEdit) == stringFromPlacemark(placemark: placemarkRecord) {
                         updateContent(location: locationRecord)
                         hasRocord = true
                     }
@@ -430,32 +430,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         addImageButton.setTitle("Capacity Maximum", for: .normal)
         addImageButton.tintColor = UIColor.lightGray
         addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
-    }
-    
-    func string(from placemark: CLPlacemark) -> String {
-        var line1 = ""
-        
-        if let s = placemark.subThoroughfare {
-            line1 += s + " "
-        }
-                    
-        if let s = placemark.thoroughfare {
-            line1 += s
-        }
-                    
-        var line2 = ""
-                    
-        if let s = placemark.locality {
-            line2 += s + " "
-        }
-        if let s = placemark.administrativeArea {
-            line2 += s + " "
-        }
-        if let s = placemark.postalCode {
-            line2 += s
-        }
-                    
-        return line1 + "\n" + line2
     }
     
     @IBAction func cancel() {

@@ -44,10 +44,10 @@
                                 </connections>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VD2-PW-d2i" userLabel="MessageView">
-                                <rect key="frame" x="0.0" y="276.5" width="320" height="24"/>
+                                <rect key="frame" x="0.0" y="276.5" width="320" height="23.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Message Label)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IA-Xv-r4B">
-                                        <rect key="frame" x="0.0" y="3.5" width="320" height="19"/>
+                                        <rect key="frame" x="0.0" y="2.5" width="320" height="19"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS-Italic" family="Trebuchet MS" pointSize="16"/>
                                         <color key="textColor" red="0.97647058823529409" green="0.6705882352941176" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -63,16 +63,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ve-Mh-pzk" userLabel="ButtonView">
-                                <rect key="frame" x="0.0" y="480" width="320" height="39"/>
+                                <rect key="frame" x="0.0" y="479.5" width="320" height="39.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECT-K8-qz0">
-                                        <rect key="frame" x="237" y="4" width="29" height="21"/>
+                                        <rect key="frame" x="237" y="4.5" width="29" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxA-V8-L7q">
-                                        <rect key="frame" x="24" y="1" width="157" height="28"/>
+                                        <rect key="frame" x="24" y="1.5" width="157" height="28"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                         <state key="normal" title="Get My Location" backgroundImage="button_background"/>
                                         <connections>
@@ -80,7 +80,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPP-au-b2k">
-                                        <rect key="frame" x="206" y="1" width="90" height="28"/>
+                                        <rect key="frame" x="206" y="1.5" width="90" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="hLW-fq-vmM"/>
                                         </constraints>
@@ -105,7 +105,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgH-Zu-kHi" userLabel="PortraitView">
-                                <rect key="frame" x="0.0" y="300.5" width="320" height="102.5"/>
+                                <rect key="frame" x="0.0" y="300" width="320" height="102.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sC-M6-hLJ">
                                         <rect key="frame" x="24" y="10.5" width="80" height="80"/>
@@ -157,7 +157,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diC-43-0p0" userLabel="AddressView">
-                                <rect key="frame" x="0.0" y="403" width="320" height="77"/>
+                                <rect key="frame" x="0.0" y="402.5" width="320" height="77"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdB-dm-jJW">
                                         <rect key="frame" x="40" y="36" width="64" height="18"/>
@@ -280,13 +280,13 @@
                                 <rect key="frame" x="0.0" y="174" width="320" height="287"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dNJ-gM-3of">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="123.5"/>
                                         <connections>
                                             <outlet property="delegate" destination="JN4-Wz-kGr" id="fGp-dl-tKc"/>
                                         </connections>
                                     </mapView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49E-4m-aJZ">
-                                        <rect key="frame" x="36" y="129" width="248" height="28"/>
+                                        <rect key="frame" x="36" y="129.5" width="248" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="MYy-MQ-sNH"/>
                                             <constraint firstAttribute="width" constant="248" id="SM5-3r-9C5"/>
@@ -297,7 +297,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qwu-iR-Jra">
-                                        <rect key="frame" x="0.0" y="163" width="320" height="124"/>
+                                        <rect key="frame" x="0.0" y="163.5" width="320" height="123.5"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NfP-u5-KC2">
                                             <size key="itemSize" width="50" height="50"/>
@@ -306,8 +306,16 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="9ec-UV-krh">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddPhotoCell" id="byh-CN-oUp" customClass="AddPhotoCell" customModule="GeoKeeper" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="9ec-UV-krh" customClass="PhotoCell" customModule="GeoKeeper" customModuleProvider="target">
+                                                <rect key="frame" x="67.5" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -462,14 +470,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit" id="LGq-FM-UH1">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="hLu-7Y-976">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="q5K-Nh-YFR">
                             <connections>
-                                <action selector="getBack" destination="JN4-Wz-kGr" id="Vmy-CN-G3a"/>
+                                <action selector="getBack" destination="JN4-Wz-kGr" id="YnY-1A-bZ4"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="MxJ-1x-eXG">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="boD-Fs-XRd">
                             <connections>
-                                <segue destination="WT6-16-fKM" kind="presentation" identifier="EditDetail" id="dA2-xF-1Eq"/>
+                                <action selector="saveOrEdit" destination="JN4-Wz-kGr" id="LrY-Uv-7jF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -491,7 +499,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgd-MD-f4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3837.5999999999999" y="273.91304347826087"/>
+            <point key="canvasLocation" x="3836.25" y="273.59154929577466"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="HIT-OE-F04">
@@ -980,7 +988,7 @@
         <!--Location Detail Edit View Controller-->
         <scene sceneID="uBc-zV-LNT">
             <objects>
-                <viewController id="WT6-16-fKM" customClass="LocationDetailEditViewController" customModule="GeoKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailEdit" id="WT6-16-fKM" customClass="LocationDetailEditViewController" customModule="GeoKeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9HX-dS-F0k"/>
                         <viewControllerLayoutGuide type="bottom" id="RQG-cV-LlJ"/>
@@ -1245,6 +1253,6 @@
         <image name="tag_icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IAm-Mh-Rv9"/>
+        <segue reference="JSo-sl-ud3"/>
     </inferredMetricsTieBreakers>
 </document>
