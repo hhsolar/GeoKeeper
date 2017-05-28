@@ -36,7 +36,7 @@ let locationDefaultImage = UIImage(named: "location_default")
 
 let colors = ["brown", "darkgreen", "darkpurple", "green", "pink", "purple", "yellow"]
 
-let photoCapacity = 20
+let photoCapacity = 2
 let punchInterval = 10000.0
 
 let icons = [
@@ -52,6 +52,8 @@ let icons = [
     "Station",
     "CityHall",
     "Hotel"]
+
+let apiKey = "64061cb2cff1e380d2011f5ad50d3bf8"
 
 func stringFromPlacemark(placemark: CLPlacemark) -> String {
     var text = ""

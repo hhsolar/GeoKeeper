@@ -52,8 +52,9 @@ class AllLocationsViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LocationDetail" {
-            let myNavigationController = segue.destination as! MyNavigationController
-            let controller = myNavigationController.topViewController as! LocationDetailViewController
+            let navigationController = segue.destination as! MyNavigationController
+            let controller = navigationController.topViewController as! LocationDetailViewController
+            controller.hidesBottomBarWhenPushed = true
             controller.managedObjectContext = managedObjectContext
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {

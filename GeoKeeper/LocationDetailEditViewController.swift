@@ -44,7 +44,8 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     var remarkLabelFrame = CGRect.zero
     
     var keyHeight = CGFloat()
-    fileprivate let reuseIdentifier = "PhotoCell"
+    fileprivate let reuseIdentifier1 = "PhotoCell"
+    fileprivate let reuseIdentifier2 = "AddPhotoCell"
     var flag = ""
     var hasPortrait = false
     var portraitChanged = false
@@ -111,12 +112,12 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         super.viewWillAppear(animated)
         if let photoIDs = locationToEdit.photoID {
             if photoIDs.count < photoCapacity {
-                addImageButton.isEnabled = true
+                enableAddImageButton()
             }
         } else {
-            addImageButton.isEnabled = true
+            enableAddImageButton()
         }
-        
+        disableAddImageButton()
     }
     
     func setPara() {
@@ -142,11 +143,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         addImageButton.setTitleColor(secondColor, for: .normal)
         addImageButton.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 16)
         addImageButton.backgroundColor = UIColor.white
-        if let photoIDs = locationToEdit.photoID {
-            if photoIDs.count >= photoCapacity {
-                addImageButton.isEnabled = false
-            }
-        }
         addImageButton.layer.cornerRadius = 14
         
         // set remarkTextView
@@ -163,7 +159,8 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     func initCollectionView() {
         photoCollection.frame = collectionFrame
         photoCollection.backgroundColor = UIColor.lightGray
-        photoCollection.register(PhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        photoCollection.register(PhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier1)
+        photoCollection.register(AddPhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier2)
         let layout = UICollectionViewFlowLayout()
         photoCollection.collectionViewLayout = layout
         layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
@@ -394,15 +391,11 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     @IBAction func addImage() {
         flag = "collectionView"
         if let photoIDs = locationToEdit.photoID {
-            if photoIDs.count + imageArray.count >= photoCapacity {
-                disableAddImageButton()
-            } else {
+            if photoIDs.count + imageArray.count < photoCapacity {
                 showPhotoMenu()
             }
         } else {
-            if imageArray.count >= photoCapacity {
-                disableAddImageButton()
-            } else {
+            if imageArray.count < photoCapacity {
                 showPhotoMenu()
             }
         }
@@ -413,15 +406,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             portraitImageView.image = image
         } else if flag == "collectionView"{
             imageArray.append(image)
-            if let photoIDs = locationToEdit.photoID {
-                if photoIDs.count + imageArray.count == photoCapacity {
-                    disableAddImageButton()
-                }
-            } else {
-                if imageArray.count == photoCapacity {
-                    disableAddImageButton()
-                }
-            }
             photoCollection.reloadData()
         }
     }
@@ -430,6 +414,12 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         addImageButton.setTitle("Capacity Maximum", for: .normal)
         addImageButton.tintColor = UIColor.lightGray
         addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
+    }
+    
+    func enableAddImageButton() {
+        addImageButton.setTitle("Add Image", for: .normal)
+        addImageButton.tintColor = secondColor
+        addImageButton.setTitleColor(secondColor, for: .normal)
     }
     
     @IBAction func cancel() {
@@ -479,27 +469,35 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
             if photoIDs.count + imageArray.count == 0 {
                 return 1
             }
-            return photoIDs.count + imageArray.count
+            return photoIDs.count + imageArray.count + 1
         } else if imageArray.count == 0 {
             return 1
         }
-        return imageArray.count
+        return imageArray.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCell
-        cell.awakeFromNib()
-        cell.delegate = self
-        cell.cellButton.isHidden = true
-
-        cell.cellIndex = indexPath.row
-        
         if let photoIDs = locationToEdit.photoID {
-            if photoIDs.count + imageArray.count == 0 {
-                cell.photoImageView.image = UIImage(named: "noPhoto2_icon")
-                cell.deleteButton.isHidden = true
+            if photoIDs.count + imageArray.count == 0 || photoIDs.count + imageArray.count == indexPath.row {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! AddPhotoCell
+                cell.awakeFromNib()
+                cell.delegate = self
+                if photoIDs.count + imageArray.count == photoCapacity {
+                    cell.buttonImageView.image = UIImage(named: "maxPhoto")
+                    cell.addButton.isEnabled = false
+                    disableAddImageButton()
+                } else {
+                    cell.buttonImageView.image = UIImage(named: "addPhotoIcon")
+                    cell.addButton.isEnabled = true
+                    enableAddImageButton()
+                }
                 return cell
             }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! PhotoCell
+            cell.awakeFromNib()
+            cell.delegate = self
+            cell.cellButton.isHidden = true
+            cell.cellIndex = indexPath.row
             if !photoIDs.isEmpty && indexPath.row < photoIDs.count {
                 let index = photoIDs[indexPath.row]
                 cell.photoImageView.image = locationToEdit.photoImages(photoIndex: Int(index))
@@ -508,14 +506,39 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
                 cell.photoImageView.image = imageArray[index]
             }
             return cell
-        } else if imageArray.count == 0 {
-            cell.photoImageView.image = UIImage(named: "noPhoto2_icon")
-            cell.deleteButton.isHidden = true
+        } else if imageArray.count == 0 || imageArray.count == indexPath.row {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! AddPhotoCell
+            cell.awakeFromNib()
+            cell.delegate = self
+            if imageArray.count == photoCapacity {
+                cell.buttonImageView.image = UIImage(named: "maxPhoto")
+                cell.addButton.isEnabled = false
+                disableAddImageButton()
+            } else {
+                cell.buttonImageView.image = UIImage(named: "addPhotoIcon")
+                cell.addButton.isEnabled = true
+                enableAddImageButton()
+            }
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! PhotoCell
+            cell.awakeFromNib()
+            cell.delegate = self
+            cell.cellButton.isHidden = true
+            cell.cellIndex = indexPath.row
+            cell.photoImageView.image = imageArray[indexPath.row]
             return cell
         }
-        
-        cell.photoImageView.image = imageArray[indexPath.row]
-        return cell
+    }
+
+}
+
+extension LocationDetailEditViewController: AddPhotoCellDelegate {
+    func addPhoto(forCell: AddPhotoCell) {
+        if imageArray.count < photoCapacity {
+            flag = "collectionView"
+            showPhotoMenu()
+        }
     }
 }
 
@@ -527,18 +550,14 @@ extension LocationDetailEditViewController: PhotoCellDelegate {
         if let photoIDs = locationToEdit.photoID {
             if !photoIDs.isEmpty && forCell.cellIndex < photoIDs.count {
                 locationToEdit.photoID?.remove(at: forCell.cellIndex)
-            } else if !photoIDs.isEmpty && forCell.cellIndex >= photoIDs.count {
+            } else {
                 let ind = forCell.cellIndex - photoIDs.count
                 imageArray.remove(at: ind)
-                
             }
         } else {
             imageArray.remove(at: forCell.cellIndex)
         }
-        addImageButton.setTitle("Add Image", for: .normal)
-        addImageButton.tintColor = secondColor
-        addImageButton.setTitleColor(secondColor, for: .normal)
-        photoCollection.reloadData()        
+        photoCollection.reloadData()
     }
 }
 

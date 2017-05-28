@@ -15,6 +15,7 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     var count = 0
     
     var locationWithPhoto = MyLocation()
+    var imageArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,15 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
 
             }
             scrollView.contentOffset = CGPoint(x: Int(kScreenWidth) * showIndex, y: 0)
+        } else if imageArray.count > 0 {
+            scrollView.contentSize = CGSize(width: scrollView.bounds.size.width * CGFloat(imageArray.count), height: scrollView.bounds.size.height - 64)
+
+            for i in 0..<imageArray.count {
+                let imageView = UIImageView(frame: CGRect(x: scrollView.frame.width * CGFloat(i), y: -64, width: scrollView.frame.width, height: scrollView.frame.height))
+                imageView.image = imageArray[i]
+                imageView.contentMode = UIViewContentMode.scaleAspectFit
+                scrollView.addSubview(imageView)
+            }
         }
     }
 

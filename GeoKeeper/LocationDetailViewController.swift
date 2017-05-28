@@ -40,9 +40,7 @@ class LocationDetailViewController: UIViewController {
     var delegate: LocationDetailViewControllerDelegate? = nil
     var soundID: SystemSoundID = 0
     var soundURL: NSURL?
-    
-    let apiKey = "64061cb2cff1e380d2011f5ad50d3bf8"
-    
+        
     var temp = ""
     var weather = ""
     var w_icon = ""
@@ -50,11 +48,9 @@ class LocationDetailViewController: UIViewController {
     fileprivate let reuseIdentifier1 = "PhotoCell"
     fileprivate let reuseIdentifier2 = "AddPhotoCell"
     
-    var imageArray = [UIImage]()
     var image: UIImage?
-    var imageFlag = true
     
-    var locationInfo = ""
+    var sourceFrom = ""
     
     @IBAction func openMapsApp() {
         let targetURL = URL(string: "http://maps.apple.com/maps?saddr=Current%20Location&daddr=\(String(locationToShow.latitude)),\(String(locationToShow.longitude))")!
@@ -93,48 +89,19 @@ class LocationDetailViewController: UIViewController {
     
     @IBAction func getBack() {
         delegate?.passLocation(location: locationToShow)
-        dismiss(animated: true, completion: nil);
+        if sourceFrom == "First" {
+            navigationController?.popToRootViewController(animated: true)
+        } else if sourceFrom == "CurrentLocation" {
+            navigationController?.popViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
-    @IBAction func saveOrEdit() {
-        if navigationItem.rightBarButtonItem?.title == "Save" {
-            let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
-            location.name = locationToShow.locationName
-            location.category = locationToShow.locationCategory
-            location.date = locationToShow.date!
-            location.latitude = locationToShow.latitude
-            location.longitude = locationToShow.longitude
-            location.placemark = locationToShow.placemark
-            location.punch = locationToShow.punch
-            location.locationDescription = locationToShow.locationDescription
-            location.locationPhotoID = locationToShow.locationPhotoID
-            
-            if imageArray.count > 0 {
-                location.photoID = []
-                for img in imageArray {
-                    location.photoID?.append(location.nextPhotoID() as NSNumber)
-                    if let data = UIImageJPEGRepresentation(img, 0.5) {
-                        do {
-                            try data.write(to: location.photosURL(photoIndex: (location.photoID?.last!)!), options: .atomic)
-                        } catch {
-                            print("Error writing file: \(error)")
-                        }
-                    }
-                }
-                locationToShow.photoID = location.photoID
-            }
-            
-            do {
-                try managedObjectContext.save()
-            } catch {
-                fatalError("Failure to save context: \(error)")
-            }
-            imageArray.removeAll()
-            navigationItem.leftBarButtonItem?.title = "Back"
-            navigationItem.rightBarButtonItem?.title = "Edit"
-        } else if navigationItem.rightBarButtonItem?.title == "Edit" {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier:"DetailEdit") as! LocationDetailEditViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailEdit" {
+            let controller = segue.destination as! LocationDetailEditViewController
+            controller.managedObjectContext = managedObjectContext
             controller.locationToEdit = locationToShow
             
             controller.portraitViewFrame = portraitImage.frame
@@ -146,23 +113,7 @@ class LocationDetailViewController: UIViewController {
             controller.remarkLabelFrame = remarkLabel.frame
             controller.remarkTextViewFrame = remarkTextView.frame
             
-            controller.managedObjectContext = managedObjectContext
             controller.delegate = self
-            
-            self.present(controller, animated: true, completion: nil)
-
-        }
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if locationInfo == "Tag" {
-            navigationItem.rightBarButtonItem?.title = "Save"
-            navigationItem.leftBarButtonItem?.title = "Cancel"
-        } else {
-            navigationItem.rightBarButtonItem?.title = "Edit"
-            navigationItem.leftBarButtonItem?.title = "Back"
         }
     }
     
@@ -233,7 +184,6 @@ class LocationDetailViewController: UIViewController {
         
         // set punchNumber
         punchNumber.textColor = secondColor
-        
     }
     
     func setLocation(coordinate: CLLocationCoordinate2D) {
@@ -252,7 +202,7 @@ class LocationDetailViewController: UIViewController {
         mapKit.isZoomEnabled = true
     }
     
-    // download data from openwWeatherAPI
+    // MARK: - download data from openwWeatherAPI
     func weatherSearch(coordinate: CLLocationCoordinate2D) {
         let url = weatherURL(coordinate: coordinate)
         if let jsonString = performWeatherRequest(with: url) {
@@ -366,18 +316,6 @@ class LocationDetailViewController: UIViewController {
     }
     
     func show(image: UIImage) {
-        if locationInfo == "Tag" {
-            imageArray.append(image)
-            if imageArray.count == photoCapacity {
-                imageFlag = false
-            }
-        } else {
-            updateLocation(photo: image)
-        }
-        photoCollectionView.reloadData()
-    }
-    
-    func updateLocation(photo: UIImage) {
         var locations = [Location]()
         
         let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
@@ -392,8 +330,11 @@ class LocationDetailViewController: UIViewController {
             if let placemarkRecord = locationRecord.placemark {
                 if let placemarkEdit = locationToShow.placemark {
                     if stringFromPlacemark(placemark: placemarkEdit) == stringFromPlacemark(placemark: placemarkRecord) {
+                        if locationRecord.photoID == nil {
+                            locationRecord.photoID = []
+                        }
                         locationRecord.photoID?.append(locationRecord.nextPhotoID() as NSNumber)
-                        if let data = UIImageJPEGRepresentation(image!, 0.5) {
+                        if let data = UIImageJPEGRepresentation(image, 0.5) {
                             do {
                                 try data.write(to: locationRecord.photosURL(photoIndex: (locationRecord.photoID?.last!)!), options: .atomic)
                             } catch {
@@ -411,6 +352,8 @@ class LocationDetailViewController: UIViewController {
         } catch {
             fatalError("Failure to save context: \(error)")
         }
+        
+        photoCollectionView.reloadData()
     }
 }
 
@@ -421,26 +364,30 @@ extension LocationDetailViewController: UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let photoIDs = locationToShow.photoID {
-            if photoIDs.count == 0 {
-                return 1
+            if photoIDs.count > 0 {
+                return photoIDs.count + 1
             }
-            return photoIDs.count + 1
-        } else if imageArray.count == 0 {
-            return 1
         }
-        return imageArray.count + 1
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let photoIDs = locationToShow.photoID {
             if photoIDs.count == indexPath.row {
-                let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! AddPhotoCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! AddPhotoCell
                 cell.awakeFromNib()
                 cell.delegate = self
+                if photoIDs.count < photoCapacity {
+                    cell.buttonImageView.image = UIImage(named: "addPhotoIcon")
+                    cell.addButton.isEnabled = true
+                } else {
+                    cell.buttonImageView.image = UIImage(named: "maxPhoto")
+                    cell.addButton.isEnabled = false
+                }
                 return cell
             } else if photoIDs.count > 0 {
-                let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! PhotoCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! PhotoCell
                 cell.awakeFromNib()
                 cell.delegate = self
                 cell.deleteButton.isHidden = true
@@ -450,19 +397,13 @@ extension LocationDetailViewController: UICollectionViewDataSource, UICollection
                 cell.photoImageView.image = locationToShow.photoImages(photoIndex: Int(index))
                 return cell
             }
-        } else if imageArray.count > 0 && imageArray.count != indexPath.row {
-            let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier1, for: indexPath) as! PhotoCell
-            cell.awakeFromNib()
-            cell.delegate = self
-            cell.deleteButton.isHidden = true
-            cell.cellIndex = indexPath.row
-            cell.photoImageView.image = imageArray[indexPath.row]
-            return cell
         }
         
         let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier2, for: indexPath) as! AddPhotoCell
         cell.awakeFromNib()
         cell.delegate = self
+        cell.buttonImageView.image = UIImage(named: "addPhotoIcon")
+        cell.addButton.isEnabled = true
         return cell
     }
 }
@@ -502,20 +443,8 @@ extension LocationDetailViewController: PhotoCellDelegate {
 }
 
 extension LocationDetailViewController: AddPhotoCellDelegate {
-    func addPhoto() {
-        if let photoIDs = locationToShow.photoID {
-            if photoIDs.count + imageArray.count >= photoCapacity {
-                imageFlag = false
-            } else {
-                showPhotoMenu()
-            }
-        } else {
-            if imageArray.count >= photoCapacity {
-                imageFlag = false
-            } else {
-                showPhotoMenu()
-            }
-        }
+    func addPhoto(forCell: AddPhotoCell) {
+        showPhotoMenu()
     }
 }
 

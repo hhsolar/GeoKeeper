@@ -45,11 +45,11 @@ class LocationsViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LocationDetail" {
-            let myNavigationController = segue.destination as! MyNavigationController
-            let controller = myNavigationController.topViewController as! LocationDetailViewController
+        if segue.identifier == "LocationToDetail" {
+            let navigationController = segue.destination as! MyNavigationController
+            let controller = navigationController.topViewController as! LocationDetailViewController
+            controller.hidesBottomBarWhenPushed = true
             controller.managedObjectContext = managedObjectContext
-            controller.locationInfo = "Detail"
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 let location = locations[indexPath.row]

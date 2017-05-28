@@ -20,11 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checkFirstLaunch()
         let tabBarController = window!.rootViewController as! UITabBarController
         if let tabBarViewControllers = tabBarController.viewControllers {
-            let currentLocationViewController = tabBarViewControllers[0] as! CurrentLocationViewController
+            let navigationController1 = tabBarViewControllers[0] as! UINavigationController
+            let currentLocationViewController = navigationController1.viewControllers[0] as! CurrentLocationViewController
             currentLocationViewController.managedObjectContext = managedObjectContext
             
-            let navigationController = tabBarViewControllers[1] as! UINavigationController
-            let categoriesViewController = navigationController.viewControllers[0] as! CategoriesViewController
+            let navigationController2 = tabBarViewControllers[1] as! UINavigationController
+            let categoriesViewController = navigationController2.viewControllers[0] as! CategoriesViewController
             categoriesViewController.managedObjectContext = managedObjectContext
             
             let mapViewController = tabBarViewControllers[2] as! MapViewController

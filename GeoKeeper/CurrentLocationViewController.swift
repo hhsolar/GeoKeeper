@@ -117,10 +117,10 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             tagLabel.textColor = baseColor
             
             if let placemark = placemark {
-                addressLabel.text = string(from: placemark)
+                addressLabel.text = stringFromPlacemark(placemark: placemark)
                 for locationRecord in locations {
                     if let placemarkRecord = locationRecord.placemark {
-                        if addressLabel.text == string(from:placemarkRecord) {
+                        if addressLabel.text == stringFromPlacemark(placemark: placemarkRecord) {
                             forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
                             cityName.text = forPassLocation.locationName
                             //Repeated Punch is not allowed
@@ -190,11 +190,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     }
 
     
-    func setContainer() {
-        // set navigationBar
-        nBar.barTintColor = baseColor
-        nBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "TrebuchetMS-Bold", size: 17)!, NSForegroundColorAttributeName: UIColor.white]
-        
+    func setContainer() {        
         // set messageLabel
         messageLabel.font = UIFont(name: "TrebuchetMS-Italic", size: 16)
         messageLabel.textColor = secondColor
@@ -274,38 +270,50 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         updateLabels()
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "TagLocation" {
-            let navigationController = segue.destination as! UINavigationController
-            let controller = navigationController.topViewController as! LocationDetailViewController
+    @IBAction func goDetail() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        if tagLabel.text == "Tag" {
+            let controller = storyboard.instantiateViewController(withIdentifier: "FirstEdit") as! LocationDetailFirstViewController
+            controller.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(controller, animated: true)
             controller.managedObjectContext = managedObjectContext
-            controller.delegate = self
-            
-            controller.locationInfo = tagLabel.text!
             
             forPassLocation.locationName = cityName.text!
-            if tagLabel.text == "Tag" {
-//                forPassLocation.locationCategory = "All"
-                forPassLocation.placemark = placemark
-                forPassLocation.latitude = (location?.coordinate.latitude)!
-                forPassLocation.longitude = (location?.coordinate.longitude)!
-                forPassLocation.date = (location?.timestamp)!
-                forPassLocation.punch = 1;
-            } else if tagLabel.text == "Punch" {
+            forPassLocation.locationCategory = "All"
+            forPassLocation.placemark = placemark
+            forPassLocation.latitude = (location?.coordinate.latitude)!
+            forPassLocation.longitude = (location?.coordinate.longitude)!
+            forPassLocation.date = (location?.timestamp)!
+            forPassLocation.punch = 1;
+            controller.locationToSave = forPassLocation
+            
+        } else {
+            let controller = storyboard.instantiateViewController(withIdentifier: "ShowDetail") as! LocationDetailViewController
+            controller.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(controller, animated: true)
+            controller.managedObjectContext = managedObjectContext
+            controller.delegate = self
+            controller.sourceFrom = "CurrentLocation"
+            
+            if tagLabel.text == "Punch" {
                 forPassLocation.punch = (Int(forPassLocation.punch) + 1) as NSNumber
                 for locationRecord in locations {
                     if let placemarkRecord = locationRecord.placemark {
-                        if addressLabel.text == string(from:placemarkRecord) {
+                        if addressLabel.text == stringFromPlacemark(placemark: placemarkRecord) {
                             locationRecord.date = (location?.timestamp)!
                             locationRecord.punch = (Int(forPassLocation.punch) + 1) as NSNumber
                         }
                     }
                 }
-                saveToCoreData(managedObjectContext)
-            } else if tagLabel.text == "Detail" {
-                
             }
+            
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalError("Failure to save context: \(error)")
+            }
+            
             controller.locationToShow = forPassLocation
         }
     }
@@ -403,31 +411,31 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
     }
     
-    func string(from placemark: CLPlacemark) -> String {
-        var line1 = ""
-        
-        if let s = placemark.subThoroughfare {
-            line1 += s + " "
-        }
-        
-        if let s = placemark.thoroughfare {
-            line1 += s + ", "
-        }
-        
-        var line2 = ""
-        
-        if let s = placemark.locality {
-            line2 += s + ", "
-        }
-        if let s = placemark.administrativeArea {
-            line2 += s + " "
-        }
-        if let s = placemark.postalCode {
-            line2 += s
-        }
-        
-        return line1 + "\n" + line2
-    }
+//    func string(from placemark: CLPlacemark) -> String {
+//        var line1 = ""
+//        
+//        if let s = placemark.subThoroughfare {
+//            line1 += s + " "
+//        }
+//        
+//        if let s = placemark.thoroughfare {
+//            line1 += s + ", "
+//        }
+//        
+//        var line2 = ""
+//        
+//        if let s = placemark.locality {
+//            line2 += s + ", "
+//        }
+//        if let s = placemark.administrativeArea {
+//            line2 += s + " "
+//        }
+//        if let s = placemark.postalCode {
+//            line2 += s
+//        }
+//        
+//        return line1 + "\n" + line2
+//    }
     
     func showLocationServicesDeniedAlert() {
         let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable location services for this app in Settings.", preferredStyle: .alert)
@@ -506,6 +514,6 @@ extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavi
 
 extension CurrentLocationViewController: LocationDetailViewControllerDelegate {
     func passLocation(location: MyLocation) {
-        cityName.text = location.locationName
+        forPassLocation = location
     }
 }
