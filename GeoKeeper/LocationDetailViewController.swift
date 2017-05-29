@@ -284,12 +284,12 @@ class LocationDetailViewController: UIViewController {
         photoCollectionView.register(AddPhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier2)
         let layout = UICollectionViewFlowLayout()
         photoCollectionView.collectionViewLayout = layout
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+//        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+//        
+//        let itemHeight: CGFloat = photoCollectionView.frame.height - 10 * 2
+//        layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
         
-        let itemHeight: CGFloat = photoCollectionView.frame.height - 10 * 2
-        layout.itemSize = CGSize(width: itemHeight, height: itemHeight)
-        
-        layout.minimumLineSpacing = 8
+//        layout.minimumLineSpacing = 8
         
         layout.scrollDirection = .horizontal
         photoCollectionView.showsHorizontalScrollIndicator = false
@@ -405,6 +405,22 @@ extension LocationDetailViewController: UICollectionViewDataSource, UICollection
         cell.buttonImageView.image = UIImage(named: "addPhotoIcon")
         cell.addButton.isEnabled = true
         return cell
+    }
+}
+
+
+extension LocationDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemHeight: CGFloat = collectionView.frame.height - 10 * 2
+        return CGSize(width: itemHeight, height: itemHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
     }
 }
 

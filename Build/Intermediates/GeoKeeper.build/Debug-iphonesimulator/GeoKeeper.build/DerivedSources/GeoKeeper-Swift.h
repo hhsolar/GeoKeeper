@@ -613,6 +613,11 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
 
+
+@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
+@end
+
 @class PhotoCell;
 
 SWIFT_PROTOCOL("_TtP9GeoKeeper17PhotoCellDelegate_")
@@ -625,11 +630,6 @@ SWIFT_PROTOCOL("_TtP9GeoKeeper17PhotoCellDelegate_")
 
 @interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
 - (void)deleteImageForCell:(PhotoCell * _Nonnull)forCell;
-@end
-
-
-@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
 @end
 
 
@@ -744,6 +744,13 @@ SWIFT_CLASS("_TtC9GeoKeeper33LocationDetailFirstViewController")
 @end
 
 
+@interface LocationDetailFirstViewController (SWIFT_EXTENSION(GeoKeeper)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (UIEdgeInsets)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout insetForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 @interface LocationDetailFirstViewController (SWIFT_EXTENSION(GeoKeeper)) <UICollectionViewDataSource, UICollectionViewDelegate>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
@@ -809,6 +816,11 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @end
 
 
+@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
+@end
+
+
 @interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
 - (void)enlargeImageForCell:(PhotoCell * _Nonnull)forCell;
 @end
@@ -819,8 +831,10 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @end
 
 
-@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
+@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (UIEdgeInsets)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout insetForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
