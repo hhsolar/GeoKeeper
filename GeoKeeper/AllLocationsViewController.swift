@@ -20,12 +20,12 @@ class AllLocationsViewController: UITableViewController {
         let sortDescriptor1 = NSSortDescriptor(key: "category", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor1]
         
-        fetchRequest.fetchBatchSize = 20
+
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
             managedObjectContext: self.managedObjectContext,
             sectionNameKeyPath: "category",
-            cacheName: "Locations")
+            cacheName: nil)
         fetchedResultsController.delegate = self
         return fetchedResultsController
     }()
@@ -96,10 +96,12 @@ class AllLocationsViewController: UITableViewController {
     //MARK: - TABLEVIEW DATASOURCE
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
+        print(sectionInfo.numberOfObjects)
         return sectionInfo.numberOfObjects
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        
         return fetchedResultsController.sections!.count
     }
     
