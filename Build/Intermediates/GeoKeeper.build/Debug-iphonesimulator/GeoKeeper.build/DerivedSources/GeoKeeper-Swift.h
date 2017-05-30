@@ -402,9 +402,12 @@ SWIFT_CLASS("_TtC9GeoKeeper9ColorCell")
 @class UIImage;
 @class UINavigationBar;
 @class MKMapView;
+@class UISearchBar;
+@class UITouch;
+@class UIEvent;
 
 SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
-@interface CurrentLocationViewController : UIViewController <CLLocationManagerDelegate>
+@interface CurrentLocationViewController : UIViewController <CLLocationManagerDelegate, UIBarPositioningDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, readonly, strong) CLLocationManager * _Nonnull locationManager;
 @property (nonatomic, strong) CLLocation * _Nullable location;
@@ -432,11 +435,13 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified portrait;
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified portraitImage;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified tagLabel;
+@property (nonatomic, readonly, strong) UISearchBar * _Nonnull searchBar;
 - (IBAction)choosePortrait;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
 - (void)viewDidLoad;
 - (void)updateLabels;
+- (void)setSearchBar;
 - (void)setContainer;
 - (void)setPortrait;
 - (void)didReceiveMemoryWarning;
@@ -450,19 +455,21 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (void)showLocationServicesDeniedAlert;
 - (void)showWithImage:(UIImage * _Nonnull)image;
 - (void)saveImageWithImage:(UIImage * _Nonnull)image;
+- (void)searchBarSearchButtonClicked:(UISearchBar * _Nonnull)searchBar;
+- (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nullable)event;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol UIBarPositioning;
+
+@interface CurrentLocationViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate>
+- (UIBarPosition)positionForBar:(id <UIBarPositioning> _Nonnull)bar SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface CurrentLocationViewController (SWIFT_EXTENSION(GeoKeeper))
 - (void)passLocationWithLocation:(MyLocation * _Nonnull)location;
-@end
-
-@protocol UIBarPositioning;
-
-@interface CurrentLocationViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
-- (UIBarPosition)positionForBar:(id <UIBarPositioning> _Nonnull)bar SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class UIImagePickerController;
@@ -615,7 +622,7 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 
 
 @interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
+- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
 @end
 
 @class PhotoCell;
@@ -634,7 +641,7 @@ SWIFT_PROTOCOL("_TtP9GeoKeeper17PhotoCellDelegate_")
 
 
 @interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
+- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
 @end
 
 
@@ -729,12 +736,12 @@ SWIFT_CLASS("_TtC9GeoKeeper33LocationDetailFirstViewController")
 
 
 @interface LocationDetailFirstViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
+- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
 @end
 
 
 @interface LocationDetailFirstViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
+- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
 @end
 
 
@@ -908,6 +915,16 @@ SWIFT_CLASS("_TtC9GeoKeeper17MapViewController")
 
 @interface MapViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
 - (UIBarPosition)positionForBar:(id <UIBarPositioning> _Nonnull)bar SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC9GeoKeeper12MyAnnotation")
+@interface MyAnnotation : NSObject <MKAnnotation>
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable subtitle;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title subtitle:(NSString * _Nonnull)subtitle coordinate:(CLLocationCoordinate2D)coordinate OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
 

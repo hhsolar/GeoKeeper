@@ -31,7 +31,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     var locations = [Location]()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
