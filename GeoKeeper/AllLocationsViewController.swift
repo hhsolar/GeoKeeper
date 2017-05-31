@@ -96,7 +96,6 @@ class AllLocationsViewController: UITableViewController {
     //MARK: - TABLEVIEW DATASOURCE
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
-        print(sectionInfo.numberOfObjects)
         return sectionInfo.numberOfObjects
     }
     

@@ -11,7 +11,7 @@ import CoreLocation
 import CoreData
 import MapKit
 
-class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
+class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
     var managedObjectContext: NSManagedObjectContext!
     let locationManager = CLLocationManager()
     var location: CLLocation?
@@ -42,8 +42,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var portrait: UIButton!
     @IBOutlet weak var portraitImage: UIImageView!
     @IBOutlet weak var tagLabel: UILabel!
-   
-    let searchBar = UISearchBar()
     
     @IBAction func choosePortrait() {
         showPhotoMenu()
@@ -106,7 +104,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         view.tintColor = baseColor
         mapView?.showsUserLocation = true
         
-        setSearchBar()
         updateLabels()
         setContainer()
         setPortrait()
@@ -192,15 +189,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             messageLabel.text = statusMessage
         }
     }
-
-    func setSearchBar() {
-        searchBar.showsCancelButton = false
-        searchBar.placeholder = "Enter a address"
-        searchBar.delegate = self
-        
-        self.navigationItem.titleView = searchBar
-    }
-    
     func setContainer() {        
         // set messageLabel
         messageLabel.font = UIFont(name: "TrebuchetMS-Italic", size: 16)
@@ -290,14 +278,15 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             navigationController?.pushViewController(controller, animated: true)
             controller.managedObjectContext = managedObjectContext
             
-            forPassLocation.locationName = cityName.text!
-            forPassLocation.locationCategory = "All"
-            forPassLocation.placemark = placemark
-            forPassLocation.latitude = (location?.coordinate.latitude)!
-            forPassLocation.longitude = (location?.coordinate.longitude)!
-            forPassLocation.date = (location?.timestamp)!
-            forPassLocation.punch = 1;
-            controller.locationToSave = forPassLocation
+            let tempLoation = MyLocation()
+            tempLoation.locationName = cityName.text!
+            tempLoation.locationCategory = "All"
+            tempLoation.placemark = placemark
+            tempLoation.latitude = (location?.coordinate.latitude)!
+            tempLoation.longitude = (location?.coordinate.longitude)!
+            tempLoation.date = (location?.timestamp)!
+            tempLoation.punch = 1;
+            controller.locationToSave = tempLoation
             
         } else {
             let controller = storyboard.instantiateViewController(withIdentifier: "ShowDetail") as! LocationDetailViewController
@@ -444,45 +433,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
         let userDefaults = UserDefaults.standard
         userDefaults.set("MyPortrait", forKey: "Portrait")
-    }
-    
-    // MARK: - searchBar
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let myAddress = searchBar.text!
-        geocoder.geocodeAddressString(myAddress, completionHandler: {(placemarks: [CLPlacemark]?, error: Error?) -> Void in
-            if error != nil {
-                print(error!)
-                return
-            }
-            
-            guard let placemarks = placemarks else {
-                return
-            }
-            
-            for place in placemarks {
-                print(place.name!)
-                
-                guard let location = place.location else {
-                    continue
-                }
-                
-                self.latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
-                self.longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
-                self.cityName.text = place.locality
-                self.addressLabel.text = stringFromPlacemark(placemark: place)
-                
-                let distanceSpan: CLLocationDegrees = 2000
-                self.mapView.setRegion(MKCoordinateRegionMakeWithDistance(location.coordinate, distanceSpan, distanceSpan), animated: true)
-                
-                let newLocationPin = MyAnnotation(title: place.locality!, subtitle: stringFromPlacemark(placemark: place), coordinate: location.coordinate)
-                self.mapView.addAnnotation(newLocationPin)
-            }
-        })
-        searchBar.endEditing(true)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        searchBar.endEditing(true)
     }
 }
 
