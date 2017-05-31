@@ -111,13 +111,11 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let photoIDs = locationToEdit.photoID {
-            if photoIDs.count < photoCapacity {
-                enableAddImageButton()
+            if photoIDs.count >= photoCapacity {
+                disableAddImageButton()
             }
-        } else {
-            enableAddImageButton()
         }
-        disableAddImageButton()
+        enableAddImageButton()
     }
     
     func setPara() {
