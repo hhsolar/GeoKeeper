@@ -271,7 +271,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     @IBAction func goDetail() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
         if tagLabel.text == "Tag" {
             let controller = storyboard.instantiateViewController(withIdentifier: "FirstEdit") as! LocationDetailFirstViewController
             controller.hidesBottomBarWhenPushed = true
