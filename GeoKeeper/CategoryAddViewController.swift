@@ -154,7 +154,8 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
             doneBarButton.isEnabled = false
             delegate?.changeColorOfButton(Color: UIColor.lightGray)
         }
-        return true
+        
+        return newText.length <= 10
     }
 }
 
