@@ -42,6 +42,7 @@
 		1FA4ED531E722E3F002A6818 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA4ED521E722E3F002A6818 /* MapViewController.swift */; };
 		1FBB71FA1EBD52B400795790 /* AllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB71F91EBD52B400795790 /* AllCell.swift */; };
 		1FBB71FC1EBD679800795790 /* AllLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBB71FB1EBD679800795790 /* AllLocationsViewController.swift */; };
+		1FE4B3F21EE0FA8300E5D2CC /* SaveHudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4B3F11EE0FA8300E5D2CC /* SaveHudView.swift */; };
 		1FEAD48A1E6A8B19007CC5F1 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4891E6A8B19007CC5F1 /* HudView.swift */; };
 		1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD4911E6CB5D2007CC5F1 /* DataModel.xcdatamodeld */; };
 		1FEAD49E1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */; };
@@ -90,6 +91,7 @@
 		1FA4ED521E722E3F002A6818 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1FBB71F91EBD52B400795790 /* AllCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCell.swift; sourceTree = "<group>"; };
 		1FBB71FB1EBD679800795790 /* AllLocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllLocationsViewController.swift; sourceTree = "<group>"; };
+		1FE4B3F11EE0FA8300E5D2CC /* SaveHudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveHudView.swift; sourceTree = "<group>"; };
 		1FEAD4891E6A8B19007CC5F1 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		1FEAD4921E6CB5D2007CC5F1 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		1FEAD49C1E6CBAE9007CC5F1 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				18FB49601E8F63EC0075AFC8 /* PhotoCell.swift */,
 				1837E7DB1E9B419400A01461 /* CategoryPickerCell.swift */,
 				18A7CC601ECAD9AC00824DC5 /* AddPhotoCell.swift */,
+				1FE4B3F11EE0FA8300E5D2CC /* SaveHudView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -266,7 +269,7 @@
 				TargetAttributes = {
 					185F5C361E679C5F004E73B7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W2MFT9HK9F;
+						DevelopmentTeam = BR33AQS69G;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -320,6 +323,7 @@
 				1FEAD4931E6CB5D2007CC5F1 /* DataModel.xcdatamodeld in Sources */,
 				1837E7DC1E9B419400A01461 /* CategoryPickerCell.swift in Sources */,
 				1F0729191EB2A59F005C6C6E /* PhotoFunctions.swift in Sources */,
+				1FE4B3F21EE0FA8300E5D2CC /* SaveHudView.swift in Sources */,
 				1F8D4F8E1E83994F00A5D73E /* ColorCell.swift in Sources */,
 				1801FB771E77BAAC00705F92 /* MyNavigationController.swift in Sources */,
 				18F62A331E8B74C300062EF8 /* FadeAnimation.swift in Sources */,
@@ -467,7 +471,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = W2MFT9HK9F;
+				DEVELOPMENT_TEAM = BR33AQS69G;
 				INFOPLIST_FILE = GeoKeeper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -483,7 +487,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = W2MFT9HK9F;
+				DEVELOPMENT_TEAM = BR33AQS69G;
 				INFOPLIST_FILE = GeoKeeper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

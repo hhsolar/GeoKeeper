@@ -356,6 +356,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             doneButton.isEnabled = false
             doneButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.lightGray], for: .normal)
         }
+        
         return true
     }
     
