@@ -1017,6 +1017,17 @@ SWIFT_CLASS("_TtC9GeoKeeper18RoundedCornersView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC9GeoKeeper11SaveHudView")
+@interface SaveHudView : UIView
+@property (nonatomic, copy) NSString * _Nonnull text;
++ (SaveHudView * _Nonnull)hudInView:(UIView * _Nonnull)view animated:(BOOL)animated SWIFT_WARN_UNUSED_RESULT;
+- (void)drawRect:(CGRect)rect;
+- (void)showWithAnimated:(BOOL)animated;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @interface AllLocationsViewController (SWIFT_EXTENSION(GeoKeeper))
 @property (nonatomic, strong) NSFetchedResultsController<Location *> * _Nonnull fetchedResultsController;
 @end
