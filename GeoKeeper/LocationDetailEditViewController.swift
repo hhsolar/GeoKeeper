@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import CoreLocation
 import Foundation
+import MapKit
+import AudioToolbox
 
 protocol LocationDetailEditViewControllerDelegate {
     func passLocation(location: MyLocation)
@@ -24,24 +26,22 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     @IBOutlet weak var nBar: UINavigationBar!
     @IBOutlet weak var photoCollection: UICollectionView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
-    @IBOutlet weak var addImageButton: UIButton!
-    @IBOutlet weak var remarkLabel: UILabel!
+    @IBOutlet weak var openMapButton: UIButton!
+    @IBOutlet weak var punchLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var tempratureLabel: UILabel!
+    @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var mapKit: MKMapView!
+    @IBOutlet weak var conbinationView: UIView!
     
     var managedObjectContext: NSManagedObjectContext!
-    var locationToSave: Location?
     var locationToEdit = MyLocation()
     var imageBackup: [NSNumber]?
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    var soundID: SystemSoundID = 0
+    var soundURL: NSURL?
     
     var delegate: LocationDetailEditViewControllerDelegate? = nil
-    
-    var portraitViewFrame = CGRect.zero
-    var nameTextFrame = CGRect.zero
-    var categoryFrame = CGRect.zero
-    var addImageButtonFrame = CGRect.zero
-    var collectionFrame = CGRect.zero
-    var remarkTextViewFrame = CGRect.zero
-    var remarkLabelFrame = CGRect.zero
     
     var keyHeight = CGFloat()
     fileprivate let reuseIdentifier1 = "PhotoCell"
@@ -50,6 +50,10 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     var hasPortrait = false
     var portraitChanged = false
     
+    var temp = ""
+    var weather = ""
+    var w_icon = ""
+    
     var imageArray = [UIImage]()
     var image: UIImage?
     
@@ -57,6 +61,41 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         super.init(coder: aDecoder)
         modalPresentationStyle = .custom
         transitioningDelegate = self
+    }
+    
+    @IBAction func playWeatherSound(_ sender: Any) {
+        switch w_icon {
+        case "01":
+            loadSoundEffect("Bird.caf")
+        case "02":
+            loadSoundEffect("Bird.caf")
+        case "03":
+            loadSoundEffect("Bird.caf")
+        case "04":
+            loadSoundEffect("Bird.caf")
+        case "09":
+            loadSoundEffect("Rain.caf")
+        case "10":
+            loadSoundEffect("Bird.caf")
+        case "11":
+            loadSoundEffect("Thunder.caf")
+        case "13":
+            loadSoundEffect("Bird.caf")
+        case "50":
+            loadSoundEffect("Bird.caf")
+        default:
+            loadSoundEffect("Bird.caf")
+        }
+        playSoundEffect()
+    }
+    
+    @IBAction func openMapsApp() {
+        let targetURL = URL(string: "http://maps.apple.com/maps?saddr=Current%20Location&daddr=\(String(locationToEdit.latitude)),\(String(locationToEdit.longitude))")!
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(targetURL, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(targetURL)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,75 +116,93 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.clear
         view.tintColor = secondColor
+        view.backgroundColor = grayColor
+        conbinationView.backgroundColor = grayColor
         
         nBar.topItem?.title = "Edit Location"
-        nameTextField.text = locationToEdit.locationName
-        if locationToEdit.locationCategory == "All" {
-            categoryPicker.setTitle("Choose a category", for: .normal)
-        } else {
-            categoryPicker.setTitle(locationToEdit.locationCategory, for: .normal)
-        }
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(tapGesure:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
+        
+        coordinate.latitude = locationToEdit.latitude
+        coordinate.longitude = locationToEdit.longitude
+        
+        setLocation(coordinate: coordinate)
+        weatherSearch(coordinate: coordinate)
+        setParameter()
+        initCollectionView()
+        imageBackup = locationToEdit.photoID
+    }
+    
+    func setParameter() {
+        // set portraitImageView
         if locationToEdit.hasPhoto {
             portraitImageView.image = locationToEdit.photoImage
             hasPortrait = true
         } else {
             portraitImageView.image = locationDefaultImage
         }
-        
-        remarkTextView.text = locationToEdit.locationDescription
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(tapGesure:)))
-        tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
-        
-        remarkTextView.delegate = self
-        
-        setPara()
-        initCollectionView()
-        imageBackup = locationToEdit.photoID
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let photoIDs = locationToEdit.photoID {
-            if photoIDs.count >= photoCapacity {
-                disableAddImageButton()
-            }
-        }
-        enableAddImageButton()
-    }
-    
-    func setPara() {
-        // set portraitImageView
-        portraitImageView.frame = portraitViewFrame
-        portraitImageView.layer.borderWidth = 5
-        portraitImageView.layer.borderColor = UIColor.white.cgColor
+        portraitImageView.layer.borderWidth = 3
+        portraitImageView.layer.borderColor = secondColor.cgColor
         
         // set nameTextField
-        nameTextField.frame = nameTextFrame
+        nameTextField.text = locationToEdit.locationName
         nameTextField.font = UIFont(name: "TrebuchetMS", size: 16)
         nameTextField.delegate = self
         nameTextField.clearButtonMode = UITextFieldViewMode.whileEditing
+        nameTextField.layer.cornerRadius = 4
+        nameTextField.layer.borderWidth = 0.5
+        nameTextField.layer.borderColor = UIColor.lightGray.cgColor
         
         // set categoryPicker button
-        categoryPicker.frame = CGRect(x: categoryFrame.origin.x, y: categoryFrame.origin.y, width: nameTextFrame.size.width, height: categoryFrame.size.height)
+        if locationToEdit.locationCategory == "All" {
+            categoryPicker.setTitle("Choose a category", for: .normal)
+        } else {
+            categoryPicker.setTitle(locationToEdit.locationCategory, for: .normal)
+        }
         categoryPicker.titleLabel!.font = UIFont(name: "TrebuchetMS", size: 14)
         categoryPicker.setTitleColor(UIColor.gray, for: .normal)
         categoryPicker.layer.cornerRadius = 4
+        categoryPicker.layer.borderWidth = 0.5
+        categoryPicker.layer.borderColor = UIColor.lightGray.cgColor
         
-        // set addImageButton
-        addImageButton.frame = addImageButtonFrame
-        addImageButton.setTitleColor(secondColor, for: .normal)
-        addImageButton.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 16)
-        addImageButton.backgroundColor = UIColor.white
-        addImageButton.layer.cornerRadius = 14
+        // set addressLabel
+        if let placemark = locationToEdit.placemark {
+            addressLabel.text = stringFromPlacemark(placemark: placemark)
+        } else {
+            addressLabel.text = "No Address Found"
+        }
+        addressLabel.textColor = UIColor.black
+        addressLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+
+        
+        // set mapAppButton
+        openMapButton.setTitleColor(secondColor, for: .normal)
+        openMapButton.titleLabel?.font = UIFont(name: "TrebuchetMS", size: 16)
+        openMapButton.backgroundColor = UIColor.white
+        openMapButton.layer.cornerRadius = 14
+        openMapButton.layer.masksToBounds = true
+        
         
         // set remarkTextView
-        remarkLabel.frame = remarkLabelFrame
-        remarkTextView.frame = remarkTextViewFrame
+        remarkTextView.text = locationToEdit.locationDescription
+        remarkTextView.textColor = UIColor.black
+        remarkTextView.font = UIFont(name: "TrebuchetMS", size: 15)
+        
+        // set weatherImageView
+        weatherImageView.image = UIImage(named: w_icon)
+        
+        // set temperatureLabel
+        tempratureLabel.textColor = baseColor
+        tempratureLabel.font = UIFont(name: "TrebuchetMS", size: 16)
+        tempratureLabel.text = "\(temp)C"
+        
+        // set punchNumber
+        punchLabel.text = locationToEdit.punch.stringValue
+        punchLabel.textColor = secondColor
         
         // set navigationBar
         nBar.barTintColor = baseColor
@@ -155,7 +212,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
     }
     
     func initCollectionView() {
-        photoCollection.frame = collectionFrame
         photoCollection.backgroundColor = UIColor.lightGray
         photoCollection.register(PhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier1)
         photoCollection.register(AddPhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier2)
@@ -171,7 +227,119 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         photoCollection.showsHorizontalScrollIndicator = false
     }
 
-    // textField delegate
+    func setLocation(coordinate: CLLocationCoordinate2D) {
+        let latDelta = 0.05
+        let longDelta = 0.05
+        let currentLocationSpan: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
+        
+        let currentRegion: MKCoordinateRegion = MKCoordinateRegion(center: coordinate, span: currentLocationSpan)
+        
+        mapKit.setRegion(currentRegion, animated: true)
+        
+        let objectAnnotation = MKPointAnnotation()
+        objectAnnotation.coordinate = coordinate
+        mapKit.addAnnotation(objectAnnotation)
+        
+        mapKit.isZoomEnabled = true
+    }
+    
+    // MARK: - download data from openwWeatherAPI
+    func weatherSearch(coordinate: CLLocationCoordinate2D) {
+        let url = weatherURL(coordinate: coordinate)
+        if let jsonString = performWeatherRequest(with: url) {
+            if let jsonDictionary = parse(json: jsonString) {
+                //                print("Dictionay \(jsonDictionary)")
+                parse(dictionary: jsonDictionary)
+            }
+        } else {
+            showNetworkError()
+        }
+    }
+    
+    func performWeatherRequest(with url: URL) -> String? {
+        do {
+            return try String(contentsOf: url, encoding: .utf8)
+        } catch {
+            print("Download Error: \(error)")
+            return nil
+        }
+    }
+    
+    func weatherURL(coordinate: CLLocationCoordinate2D) -> URL{
+        let urlString = String(format: "http://api.openweathermap.org/data/2.5/weather?lat=%@&lon=%@&APPID=%@", String(coordinate.latitude), String(coordinate.longitude), apiKey)
+        let url = URL(string: urlString)
+        return url!
+    }
+    
+    // parsing JSON
+    func parse(json: String) -> [String: Any]? {
+        guard let data = json.data(using: .utf8)
+            else { return nil }
+        
+        do {
+            return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        } catch {
+            print("JSON Error: \(error)")
+            return nil
+        }
+    }
+    
+    func parse(dictionary: [String: Any]) {
+        guard let array = dictionary["main"] else {
+            print("Excepted 'results' array")
+            return
+        }
+        let main = array as! NSDictionary
+        let a = "\(main["temp"]!)"
+        let b = Int(Float(a)!) - 273
+        temp = "\(b)°"
+        
+        guard let array1 = dictionary["weather"] as? [Any] else {
+            print("Excepted 'results' array")
+            return
+        }
+        for resultDict in array1 {
+            if let resultDict = resultDict as? [String: Any] {
+                if let description = resultDict["description"] as? String {
+                    weather = description
+                }
+                if let weather_icon = resultDict["icon"] as? String {
+                    let index = weather_icon.index(weather_icon.startIndex, offsetBy: 2)
+                    w_icon = weather_icon.substring(to: index)
+                }
+            }
+        }
+    }
+    
+    // alert for error
+    func showNetworkError() {
+        let alert = UIAlertController(title: "Whoops...", message: "There was an error reading from the openweathermap. Please try again.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+
+    
+    // MARK: - Weather Sound Effect
+    func loadSoundEffect(_ name: String) {
+        if let path = Bundle.main.path(forResource: name, ofType: nil) {
+            let fileURL = URL(fileURLWithPath: path, isDirectory: false)
+            let error = AudioServicesCreateSystemSoundID(fileURL as CFURL,&soundID)
+            if error != kAudioServicesNoError {
+                print("Error code \(error) loading sound at path: \(path)")
+            }
+        }
+    }
+    
+    func unloadSoundEffect() {
+        AudioServicesDisposeSystemSoundID(soundID)
+        soundID = 0
+    }
+    func playSoundEffect() {
+        AudioServicesPlaySystemSound(soundID)
+    }
+    
+    // MARK: - textField delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -191,7 +359,7 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         return true
     }
     
-    // textView related
+    // MARK: - textView related
     func hideKeyboard(tapGesure: UITapGestureRecognizer) {
         self.remarkTextView.resignFirstResponder()
     }
@@ -386,19 +554,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func addImage() {
-        flag = "collectionView"
-        if let photoIDs = locationToEdit.photoID {
-            if photoIDs.count + imageArray.count < photoCapacity {
-                showPhotoMenu()
-            }
-        } else {
-            if imageArray.count < photoCapacity {
-                showPhotoMenu()
-            }
-        }
-    }
-    
     func show(image: UIImage) {
         if flag == "portrait" {
             portraitImageView.image = image
@@ -406,18 +561,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
             imageArray.append(image)
             photoCollection.reloadData()
         }
-    }
-    
-    func disableAddImageButton() {
-        addImageButton.setTitle("Capacity Maximum", for: .normal)
-        addImageButton.tintColor = UIColor.lightGray
-        addImageButton.setTitleColor(UIColor.lightGray, for: .normal)
-    }
-    
-    func enableAddImageButton() {
-        addImageButton.setTitle("Add Image", for: .normal)
-        addImageButton.tintColor = secondColor
-        addImageButton.setTitleColor(secondColor, for: .normal)
     }
     
     @IBAction func cancel() {
@@ -435,12 +578,6 @@ class LocationDetailEditViewController: UIViewController, UITextFieldDelegate, U
 }
 
 extension LocationDetailEditViewController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController,
-                                presenting: UIViewController?,
-                                source: UIViewController) -> UIPresentationController? {
-        return DimmingPresentationController(presentedViewController: presented, presenting: presenting)
-    }
-    
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return FadeInAnimationController()
@@ -483,11 +620,9 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
                 if photoIDs.count + imageArray.count == photoCapacity {
                     cell.buttonImageView.image = UIImage(named: "maxPhoto")
                     cell.addButton.isEnabled = false
-                    disableAddImageButton()
                 } else {
                     cell.buttonImageView.image = UIImage(named: "addPhotoIcon")
                     cell.addButton.isEnabled = true
-                    enableAddImageButton()
                 }
                 return cell
             }
@@ -511,11 +646,9 @@ extension LocationDetailEditViewController: UICollectionViewDataSource, UICollec
             if imageArray.count == photoCapacity {
                 cell.buttonImageView.image = UIImage(named: "maxPhoto")
                 cell.addButton.isEnabled = false
-                disableAddImageButton()
             } else {
                 cell.buttonImageView.image = UIImage(named: "addPhotoIcon")
                 cell.addButton.isEnabled = true
-                enableAddImageButton()
             }
             return cell
         } else {

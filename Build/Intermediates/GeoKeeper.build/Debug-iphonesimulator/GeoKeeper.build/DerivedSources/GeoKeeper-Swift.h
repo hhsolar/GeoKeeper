@@ -475,18 +475,6 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (void)imagePickerControllerDidCancel:(UIImagePickerController * _Nonnull)picker;
 @end
 
-@class UIView;
-
-SWIFT_CLASS("_TtC9GeoKeeper29DimmingPresentationController")
-@interface DimmingPresentationController : UIPresentationController
-@property (nonatomic, readonly) BOOL shouldRemovePresentersView;
-@property (nonatomic, strong) UIView * _Nonnull dimmingView;
-@property (nonatomic, strong) UIView * _Nonnull secondView;
-- (void)presentationTransitionWillBegin;
-- (void)dismissalTransitionWillBegin;
-- (nonnull instancetype)initWithPresentedViewController:(UIViewController * _Nonnull)presentedViewController presentingViewController:(UIViewController * _Nullable)presentingViewController OBJC_DESIGNATED_INITIALIZER;
-@end
-
 @protocol UIViewControllerContextTransitioning;
 
 SWIFT_CLASS("_TtC9GeoKeeper25FadeInAnimationController")
@@ -559,6 +547,7 @@ SWIFT_CLASS("_TtC9GeoKeeper12LocationCell")
 @end
 
 @class UITextView;
+@class NSURL;
 @class NSNotification;
 
 SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
@@ -570,32 +559,45 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 @property (nonatomic, weak) IBOutlet UINavigationBar * _Null_unspecified nBar;
 @property (nonatomic, weak) IBOutlet UICollectionView * _Null_unspecified photoCollection;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem * _Null_unspecified doneButton;
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified addImageButton;
-@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified remarkLabel;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified openMapButton;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified punchLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified tempratureLabel;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified weatherImageView;
+@property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapKit;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified conbinationView;
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
-@property (nonatomic, strong) Location * _Nullable locationToSave;
 @property (nonatomic, strong) MyLocation * _Nonnull locationToEdit;
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nullable imageBackup;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (nonatomic) CGRect portraitViewFrame;
-@property (nonatomic) CGRect nameTextFrame;
-@property (nonatomic) CGRect categoryFrame;
-@property (nonatomic) CGRect addImageButtonFrame;
-@property (nonatomic) CGRect collectionFrame;
-@property (nonatomic) CGRect remarkTextViewFrame;
-@property (nonatomic) CGRect remarkLabelFrame;
+@property (nonatomic) SystemSoundID soundID;
+@property (nonatomic, strong) NSURL * _Nullable soundURL;
 @property (nonatomic) CGFloat keyHeight;
 @property (nonatomic, copy) NSString * _Nonnull flag;
 @property (nonatomic) BOOL hasPortrait;
 @property (nonatomic) BOOL portraitChanged;
+@property (nonatomic, copy) NSString * _Nonnull temp;
+@property (nonatomic, copy) NSString * _Nonnull weather;
+@property (nonatomic, copy) NSString * _Nonnull w_icon;
 @property (nonatomic, copy) NSArray<UIImage *> * _Nonnull imageArray;
 @property (nonatomic, strong) UIImage * _Nullable image;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (IBAction)playWeatherSound:(id _Nonnull)sender;
+- (IBAction)openMapsApp;
 - (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)animated;
-- (void)setPara;
+- (void)setParameter;
 - (void)initCollectionView SWIFT_METHOD_FAMILY(none);
+- (void)setLocationWithCoordinate:(CLLocationCoordinate2D)coordinate;
+- (void)weatherSearchWithCoordinate:(CLLocationCoordinate2D)coordinate;
+- (NSString * _Nullable)performWeatherRequestWith:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
+- (NSURL * _Nonnull)weatherURLWithCoordinate:(CLLocationCoordinate2D)coordinate SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nullable)parseWithJson:(NSString * _Nonnull)json SWIFT_WARN_UNUSED_RESULT;
+- (void)parseWithDictionary:(NSDictionary<NSString *, id> * _Nonnull)dictionary;
+- (void)showNetworkError;
+- (void)loadSoundEffect:(NSString * _Nonnull)name;
+- (void)unloadSoundEffect;
+- (void)playSoundEffect;
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
 - (void)hideKeyboardWithTapGesure:(UITapGestureRecognizer * _Nonnull)tapGesure;
@@ -604,13 +606,15 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 - (BOOL)textViewShouldEndEditing:(UITextView * _Nonnull)textView SWIFT_WARN_UNUSED_RESULT;
 - (void)updateContentWithLocation:(Location * _Nonnull)location;
 - (IBAction)done;
-- (IBAction)addImage;
 - (void)showWithImage:(UIImage * _Nonnull)image;
-- (void)disableAddImageButton;
-- (void)enableAddImageButton;
 - (IBAction)cancel;
 - (IBAction)choosePortrait;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+
+@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
 @end
 
 
@@ -633,18 +637,12 @@ SWIFT_PROTOCOL("_TtP9GeoKeeper17PhotoCellDelegate_")
 @end
 
 
-@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
-@end
-
-
 @interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper)) <UINavigationBarDelegate, UIBarPositioningDelegate>
 - (UIBarPosition)positionForBar:(id <UIBarPositioning> _Nonnull)bar SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper)) <UIViewControllerTransitioningDelegate>
-- (UIPresentationController * _Nullable)presentationControllerForPresentedViewController:(UIViewController * _Nonnull)presented presentingViewController:(UIViewController * _Nullable)presenting sourceViewController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
 - (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForPresentedController:(UIViewController * _Nonnull)presented presentingController:(UIViewController * _Nonnull)presenting sourceController:(UIViewController * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
 - (id <UIViewControllerAnimatedTransitioning> _Nullable)animationControllerForDismissedController:(UIViewController * _Nonnull)dismissed SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -665,7 +663,6 @@ SWIFT_PROTOCOL("_TtP9GeoKeeper17PhotoCellDelegate_")
 - (void)choosePhotoFromLibrary;
 @end
 
-@class NSURL;
 
 SWIFT_CLASS("_TtC9GeoKeeper33LocationDetailFirstViewController")
 @interface LocationDetailFirstViewController : UIViewController <UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate>

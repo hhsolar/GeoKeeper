@@ -424,7 +424,7 @@ class LocationDetailFirstViewController: UIViewController, UITextViewDelegate, U
     
     // MARK: - Photo Collection View
     func initCollectionView() {
-        photoCollectionView.backgroundColor = grayColor
+        photoCollectionView.backgroundColor = UIColor.lightGray
         photoCollectionView.register(PhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier1)
         photoCollectionView.register(AddPhotoCell.self, forCellWithReuseIdentifier: reuseIdentifier2)
         let layout = UICollectionViewFlowLayout()
