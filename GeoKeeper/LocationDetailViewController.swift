@@ -104,15 +104,6 @@ class LocationDetailViewController: UIViewController {
             controller.managedObjectContext = managedObjectContext
             controller.locationToEdit = locationToShow
             
-            controller.portraitViewFrame = portraitImage.frame
-            controller.nameTextFrame = locationNameLabel.frame
-            controller.categoryFrame = categoryLabel.frame
-            
-            controller.collectionFrame = CGRect(x: conbinationView.frame.origin.x + photoCollectionView.frame.origin.x, y: conbinationView.frame.origin.y + photoCollectionView.frame.origin.y, width: photoCollectionView.frame.width, height: photoCollectionView.frame.height)
-            controller.addImageButtonFrame = CGRect(x: conbinationView.frame.origin.x + mapAppButton.frame.origin.x, y: conbinationView.frame.origin.y + mapAppButton.frame.origin.y, width: mapAppButton.frame.width, height: mapAppButton.frame.height)
-            controller.remarkLabelFrame = remarkLabel.frame
-            controller.remarkTextViewFrame = remarkTextView.frame
-            
             controller.delegate = self
         }
     }

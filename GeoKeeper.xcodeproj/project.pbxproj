@@ -20,7 +20,6 @@
 		18EEC0D01E983EC60096A52A /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEC0CF1E983EC60096A52A /* MyLocation.swift */; };
 		18F08FFB1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F08FFA1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift */; };
 		18F629F31E8626F200062EF8 /* LocationDetailEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */; };
-		18F62A021E89D1D700062EF8 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */; };
 		18F62A331E8B74C300062EF8 /* FadeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F62A321E8B74C300062EF8 /* FadeAnimation.swift */; };
 		18FB49611E8F63EC0075AFC8 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FB49601E8F63EC0075AFC8 /* PhotoCell.swift */; };
 		1F0729151EB2A547005C6C6E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0729141EB2A547005C6C6E /* Settings.swift */; };
@@ -70,7 +69,6 @@
 		18EEC0CF1E983EC60096A52A /* MyLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLocation.swift; sourceTree = "<group>"; };
 		18F08FFA1E9AB0CA00D5C7A7 /* CategoryPickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerTableViewController.swift; sourceTree = "<group>"; };
 		18F629F21E8626F200062EF8 /* LocationDetailEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailEditViewController.swift; sourceTree = "<group>"; };
-		18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		18F62A321E8B74C300062EF8 /* FadeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeAnimation.swift; sourceTree = "<group>"; };
 		18FB49601E8F63EC0075AFC8 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		1F0729141EB2A547005C6C6E /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 		1F8D4F851E83979100A5D73E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				18F62A011E89D1D700062EF8 /* DimmingPresentationController.swift */,
 				18F62A321E8B74C300062EF8 /* FadeAnimation.swift */,
 				1FEAD4891E6A8B19007CC5F1 /* HudView.swift */,
 				1F5876CB1E7CBDFD006FB269 /* MyTabBarController.swift */,
@@ -342,7 +339,6 @@
 				1F8D4F901E83995500A5D73E /* MyIconCollectionCell.swift in Sources */,
 				1FEAD4AC1E70E41C007CC5F1 /* MyImagePickerController.swift in Sources */,
 				1F7A48D81EDE2B5300E22E32 /* LocationDetailFirstViewControll.swift in Sources */,
-				18F62A021E89D1D700062EF8 /* DimmingPresentationController.swift in Sources */,
 				185F5C3B1E679C5F004E73B7 /* AppDelegate.swift in Sources */,
 				18EEC0D01E983EC60096A52A /* MyLocation.swift in Sources */,
 				1F0729151EB2A547005C6C6E /* Settings.swift in Sources */,

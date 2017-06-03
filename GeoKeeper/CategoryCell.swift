@@ -21,7 +21,7 @@ class CategoryCell: UICollectionViewCell {
         let width = frame.width
         categoryImageView?.contentMode = UIViewContentMode.scaleAspectFit
         categoryLabel?.frame = CGRect(x:0, y:width - 40, width:width, height:20)
-        categoryLabel?.font = UIFont(name: "TrebuchetMS-Bold", size: 14)
+        categoryLabel?.font = UIFont(name: "TrebuchetMS-Bold", size: 13)
         categoryLabel?.textAlignment = .center
         contentView.addSubview(categoryLabel)
     }

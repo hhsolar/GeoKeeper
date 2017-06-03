@@ -155,7 +155,7 @@ class CategoryAddViewController: UIViewController, UITextFieldDelegate {
             delegate?.changeColorOfButton(Color: UIColor.lightGray)
         }
         
-        return newText.length <= 10
+        return newText.length <= 11
     }
 }
 
