@@ -7,11 +7,11 @@
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/CategoriesViewController.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/CategoryPickerCell.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/PhotoFunctions.o
+/Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/SaveHudView.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/ColorCell.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/MyNavigationController.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/FadeAnimation.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/HudView.o
-/Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/MyAnnotation.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/CoreDataFunctions.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/AllCell.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/AddPhotoCell.o
@@ -23,7 +23,6 @@
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/MyIconCollectionCell.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/MyImagePickerController.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/LocationDetailFirstViewControll.o
-/Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/DimmingPresentationController.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/AppDelegate.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/MyLocation.o
 /Users/apple/NewStudy/IOS/GeoKeeper/Build/Intermediates/GeoKeeper.build/Debug-iphoneos/GeoKeeper.build/Objects-normal/arm64/Settings.o

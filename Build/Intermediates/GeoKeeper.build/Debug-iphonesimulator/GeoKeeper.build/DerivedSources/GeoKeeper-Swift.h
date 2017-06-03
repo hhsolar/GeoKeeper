@@ -450,6 +450,8 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 - (void)showLocationServicesDeniedAlert;
 - (void)showWithImage:(UIImage * _Nonnull)image;
 - (void)saveImageWithImage:(UIImage * _Nonnull)image;
+- (void)enableTagButton;
+- (void)disableTagButton;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -490,17 +492,6 @@ SWIFT_CLASS("_TtC9GeoKeeper26FadeOutAnimationController")
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning> _Nullable)transitionContext SWIFT_WARN_UNUSED_RESULT;
 - (void)animateTransition:(id <UIViewControllerContextTransitioning> _Nonnull)transitionContext;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC9GeoKeeper7HudView")
-@interface HudView : UIView
-@property (nonatomic, copy) NSString * _Nonnull text;
-+ (HudView * _Nonnull)hudInViewWithView:(UIView * _Nonnull)view animated:(BOOL)animated SWIFT_WARN_UNUSED_RESULT;
-- (void)drawRect:(CGRect)rect;
-- (void)showAnimatedWithAnimated:(BOOL)animated;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -547,6 +538,7 @@ SWIFT_CLASS("_TtC9GeoKeeper12LocationCell")
 @end
 
 @class UITextView;
+@class UIView;
 @class NSURL;
 @class NSNotification;
 
@@ -617,11 +609,6 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 - (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
 @end
 
-
-@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
-@end
-
 @class PhotoCell;
 
 SWIFT_PROTOCOL("_TtP9GeoKeeper17PhotoCellDelegate_")
@@ -634,6 +621,11 @@ SWIFT_PROTOCOL("_TtP9GeoKeeper17PhotoCellDelegate_")
 
 @interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
 - (void)deleteImageForCell:(PhotoCell * _Nonnull)forCell;
+@end
+
+
+@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
 @end
 
 
@@ -726,12 +718,12 @@ SWIFT_CLASS("_TtC9GeoKeeper33LocationDetailFirstViewController")
 
 
 @interface LocationDetailFirstViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
+- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
 @end
 
 
 @interface LocationDetailFirstViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
+- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
 @end
 
 
@@ -813,11 +805,6 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @end
 
 
-@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
-@end
-
-
 @interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
 - (void)enlargeImageForCell:(PhotoCell * _Nonnull)forCell;
 @end
@@ -825,6 +812,11 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 
 @interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
 - (void)passLocationWithLocation:(MyLocation * _Nonnull)location;
+@end
+
+
+@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
 @end
 
 

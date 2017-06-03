@@ -92,6 +92,12 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } else {
             messageLabel.text = "Tap 'Get My Location' to Start"
         }
+        
+        if addressLabel.text == "Searching for Address..." || addressLabel.text == "No Address Found" || addressLabel.text == "Error Finding Address" || addressLabel.text == "" || addressLabel.text == "My address" {
+            disableTagButton()
+        } else {
+            enableTagButton()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -107,15 +113,14 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         updateLabels()
         setContainer()
         setPortrait()
+        
+        disableTagButton()
     }
     
     func updateLabels() {
         if let location = location {
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
             longitudeLabel.text = String(format: "%.8f", location.coordinate.longitude)
-            tagButton.setTitleColor(baseColor, for: .normal)
-            tagButton.isEnabled = true
-            tagLabel.textColor = baseColor
             
             if let placemark = placemark {
                 addressLabel.text = stringFromPlacemark(placemark: placemark)
@@ -139,7 +144,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                     if let locationName = placemark.locality {
                         cityName.text = locationName
                     } else {
-                        cityName.text = "LocationName"
+                        cityName.text = "Location Name"
                     }
                 }
             } else if performingReverseGeocoding {
@@ -166,10 +171,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             longitudeLabel.text = "Not available"
             addressLabel.text = "My address"
             
-            tagButton.isEnabled = false
-            tagLabel.textColor = disableColor
-            
-            tagButton.setTitleColor(UIColor.gray, for: .normal)
             messageLabel.text = "Tap 'Get My Location' to Start"
             
             let statusMessage: String
@@ -188,6 +189,13 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             }
             messageLabel.text = statusMessage
         }
+        
+        if addressLabel.text == "Searching for Address..." || addressLabel.text == "No Address Found" || addressLabel.text == "Error Finding Address" || addressLabel.text == "" || addressLabel.text == "My address" {
+            disableTagButton()
+        } else {
+            enableTagButton()
+        }
+        
     }
     func setContainer() {        
         // set messageLabel
@@ -432,6 +440,19 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
         let userDefaults = UserDefaults.standard
         userDefaults.set("MyPortrait", forKey: "Portrait")
+    }
+    
+    func enableTagButton() {
+        tagButton.setTitleColor(baseColor, for: .normal)
+        tagButton.isEnabled = true
+        tagLabel.textColor = baseColor
+    }
+    
+    func disableTagButton() {
+        tagButton.setTitleColor(UIColor.gray, for: .normal)
+        tagButton.isEnabled = false
+        tagLabel.textColor = UIColor.gray
+
     }
 }
 

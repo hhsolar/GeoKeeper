@@ -112,13 +112,14 @@ class LocationDetailFirstViewController: UIViewController, UITextViewDelegate, U
             controller.delegate = self
         } else if segue.identifier == "DetailView" {
             saveLocation()
-            let hudView = SaveHudView.hud(inView: navigationController!.view, animated: true);
-            hudView.text = "Saved";
-            let delayInSeconds = 1.0
-            DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds, execute:
-            {
-                    hudView.removeFromSuperview()
-            })
+//            let hudView = SaveHudView.hud(inView: navigationController!.view, animated: true);
+//            hudView.text = "Saved";
+//            let delayInSeconds = 1.0
+//            DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds, execute:
+//            {
+//                hudView.removeFromSuperview()
+//            })            
+            
             let controller = segue.destination as! LocationDetailViewController
             controller.managedObjectContext = managedObjectContext
             controller.locationToShow = locationToSave
