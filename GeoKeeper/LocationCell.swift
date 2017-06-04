@@ -14,11 +14,11 @@ class LocationCell: UITableViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     
     func configure(for location: Location) {
-        if location.locationDescription.isEmpty {
-            descriptionLabel.text = "(No Description)"
-        } else {
+//        if location.locationDescription.isEmpty {
+//            descriptionLabel.text = "(No Description)"
+//        } else {
             descriptionLabel.text = location.name
-        }
+//        }
         if let placemark = location.placemark {
             var text = ""
             if let s = placemark.subThoroughfare {

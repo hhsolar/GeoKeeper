@@ -296,12 +296,21 @@ class LocationDetailFirstViewController: UIViewController, UITextViewDelegate, U
         if newText.length > 0 {
             saveButton.isEnabled = true
             saveButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.white], for: .normal)
+
         } else {
             saveButton.isEnabled = false
             saveButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.lightGray], for: .normal)
+
         }
         return true
     }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        saveButton.isEnabled = false
+        saveButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "TrebuchetMS", size: 16)!, NSForegroundColorAttributeName: UIColor.lightGray], for: .normal)
+        return true
+    }
+    
     
     // MARK: - textView related
     func hideKeyboard(tapGesure: UITapGestureRecognizer) {

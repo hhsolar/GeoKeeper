@@ -592,6 +592,7 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 - (void)playSoundEffect;
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)textFieldShouldClear:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
 - (void)hideKeyboardWithTapGesure:(UITapGestureRecognizer * _Nonnull)tapGesure;
 - (BOOL)textViewShouldBeginEditing:(UITextView * _Nonnull)textView SWIFT_WARN_UNUSED_RESULT;
 - (void)keyboardWillShowWithANotification:(NSNotification * _Nonnull)aNotification;
@@ -697,6 +698,7 @@ SWIFT_CLASS("_TtC9GeoKeeper33LocationDetailFirstViewController")
 - (void)setLocationWithCoordinate:(CLLocationCoordinate2D)coordinate;
 - (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)textFieldShouldClear:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
 - (void)hideKeyboardWithTapGesure:(UITapGestureRecognizer * _Nonnull)tapGesure;
 - (BOOL)textViewShouldBeginEditing:(UITextView * _Nonnull)textView SWIFT_WARN_UNUSED_RESULT;
 - (void)keyboardWillShowWithANotification:(NSNotification * _Nonnull)aNotification;
