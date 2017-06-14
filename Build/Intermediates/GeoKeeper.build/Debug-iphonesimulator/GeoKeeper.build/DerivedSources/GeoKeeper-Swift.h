@@ -400,7 +400,6 @@ SWIFT_CLASS("_TtC9GeoKeeper9ColorCell")
 @class CLGeocoder;
 @class NSTimer;
 @class UIImage;
-@class UINavigationBar;
 @class MKMapView;
 
 SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
@@ -427,12 +426,12 @@ SWIFT_CLASS("_TtC9GeoKeeper29CurrentLocationViewController")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified addressLabel;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified tagButton;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified cityName;
-@property (nonatomic, weak) IBOutlet UINavigationBar * _Null_unspecified nBar;
 @property (nonatomic, weak) IBOutlet MKMapView * _Null_unspecified mapView;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified portrait;
 @property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified portraitImage;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified tagLabel;
-- (IBAction)choosePortrait;
+- (void)prepareForSegue:(UIStoryboardSegue * _Nonnull)segue sender:(id _Nullable)sender;
+- (IBAction)choosePortrait:(UIButton * _Nonnull)sender;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
 - (void)viewDidLoad;
@@ -538,6 +537,7 @@ SWIFT_CLASS("_TtC9GeoKeeper12LocationCell")
 @end
 
 @class UITextView;
+@class UINavigationBar;
 @class UIView;
 @class NSURL;
 @class NSNotification;
@@ -607,6 +607,11 @@ SWIFT_CLASS("_TtC9GeoKeeper32LocationDetailEditViewController")
 
 
 @interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
+@end
+
+
+@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
 - (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
 @end
 
@@ -622,11 +627,6 @@ SWIFT_PROTOCOL("_TtP9GeoKeeper17PhotoCellDelegate_")
 
 @interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
 - (void)deleteImageForCell:(PhotoCell * _Nonnull)forCell;
-@end
-
-
-@interface LocationDetailEditViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)passCategoryWithCategoryName:(NSString * _Nonnull)categoryName;
 @end
 
 
@@ -807,8 +807,8 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @end
 
 
-@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
-- (void)enlargeImageForCell:(PhotoCell * _Nonnull)forCell;
+@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
+- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
 @end
 
 
@@ -817,8 +817,8 @@ SWIFT_CLASS("_TtC9GeoKeeper28LocationDetailViewController")
 @end
 
 
-@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper))
-- (void)addPhotoForCell:(AddPhotoCell * _Nonnull)forCell;
+@interface LocationDetailViewController (SWIFT_EXTENSION(GeoKeeper)) <PhotoCellDelegate>
+- (void)enlargeImageForCell:(PhotoCell * _Nonnull)forCell;
 @end
 
 
@@ -1020,6 +1020,25 @@ SWIFT_CLASS("_TtC9GeoKeeper11SaveHudView")
 - (void)showWithAnimated:(BOOL)animated;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UISearchBar;
+
+SWIFT_CLASS("_TtC9GeoKeeper20SearchViewController")
+@interface SearchViewController : UIViewController <UIBarPositioningDelegate, UISearchBarDelegate>
+@property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
+@property (nonatomic, readonly, strong) CLGeocoder * _Nonnull geocoder;
+@property (nonatomic, strong) MyLocation * _Nonnull wantedLocation;
+- (void)viewDidLoad;
+- (void)setSearchBar;
+- (void)searchBarCancelButtonClicked:(UISearchBar * _Nonnull)searchBar;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface UIViewController (SWIFT_EXTENSION(GeoKeeper))
+@property (nonatomic, readonly, strong) UIViewController * _Nonnull contents;
 @end
 
 @interface AllLocationsViewController (SWIFT_EXTENSION(GeoKeeper))

@@ -7,12 +7,14 @@
 //
 
 import UIKit
-import CoreLocation
-import CoreData
 import MapKit
+import CoreData
+import CoreLocation
 
 class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
+    
     var managedObjectContext: NSManagedObjectContext!
+    
     let locationManager = CLLocationManager()
     var location: CLLocation?
     var locations = [Location]()
@@ -37,18 +39,45 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var tagButton: UIButton!
     @IBOutlet weak var cityName: UILabel!
-    @IBOutlet weak var nBar: UINavigationBar!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var portrait: UIButton!
     @IBOutlet weak var portraitImage: UIImageView!
     @IBOutlet weak var tagLabel: UILabel!
     
-    @IBAction func choosePortrait() {
-        showPhotoMenu()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SearchLocation" {
+            if let searchVC = (segue.destination.contents as? SearchViewController) {
+                searchVC.managedObjectContext = managedObjectContext
+            }
+        }
     }
+    
+    @IBAction func choosePortrait(_ sender: UIButton) {
+         showPhotoMenu()
+    }
+    
+//    func checkLocationSaved(_ beCheckedPlacekmark: CLPlacemark) -> Bool {
+//        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
+//        var locations = [Location]()
+//        fetchedRequest.entity = Location.entity()
+//        do {
+//            locations = try managedObjectContext.fetch(fetchedRequest)
+//        } catch {
+//            fatalCoreDataError(error)
+//        }
+//        
+//        for locationRecord in locations {
+//            let placemarkRecord = locationRecord.placemark
+//            if stringFromPlacemark(placemark: beCheckedPlacekmark) == stringFromPlacemark(placemark: placemarkRecord!) {
+//                return true
+//            }
+//        }
+//        return false
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
         fetchedRequest.entity = Location.entity()
         do {
@@ -509,5 +538,15 @@ extension CurrentLocationViewController: UIImagePickerControllerDelegate, UINavi
 extension CurrentLocationViewController: LocationDetailViewControllerDelegate {
     func passLocation(location: MyLocation) {
         forPassLocation = location
+    }
+}
+
+extension UIViewController {
+    var contents: UIViewController {
+        if let navigationController = self as? UINavigationController {
+            return navigationController.visibleViewController ?? self
+        } else {
+            return self
+        }
     }
 }
