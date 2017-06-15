@@ -47,6 +47,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SearchLocation" {
             if let searchVC = (segue.destination.contents as? SearchViewController) {
+                searchVC.hidesBottomBarWhenPushed = true
                 searchVC.managedObjectContext = managedObjectContext
             }
         }
@@ -93,11 +94,13 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                         forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
                         cityName.text = forPassLocation.locationName
                         //Repeated Punch is not allowed
-                        let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
-                        if timeInterval < punchInterval {
-                            isPunched = true
-                        } else {
-                            isPunched = false
+                        if let date = locationRecord.date {
+                            let timeInterval = location.timestamp.timeIntervalSince(date)
+                            if timeInterval < punchInterval {
+                                isPunched = true
+                            } else {
+                                isPunched = false
+                            }
                         }
                         isVisited = true
                     }
@@ -159,12 +162,15 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
                             forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
                             cityName.text = forPassLocation.locationName
                             //Repeated Punch is not allowed
-                            let timeInterval = location.timestamp.timeIntervalSince(locationRecord.date)
-                            if timeInterval < punchInterval {
-                                isPunched = true
-                            } else {
-                                isPunched = false
+                            if let date = locationRecord.date {
+                                let timeInterval = location.timestamp.timeIntervalSince(date)
+                                if timeInterval < punchInterval {
+                                    isPunched = true
+                                } else {
+                                    isPunched = false
+                                }
                             }
+
                             isVisited = true
                         }
                     }

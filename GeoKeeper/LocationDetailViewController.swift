@@ -93,6 +93,8 @@ class LocationDetailViewController: UIViewController {
             navigationController?.popToRootViewController(animated: true)
         } else if sourceFrom == "CurrentLocation" {
             navigationController?.popViewController(animated: true)
+        } else if sourceFrom == "SearchCV" {
+            navigationController?.popViewController(animated: true)
         } else {
             dismiss(animated: true, completion: nil)
         }

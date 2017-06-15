@@ -10,10 +10,6 @@ import UIKit
 import CoreData
 import CoreLocation
 
-protocol SearchViewControllerDelegate {
-    func passLocationBack(location: MyLocation)
-}
-
 class SearchViewController: UIViewController, UISearchBarDelegate {
 
     private var searchBar = UISearchBar()
@@ -21,18 +17,20 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     var managedObjectContext: NSManagedObjectContext!
     
     let geocoder = CLGeocoder()
-    var wantedLocation = MyLocation()
     
-    var delegate: SearchViewControllerDelegate?
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        searchBar.becomeFirstResponder()
+    }
     
     override func viewDidLoad() {
-         setSearchBar()
+        setSearchBar()
+        navigationItem.hidesBackButton = true
     }
     
     func setSearchBar() {
         self.navigationItem.titleView = searchBar
-
-        searchBar.becomeFirstResponder()
         searchBar.placeholder = "Enter a address"
         searchBar.showsCancelButton = true
         searchBar.subviews[0].subviews.flatMap(){ $0 as? UITextField }.first?.tintColor = UIColor.black
@@ -40,43 +38,79 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        let myAddress = searchBar.text!
-//        geocoder.geocodeAddressString(myAddress, completionHandler: {(placemarks: [CLPlacemark]?, error: Error?) -> Void in
-//            if error != nil {
-//                print(error!)
-//                return
-//            }
-//            
-//            guard let placemarks = placemarks else {
-//                return
-//            }
-//            
-//            for place in placemarks {
-//                print(place.name!)
-//                
-//                guard let location = place.location else {
-//                    continue
-//                }
-//                
-//                self.wantedLocation.latitude = location.coordinate.latitude
-//                self.wantedLocation.longitude = location.coordinate.longitude
-//                self.wantedLocation.locationName = place.locality!
-//                self.wantedLocation.placemark = place
-//                self.wantedLocation.date = location.timestamp
-//            }
-//        })
-//        searchBar.endEditing(true)
-//        delegate?.passLocationBack(location: wantedLocation)
-//        dismiss(animated: true, completion: nil)
-//    }
-//
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        searchBar.endEditing(true)
-//    }
+    func checkLocationSaved(_ beCheckedPlacekmark: CLPlacemark) -> MyLocation? {
+        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
+        var locations = [Location]()
+        fetchedRequest.entity = Location.entity()
+        do {
+            locations = try managedObjectContext.fetch(fetchedRequest)
+        } catch {
+            fatalCoreDataError(error)
+        }
 
+        for locationRecord in locations {
+            let placemarkRecord = locationRecord.placemark
+            if stringFromPlacemark(placemark: beCheckedPlacekmark) == stringFromPlacemark(placemark: placemarkRecord!) {
+                return MyLocation.toMyLocation(coreDataLocation: locationRecord)
+            }
+        }
+        return nil
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        spinner.startAnimating()
+        
+        let myAddress = searchBar.text!
+
+        geocoder.geocodeAddressString(myAddress, completionHandler: {(placemarks: [CLPlacemark]?, error: Error?) -> Void in
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            guard let placemarks = placemarks else {
+                return
+            }
+            
+            var wantedLocation: MyLocation?
+            let tempLocation = MyLocation()
+
+            for place in placemarks {
+                guard let location = place.location else {
+                    continue
+                }
+
+                wantedLocation = self.checkLocationSaved(place)
+                
+                if wantedLocation == nil {
+                    tempLocation.locationName = place.locality!
+                    tempLocation.locationCategory = "All"
+                    tempLocation.placemark = place
+                    tempLocation.latitude = location.coordinate.latitude
+                    tempLocation.longitude = location.coordinate.longitude
+                }
+            }
+            
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            if wantedLocation == nil {
+                let controller = storyBoard.instantiateViewController(withIdentifier: "FirstEdit") as! LocationDetailFirstViewController
+                controller.locationToSave = tempLocation
+                controller.managedObjectContext = self.managedObjectContext
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else {
+                let controller = storyBoard.instantiateViewController(withIdentifier: "ShowDetail") as! LocationDetailViewController
+                controller.locationToShow = wantedLocation!
+                controller.sourceFrom = "SearchCV"
+                controller.managedObjectContext = self.managedObjectContext
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            self.spinner.stopAnimating()
+        })
+        searchBar.endEditing(true)
+    }
 
 }

@@ -212,7 +212,7 @@
                     <navigationItem key="navigationItem" title="Tag" id="hWN-Bz-PxJ">
                         <barButtonItem key="rightBarButtonItem" image="searchIcon" id="4My-EE-2rS">
                             <connections>
-                                <segue destination="5NN-Kn-zvW" kind="presentation" identifier="SearchLocation" id="TTr-n7-Sox"/>
+                                <segue destination="c7A-4i-JlV" kind="show" identifier="SearchLocation" id="6dj-Gg-axx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1694,33 +1694,28 @@
                         <viewControllerLayoutGuide type="bottom" id="uMy-xW-u4c"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EL5-wv-aAE" customClass="Se">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gvb-2d-uQn">
+                                <rect key="frame" x="142" y="241" width="37" height="37"/>
+                                <color key="color" red="0.2784313725" green="0.45882352939999999" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gvb-2d-uQn" firstAttribute="centerX" secondItem="EL5-wv-aAE" secondAttribute="centerX" id="1f4-FM-qcH"/>
+                            <constraint firstItem="gvb-2d-uQn" firstAttribute="centerY" secondItem="EL5-wv-aAE" secondAttribute="centerY" id="Hj9-Lk-ehn"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gUw-EN-npD"/>
+                    <connections>
+                        <outlet property="spinner" destination="gvb-2d-uQn" id="Q3J-of-Hox"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MFG-3d-EdI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3128" y="-1375"/>
-        </scene>
-        <!--My Navigation Controller-->
-        <scene sceneID="sex-d1-FqN">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5qy-uG-Y5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5NN-Kn-zvW" customClass="MyNavigationController" customModule="GeoKeeper" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l2p-c7-dhS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="c7A-4i-JlV" kind="relationship" relationship="rootViewController" id="BJz-OP-PKV"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="2257.5" y="-1375.3521126760563"/>
+            <point key="canvasLocation" x="2258" y="-1342"/>
         </scene>
     </scenes>
     <resources>
@@ -1734,6 +1729,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="p2m-Hb-BlY"/>
         <segue reference="vSo-TR-Y4s"/>
-        <segue reference="8v5-kF-cKs"/>
+        <segue reference="f77-nV-pgd"/>
     </inferredMetricsTieBreakers>
 </document>

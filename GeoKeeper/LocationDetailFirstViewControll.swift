@@ -130,13 +130,17 @@ class LocationDetailFirstViewController: UIViewController, UITextViewDelegate, U
     func saveLocation() {
         locationToSave.locationName = locationNameTextField.text!
         if categoryPickerButton.titleLabel?.text != "Choose a category" {
-            locationToSave.locationCategory = (categoryPickerButton.titleLabel?.text)!
+            locationToSave.locationCategory = categoryPickerButton.currentTitle!
         }
         locationToSave.locationDescription = remarkTextView.text
+        print("aa")
         let location: Location = NSEntityDescription.insertNewObject(forEntityName: "Location", into: managedObjectContext) as! Location
+        print("bb")
         location.name = locationToSave.locationName
         location.category = locationToSave.locationCategory
-        location.date = locationToSave.date!
+        if let date = locationToSave.date {
+            location.date = date
+        }
         location.latitude = locationToSave.latitude
         location.longitude = locationToSave.longitude
         location.placemark = locationToSave.placemark

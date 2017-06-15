@@ -514,7 +514,7 @@ SWIFT_CLASS("_TtC9GeoKeeper8Location")
 
 @interface Location (SWIFT_EXTENSION(GeoKeeper))
 @property (nonatomic, copy) NSString * _Nonnull category;
-@property (nonatomic, copy) NSDate * _Nonnull date;
+@property (nonatomic, copy) NSDate * _Nullable date;
 @property (nonatomic) double latitude;
 @property (nonatomic, copy) NSString * _Nonnull locationDescription;
 @property (nonatomic) double longitude;
@@ -1022,16 +1022,20 @@ SWIFT_CLASS("_TtC9GeoKeeper11SaveHudView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIActivityIndicatorView;
 @class UISearchBar;
 
 SWIFT_CLASS("_TtC9GeoKeeper20SearchViewController")
 @interface SearchViewController : UIViewController <UIBarPositioningDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) NSManagedObjectContext * _Null_unspecified managedObjectContext;
 @property (nonatomic, readonly, strong) CLGeocoder * _Nonnull geocoder;
-@property (nonatomic, strong) MyLocation * _Nonnull wantedLocation;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView * _Null_unspecified spinner;
+- (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidLoad;
 - (void)setSearchBar;
 - (void)searchBarCancelButtonClicked:(UISearchBar * _Nonnull)searchBar;
+- (MyLocation * _Nullable)checkLocationSaved:(CLPlacemark * _Nonnull)beCheckedPlacekmark SWIFT_WARN_UNUSED_RESULT;
+- (void)searchBarSearchButtonClicked:(UISearchBar * _Nonnull)searchBar;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
