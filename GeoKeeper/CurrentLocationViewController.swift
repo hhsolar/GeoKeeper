@@ -57,29 +57,9 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
          showPhotoMenu()
     }
     
-//    func checkLocationSaved(_ beCheckedPlacekmark: CLPlacemark) -> Bool {
-//        let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
-//        var locations = [Location]()
-//        fetchedRequest.entity = Location.entity()
-//        do {
-//            locations = try managedObjectContext.fetch(fetchedRequest)
-//        } catch {
-//            fatalCoreDataError(error)
-//        }
-//        
-//        for locationRecord in locations {
-//            let placemarkRecord = locationRecord.placemark
-//            if stringFromPlacemark(placemark: beCheckedPlacekmark) == stringFromPlacemark(placemark: placemarkRecord!) {
-//                return true
-//            }
-//        }
-//        return false
-//    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    func checkLocationSaved(_ beCheckedPlacekmark: CLPlacemark) -> MyLocation? {
         let fetchedRequest = NSFetchRequest<Location>(entityName: "Location")
+        var locations = [Location]()
         fetchedRequest.entity = Location.entity()
         do {
             locations = try managedObjectContext.fetch(fetchedRequest)
@@ -87,42 +67,53 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
             fatalCoreDataError(error)
         }
         
-        if let location = location {
-            for locationRecord in locations {
-                if let placemarkRecord = locationRecord.placemark {
-                    if addressLabel.text == stringFromPlacemark(placemark:placemarkRecord) {
-                        forPassLocation = MyLocation.toMyLocation(coreDataLocation: locationRecord)
-                        cityName.text = forPassLocation.locationName
-                        //Repeated Punch is not allowed
-                        if let date = locationRecord.date {
-                            let timeInterval = location.timestamp.timeIntervalSince(date)
-                            if timeInterval < punchInterval {
-                                isPunched = true
-                            } else {
-                                isPunched = false
-                            }
-                        }
-                        isVisited = true
-                    }
+        for locationRecord in locations {
+            let placemarkRecord = locationRecord.placemark
+            if stringFromPlacemark(placemark: beCheckedPlacekmark) == stringFromPlacemark(placemark: placemarkRecord!) {
+                return MyLocation.toMyLocation(coreDataLocation: locationRecord)
+            }
+        }
+        return nil
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        var returnLocation: MyLocation? = nil
+        if let placemark = placemark {
+            returnLocation = checkLocationSaved(placemark)
+        }
+        
+        if returnLocation != nil {
+            forPassLocation = returnLocation!
+            cityName.text = forPassLocation.locationName
+            if let date = forPassLocation.date {
+                let timeInterval = location?.timestamp.timeIntervalSince(date)
+                if timeInterval! < punchInterval {
+                    isPunched = true
+                } else {
+                    isPunched = false
                 }
             }
-            if isVisited == false {
-                tagLabel.text = "Tag"
-                messageLabel.text = "Tap 'Tag' to Save Location"
-                if let placemark = placemark {
-                    cityName.text = placemark.locality
-                }
-                forPassLocation = MyLocation()
-                
-            } else if isPunched {
-                tagLabel.text = "Detail"
-                messageLabel.text = "Tap 'Detail' to Read Details"
-            } else {
-                tagLabel.text = "Punch"
-                messageLabel.text = "Tap 'Punch' to Punch In"
-            }
+            isVisited = true
         } else {
             messageLabel.text = "Tap 'Get My Location' to Start"
+        }
+        
+        if isVisited == false {
+            tagLabel.text = "Tag"
+            messageLabel.text = "Tap 'Tag' to Save Location"
+            if let placemark = placemark {
+                cityName.text = placemark.locality
+            }
+            forPassLocation = MyLocation()
+            
+        } else if isPunched {
+            tagLabel.text = "Detail"
+            messageLabel.text = "Tap 'Detail' to Read Details"
+        } else if !isPunched {
+            tagLabel.text = "Punch"
+            messageLabel.text = "Tap 'Punch' to Punch In"
         }
         
         if addressLabel.text == "Searching for Address..." || addressLabel.text == "No Address Found" || addressLabel.text == "Error Finding Address" || addressLabel.text == "" || addressLabel.text == "My address" {
@@ -230,8 +221,8 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         } else {
             enableTagButton()
         }
-        
     }
+    
     func setContainer() {        
         // set messageLabel
         messageLabel.font = UIFont(name: "TrebuchetMS-Italic", size: 16)
@@ -487,7 +478,6 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         tagButton.setTitleColor(UIColor.gray, for: .normal)
         tagButton.isEnabled = false
         tagLabel.textColor = UIColor.gray
-
     }
 }
 
